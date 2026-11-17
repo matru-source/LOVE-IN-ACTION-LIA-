@@ -52,9 +52,43 @@ const env = {
 
 export default async function handler(req, res) {
   try {
-    const proto = req.headers['x-forwarded-proto'] || 'https';
-    const host = req.headers['x-forwarded-host'] || req.headers.host || 'localhost';
-    const fullUrl = `${proto}://${host}${req.url}`;
+    // 1. Sanitize protocol & host (Vercel proxies can append multiple values separated by commas)
+    let proto = 'https';
+    if (req.headers['x-forwarded-proto']) {
+      proto = String(req.headers['x-forwarded-proto']).split(',')[0].trim() || 'https';
+    }
+    let host = 'localhost';
+    if (req.headers['x-forwarded-host']) {
+      host = String(req.headers['x-forwarded-host']).split(',')[0].trim() || 'localhost';
+    } else if (req.headers.host) {
+      host = String(req.headers.host).split(',')[0].trim() || 'localhost';
+    }
+
+    // 2. Resolve original requested path on Vercel
+    // x-matched-path / x-invoke-path hold the real route before internal rewrites
+    let rawPath = req.headers['x-matched-path'] || req.headers['x-invoke-path'] || req.url || '/';
+
+    // Separate pathname and query string
+    let pathname = rawPath;
+    let search = '';
+    const queryIdx = req.url.indexOf('?');
+    if (queryIdx !== -1) {
+      search = req.url.slice(queryIdx);
+    }
+    const pathQueryIdx = pathname.indexOf('?');
+    if (pathQueryIdx !== -1) {
+      if (!search) search = pathname.slice(pathQueryIdx);
+      pathname = pathname.slice(0, pathQueryIdx);
+    }
+
+    // Normalize rewritten paths
+    if (pathname === '/api/index.js' || pathname === '/api/index' || pathname === '/api' || !pathname) {
+      pathname = '/';
+    } else if (pathname.startsWith('/api/') && !['/api/nominations', '/api/contact'].includes(pathname) && !pathname.startsWith('/api/admin')) {
+      pathname = pathname.slice(4) || '/';
+    }
+
+    const fullUrl = `${proto}://${host}${pathname}${search}`;
 
     let body = undefined;
     if (!['GET', 'HEAD'].includes(req.method)) {

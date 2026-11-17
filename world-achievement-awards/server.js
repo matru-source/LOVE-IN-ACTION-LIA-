@@ -581,7 +581,7 @@ export default {
         headers: responseHeaders
       });
     } catch (error) {
-      return json({ error: error.status ? error.message : 'The service is temporarily unavailable. Please try again.' }, error.status || 503);
+      return json({ error: error.status ? error.message : (error.message || 'The service is temporarily unavailable. Please try again.') }, error.status || 503);
     }
   }
 };
