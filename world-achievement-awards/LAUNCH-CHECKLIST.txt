@@ -1,0 +1,39 @@
+WORLD ACHIEVEMENT AWARDS — REPLACEMENT AND LAUNCH CHECKLIST
+
+CONTENT TO PROVIDE
+1. Approved logo, brand files and organisation name styling.
+2. Founder/president full name, role, biography, photograph and approved message.
+3. Registration certificate and exact approved registration wording.
+4. Awardees: full name, award category, year, district, state, field, biography, achievements, photograph and publication permission.
+5. Photos: original images, event/category, date, place, captions, photographer credit and permission.
+6. Videos: official YouTube links, titles, recording dates, descriptions, thumbnails and channel URL.
+7. Testimonials: exact approved quotations, name, role/award, photograph and permission.
+8. Ceremony: confirmed date, time, venue, programme, guests and nomination deadline.
+9. Awards: final eligibility, age/duration rules, judging criteria, benefits and any fee/refund rules.
+10. News: approved articles, publication dates, photographs and press/source links.
+11. Confirm phone, WhatsApp, email, office address and map location.
+12. Approved privacy/retention policy, deletion process, terms and publicity consent.
+13. Verified impact statistics; do not use the previous suggested 500+ count without evidence.
+
+OPERATIONAL SETUP
+- Organiser workspace: /admin. Sign in as the configured owner account, zex4uofficial@gmail.com.
+- Inbox supports review status, private attachment downloads, JSON export of loaded records and deletion of records/documents.
+- Publishing supports awardees, photos, videos, founder message, testimonials and news. Add verified entries and remove DEMO entries.
+- Email/WhatsApp notifications are NOT configured. Provide the approved delivery service/account and verified sender or Google Form integration details. Never put API keys in public files or chat content; configure them as runtime secrets.
+- The site remains owner-private. Public access/custom domain and indexing need an explicit launch decision.
+- Review and remove the global preview banner and sample entries only when replacements are approved.
+- Configure an exact retention period and staff deletion routine before collecting real identity documents.
+
+TESTS COMPLETED
+- 16 automated tests: public page links/metadata, assets, sitemap, HEAD/404, POST fallback, validation, origins, duplicate retries, rate limit, upload requirements/signatures/size, private downloads, organiser authorisation, review/delete, safe content publishing, storage failures and demo labels.
+- 25 public pages checked in the browser at desktop/mobile widths; no horizontal overflow detected. Article checked on mobile.
+- Awardee search reduced six sample entries to one; reset restored six.
+- Photo lightbox opened and closed correctly on mobile.
+
+LIMITS BEFORE A FULL PUBLIC LAUNCH
+- Browser checks are not a cross-browser/device-lab or screen-reader certification; Core Web Vitals have not been measured.
+- Automated storage tests use an in-memory R2 substitute. Live contact persistence and retrieval in the owner inbox were verified after deployment. A labelled synthetic QA contact record remains in the inbox. Live nomination attachments have not been exercised.
+- R2 rate and duplicate checks prevent sequential abuse/retries, but are not atomic under simultaneous requests. A public high-traffic launch needs an atomic limiter/idempotency store and anti-bot controls.
+- File checks inspect size and signature, not malware. Files are private, downloaded as attachments, and never executed by the app. Consider scanning before expanding upload access.
+- Content editing uses a single published collection; concurrent editors should not publish simultaneously.
+- Video demo cards are labelled samples, not official footage. Real YouTube players activate when approved video links are published.

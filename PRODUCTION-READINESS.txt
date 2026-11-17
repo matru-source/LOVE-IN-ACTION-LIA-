@@ -1,0 +1,43 @@
+WORLD ACHIEVEMENT AWARDS — PRODUCTION READINESS
+17 November 2026
+
+DEPLOYED
+https://world-achievement-awards.zex4uofficial.chatgpt.site
+Organiser: /admin (configured owner account)
+Dummy content remains labelled. Site remains private and noindex while demo content is present.
+
+COMPLETED TECHNICAL WORK
+- Atomic R2 conditional writes for submission limits, duplicate claims and concurrent content publishing.
+- Request limits before body parsing; 22 MB total body limit and 5 MB/file limit.
+- Validated inputs, private file storage, organiser-only downloads, safe POST fallback and no-store responses for private data.
+- Restrictive script policy; external scripts are not allowed.
+- Email adapter with timeout, provider idempotency key, stored delivery status and organiser retry button. Emails carry reference/inbox link, not identity documents.
+- Existing public-page and responsive tests retained.
+
+LIVE UPLOAD VERIFICATION
+Synthetic record WAA-8dd9f68a-9143-4edd-9315-9b814e2d9ab2.
+PNG photograph plus three PDF files (identity, evidence, CV) uploaded: HTTP 201.
+Identical retry: HTTP 200, same reference.
+Disguised image and oversized image: HTTP 400.
+Non-organiser download: HTTP 403. Direct storage path: HTTP 404.
+Organiser downloaded all four attachments via the live inbox.
+SHA-256 hashes of all four downloads matched the uploaded originals exactly.
+No real identity documents or applicant information used. Synthetic QA records remain labelled in the inbox.
+
+AUTOMATED VERIFICATION
+22 tests passed, including simultaneous distinct requests, simultaneous identical requests, concurrent content edits, upload controls, authorisation, notification success/failure, and safe content rendering.
+Email tests use a mocked provider; actual email delivery is not configured or verified.
+
+EXACT INPUTS STILL REQUIRED
+1. Email delivery: Resend account/API key configured securely as RESEND_API_KEY; verified sender as MAIL_FROM; notification recipient as NOTIFY_EMAIL. Do not paste secrets into public files. If another provider is preferred, identify it before integration.
+2. Real-document policy: retention duration, responsible organiser for deletion requests, and approved privacy/consent wording. File signatures and size are checked; malware scanning is not implemented. Choose an approved scanning service/account if automated scanning is required before staff downloads.
+3. Public launch decision: keep private or enable public viewing; supply the custom domain and DNS access if wanted. No public exposure has been enabled.
+4. Confirm the organiser account or provide the intended admin account if different from zex4uofficial@gmail.com.
+5. Real content can wait as requested. Before an official indexed launch, replace demo profiles/media/quotes and approve organisation, event and award details using the existing content checklist.
+
+OPERATING LIMITS
+This is a small-site R2-backed implementation, not an unlimited-traffic guarantee. High contention fails closed rather than allowing excess submissions. Interrupted submissions can leave a pending duplicate claim requiring operator recovery. Notification retries are paginated in batches of 50; the inbox button advances through the backlog. No malware scanning, external penetration test, cross-browser device-lab certification, or measured Core Web Vitals certification is claimed.
+
+REFERENCES
+R2 conditional write contract: https://developers.cloudflare.com/r2/api/workers/workers-api-reference/
+Email API contract: https://resend.com/docs/api-reference/emails/send-email

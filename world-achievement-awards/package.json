@@ -1,0 +1,1 @@
+{"name":"world-achievement-awards","private":true,"type":"module","scripts":{"build":"node build.mjs","test":"node --test test.mjs verify-client-spec.mjs","dev":"node preview.mjs"}}
