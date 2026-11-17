@@ -1,7 +1,3 @@
 node_modules/
-dist/
-outputs/
+.vercel/
 *.tar.gz
-.openai/
-.env
-.env.*

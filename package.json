@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "cd world-achievement-awards && npm run build",
+    "start": "cd world-achievement-awards && npm start",
     "test": "cd world-achievement-awards && npm test",
     "dev": "cd world-achievement-awards && npm run dev"
   }
