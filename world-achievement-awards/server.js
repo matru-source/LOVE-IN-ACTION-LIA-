@@ -582,7 +582,11 @@ export default {
       const responseHeaders = {
         ...secure,
         'Content-Type': type,
-        'Cache-Control': p === '/admin' ? 'no-store' : 'public, max-age=60'
+        'Cache-Control': p === '/admin' ? 'no-store' : 'public, max-age=60',
+        'X-Debug-Path': String(p),
+        'X-Debug-Pages-Count': String(Object.keys(currentPages).length),
+        'X-Debug-Lookup': String(lookupPath),
+        'X-Debug-Url': String(r.url)
       };
       if (p === '/admin') {
         responseHeaders['X-Robots-Tag'] = 'noindex, nofollow';
