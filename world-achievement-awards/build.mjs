@@ -179,10 +179,22 @@ pages['/']={
       <h2>Popular Awards Categories</h2>
       <p class="muted">Kalinga Yuva Gaurav Samman | Seva Ratan Award | Education Icon | Women Empowerment | Health Warrior | Youth Icon</p>
     </div>
-    <a class="text-link" href="/awards">View All 12 Awards ${arrow}</a>
+    <div class="carousel-nav-group">
+      <a class="text-link" href="/awards">View All 12 Awards ${arrow}</a>
+      <div class="carousel-controls" aria-label="Popular awards carousel controls">
+        <button type="button" class="carousel-nav-btn prev" id="carousel-prev-btn" aria-label="Previous awards" title="Previous award">
+          <span aria-hidden="true">←</span>
+        </button>
+        <button type="button" class="carousel-nav-btn next" id="carousel-next-btn" aria-label="Next awards" title="Next award">
+          <span aria-hidden="true">→</span>
+        </button>
+      </div>
+    </div>
   </div>
-  <div class="card-grid award-carousel" tabindex="0" role="region" aria-label="Popular awards carousel">
-    ${cards()}
+  <div class="award-carousel-container" id="carousel-container">
+    <div class="card-grid award-carousel" id="award-carousel" tabindex="0" role="region" aria-label="Popular awards carousel">
+      ${cards()}${cards()}
+    </div>
   </div>
 </section>
 

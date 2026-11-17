@@ -487,3 +487,156 @@ if (inbox) {
     }
   });
 }
+
+// Automatic Smooth Moving Carousel for Popular Awards
+(function initAwardCarousel() {
+  const carousel = document.querySelector('#award-carousel');
+  const container = document.querySelector('#carousel-container') || carousel?.parentElement;
+  const prevBtn = document.querySelector('#carousel-prev-btn');
+  const nextBtn = document.querySelector('#carousel-next-btn');
+
+  if (!carousel) return;
+
+  const cards = carousel.querySelectorAll('.award-card');
+  if (cards.length === 0) return;
+
+  // Single set count is 6 (half of duplicated 12 cards)
+  const singleSetCount = cards.length > 6 ? Math.floor(cards.length / 2) : cards.length;
+
+  function getStepWidth() {
+    const first = cards[0];
+    const second = cards[1];
+    if (first && second) {
+      return second.offsetLeft - first.offsetLeft;
+    }
+    return (first?.offsetWidth || 360) + 20;
+  }
+
+  function getSingleSetWidth() {
+    if (cards.length > singleSetCount && cards[singleSetCount]) {
+      return cards[singleSetCount].offsetLeft - cards[0].offsetLeft;
+    }
+    return getStepWidth() * singleSetCount;
+  }
+
+  let isPaused = false;
+  let pauseTimer = null;
+  let isDragging = false;
+  let startX = 0;
+  let startScrollLeft = 0;
+  let draggedDistance = 0;
+  let lastTimestamp = null;
+  const pixelsPerSecond = 36; // smooth, comfortable gliding pace
+
+  function pauseAuto(ms = 3500) {
+    isPaused = true;
+    if (pauseTimer) clearTimeout(pauseTimer);
+    pauseTimer = setTimeout(() => {
+      pauseTimer = null;
+      isPaused = false;
+    }, ms);
+  }
+
+  function step(timestamp) {
+    if (!lastTimestamp) lastTimestamp = timestamp;
+    const delta = Math.min((timestamp - lastTimestamp) / 1000, 0.1);
+    lastTimestamp = timestamp;
+
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!isPaused && !isDragging && !prefersReduced) {
+      const singleSetWidth = getSingleSetWidth();
+      if (singleSetWidth > 0) {
+        let newScroll = carousel.scrollLeft + pixelsPerSecond * delta;
+        if (newScroll >= singleSetWidth) {
+          newScroll -= singleSetWidth;
+        }
+        carousel.scrollLeft = newScroll;
+      }
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  requestAnimationFrame(step);
+
+  // Pause on mouse hover
+  container?.addEventListener('mouseenter', () => {
+    isPaused = true;
+  });
+  container?.addEventListener('mouseleave', () => {
+    if (!pauseTimer) isPaused = false;
+  });
+
+  // Pause on keyboard focus
+  container?.addEventListener('focusin', () => {
+    isPaused = true;
+  });
+  container?.addEventListener('focusout', () => {
+    if (!pauseTimer) isPaused = false;
+  });
+
+  // Manual Previous & Next buttons
+  nextBtn?.addEventListener('click', () => {
+    pauseAuto(4000);
+    const stepWidth = getStepWidth();
+    const singleSetWidth = getSingleSetWidth();
+    if (singleSetWidth > 0 && carousel.scrollLeft + stepWidth >= singleSetWidth * 2 - carousel.clientWidth) {
+      carousel.scrollLeft -= singleSetWidth;
+    }
+    carousel.scrollBy({ left: stepWidth, behavior: 'smooth' });
+  });
+
+  prevBtn?.addEventListener('click', () => {
+    pauseAuto(4000);
+    const stepWidth = getStepWidth();
+    const singleSetWidth = getSingleSetWidth();
+    if (singleSetWidth > 0 && carousel.scrollLeft - stepWidth < 0) {
+      carousel.scrollLeft += singleSetWidth;
+    }
+    carousel.scrollBy({ left: -stepWidth, behavior: 'smooth' });
+  });
+
+  // Pointer drag & touch swipe
+  carousel.addEventListener('pointerdown', e => {
+    if (e.button !== 0 && e.pointerType === 'mouse') return;
+    isDragging = true;
+    isPaused = true;
+    startX = e.pageX;
+    startScrollLeft = carousel.scrollLeft;
+    draggedDistance = 0;
+    carousel.style.cursor = 'grabbing';
+  });
+
+  window.addEventListener('pointermove', e => {
+    if (!isDragging) return;
+    const deltaX = e.pageX - startX;
+    draggedDistance = Math.abs(deltaX);
+    const singleSetWidth = getSingleSetWidth();
+    let target = startScrollLeft - deltaX;
+    if (singleSetWidth > 0) {
+      while (target < 0) target += singleSetWidth;
+      while (target >= singleSetWidth * 2) target -= singleSetWidth;
+    }
+    carousel.scrollLeft = target;
+  });
+
+  const stopDrag = () => {
+    if (!isDragging) return;
+    isDragging = false;
+    carousel.style.cursor = 'grab';
+    pauseAuto(3000);
+  };
+
+  window.addEventListener('pointerup', stopDrag);
+  window.addEventListener('pointercancel', stopDrag);
+
+  // Suppress link click when user dragged
+  carousel.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', e => {
+      if (draggedDistance > 8) {
+        e.preventDefault();
+      }
+    });
+  });
+})();
