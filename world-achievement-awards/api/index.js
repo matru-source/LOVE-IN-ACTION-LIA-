@@ -14,6 +14,12 @@ const storage = new Map();
 let ver = 0;
 
 const env = {
+  pages,
+  assets,
+  categories,
+  siteBase,
+  demoContent,
+  socialImage,
   ADMIN_EMAIL: process.env.ADMIN_EMAIL || 'zex4uofficial@gmail.com',
   ADMIN_SECRET: process.env.ADMIN_SECRET || 'lia-admin-2026',
   RESEND_API_KEY: process.env.RESEND_API_KEY || '',

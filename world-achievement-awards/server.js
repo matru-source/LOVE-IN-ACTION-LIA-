@@ -1,9 +1,9 @@
-const getDemoContent = () => typeof demoContent !== 'undefined' ? demoContent : (typeof globalThis !== 'undefined' && globalThis.demoContent ? globalThis.demoContent : []);
-const getSocialImage = () => typeof socialImage !== 'undefined' ? socialImage : (typeof globalThis !== 'undefined' && globalThis.socialImage ? globalThis.socialImage : '');
-const getAssets = () => typeof assets !== 'undefined' ? assets : (typeof globalThis !== 'undefined' && globalThis.assets ? globalThis.assets : {});
-const getPages = () => typeof pages !== 'undefined' ? pages : (typeof globalThis !== 'undefined' && globalThis.pages ? globalThis.pages : {});
-const getCategories = () => typeof categories !== 'undefined' ? categories : (typeof globalThis !== 'undefined' && globalThis.categories ? globalThis.categories : []);
-const getSiteBase = () => typeof siteBase !== 'undefined' ? siteBase : (typeof globalThis !== 'undefined' && globalThis.siteBase ? globalThis.siteBase : '');
+const getDemoContent = e => (e && e.demoContent) || (typeof demoContent !== 'undefined' ? demoContent : (typeof globalThis !== 'undefined' && globalThis.demoContent ? globalThis.demoContent : []));
+const getSocialImage = e => (e && e.socialImage) || (typeof socialImage !== 'undefined' ? socialImage : (typeof globalThis !== 'undefined' && globalThis.socialImage ? globalThis.socialImage : ''));
+const getAssets = e => (e && e.assets) || (typeof assets !== 'undefined' ? assets : (typeof globalThis !== 'undefined' && globalThis.assets ? globalThis.assets : {}));
+const getPages = e => (e && e.pages) || (typeof pages !== 'undefined' ? pages : (typeof globalThis !== 'undefined' && globalThis.pages ? globalThis.pages : {}));
+const getCategories = e => (e && e.categories) || (typeof categories !== 'undefined' ? categories : (typeof globalThis !== 'undefined' && globalThis.categories ? globalThis.categories : []));
+const getSiteBase = e => (e && e.siteBase) || (typeof siteBase !== 'undefined' ? siteBase : (typeof globalThis !== 'undefined' && globalThis.siteBase ? globalThis.siteBase : ''));
 
 const secure = {
   'X-Content-Type-Options': 'nosniff',
@@ -534,10 +534,10 @@ export default {
         });
       }
 
-      const currentAssets = getAssets();
-      const currentPages = getPages();
-      const currentSiteBase = getSiteBase();
-      const currentCategories = getCategories();
+      const currentAssets = getAssets(e);
+      const currentPages = getPages(e);
+      const currentSiteBase = getSiteBase(e);
+      const currentCategories = getCategories(e);
 
       if (currentAssets[p]) {
         body = currentAssets[p];
@@ -555,10 +555,10 @@ export default {
         type = 'image/svg+xml';
       } else {
         const lookupPath = p === '/registration' ? '/nominate' : p;
-        body = currentPages[lookupPath] || currentPages['/404'];
+        body = currentPages[lookupPath] || currentPages['/404'] || '<!doctype html><html><head><title>Love In Action</title></head><body><h1>Love In Action</h1><p>World Achievement Awards 2026</p></body></html>';
         status = currentPages[lookupPath] && p !== '/404' ? 200 : 404;
 
-        if (body.includes('data-content=')) {
+        if (body && typeof body === 'string' && body.includes('data-content=')) {
           const entries = await content(e);
           body = body.replace(/<div data-content="([a-z]+)" aria-live="polite">[\s\S]*?<\/div>/g, (_, kind) => {
             let chosen = entries.filter(x => x.kind === kind);
@@ -593,7 +593,7 @@ export default {
         headers: responseHeaders
       });
     } catch (error) {
-      return json({ error: error.status ? error.message : (error.message || 'The service is temporarily unavailable. Please try again.') }, error.status || 503);
+      return json({ error: error.status ? error.message : (error.message || 'The service is temporarily unavailable. Please try again.'), stack: error.stack }, error.status || 503);
     }
   }
 };
