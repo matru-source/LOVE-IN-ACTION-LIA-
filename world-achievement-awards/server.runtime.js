@@ -354,11 +354,16 @@ export default {
     try {
       const url = new URL(r.url);
       let p = url.pathname.replace(/\/$/, '') || '/';
-      const matched = r.headers.get('x-matched-path') || r.headers.get('x-invoke-path');
-      if (matched && !matched.startsWith('/api/index') && !matched.startsWith('/server')) {
-        p = matched.replace(/\/$/, '') || '/';
-      } else if (p.startsWith('/api/') && !['/api/nominations', '/api/contact'].includes(p) && !p.startsWith('/api/admin')) {
-        p = p.slice(4) || '/';
+      if (url.searchParams.has('url')) {
+        const paramUrl = url.searchParams.get('url') || '';
+        p = '/' + paramUrl.replace(/^\//, '').replace(/\/$/, '');
+      } else {
+        const matched = r.headers.get('x-matched-path') || r.headers.get('x-invoke-path');
+        if (matched && !matched.startsWith('/api/index') && !matched.startsWith('/server')) {
+          p = matched.replace(/\/$/, '') || '/';
+        } else if (p.startsWith('/api/') && !['/api/nominations', '/api/contact'].includes(p) && !p.startsWith('/api/admin')) {
+          p = p.slice(4) || '/';
+        }
       }
       if (p === '/api/index.js' || p === '/api/index' || p === '/api' || p === '/server.js' || p === '/server') {
         p = '/';

@@ -1,11 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "buildCommand": "cd world-achievement-awards && npm run build",
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/api/index.js"
+      "destination": "/api/index.js?url=$1"
     }
   ]
 }
