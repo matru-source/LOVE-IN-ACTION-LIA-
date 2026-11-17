@@ -1,4 +1,13 @@
-import worker from '../dist/server/index.js';
+import worker, { demoContent, socialImage, assets, pages, categories, siteBase } from '../dist/server/index.js';
+
+if (typeof globalThis !== 'undefined') {
+  if (demoContent) globalThis.demoContent = demoContent;
+  if (socialImage) globalThis.socialImage = socialImage;
+  if (assets) globalThis.assets = assets;
+  if (pages) globalThis.pages = pages;
+  if (categories) globalThis.categories = categories;
+  if (siteBase) globalThis.siteBase = siteBase;
+}
 
 // In-memory bucket store for Vercel Serverless environment
 const storage = new Map();

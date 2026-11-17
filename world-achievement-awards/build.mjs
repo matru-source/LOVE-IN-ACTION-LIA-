@@ -869,12 +869,20 @@ await mkdir('dist/server',{recursive:true});
 await mkdir('dist/.openai',{recursive:true});
 
 const runtime=await readFile('server.js','utf8');
-await writeFile('dist/server/index.js',`const demoContent=${JSON.stringify(demoContent)};
-const socialImage=${JSON.stringify((await readFile("social.png")).toString("base64"))};
-const assets=${JSON.stringify({"/assets/style.css":css,"/assets/client.js":js})};
-const pages=${JSON.stringify(output)};
-const categories=${JSON.stringify(awards)};
-const siteBase=${JSON.stringify(base)};
+await writeFile('dist/server/index.js',`export const demoContent=${JSON.stringify(demoContent)};
+export const socialImage=${JSON.stringify((await readFile("social.png")).toString("base64"))};
+export const assets=${JSON.stringify({"/assets/style.css":css,"/assets/client.js":js})};
+export const pages=${JSON.stringify(output)};
+export const categories=${JSON.stringify(awards)};
+export const siteBase=${JSON.stringify(base)};
+if (typeof globalThis !== 'undefined') {
+  globalThis.demoContent = demoContent;
+  globalThis.socialImage = socialImage;
+  globalThis.assets = assets;
+  globalThis.pages = pages;
+  globalThis.categories = categories;
+  globalThis.siteBase = siteBase;
+}
 ${runtime}`);
 
 await writeFile('dist/.openai/hosting.json',await readFile('.openai/hosting.json'));

@@ -1,3 +1,10 @@
+const getDemoContent = () => typeof demoContent !== 'undefined' ? demoContent : (typeof globalThis !== 'undefined' && globalThis.demoContent ? globalThis.demoContent : []);
+const getSocialImage = () => typeof socialImage !== 'undefined' ? socialImage : (typeof globalThis !== 'undefined' && globalThis.socialImage ? globalThis.socialImage : '');
+const getAssets = () => typeof assets !== 'undefined' ? assets : (typeof globalThis !== 'undefined' && globalThis.assets ? globalThis.assets : {});
+const getPages = () => typeof pages !== 'undefined' ? pages : (typeof globalThis !== 'undefined' && globalThis.pages ? globalThis.pages : {});
+const getCategories = () => typeof categories !== 'undefined' ? categories : (typeof globalThis !== 'undefined' && globalThis.categories ? globalThis.categories : []);
+const getSiteBase = () => typeof siteBase !== 'undefined' ? siteBase : (typeof globalThis !== 'undefined' && globalThis.siteBase ? globalThis.siteBase : '');
+
 const secure = {
   'X-Content-Type-Options': 'nosniff',
   'Referrer-Policy': 'strict-origin-when-cross-origin',
@@ -95,7 +102,7 @@ async function notifySubmission(e, record) {
         from: e.MAIL_FROM,
         to: [e.NOTIFY_EMAIL],
         subject: 'New award ' + record.kind + ' — ' + record.reference,
-        text: 'A new ' + record.kind + ' is ready for review. Reference: ' + record.reference + '\nOpen the protected inbox: ' + siteBase + '/admin\nNo identity documents are attached to this notification.'
+        text: 'A new ' + record.kind + ' is ready for review. Reference: ' + record.reference + '\nOpen the protected inbox: ' + getSiteBase() + '/admin\nNo identity documents are attached to this notification.'
       }),
       signal: AbortSignal.timeout(10000)
     });
@@ -106,8 +113,8 @@ async function notifySubmission(e, record) {
 }
 
 async function content(e) {
-  if (!e?.BUCKET) return demoContent;
-  return await read(e, 'content/published.json') || demoContent;
+  if (!e?.BUCKET) return getDemoContent();
+  return await read(e, 'content/published.json') || getDemoContent();
 }
 
 function card(item) {
@@ -239,7 +246,7 @@ async function submissions(r, e, path) {
   if (data.consent !== 'on') return respond({ error: 'Accept the rules and privacy notice.' }, 400);
 
   if (isNom) {
-    if (!categories.includes(data.category) ||
+    if (!getCategories().includes(data.category) ||
         !['Woman', 'Man', 'Non-binary', 'Prefer not to say'].includes(data.gender) ||
         !['Education', 'Health', 'Social Service', 'Art', 'Sports', 'Business', 'Others'].includes(data.field) ||
         !/^\d{6}$/.test(data.pin)) {
@@ -257,7 +264,7 @@ async function submissions(r, e, path) {
     }
     const now = new Date();
     const age = now.getUTCFullYear() - born.getUTCFullYear() - (now.toISOString().slice(5, 10) < data.dob.slice(5) ? 1 : 0);
-    if (data.category === categories[0] && age >= 35) {
+    if (data.category === getCategories()[0] && age >= 35) {
       return respond({ error: 'This award is for nominees under 35.' }, 400);
     }
     if (!files.some(([k]) => k === 'photo') || !files.some(([k]) => k === 'identity')) {
@@ -460,12 +467,12 @@ export default {
             if (item.kind === 'videos' && item.url && !/^https:\/\/(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)[\w-]{11}/.test(item.url)) {
               return json({ error: 'Use a YouTube watch or share link.' }, 400);
             }
-            await atomicUpdate(e, 'content/published.json', all => [...all, item], demoContent);
+            await atomicUpdate(e, 'content/published.json', all => [...all, item], getDemoContent());
             return json({ ok: true }, 201);
           }
           if (r.method === 'DELETE') {
             const id = url.searchParams.get('id');
-            await atomicUpdate(e, 'content/published.json', all => all.filter(x => x.id !== id), demoContent);
+            await atomicUpdate(e, 'content/published.json', all => all.filter(x => x.id !== id), getDemoContent());
             return json({ ok: true });
           }
         }
@@ -479,7 +486,7 @@ export default {
         const secret = (e && e.ADMIN_SECRET) || 'lia-admin-2026';
         const hasKeyParam = url.searchParams.get('admin_key') === secret;
         if (!admin(r, e) && !hasKeyParam) {
-          const loginHtml = pages['/admin'].replace(
+          const loginHtml = getPages()['/admin'].replace(
             '<main id="main">',
             `<main id="main">
 <section class="wrap page-heading text-center" style="padding-top: 60px;">
@@ -522,20 +529,25 @@ export default {
       let body, type = 'text/html; charset=utf-8', status = 200;
 
       if (p === '/social.png') {
-        return new Response(r.method === 'HEAD' ? null : Uint8Array.from(atob(socialImage), c => c.charCodeAt(0)), {
+        return new Response(r.method === 'HEAD' ? null : Uint8Array.from(atob(getSocialImage()), c => c.charCodeAt(0)), {
           headers: { ...secure, 'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=3600' }
         });
       }
 
-      if (assets[p]) {
-        body = assets[p];
+      const currentAssets = getAssets();
+      const currentPages = getPages();
+      const currentSiteBase = getSiteBase();
+      const currentCategories = getCategories();
+
+      if (currentAssets[p]) {
+        body = currentAssets[p];
         type = p.endsWith('.css') ? 'text/css' : 'text/javascript';
       } else if (p === '/robots.txt') {
-        body = `User-agent: *\nDisallow: /admin\nDisallow: /api/\nSitemap: ${siteBase}/sitemap.xml`;
+        body = `User-agent: *\nDisallow: /admin\nDisallow: /api/\nSitemap: ${currentSiteBase}/sitemap.xml`;
         type = 'text/plain';
       } else if (p === '/sitemap.xml') {
         body = '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' +
-          Object.keys(pages).filter(x => !['/404', '/admin', '/registration'].includes(x)).map(x => `<url><loc>${siteBase}${x === '/' ? '' : x}</loc></url>`).join('') +
+          Object.keys(currentPages).filter(x => !['/404', '/admin', '/registration'].includes(x)).map(x => `<url><loc>${currentSiteBase}${x === '/' ? '' : x}</loc></url>`).join('') +
           '</urlset>';
         type = 'application/xml';
       } else if (p === '/favicon.svg') {
@@ -543,15 +555,15 @@ export default {
         type = 'image/svg+xml';
       } else {
         const lookupPath = p === '/registration' ? '/nominate' : p;
-        body = pages[lookupPath] || pages['/404'];
-        status = pages[lookupPath] && p !== '/404' ? 200 : 404;
+        body = currentPages[lookupPath] || currentPages['/404'];
+        status = currentPages[lookupPath] && p !== '/404' ? 200 : 404;
 
         if (body.includes('data-content=')) {
           const entries = await content(e);
           body = body.replace(/<div data-content="([a-z]+)" aria-live="polite">[\s\S]*?<\/div>/g, (_, kind) => {
             let chosen = entries.filter(x => x.kind === kind);
             if (p.startsWith('/awards/')) {
-              const category = categories.find(c => c.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/-$/, '') === p.slice(8));
+              const category = currentCategories.find(c => c.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/-$/, '') === p.slice(8));
               chosen = chosen.filter(x => x.category === category);
             }
             if (p === '/') {
