@@ -1,0 +1,12 @@
+{
+  "name": "love-in-action-lia",
+  "version": "1.0.0",
+  "description": "Love In Action (LIA) - World Achievement Awards 2026",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "cd world-achievement-awards && npm run build",
+    "test": "cd world-achievement-awards && npm test",
+    "dev": "cd world-achievement-awards && npm run dev"
+  }
+}
