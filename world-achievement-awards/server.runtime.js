@@ -352,7 +352,17 @@ async function submissions(r, e, path) {
 export default {
   async fetch(r, e = {}) {
     try {
-      const url = new URL(r.url), p = url.pathname.replace(/\/$/, '') || '/';
+      const url = new URL(r.url);
+      let p = url.pathname.replace(/\/$/, '') || '/';
+      const matched = r.headers.get('x-matched-path') || r.headers.get('x-invoke-path');
+      if (matched && !matched.startsWith('/api/index') && !matched.startsWith('/server')) {
+        p = matched.replace(/\/$/, '') || '/';
+      } else if (p.startsWith('/api/') && !['/api/nominations', '/api/contact'].includes(p) && !p.startsWith('/api/admin')) {
+        p = p.slice(4) || '/';
+      }
+      if (p === '/api/index.js' || p === '/api/index' || p === '/api' || p === '/server.js' || p === '/server') {
+        p = '/';
+      }
 
       if (p === '/api/nominations' || p === '/api/contact') return await submissions(r, e, p);
 
