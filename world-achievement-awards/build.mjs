@@ -868,7 +868,7 @@ output['/404']=render('/404',{
 await mkdir('dist/server',{recursive:true});
 await mkdir('dist/.openai',{recursive:true});
 
-const runtime=await readFile('server.js','utf8');
+const runtime=await readFile('server.runtime.js','utf8');
 await writeFile('dist/server/index.js',`export const demoContent=${JSON.stringify(demoContent)};
 export const socialImage=${JSON.stringify((await readFile("social.png")).toString("base64"))};
 export const assets=${JSON.stringify({"/assets/style.css":css,"/assets/client.js":js})};

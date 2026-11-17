@@ -541,6 +541,7 @@ export default {
       }
 
       let body, type = 'text/html; charset=utf-8', status = 200;
+      const lookupPath = p === '/registration' ? '/nominate' : p;
 
       if (p === '/social.png') {
         return new Response(r.method === 'HEAD' ? null : Uint8Array.from(atob(getSocialImage()), c => c.charCodeAt(0)), {
@@ -568,7 +569,6 @@ export default {
         body = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#26352a"/><text x="32" y="48" text-anchor="middle" font-size="48" fill="#d8b76b">✳</text></svg>';
         type = 'image/svg+xml';
       } else {
-        const lookupPath = p === '/registration' ? '/nominate' : p;
         body = currentPages[lookupPath] || currentPages['/404'] || '<!doctype html><html><head><title>Love In Action</title></head><body><h1>Love In Action</h1><p>World Achievement Awards 2026</p></body></html>';
         status = currentPages[lookupPath] && p !== '/404' ? 200 : 404;
 
