@@ -542,7 +542,7 @@ export default {
       }
 
       let body, type = 'text/html; charset=utf-8', status = 200;
-      const lookupPath = p === '/registration' ? '/nominate' : p;
+      const lookupPath = p === '/registration' ? '/nominate' : (p === '/rules' ? '/terms' : p);
 
       if (p === '/social.png') {
         return new Response(r.method === 'HEAD' ? null : Uint8Array.from(atob(getSocialImage()), c => c.charCodeAt(0)), {

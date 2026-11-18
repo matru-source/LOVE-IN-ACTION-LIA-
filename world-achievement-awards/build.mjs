@@ -701,6 +701,8 @@ ${heading('OFFICIAL RULES & TERMS','Rules & Terms of Nomination','Please read ca
 </article>`
 };
 
+pages['/rules']=pages['/terms'];
+
 pages['/privacy']={
   title:'Privacy Policy | Love In Action (LIA)',
   description:'Privacy notice on how Love In Action (LIA) protects applicant personal data and documents.',

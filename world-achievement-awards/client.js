@@ -166,7 +166,10 @@ document.querySelectorAll('.filters').forEach(form => {
         (!d.filterCategory || el.dataset.category === d.filterCategory) &&
         (!d.filterState || el.dataset.state.toLowerCase().includes(d.filterState.toLowerCase()));
       el.hidden = !show;
-      if (show) count++;
+      if (show) {
+        count++;
+        el.classList.add('is-revealed');
+      }
     }
     const countEl = section.querySelector('.filter-count');
     if (countEl) countEl.textContent = `${count} matching ${count === 1 ? 'awardee' : 'awardees'}`;
@@ -190,6 +193,7 @@ if (galleryTabs.length) {
       cards.forEach(c => {
         if (target === 'all' || c.dataset.category === target) {
           c.hidden = false;
+          c.classList.add('is-revealed');
         } else {
           c.hidden = true;
         }
@@ -217,6 +221,7 @@ if (newsTabs.length) {
       cards.forEach(c => {
         if (target === 'all' || c.dataset.category === target) {
           c.hidden = false;
+          c.classList.add('is-revealed');
         } else {
           c.hidden = true;
         }
@@ -638,5 +643,94 @@ if (inbox) {
         e.preventDefault();
       }
     });
+  });
+})();
+
+// Universal Scroll Reveal Animation for Every Single Page
+(function initScrollReveal() {
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
+
+  document.documentElement.classList.add('reveal-enabled');
+
+  const selector = [
+    '.hero-copy',
+    '.hero-art',
+    '.page-heading',
+    '.trust',
+    '.impact-strip > div',
+    '.intro > div',
+    '.section-top',
+    '.award-carousel-container',
+    '.steps > div',
+    '.card-grid:not(.award-carousel) > .award-card',
+    '.content-grid > .content-card',
+    '.content-grid > div',
+    '.founder-highlight-card',
+    '.split > div',
+    '.timeline > div',
+    '.form-layout > *',
+    '.map-section',
+    '.video-player-wrapper',
+    '.video-subscribe-strip',
+    '.news-card',
+    '.cta',
+    'footer .footer-grid > div'
+  ].join(', ');
+
+  function setupElements() {
+    const elements = Array.from(document.querySelectorAll(selector));
+    const parentMap = new Map();
+
+    elements.forEach(el => {
+      const parent = el.parentElement;
+      if (parent && (
+        parent.classList.contains('steps') ||
+        parent.classList.contains('impact-strip') ||
+        parent.classList.contains('content-grid') ||
+        (parent.classList.contains('card-grid') && !parent.classList.contains('award-carousel')) ||
+        parent.classList.contains('footer-grid') ||
+        parent.classList.contains('timeline')
+      )) {
+        const count = parentMap.get(parent) || 0;
+        parentMap.set(parent, count + 1);
+        const delayClass = `reveal-delay-${(count % 6) + 1}`;
+        el.classList.add(delayClass);
+      }
+    });
+
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 800;
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.08
+    });
+
+    elements.forEach(el => {
+      el.classList.add('reveal');
+      const rect = el.getBoundingClientRect();
+      if (rect.top < viewportHeight * 0.85 && rect.bottom > 0) {
+        el.classList.add('is-revealed');
+      } else {
+        observer.observe(el);
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupElements);
+  } else {
+    setupElements();
+  }
+
+  window.addEventListener('content-updated', () => {
+    document.querySelectorAll('.content-card').forEach(c => c.classList.add('is-revealed'));
   });
 })();
