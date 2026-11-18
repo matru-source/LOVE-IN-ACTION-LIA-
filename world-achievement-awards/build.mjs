@@ -104,44 +104,97 @@ pages['/'] = {
   title: 'World Achievement Awards 2026 | Together For A Healthier & Kinder World',
   description: 'Official World Achievement Awards 2026. Together For A Healthier And Kinder World. Nominate achievers across 12 categories.',
   body: `
-<section class="hero wrap">
-  <div class="hero-copy">
-    <p class="eyebrow"><span class="live-dot"></span> WORLD ACHIEVEMENT AWARDS 2026 · BHUBANESWAR</p>
-    <h1>WORLD ACHIEVEMENT<br>AWARDS 2026</h1>
-    <p class="hero-subtitle">Together For A Healthier And Kinder World</p>
-    <p class="lead">Celebrating real talent, inspiring youth, and serving humanity through health, education, culture and social service. Good work should never go unnoticed.</p>
-    <div class="actions">
-      <a class="button gold" href="/nominate">Nominate Now ${arrow}</a>
-      <a class="button outline" href="/awards">View Awards <span>→</span></a>
-    </div>
-    <div class="hero-note">
-      <span class="small-seal">✧</span>
-      <span>Regd. Under Indian Govt. Act 1892 · Reg. No. 105300064<br>Bhubaneswar, Odisha · Pan India Recognition</span>
-    </div>
-  </div>
-  <div class="hero-art">
-    <div class="art-grain"></div>
-    <span class="art-top">THE SPIRIT OF EXCELLENCE</span>
-    <div class="orbit orbit-one"></div>
-    <div class="orbit orbit-two"></div>
-    <div class="trophy">
-      <div class="hero-emblem-badge">
-        <img src="/assets/LOGO.jpeg" alt="World Achievement Awards 2026 Official Insignia" class="hero-badge-img">
+<section class="hero-premium-section">
+  <div class="wrap hero-premium-container">
+    <div class="hero-premium-grid">
+      <div class="hero-premium-left">
+        <div class="hero-laurel-eyebrow">
+          <span class="laurel-branch left">🌿</span>
+          <span class="eyebrow-text">WORLD ACHIEVEMENT AWARDS 2026 – BHUBANESWAR</span>
+          <span class="laurel-branch right">🌿</span>
+        </div>
+        
+        <h1>WORLD ACHIEVEMENT<br>AWARDS 2026</h1>
+        
+        <h2 class="hero-premium-subtitle">Together For A Healthier And Kinder World</h2>
+        
+        <p class="hero-premium-desc">
+          Celebrating real talent, inspiring youth, and serving humanity through health, education, culture and social service. Good work should never go unnoticed.
+        </p>
+        
+        <div class="hero-premium-actions">
+          <a class="button gold hero-btn-nominate" href="/nominate">Nominate Now ↗</a>
+          <a class="button outline hero-btn-view" href="/awards">View Awards →</a>
+        </div>
+        
+        <div class="hero-micro-stats">
+          <div class="micro-stat-item">
+            <span class="micro-stat-icon">👥</span>
+            <div class="micro-stat-text">
+              <strong>Recognising</strong>
+              <span>Talent</span>
+            </div>
+          </div>
+          <div class="micro-stat-divider" aria-hidden="true"></div>
+          <div class="micro-stat-item">
+            <span class="micro-stat-icon">🤲</span>
+            <div class="micro-stat-text">
+              <strong>Honouring</strong>
+              <span>Humanity</span>
+            </div>
+          </div>
+          <div class="micro-stat-divider" aria-hidden="true"></div>
+          <div class="micro-stat-item">
+            <span class="micro-stat-icon">⭐</span>
+            <div class="micro-stat-text">
+              <strong>Celebrating</strong>
+              <span>Excellence</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="trophy-stem"></div>
-      <div class="trophy-base">
-        <span>WORLD ACHIEVEMENT<br><b>AWARDS 2026</b></span>
+      
+      <div class="hero-premium-right">
+        <div class="hero-award-trophy-wrap">
+          <img src="/assets/BG/Hme1a.png" alt="World Achievement Awards 2026 Official Golden Trophy" class="hero-award-trophy-img" width="580" height="auto">
+        </div>
       </div>
     </div>
-    <span class="art-year">20<span>26</span></span>
-    <div class="art-bottom">
-      <span>RECOGNISING TALENT.<br>HONOURING HUMANITY.</span>
-      <span>REGD. NO. 105300064<br>BHUBANESWAR, ODISHA</span>
+    
+    <div class="hero-premium-glass-strip">
+      <div class="glass-item">
+        <span class="glass-icon">📍</span>
+        <div class="glass-text">
+          <strong>Bhubaneswar, Odisha</strong>
+          <span>Pan India Recognition</span>
+        </div>
+      </div>
+      <div class="glass-item">
+        <span class="glass-icon">📅</span>
+        <div class="glass-text">
+          <strong>Awards 2026</strong>
+          <span>Nominations Open</span>
+        </div>
+      </div>
+      <div class="glass-item">
+        <span class="glass-icon">👥</span>
+        <div class="glass-text">
+          <strong>Real Talent</strong>
+          <span>From Across India</span>
+        </div>
+      </div>
+      <div class="glass-item glass-reg-item">
+        <span class="glass-icon shield-gold">🛡️</span>
+        <div class="glass-text">
+          <strong>Regd. Under Indian Govt. Act 1892</strong>
+          <span>Reg. No. 105300064</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="trust">
+<div class="trust" style="display:none;" aria-hidden="true">
   <div class="wrap">
     <span>Reg. Under Indian Govt. Act 1892</span>
     <span>Reg. No. 105300064</span>
@@ -808,7 +861,12 @@ function render(path, p) {
     <div class="nav wrap">
       <a href="/" class="brand" aria-label="World Achievement Awards Home">
         <img src="/assets/LOGO.jpeg" alt="World Achievement Awards Emblem" class="brand-logo" width="46" height="46">
-        <span>WORLD ACHIEVEMENT<small>AWARDS <b>2026</b></small></span>
+        <div class="brand-text-block">
+          <span class="brand-name">WORLD ACHIEVEMENT</span>
+          <span class="brand-sub">AWARDS 2026</span>
+        </div>
+        <div class="brand-divider" aria-hidden="true"></div>
+        <span class="brand-tagline">The Spirit of Excellence</span>
       </a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="navigation" aria-label="Toggle menu">☰</button>
       <nav id="navigation" aria-label="Main navigation">
@@ -894,6 +952,8 @@ await mkdir('dist/.openai', { recursive: true });
 
 const runtime = await readFile('server.runtime.js', 'utf8');
 await writeFile('dist/server/index.js', `export const logoImage=${JSON.stringify((await readFile("assets/LOGO.jpeg")).toString("base64"))};
+export const homeBgImage=${JSON.stringify((await readFile("assets/BG/Home1.png")).toString("base64"))};
+export const trophyBgImage=${JSON.stringify((await readFile("assets/BG/Hme1a.png")).toString("base64"))};
 export const demoContent=${JSON.stringify(demoContent)};
 export const socialImage=${JSON.stringify((await readFile("social.png")).toString("base64"))};
 export const assets=${JSON.stringify({ "/assets/style.css": css, "/assets/client.js": js })};
@@ -902,6 +962,8 @@ export const categories=${JSON.stringify(awards)};
 export const siteBase=${JSON.stringify(base)};
 if (typeof globalThis !== 'undefined') {
   globalThis.logoImage = logoImage;
+  globalThis.homeBgImage = homeBgImage;
+  globalThis.trophyBgImage = trophyBgImage;
   globalThis.demoContent = demoContent;
   globalThis.socialImage = socialImage;
   globalThis.assets = assets;

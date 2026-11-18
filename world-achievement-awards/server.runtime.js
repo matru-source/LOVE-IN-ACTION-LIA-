@@ -1,4 +1,6 @@
 const getDemoContent = e => (e && e.demoContent) || (typeof demoContent !== 'undefined' ? demoContent : (typeof globalThis !== 'undefined' && globalThis.demoContent ? globalThis.demoContent : []));
+const getHomeBgImage = e => (e && e.homeBgImage) || (typeof homeBgImage !== 'undefined' ? homeBgImage : (typeof globalThis !== 'undefined' && globalThis.homeBgImage ? globalThis.homeBgImage : ''));
+const getTrophyBgImage = e => (e && e.trophyBgImage) || (typeof trophyBgImage !== 'undefined' ? trophyBgImage : (typeof globalThis !== 'undefined' && globalThis.trophyBgImage ? globalThis.trophyBgImage : ''));
 const getLogoImage = e => (e && e.logoImage) || (typeof logoImage !== 'undefined' ? logoImage : (typeof globalThis !== 'undefined' && globalThis.logoImage ? globalThis.logoImage : ''));
 const getSocialImage = e => (e && e.socialImage) || (typeof socialImage !== 'undefined' ? socialImage : (typeof globalThis !== 'undefined' && globalThis.socialImage ? globalThis.socialImage : ''));
 const getAssets = e => (e && e.assets) || (typeof assets !== 'undefined' ? assets : (typeof globalThis !== 'undefined' && globalThis.assets ? globalThis.assets : {}));
@@ -556,6 +558,22 @@ export default {
         if (!logoData) return json({ error: 'Logo not found' }, 404);
         return new Response(r.method === 'HEAD' ? null : Uint8Array.from(atob(logoData), c => c.charCodeAt(0)), {
           headers: { ...secure, 'Content-Type': 'image/jpeg', 'Cache-Control': 'public, max-age=86400' }
+        });
+      }
+
+      if (p === '/assets/BG/Home1.png' || p === '/assets/home1.png') {
+        const bgData = getHomeBgImage(e);
+        if (!bgData) return json({ error: 'Background image not found' }, 404);
+        return new Response(r.method === 'HEAD' ? null : Uint8Array.from(atob(bgData), c => c.charCodeAt(0)), {
+          headers: { ...secure, 'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=604800, immutable' }
+        });
+      }
+
+      if (p === '/assets/BG/Hme1a.png' || p === '/assets/hme1a.png') {
+        const trophyData = getTrophyBgImage(e);
+        if (!trophyData) return json({ error: 'Trophy image not found' }, 404);
+        return new Response(r.method === 'HEAD' ? null : Uint8Array.from(atob(trophyData), c => c.charCodeAt(0)), {
+          headers: { ...secure, 'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=604800, immutable' }
         });
       }
 

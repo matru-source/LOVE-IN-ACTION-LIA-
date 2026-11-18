@@ -1,9 +1,11 @@
-import worker, { demoContent, socialImage, logoImage, assets, pages, categories, siteBase } from '../dist/server/index.js';
+import worker, { demoContent, socialImage, logoImage, homeBgImage, trophyBgImage, assets, pages, categories, siteBase } from '../dist/server/index.js';
 
 if (typeof globalThis !== 'undefined') {
   if (demoContent) globalThis.demoContent = demoContent;
   if (socialImage) globalThis.socialImage = socialImage;
   if (logoImage) globalThis.logoImage = logoImage;
+  if (homeBgImage) globalThis.homeBgImage = homeBgImage;
+  if (trophyBgImage) globalThis.trophyBgImage = trophyBgImage;
   if (assets) globalThis.assets = assets;
   if (pages) globalThis.pages = pages;
   if (categories) globalThis.categories = categories;
@@ -22,6 +24,8 @@ const env = {
   demoContent,
   socialImage,
   logoImage,
+  homeBgImage,
+  trophyBgImage,
   ADMIN_EMAIL: process.env.ADMIN_EMAIL || 'zex4uofficial@gmail.com',
   ADMIN_SECRET: process.env.ADMIN_SECRET || 'lia-admin-2026',
   RESEND_API_KEY: process.env.RESEND_API_KEY || '',
