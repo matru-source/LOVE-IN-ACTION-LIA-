@@ -1,4 +1,5 @@
 const getDemoContent = e => (e && e.demoContent) || (typeof demoContent !== 'undefined' ? demoContent : (typeof globalThis !== 'undefined' && globalThis.demoContent ? globalThis.demoContent : []));
+const getIvoryBgImage = e => (e && e.ivoryBgImage) || (typeof ivoryBgImage !== 'undefined' ? ivoryBgImage : (typeof globalThis !== 'undefined' && globalThis.ivoryBgImage ? globalThis.ivoryBgImage : ''));
 const getHomeBgImage = e => (e && e.homeBgImage) || (typeof homeBgImage !== 'undefined' ? homeBgImage : (typeof globalThis !== 'undefined' && globalThis.homeBgImage ? globalThis.homeBgImage : ''));
 const getTrophyBgImage = e => (e && e.trophyBgImage) || (typeof trophyBgImage !== 'undefined' ? trophyBgImage : (typeof globalThis !== 'undefined' && globalThis.trophyBgImage ? globalThis.trophyBgImage : ''));
 const getLogoImage = e => (e && e.logoImage) || (typeof logoImage !== 'undefined' ? logoImage : (typeof globalThis !== 'undefined' && globalThis.logoImage ? globalThis.logoImage : ''));
@@ -505,7 +506,7 @@ export default {
         const hasKeyParam = url.searchParams.get('admin_key') === secret;
         if (!admin(r, e) && !hasKeyParam) {
           const loginHtml = getPages()['/admin'].replace(
-            '<main id="main">',
+            /<main id="main"[^>]*>/,
             `<main id="main">
 <section class="wrap page-heading text-center" style="padding-top: 60px;">
   <p class="eyebrow">WORLD ACHIEVEMENT AWARDS · RESTRICTED AREA</p>
@@ -574,6 +575,14 @@ export default {
         if (!trophyData) return json({ error: 'Trophy image not found' }, 404);
         return new Response(r.method === 'HEAD' ? null : Uint8Array.from(atob(trophyData), c => c.charCodeAt(0)), {
           headers: { ...secure, 'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=604800, immutable' }
+        });
+      }
+
+      if (p === '/assets/BG/ivory-gold-ribbon.jpg' || p === '/assets/ivory-gold-ribbon.jpg' || p === '/assets/page-bg.jpg') {
+        const ivoryData = getIvoryBgImage(e);
+        if (!ivoryData) return json({ error: 'Ivory background not found' }, 404);
+        return new Response(r.method === 'HEAD' ? null : Uint8Array.from(atob(ivoryData), c => c.charCodeAt(0)), {
+          headers: { ...secure, 'Content-Type': 'image/jpeg', 'Cache-Control': 'public, max-age=604800, immutable' }
         });
       }
 

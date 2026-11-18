@@ -63,9 +63,15 @@ const cards = (all = false) => awards.slice(0, all ? 12 : 6).map((a, i) => `
 
 const heading = (eyebrow, title, desc) => `
 <section class="page-heading wrap">
-  <p class="eyebrow">${eyebrow}</p>
-  <h1>${title}</h1>
-  <p class="lead">${desc}</p>
+  <div class="page-heading-inner">
+    <div class="heading-laurel-wrap">
+      <span class="heading-leaf">🌿</span>
+      <span class="eyebrow">${eyebrow}</span>
+      <span class="heading-leaf flip">🌿</span>
+    </div>
+    <h1>${title}</h1>
+    <p class="lead">${desc}</p>
+  </div>
 </section>`;
 
 const cta = `
@@ -894,7 +900,7 @@ function render(path, p) {
       </nav>
     </div>
   </header>
-  <main id="main">
+  <main id="main" data-page="${path === '/' ? 'home' : path.slice(1).replace(/\//g, '-')}">
     ${p.body}
   </main>
   <footer>
@@ -954,6 +960,7 @@ const runtime = await readFile('server.runtime.js', 'utf8');
 await writeFile('dist/server/index.js', `export const logoImage=${JSON.stringify((await readFile("assets/LOGO.jpeg")).toString("base64"))};
 export const homeBgImage=${JSON.stringify((await readFile("assets/BG/Home1.png")).toString("base64"))};
 export const trophyBgImage=${JSON.stringify((await readFile("assets/BG/Hme1a.png")).toString("base64"))};
+export const ivoryBgImage=${JSON.stringify((await readFile("assets/BG/ivory-gold-ribbon.jpg")).toString("base64"))};
 export const demoContent=${JSON.stringify(demoContent)};
 export const socialImage=${JSON.stringify((await readFile("social.png")).toString("base64"))};
 export const assets=${JSON.stringify({ "/assets/style.css": css, "/assets/client.js": js })};
@@ -964,6 +971,7 @@ if (typeof globalThis !== 'undefined') {
   globalThis.logoImage = logoImage;
   globalThis.homeBgImage = homeBgImage;
   globalThis.trophyBgImage = trophyBgImage;
+  globalThis.ivoryBgImage = ivoryBgImage;
   globalThis.demoContent = demoContent;
   globalThis.socialImage = socialImage;
   globalThis.assets = assets;

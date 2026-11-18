@@ -2271,3 +2271,158 @@ nav a.active {
         max-width: 320px;
     }
 }
+
+
+/* ==========================================================================
+   PAGE-SPECIFIC LUXURY BACKGROUNDS (Matching Reference Style)
+   ========================================================================== */
+
+/* Universal Page Heading Card with Ivory Gold Ribbon */
+.page-heading {
+    position: relative;
+    background-color: #faf7f0;
+    background-image: linear-gradient(135deg, rgba(254, 252, 248, 0.86), rgba(246, 241, 230, 0.78)), url('/assets/BG/ivory-gold-ribbon.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 14px;
+    padding: 56px 44px;
+    margin-top: 28px;
+    margin-bottom: 44px;
+    border: 1px solid rgba(216, 183, 107, 0.4);
+    box-shadow: 0 14px 35px rgba(216, 183, 107, 0.12), 0 3px 10px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+}
+
+.heading-laurel-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.heading-leaf {
+    font-size: 15px;
+    color: var(--gold);
+    line-height: 1;
+}
+
+.heading-leaf.flip {
+    transform: scaleX(-1);
+}
+
+.page-heading h1 {
+    font-size: clamp(32px, 3.8vw, 46px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: #171f14;
+    margin: 0 0 14px;
+    max-width: 950px;
+}
+
+.page-heading .lead {
+    font-size: clamp(15px, 1.6vw, 17px);
+    line-height: 1.7;
+    color: #4e5543;
+    max-width: 780px;
+    margin: 0;
+}
+
+/* 1. About Us: Warm Champagne Silk & Gold */
+main[data-page="about"] .page-heading {
+    background-image: linear-gradient(135deg, rgba(254, 252, 247, 0.88), rgba(247, 241, 229, 0.76)), url('/assets/BG/ivory-gold-ribbon.jpg');
+    border-color: rgba(216, 183, 107, 0.48);
+}
+
+/* 2. Awards: Royal Gold & Silk Ivory */
+main[data-page="awards"] .page-heading,
+main[data-page^="awards-"] .page-heading {
+    background-image: linear-gradient(135deg, rgba(255, 253, 248, 0.85), rgba(246, 237, 218, 0.8)), url('/assets/BG/ivory-gold-ribbon.jpg');
+    border-color: rgba(216, 183, 107, 0.5);
+    box-shadow: 0 16px 40px rgba(216, 183, 107, 0.16), 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* 3. Award Process: Pearl White & Golden Steps */
+main[data-page="process"] .page-heading {
+    background-image: linear-gradient(135deg, rgba(253, 254, 251, 0.88), rgba(241, 245, 240, 0.78)), url('/assets/BG/ivory-gold-ribbon.jpg');
+    border-color: rgba(180, 160, 100, 0.4);
+}
+
+/* 4. Nominate & Registration Form: Presidential Gold & Ivory */
+main[data-page="nominate"] .page-heading,
+main[data-page="registration"] .page-heading {
+    background-image: linear-gradient(135deg, rgba(254, 251, 244, 0.88), rgba(248, 240, 226, 0.82)), url('/assets/BG/ivory-gold-ribbon.jpg');
+    border-color: rgba(216, 183, 107, 0.55);
+}
+
+/* 5. Awardees Directory: Hall of Fame Golden Laurels */
+main[data-page="awardees"] .page-heading {
+    background-image: linear-gradient(135deg, rgba(253, 249, 240, 0.86), rgba(247, 238, 220, 0.8)), url('/assets/BG/ivory-gold-ribbon.jpg');
+    border-color: rgba(216, 183, 107, 0.5);
+}
+
+/* 6. Gallery & Videos: Cinematic Amber Gold */
+main[data-page="gallery"] .page-heading,
+main[data-page="videos"] .page-heading {
+    background-image: linear-gradient(135deg, rgba(252, 250, 244, 0.86), rgba(244, 238, 225, 0.8)), url('/assets/BG/ivory-gold-ribbon.jpg');
+    border-color: rgba(216, 183, 107, 0.45);
+}
+
+/* 7. Blog / News: Editorial Parchment & Gold */
+main[data-page="news"] .page-heading {
+    background-image: linear-gradient(135deg, rgba(255, 253, 249, 0.88), rgba(246, 243, 234, 0.78)), url('/assets/BG/ivory-gold-ribbon.jpg');
+    border-color: rgba(200, 175, 110, 0.4);
+}
+
+/* 8. Contact Us: Welcoming Warm Ivory */
+main[data-page="contact"] .page-heading {
+    background-image: linear-gradient(135deg, rgba(254, 252, 246, 0.88), rgba(248, 242, 230, 0.8)), url('/assets/BG/ivory-gold-ribbon.jpg');
+    border-color: rgba(216, 183, 107, 0.45);
+}
+
+/* 9. Rules, Terms & Privacy */
+main[data-page="terms"] .page-heading,
+main[data-page="privacy"] .page-heading {
+    background-image: linear-gradient(135deg, rgba(253, 252, 248, 0.9), rgba(245, 243, 236, 0.82)), url('/assets/BG/ivory-gold-ribbon.jpg');
+    border-color: rgba(200, 180, 120, 0.4);
+}
+
+/* 10. Luxury CTA Section Banner with Emerald & Gold Wave */
+.cta {
+    position: relative;
+    background-color: #062319;
+    background-image: linear-gradient(135deg, rgba(6, 35, 25, 0.92), rgba(12, 54, 40, 0.9)), url('/assets/BG/Home1.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 14px;
+    padding: 60px 40px;
+    color: #ffffff;
+    border: 1px solid rgba(216, 183, 107, 0.45);
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.35);
+    margin-top: 50px;
+    margin-bottom: 70px;
+}
+
+.cta h2 {
+    color: #ffffff !important;
+}
+
+.cta p {
+    color: #cbd5e1 !important;
+}
+
+.cta .eyebrow {
+    color: #d8b76b !important;
+}
+
+@media(max-width: 768px) {
+    .page-heading {
+        padding: 40px 24px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+    .cta {
+        padding: 40px 24px;
+    }
+}
