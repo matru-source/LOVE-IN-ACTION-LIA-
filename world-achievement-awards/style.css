@@ -1682,28 +1682,254 @@ a.footer-contact-text:hover {
     margin: 30px 0
 }
 
-.timeline {
-    max-width: 1000px
+/* ==========================================================================
+   PAGE 4: AWARD PROCESS / HOW TO APPLY - LUXURY TIMELINE & CARDS
+   ========================================================================== */
+.process-timeline-section {
+    max-width: 960px;
+    margin: 40px auto 30px;
+    padding-inline: 20px;
 }
 
-.timeline article {
+.process-timeline-wrapper {
+    position: relative;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 10px 0 20px;
+}
+
+/* Vertical Gold Timeline Line */
+.process-timeline-wrapper::before {
+    content: '';
+    position: absolute;
+    left: 25px; /* Aligned with center of 52px circle */
+    top: 36px;
+    bottom: 36px;
+    width: 2.5px;
+    background: linear-gradient(to bottom, #d4af37 0%, #fae8a7 35%, #c59b27 75%, #d4af37 100%);
+    border-radius: 2px;
+    z-index: 1;
+    box-shadow: 0 0 6px rgba(212, 175, 55, 0.35);
+}
+
+.process-step-row {
     display: flex;
-    gap: 45px;
-    padding-block: 35px;
-    border-top: 1px solid var(--line)
+    align-items: center;
+    gap: 24px;
+    position: relative;
+    margin-bottom: 22px;
 }
 
-.timeline article>span {
-    font: italic 40px Georgia;
-    color: #90967d
+.process-step-row:last-child {
+    margin-bottom: 0;
 }
 
-.timeline h2 {
-    font-size: 30px
+/* Number Node Circle */
+.process-step-node {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #072a1b 0%, #03180f 100%);
+    border: 2.5px solid #dfb755;
+    box-shadow: 0 4px 14px rgba(4, 25, 15, 0.28), inset 0 1px 3px rgba(255, 230, 160, 0.45);
+    color: #fae19c;
+    font-size: 17px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    position: relative;
+    letter-spacing: 0.5px;
+    user-select: none;
 }
 
-.timeline p {
-    max-width: 740px
+/* The White Step Card */
+.process-step-card {
+    flex: 1;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.32);
+    box-shadow: 0 6px 20px rgba(10, 48, 32, 0.05), 0 2px 6px rgba(0, 0, 0, 0.02);
+    padding: 20px 28px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.process-step-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(10, 48, 32, 0.09), 0 4px 14px rgba(212, 175, 55, 0.18);
+    border-color: rgba(212, 175, 55, 0.55);
+}
+
+/* Folded Shiny Gold Ribbon Corner on Bottom-Right */
+.process-step-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, transparent 48%, #c59f48 49%, #fae8a7 70%, #ad8236 100%);
+    border-bottom-right-radius: 19px;
+    box-shadow: -1px -1px 3px rgba(0, 0, 0, 0.08);
+    pointer-events: none;
+}
+
+/* Emerald Squircle Icon Badge */
+.process-card-icon-badge {
+    flex-shrink: 0;
+    width: 62px;
+    height: 62px;
+    border-radius: 14px;
+    background: linear-gradient(145deg, #072a1b 0%, #03180f 100%);
+    border: 1.5px solid #d4af37;
+    box-shadow: 0 4px 12px rgba(4, 25, 15, 0.22), inset 0 1px 2px rgba(255, 230, 160, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.process-card-icon-badge svg {
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+
+/* Thin Vertical Gold Divider Bar */
+.process-card-divider {
+    width: 2px;
+    align-self: stretch;
+    min-height: 48px;
+    background: linear-gradient(to bottom, rgba(212, 175, 55, 0.15) 0%, #d4af37 25%, #fae8a7 50%, #d4af37 75%, rgba(212, 175, 55, 0.15) 100%);
+    opacity: 0.75;
+    margin-inline: 2px;
+    flex-shrink: 0;
+}
+
+/* Card Body Content */
+.process-card-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.process-card-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: #072a1b;
+    margin: 0 0 6px 0;
+    letter-spacing: -0.2px;
+    line-height: 1.3;
+}
+
+.process-card-desc {
+    font-size: 13.5px;
+    line-height: 1.52;
+    color: #3b453e;
+    margin: 0;
+}
+
+/* Step 2 Checklist */
+.process-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.process-checklist li {
+    font-size: 13px;
+    color: #2b3630;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.process-check-icon {
+    color: #c59b27;
+    font-weight: 900;
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+/* Step 6 Expected Processing Time Tag */
+.process-time-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 6px 14px;
+    background: linear-gradient(135deg, #fdf8eb 0%, #f7eccb 100%);
+    border: 1px solid #dfc47a;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #2d2616;
+    box-shadow: 0 2px 6px rgba(212, 175, 55, 0.12);
+}
+
+.process-time-badge .badge-icon {
+    font-size: 14px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 680px) {
+    .process-timeline-wrapper::before {
+        left: 20px;
+    }
+    .process-step-row {
+        gap: 14px;
+        margin-bottom: 16px;
+    }
+    .process-step-node {
+        width: 42px;
+        height: 42px;
+        font-size: 14px;
+    }
+    .process-step-card {
+        padding: 16px 16px;
+        gap: 14px;
+    }
+    .process-card-icon-badge {
+        width: 48px;
+        height: 48px;
+    }
+    .process-card-icon-badge svg {
+        width: 24px;
+        height: 24px;
+    }
+    .process-card-divider {
+        display: none;
+    }
+    .process-card-title {
+        font-size: 16px;
+    }
+    .process-card-desc {
+        font-size: 13px;
+    }
+    .process-checklist li {
+        font-size: 12.5px;
+    }
+    .process-time-badge {
+        font-size: 11.5px;
+        padding: 4px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .process-step-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
 }
 
 .form-layout {

@@ -658,57 +658,147 @@ pages['/process'] = {
   description: 'Six-step award process: Registration Form, Profile & Documents Submission, Jury Evaluation, Registration Confirmation, Award Preparation, and Stage Ceremony.',
   body: `
 ${heading('AWARD PROCESS / HOW TO APPLY', 'A Transparent 6-Step Journey<br><em>To The National Stage</em>', 'From initial nomination to felicitation in the presence of distinguished Chief Guests. Processing Time: 10 to 30 Working Days.')}
-<section class="wrap timeline">
-  <article>
-    <span>01</span>
-    <div>
-      <h2>Step 1: Registration Form</h2>
-      <p>Fill online Registration Form on this website. Provide accurate personal details, category selection, and brief summary of your contribution. Follow all Rules & Terms.</p>
-    </div>
-  </article>
-  <article>
-    <span>02</span>
-    <div>
-      <h2>Step 2: Submit Profile & Documents</h2>
-      <p>Upload supporting soft copies to verify your achievements:</p>
-      <ul>
-        <li>1 Valid ID Proof (Aadhaar / Voter ID / PAN Card)</li>
-        <li>1 Passport Photo (soft copy in JPG/PNG format)</li>
-        <li>Bio-Data / CV / Achievements Report</li>
-        <li>Proof of Achievements / Photos / Paper Cuttings</li>
-      </ul>
-    </div>
-  </article>
-  <article>
-    <span>03</span>
-    <div>
-      <h2>Step 3: Evaluation & Selection</h2>
-      <p>Our expert Jury Panel will verify your profile for authenticity and impact. If selected, you will get confirmation on WhatsApp / Email.</p>
-    </div>
-  </article>
-  <article>
-    <span>04</span>
-    <div>
-      <h2>Step 4: Complete Registration</h2>
-      <p>Selected candidates must complete registration within 7 working days of confirmation to confirm their attendance and kit processing.</p>
-    </div>
-  </article>
-  <article>
-    <span>05</span>
-    <div>
-      <h2>Step 5: Certification / Award Processing</h2>
-      <p>After approval, your Trophy, Certificate, Medal and Award Kit will be custom prepared for conferment.</p>
-    </div>
-  </article>
-  <article>
-    <span>06</span>
-    <div>
-      <h2>Step 6: Award Ceremony</h2>
-      <p>Award will be presented on stage in the presence of Chief Guests, ministers, and dignitaries. Venue & Date will be informed in advance. <strong>Expected Processing Time: 10 to 30 Working Days.</strong></p>
-    </div>
-  </article>
+<section class="wrap process-timeline-section">
+  <div class="process-timeline-wrapper">
+    
+    <!-- Step 1 -->
+    <article class="process-step-row">
+      <div class="process-step-node" aria-label="Step 01">01</div>
+      <div class="process-step-card">
+        <div class="process-card-icon-badge" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="#fae19c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 4H8a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V11z"/>
+            <polyline points="19 4 26 11 19 11 19 4"/>
+            <line x1="10" y1="13" x2="15" y2="13"/>
+            <line x1="10" y1="17" x2="16" y2="17"/>
+            <line x1="10" y1="21" x2="14" y2="21"/>
+            <path d="M22 17l4 4-6 6h-4v-4z" fill="rgba(250, 225, 156, 0.25)"/>
+          </svg>
+        </div>
+        <div class="process-card-divider" aria-hidden="true"></div>
+        <div class="process-card-body">
+          <h2 class="process-card-title">Step 1: Registration Form</h2>
+          <p class="process-card-desc">Fill online Registration Form on this website. Provide accurate personal details, category selection, and brief summary of your contribution. Follow all Rules & Terms.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Step 2 -->
+    <article class="process-step-row">
+      <div class="process-step-node" aria-label="Step 02">02</div>
+      <div class="process-step-card">
+        <div class="process-card-icon-badge" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="#fae19c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 23a5 5 0 0 1 0-10 6.5 6.5 0 0 1 12.5-3A5.5 5.5 0 0 1 25 18a4.5 4.5 0 0 1-2 8H8z"/>
+            <polyline points="13 18 16 15 19 18"/>
+            <line x1="16" y1="15" x2="16" y2="23"/>
+          </svg>
+        </div>
+        <div class="process-card-divider" aria-hidden="true"></div>
+        <div class="process-card-body">
+          <h2 class="process-card-title">Step 2: Submit Profile & Documents</h2>
+          <p class="process-card-desc">Upload supporting soft copies to verify your achievements:</p>
+          <ul class="process-checklist">
+            <li><span class="process-check-icon" aria-hidden="true">✔</span> 1 Valid ID Proof (Aadhaar / Voter ID / PAN Card)</li>
+            <li><span class="process-check-icon" aria-hidden="true">✔</span> 1 Passport Photo (soft copy in JPG/PNG format)</li>
+            <li><span class="process-check-icon" aria-hidden="true">✔</span> Bio-Data / CV / Achievements Report</li>
+            <li><span class="process-check-icon" aria-hidden="true">✔</span> Proof of Achievements / Photos / Paper Cuttings</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- Step 3 -->
+    <article class="process-step-row">
+      <div class="process-step-node" aria-label="Step 03">03</div>
+      <div class="process-step-card">
+        <div class="process-card-icon-badge" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="#fae19c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+            <path d="M6 22v-1a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v1"/>
+            <path d="M20 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+            <path d="M19 13a3.5 3.5 0 0 1 2 1"/>
+            <circle cx="21" cy="18" r="4" fill="rgba(250, 225, 156, 0.2)"/>
+            <line x1="24" y1="21" x2="28" y2="25"/>
+          </svg>
+        </div>
+        <div class="process-card-divider" aria-hidden="true"></div>
+        <div class="process-card-body">
+          <h2 class="process-card-title">Step 3: Evaluation & Selection</h2>
+          <p class="process-card-desc">Our expert Jury Panel will verify your profile for authenticity and impact. If selected, you will get confirmation on WhatsApp / Email.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Step 4 -->
+    <article class="process-step-row">
+      <div class="process-step-node" aria-label="Step 04">04</div>
+      <div class="process-step-card">
+        <div class="process-card-icon-badge" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="#fae19c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="7" width="22" height="20" rx="3" ry="3"/>
+            <line x1="10" y1="4" x2="10" y2="8"/>
+            <line x1="22" y1="4" x2="22" y2="8"/>
+            <line x1="5" y1="12" x2="27" y2="12"/>
+            <polyline points="11 19 14.5 22.5 21 16"/>
+          </svg>
+        </div>
+        <div class="process-card-divider" aria-hidden="true"></div>
+        <div class="process-card-body">
+          <h2 class="process-card-title">Step 4: Complete Registration</h2>
+          <p class="process-card-desc">Selected candidates must complete registration within 7 working days of confirmation to confirm their attendance and kit processing.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Step 5 -->
+    <article class="process-step-row">
+      <div class="process-step-node" aria-label="Step 05">05</div>
+      <div class="process-step-card">
+        <div class="process-card-icon-badge" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="#fae19c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="16" cy="13" r="8" fill="rgba(250, 225, 156, 0.2)"/>
+            <polygon points="16,8.5 17.5,11.5 20.8,11.8 18.2,14 19,17.2 16,15.5 13,17.2 13.8,14 11.2,11.8 14.5,11.5" fill="#fae19c" stroke="none"/>
+            <polyline points="12 19 10 27 15 24 16 26"/>
+            <polyline points="20 19 22 27 17 24 16 26"/>
+          </svg>
+        </div>
+        <div class="process-card-divider" aria-hidden="true"></div>
+        <div class="process-card-body">
+          <h2 class="process-card-title">Step 5: Certification / Award Processing</h2>
+          <p class="process-card-desc">After approval, your Trophy, Certificate, Medal and Award Kit will be custom prepared for conferment.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Step 6 -->
+    <article class="process-step-row">
+      <div class="process-step-node" aria-label="Step 06">06</div>
+      <div class="process-step-card">
+        <div class="process-card-icon-badge" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="#fae19c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="16" cy="6.5" r="3"/>
+            <path d="M12 13.5a4 4 0 0 1 8 0"/>
+            <line x1="14" y1="14.5" x2="18" y2="14.5"/>
+            <polygon points="10,16.5 22,16.5 20,26.5 12,26.5" fill="rgba(250, 225, 156, 0.2)"/>
+            <line x1="8" y1="26.5" x2="24" y2="26.5" stroke-width="2.2"/>
+          </svg>
+        </div>
+        <div class="process-card-divider" aria-hidden="true"></div>
+        <div class="process-card-body">
+          <h2 class="process-card-title">Step 6: Award Ceremony</h2>
+          <p class="process-card-desc">Award will be presented on stage in the presence of Chief Guests, ministers, and dignitaries. Venue & Date will be informed in advance.</p>
+          <div class="process-time-badge">
+            <span class="badge-icon" aria-hidden="true">📅</span>
+            <span>Expected Processing Time: 10 to 30 Working Days.</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
 </section>
-<div class="wrap text-center" style="margin-block: 40px;">
+<div class="wrap text-center" style="margin-block: 40px 60px;">
   <a class="button gold" href="/nominate">Fill Online Registration Form Now ${arrow}</a>
 </div>
 ${cta}`
