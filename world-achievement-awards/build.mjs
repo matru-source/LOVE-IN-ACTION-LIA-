@@ -52,13 +52,102 @@ export const nav = [
 const link = (url, text, cls = '') => `<a class="${cls}" href="${url}">${text}</a>`;
 const arrow = '<span aria-hidden="true">↗</span>';
 
+const emblems = [
+  // 01 Kalinga Yuva Gaurav Samman 2026 (Torch with Flame)
+  `<path d="M34 20 C32 23 30 24 30 26 C30 28.2 31.8 30 34 30 C36.2 30 38 28.2 38 26 C38 23 35 22 34 20 Z" fill="url(#awardGoldMedal)"/><path d="M31 29 L37 29 L36 34 L32 34 Z M32.5 34 L35.5 34 L35 39 L33 39 Z" fill="url(#awardGoldMedal)"/>`,
+  
+  // 02 World Achievement Award (Imperial Crown)
+  `<path d="M26 36 L27 27 L30.5 31 L34 25 L37.5 31 L41 27 L42 36 Z M26 37.5 H42 V39 H26 Z" fill="url(#awardGoldMedal)"/><circle cx="27" cy="25.5" r="1.2" fill="url(#awardGoldMedal)"/><circle cx="34" cy="23.5" r="1.4" fill="url(#awardGoldMedal)"/><circle cx="41" cy="25.5" r="1.2" fill="url(#awardGoldMedal)"/>`,
+  
+  // 03 Seva Ratan Award (Hands holding Heart)
+  `<path d="M34 22 C32.5 20 29.5 20.5 29 23 C28.5 25 31 27 34 29 C37 27 39.5 25 39 23 C38.5 20.5 35.5 20 34 22 Z" fill="url(#awardGoldMedal)"/><path d="M26 29 C28 32 31 34 34 35 C37 34 40 32 42 29 L41 27.5 C39 30.5 36.5 32 34 32 C31.5 32 29 30.5 27 27.5 Z" fill="url(#awardGoldMedal)"/>`,
+  
+  // 04 Education Icon Award (Open Book of Knowledge)
+  `<path d="M34 25 C31.5 23 27.5 23 26 24 V34 C28 33 31.5 33 34 35 C36.5 33 40 33 42 34 V24 C40.5 23 36.5 23 34 25 Z" fill="url(#awardGoldMedal)"/><path d="M33.2 25.5 V35 H34.8 V25.5 Z" fill="#06281c"/>`,
+  
+  // 05 Health & Medical Service Award (Hands holding Medical Cross)
+  `<path d="M32.5 22 H35.5 V25 H38.5 V28 H35.5 V31 H32.5 V28 H29.5 V25 H32.5 Z" fill="url(#awardGoldMedal)"/><path d="M26 31 C28 34 31 36 34 37 C37 36 40 34 42 31 L41 29.5 C39 32.5 36.5 34 34 34 C31.5 34 29 32.5 27 29.5 Z" fill="url(#awardGoldMedal)"/>`,
+  
+  // 06 Women Empowerment Award (Woman Profile with Flowing Hair)
+  `<path d="M33 21 C30.5 21 28.5 23 28.5 25.5 C28.5 27 29.2 28.2 30 29 C29.5 30 29 31.5 28 32.5 C29.8 32.8 31.5 32.2 32.8 31 C33.5 31.5 34.5 31.8 35.5 31.8 C38 31.8 40 29.8 40 27.3 C40 23.8 37 21 33 21 Z M33 23 C35.5 23 37.5 25 37.5 27.5 C37.5 29 36.5 30 35 30 C34 30 33 29.5 32.5 28.5 C32 27.5 32 26 32 24.5 Z M29 34 C29 36.5 31 38 34 38 C37 38 39 36.5 39 34 Z" fill="url(#awardGoldMedal)"/>`,
+  
+  // 07 Youth Icon Award (Scales of Justice)
+  `<path d="M33 22 H35 V37 H33 Z M31 37 H37 V39 H31 Z M34 20 C35 20 36 21 36 22 H32 C32 21 33 20 34 20 Z" fill="url(#awardGoldMedal)"/><path d="M26 23.5 L42 23.5 L42 25 L26 25 Z" fill="url(#awardGoldMedal)"/><path d="M26 24.5 L24 29 H28 Z M23 29 C23 31.5 25 32.5 26 32.5 C27 32.5 29 31.5 29 29 Z" fill="url(#awardGoldMedal)"/><path d="M42 24.5 L40 29 H44 Z M39 29 C39 31.5 41 32.5 42 32.5 C43 32.5 45 31.5 45 29 Z" fill="url(#awardGoldMedal)"/>`,
+  
+  // 08 Art, Culture & Odissi Dance Award (Odissi Dancer Pose)
+  `<circle cx="34" cy="21.5" r="2" fill="url(#awardGoldMedal)"/><path d="M34 18 L35 19.5 H33 Z" fill="url(#awardGoldMedal)"/><path d="M29 25 C31 23.5 33 24 34 24 C35 24 37 23.5 39 25 L40.5 23.5 C38 21.5 35.5 22 34 22 C32.5 22 30 21.5 27.5 23.5 Z M34 25 C33 26.5 32 28 33 30 C34.5 30.5 36.5 30 37.5 29 C38 27.5 37 26 36 25 Z" fill="url(#awardGoldMedal)"/><path d="M28 31 C30 32.5 32 33 34 33 C36 33 38 32.5 40 31 L42 36 C39 38 36.5 38.5 34 38.5 C31.5 38.5 29 38 26 36 Z" fill="url(#awardGoldMedal)"/>`,
+  
+  // 09 Sports Icon Award (Running Athlete)
+  `<circle cx="37" cy="22" r="2" fill="url(#awardGoldMedal)"/><path d="M32 27 L35 24 L38 25 L36 29 L39 32 L37.5 33.5 L34.5 30 L32 31.5 L30 28 Z M32 30 L29 33 L26 32.5 L25.5 31 L28.5 31.5 L31 29 Z M35 24 L33 22 L31 23 L30.5 21.5 L33.5 20.5 L36 23 Z" fill="url(#awardGoldMedal)"/>`,
+  
+  // 10 Entrepreneur & Business Excellence Award (Economic Growth Chart with Upward Arrow)
+  `<rect x="26" y="32" width="3.5" height="6" rx="0.8" fill="url(#awardGoldMedal)"/><rect x="31" y="28" width="3.5" height="10" rx="0.8" fill="url(#awardGoldMedal)"/><rect x="36" y="24" width="3.5" height="14" rx="0.8" fill="url(#awardGoldMedal)"/><path d="M25 29 L31 23 L36 25 L41 20" stroke="url(#awardGoldMedal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M38 20 H42 V24" fill="none" stroke="url(#awardGoldMedal)" stroke-width="2" stroke-linecap="round"/>`,
+  
+  // 11 Media & Journalism Award (Vintage Microphone)
+  `<rect x="31.5" y="21" width="5" height="9" rx="2.5" fill="url(#awardGoldMedal)"/><line x1="31.5" y1="24" x2="36.5" y2="24" stroke="#06281c" stroke-width="0.8"/><line x1="31.5" y1="27" x2="36.5" y2="27" stroke="#06281c" stroke-width="0.8"/><path d="M29.5 25 C29.5 29 31.5 31.5 34 31.5 C36.5 31.5 38.5 29 38.5 25" fill="none" stroke="url(#awardGoldMedal)" stroke-width="1.8" stroke-linecap="round"/><path d="M33.2 31.5 H34.8 V36 H33.2 Z M30 36 H38 V38 H30 Z" fill="url(#awardGoldMedal)"/>`,
+  
+  // 12 Lifetime Achievement Award (Star Trophy on Pedestal)
+  `<path d="M34 20 L35.5 24 L39.5 24.5 L36.5 27 L37.5 31 L34 29 L30.5 31 L31.5 27 L28.5 24.5 L32.5 24 Z" fill="url(#awardGoldMedal)"/><path d="M32.5 30 H35.5 V33 H32.5 Z M30 33 H38 V35.5 H30 Z M28 35.5 H40 V38 H28 Z" fill="url(#awardGoldMedal)"/>`
+];
+
+const medalSvg = i => `
+<div class="award-medal-wrap">
+  <svg viewBox="0 0 68 76" class="award-medal-svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="awardGoldMedal" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fae8a7"/>
+        <stop offset="35%" stop-color="#d4aa54"/>
+        <stop offset="70%" stop-color="#fff1c5"/>
+        <stop offset="100%" stop-color="#b68936"/>
+      </linearGradient>
+      <linearGradient id="awardEmeraldMedal" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#05261b"/>
+        <stop offset="50%" stop-color="#0c4431"/>
+        <stop offset="100%" stop-color="#041f16"/>
+      </linearGradient>
+    </defs>
+    <!-- Ribbon Tails hanging down -->
+    <path d="M27 42 L21 68 L28 62 L35 68 L32 42 Z" fill="url(#awardGoldMedal)"/>
+    <path d="M37 42 L33 68 L40 62 L47 68 L42 42 Z" fill="url(#awardGoldMedal)"/>
+    <path d="M28 62 L30 42 M40 62 L39 42" stroke="#9a6e22" stroke-width="0.8" opacity="0.6"/>
+
+    <!-- Outer Laurel Leaves encircling medal -->
+    <g fill="url(#awardGoldMedal)">
+      <path d="M14 26 C12 23 12 18 16 16 C17 19 16 23 14 26 Z"/>
+      <path d="M12 32 C10 29 11 24 15 23 C15 26 14 30 12 32 Z"/>
+      <path d="M13 39 C12 36 14 31 18 31 C17 34 15 38 13 39 Z"/>
+      <path d="M17 45 C16 42 19 38 23 39 C21 41 19 44 17 45 Z"/>
+      <path d="M54 26 C56 23 56 18 52 16 C51 19 52 23 54 26 Z"/>
+      <path d="M56 32 C58 29 57 24 53 23 C53 26 54 30 56 32 Z"/>
+      <path d="M55 39 C56 36 54 31 50 31 C51 34 53 38 55 39 Z"/>
+      <path d="M51 45 C52 42 49 38 45 39 C47 41 49 44 51 45 Z"/>
+      <path d="M22 17 C21 14 24 11 27 13 C26 15 24 17 22 17 Z"/>
+      <path d="M46 17 C47 14 44 11 41 13 C42 15 44 17 46 17 Z"/>
+      <circle cx="34" cy="11.5" r="1.5"/>
+    </g>
+
+    <!-- Medal Outer Rim -->
+    <circle cx="34" cy="30" r="20" fill="url(#awardGoldMedal)"/>
+    <!-- Medal Inner Emerald Disc -->
+    <circle cx="34" cy="30" r="17" fill="url(#awardEmeraldMedal)"/>
+    <!-- Gold Inner Ring -->
+    <circle cx="34" cy="30" r="17" stroke="url(#awardGoldMedal)" stroke-width="1.2" fill="none"/>
+
+    <!-- Center Emblem -->
+    ${emblems[i % 12]}
+  </svg>
+</div>`;
+
 const cards = (all = false) => awards.slice(0, all ? 12 : 6).map((a, i) => `
 <a class="award-card" href="/awards/${slug(a)}">
-  <span class="card-num">${String(i + 1).padStart(2, '0')} / RECOGNITION</span>
-  <span class="award-icon">${['✧', '◎', '♡', '⌘', '✳', '☀', '⚖', '☘', '⚡', '✪', '✎', '✦'][i % 12]}</span>
-  <h3>${a}</h3>
-  <p>${descriptions[i]}</p>
-  <span class="card-link">Explore award ${arrow}</span>
+  ${medalSvg(i)}
+  <div class="award-card-body">
+    <span class="card-num">${String(i + 1).padStart(2, '0')} / RECOGNITION</span>
+    <h3>${a}</h3>
+    <p>${descriptions[i]}</p>
+    <span class="card-link">Explore Award →</span>
+  </div>
+  <span class="card-laurel-watermark" aria-hidden="true">🌿</span>
 </a>`).join('');
 
 const heading = (eyebrow, title, desc) => `
@@ -501,8 +590,20 @@ pages['/awards'] = {
   description: 'Explore all 12 Award Categories of World Achievement Awards 2026. Criteria, benefits, and how to apply.',
   body: `
 ${heading('12 AWARD CATEGORIES', 'Recognising Real Talent.<br><em>Honouring Humanity.</em>', 'Explore all 12 award categories across social service, healthcare, education, art, sports and entrepreneurship. Each category features its own dedicated criteria, benefits, and past awardees.')}
-<section class="wrap">
-  <div class="card-grid">${cards(true)}</div>
+<section class="wrap awards-gallery-section">
+  <div class="awards-section-header">
+    <div class="hero-laurel-eyebrow">
+      <span class="laurel-branch left" aria-hidden="true">🌿</span>
+      <span class="eyebrow-text">RECOGNITIONS</span>
+      <span class="laurel-branch right" aria-hidden="true">🌿</span>
+    </div>
+    <div class="heading-star-divider" aria-hidden="true">
+      <span class="star-wing left"></span>
+      <span class="star-symbol">★</span>
+      <span class="star-wing right"></span>
+    </div>
+  </div>
+  <div class="card-grid awards-grid">${cards(true)}</div>
 </section>
 ${cta}`
 };

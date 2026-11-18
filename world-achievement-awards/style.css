@@ -620,60 +620,190 @@ nav .active {
 }
 
 .award-card {
-    border: 1px solid var(--line);
-    padding: 28px 30px;
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #ebd9b5;
+    border-radius: 16px;
+    padding: 24px 22px;
     display: flex;
-    flex-direction: column;
-    min-height: 340px;
-    background: #fdfdfa;
-    border-radius: 4px;
-    transition: background .2s, transform .2s, box-shadow .2s
+    align-items: flex-start;
+    gap: 18px;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.04);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 .award-card:hover {
-    background: #f3f3eb;
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06)
+    transform: translateY(-5px);
+    box-shadow: 0 14px 32px rgba(15, 61, 46, 0.12);
+    border-color: #c4a962;
+    background: #ffffff;
+}
+
+/* Folded shiny gold ribbon corner */
+.award-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, transparent 48%, #c59f48 49%, #fae8a7 70%, #ad8236 100%);
+    border-bottom-right-radius: 16px;
+    box-shadow: -1px -1px 3px rgba(0, 0, 0, 0.08);
+    pointer-events: none;
+}
+
+/* Laurel Watermark at bottom right */
+.card-laurel-watermark {
+    position: absolute;
+    bottom: 8px;
+    right: 14px;
+    font-size: 38px;
+    line-height: 1;
+    color: #c9a456;
+    opacity: 0.12;
+    pointer-events: none;
+    transform: rotate(-15deg);
+    user-select: none;
+}
+
+/* Left: The Official Medal Badge */
+.award-medal-wrap {
+    width: 68px;
+    height: 76px;
+    min-width: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.award-medal-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.15));
+}
+
+/* Right: Content */
+.award-card-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .card-num {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    background: #fbf2db;
+    color: #a47b2c;
     font-size: 11px;
-    color: #7a816b;
-    letter-spacing: .14em;
-    font-weight: 700
-}
-
-.award-icon {
-    color: #768261;
-    font-size: 38px;
-    margin: 12px 0
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    line-height: 1.4;
 }
 
 .award-card h3 {
-    font-size: clamp(18px, 1.7vw, 21px);
-    line-height: 1.3;
-    max-width: 320px;
-    margin-bottom: 10px;
-    font-weight: 600;
-    color: var(--ink)
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #0b3424;
+    margin: 0 0 8px 0;
+    max-width: 100%;
 }
 
 .award-card p {
-    font-size: 14px;
-    line-height: 1.65;
-    max-width: 340px;
-    color: #585d50;
-    margin: 0 0 16px
+    font-size: 13px;
+    line-height: 1.55;
+    color: #525a4d;
+    margin: 0 0 16px 0;
+    max-width: 100%;
 }
 
+/* Button: Explore Award → */
 .card-link {
-    font-size: 13px;
-    font-weight: 700;
-    display: flex;
-    justify-content: space-between;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #06281c;
+    color: #e7c87c !important;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 7px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(6, 40, 28, 0.2);
+    transition: all 0.2s ease;
     margin-top: auto;
-    padding-top: 16px;
-    color: #545d47
+}
+
+.award-card:hover .card-link {
+    background: #0f4a36;
+    color: #ffffff !important;
+    transform: translateX(2px);
+    box-shadow: 0 4px 10px rgba(15, 74, 54, 0.3);
+}
+
+.awards-gallery-section {
+    padding-block: 40px 80px;
+}
+
+.awards-section-header {
+    text-align: center;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.awards-section-header .hero-laurel-eyebrow {
+    margin-bottom: 8px;
+}
+
+.awards-section-header .eyebrow-text {
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    color: #0d3627;
+}
+
+.awards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+@media (max-width: 1024px) {
+    .awards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 640px) {
+    .awards-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .award-card {
+        padding: 20px 16px;
+        gap: 14px;
+    }
+    .award-medal-wrap {
+        width: 58px;
+        height: 66px;
+        min-width: 58px;
+    }
 }
 
 .carousel-nav-wrap {
