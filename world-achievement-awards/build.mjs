@@ -809,7 +809,26 @@ function render(path, p) {
       </a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="navigation" aria-label="Toggle menu">☰</button>
       <nav id="navigation" aria-label="Main navigation">
-        ${nav.map(([t, u]) => link(u, t, (path === u || (u !== '/' && path.startsWith(u))) ? 'active' : '')).join('')}
+        <a class="${path === '/' ? 'active' : ''}" href="/">Home</a>
+        <a class="${path === '/about' ? 'active' : ''}" href="/about">About Us</a>
+        <div class="nav-item has-dropdown">
+          <a class="nav-parent ${path.startsWith('/awards') || path === '/process' || path === '/nominate' ? 'active' : ''}" href="/awards" aria-haspopup="true" aria-expanded="false">Awards</a>
+          <div class="nav-dropdown" role="menu" aria-label="Awards sub-menu">
+            <a class="${path === '/awards' ? 'active' : ''}" href="/awards" role="menuitem">Awards</a>
+            <a class="${path === '/process' ? 'active' : ''}" href="/process" role="menuitem">Award Process</a>
+            <a class="${path === '/nominate' ? 'active' : ''}" href="/nominate" role="menuitem">Registration Form</a>
+          </div>
+        </div>
+        <a class="${path === '/awardees' ? 'active' : ''}" href="/awardees">Awardees</a>
+        <div class="nav-item has-dropdown">
+          <a class="nav-parent ${path === '/gallery' || path === '/videos' || path === '/news' ? 'active' : ''}" href="/gallery" aria-haspopup="true" aria-expanded="false">Gallery & Media</a>
+          <div class="nav-dropdown" role="menu" aria-label="Gallery & Media sub-menu">
+            <a class="${path === '/gallery' ? 'active' : ''}" href="/gallery" role="menuitem">Photo Gallery</a>
+            <a class="${path === '/videos' ? 'active' : ''}" href="/videos" role="menuitem">Video Gallery</a>
+            <a class="${path === '/news' ? 'active' : ''}" href="/news" role="menuitem">Blog / News</a>
+          </div>
+        </div>
+        <a class="${path === '/contact' ? 'active' : ''}" href="/contact">Contact Us</a>
         <a class="button gold nav-apply" href="/nominate">APPLY NOW ↗</a>
       </nav>
     </div>

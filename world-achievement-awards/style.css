@@ -27,3 +27,21 @@ ul li,ol li,.benefits-list li,.checklist li{font-size:14px;line-height:1.7;color
 .reveal-enabled .reveal-delay-5{transition-delay:.3s}
 .reveal-enabled .reveal-delay-6{transition-delay:.36s}
 @media(prefers-reduced-motion:reduce){.reveal-enabled .reveal{opacity:1!important;transform:none!important;transition:none!important}}
+
+/* Navigation Dropdowns & Sub-sections */
+.nav-item{position:relative;display:inline-flex;align-items:center}
+.nav-parent{display:inline-flex;align-items:center;gap:3px;cursor:pointer}
+.nav-parent::after{content:'▾';font-size:11px;margin-left:4px;display:inline-block;transition:transform .2s ease;opacity:.7}
+.nav-item:hover .nav-parent::after,.nav-item:focus-within .nav-parent::after{transform:rotate(180deg);opacity:1}
+.nav-dropdown{position:absolute;top:calc(100% + 10px);left:0;min-width:210px;background:#ffffff;border:1px solid var(--line);border-radius:6px;box-shadow:0 12px 30px rgba(0,0,0,0.08),0 2px 6px rgba(0,0,0,0.04);padding:8px 0;opacity:0;visibility:hidden;transform:translateY(8px);transition:all .2s cubic-bezier(0.16,1,0.3,1);z-index:50;pointer-events:none}
+.nav-dropdown::before{content:'';position:absolute;top:-10px;left:0;right:0;height:10px}
+.nav-item:hover .nav-dropdown,.nav-item:focus-within .nav-dropdown{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
+.nav-dropdown a{display:block;padding:9px 18px;font-size:14px;font-weight:500;color:var(--ink);transition:background .15s,color .15s;white-space:nowrap;line-height:1.4}
+.nav-dropdown a:hover{background:#f6f5ef;color:#9e7833}
+.nav-dropdown a.active{color:#9e7833;background:#f8f7f2;font-weight:600}
+@media(max-width:850px){
+  .nav-item{display:flex;flex-direction:column;align-items:flex-start;width:100%}
+  .nav-parent{width:100%;justify-content:space-between;padding:4px 0}
+  .nav-dropdown{position:static;box-shadow:none;border:none;border-left:2px solid var(--gold);border-radius:0;padding:4px 0 6px 14px;margin-left:6px;margin-top:4px;width:100%;opacity:1;visibility:visible;transform:none;pointer-events:auto;background:transparent}
+  .nav-dropdown a{padding:6px 0;font-size:14px;color:#585f4c}
+}
