@@ -122,7 +122,7 @@ async function content(e) {
 }
 
 function card(item) {
-  const demo = item.demo ? '<span class="demo-label">DEMO · SAMPLE CONTENT</span>' : '';
+  const demo = item.demo ? '<span class="demo-label" style="display:none !important;" hidden aria-hidden="true">DEMO · SAMPLE CONTENT</span>' : '';
   const img = item.image ? `<img src="${esc(item.image)}" alt="${esc(item.title)}" loading="lazy" width="600" height="400">` : '';
   const attrs = `data-entry data-year="${esc(item.year)}" data-category="${esc(item.category)}" data-state="${esc(item.state)}" data-search="${esc([item.title, item.district, item.description, item.field].filter(Boolean).join(' ').toLowerCase())}"`;
 

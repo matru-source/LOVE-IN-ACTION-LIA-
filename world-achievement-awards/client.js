@@ -748,3 +748,16 @@ if (inbox) {
     document.querySelectorAll('.content-card').forEach(c => c.classList.add('is-revealed'));
   });
 })();
+
+// Remove any demo / sample content labels from page
+(function removeDemoLabels() {
+  function cleanup() {
+    document.querySelectorAll('.demo-label').forEach(el => el.remove());
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', cleanup);
+  } else {
+    cleanup();
+  }
+  window.addEventListener('content-updated', cleanup);
+})();
