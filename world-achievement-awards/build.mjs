@@ -344,39 +344,139 @@ ${heading('ABOUT THE ORGANISER', 'Love In Action (LIA)<br><em>Good work should n
   </div>
 </section>
 
-<section class="wrap">
-  <p class="eyebrow">OUR INITIATIVES</p>
-  <h2>What We Do</h2>
-  <div class="steps">
-    <div>
-      <span>01</span>
-      <h3>Award Ceremonies</h3>
-      <p>Organising prestigious national and state award ceremonies to felicitate real grassroots achievers.</p>
+<section class="what-we-do-section wrap">
+  <!-- Shared SVG Gradient Definition -->
+  <svg width="0" height="0" style="position:absolute; width:0; height:0;" aria-hidden="true">
+    <defs>
+      <linearGradient id="wwdGold" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fae8a7"/>
+        <stop offset="35%" stop-color="#d4aa54"/>
+        <stop offset="70%" stop-color="#fff1c5"/>
+        <stop offset="100%" stop-color="#b68936"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <div class="what-we-do-header">
+    <div class="hero-laurel-eyebrow">
+      <span class="laurel-branch left" aria-hidden="true">🌿</span>
+      <span class="eyebrow-text">OUR INITIATIVES</span>
+      <span class="laurel-branch right" aria-hidden="true">🌿</span>
     </div>
-    <div>
-      <span>02</span>
-      <h3>Health Camps & Awareness</h3>
-      <p>Conducting free multi-specialty health check-up camps, blood donation drives, and medical awareness conclaves.</p>
+    <h2>What We Do</h2>
+    <div class="heading-star-divider" aria-hidden="true">
+      <span class="star-wing left"></span>
+      <span class="star-symbol">★</span>
+      <span class="star-wing right"></span>
     </div>
-    <div>
-      <span>03</span>
-      <h3>Cultural Programs</h3>
-      <p>Preserving Odissi classical dance, folk art, and Indian cultural heritage through performances and festivals.</p>
+  </div>
+
+  <div class="what-we-do-grid">
+    <!-- Card 01 -->
+    <div class="what-we-do-card">
+      <div class="wwd-icon-badge">
+        <svg viewBox="0 0 48 48" class="wwd-svg" fill="none">
+          <path d="M19 12h10v11c0 2.8-2.2 5-5 5s-5-2.2-5-5V12z" fill="url(#wwdGold)"/>
+          <path d="M14 14h-3c0 4 2.8 7.3 6.6 7.9l.4-1.8c-2.8-.5-4.8-2.9-5-5.9h1v-.2zm20 0h3c0 4-2.8 7.3-6.6 7.9l-.4-1.8c2.8-.5 4.8-2.9 5-5.9h-1v-.2z" fill="url(#wwdGold)"/>
+          <path d="M22 28h4v6h-4zm-5 6h14v2.5H17z" fill="url(#wwdGold)"/>
+          <path d="M11 26c-1.8-3.5-2.2-7.5-2-11.5 1.5 3.5 3.8 6.5 6.5 8.5-1.8 1-3.3 2-4.5 3zm26 0c1.8-3.5 2.2-7.5 2-11.5-1.5 3.5-3.8 6.5-6.5 8.5 1.8 1 3.3 2 4.5 3z" fill="url(#wwdGold)" opacity="0.9"/>
+        </svg>
+      </div>
+      <div class="wwd-content">
+        <span class="wwd-num-badge">01</span>
+        <h3>Award Ceremonies</h3>
+        <p>Organising prestigious national and state award ceremonies to felicitate real grassroots achievers.</p>
+      </div>
     </div>
-    <div>
-      <span>04</span>
-      <h3>Youth Motivation Programs</h3>
-      <p>Empowering young changemakers with leadership seminars, disaster preparedness training, and mentorship.</p>
+
+    <!-- Card 02 -->
+    <div class="what-we-do-card">
+      <div class="wwd-icon-badge">
+        <svg viewBox="0 0 48 48" class="wwd-svg" fill="none">
+          <path d="M24 13c-2.5-4-7.5-4-10-1.5-2.5 2.5-2 6.5 1 9.5l9 9 9-9c3-3 3.5-7 1-9.5-2.5-2.5-7.5-2.5-10 1.5z" fill="url(#wwdGold)"/>
+          <path d="M23 16h2v3h3v2h-3v3h-2v-3h-3v-2h3v-3z" fill="#06281c"/>
+          <path d="M13 31c2 2.5 5 4 8 4.5l-1 2c-3.5-.5-7-2.3-9-5.5zm22 0c-2 2.5-5 4-8 4.5l1 2c3.5-.5 7-2.3 9-5.5z" fill="url(#wwdGold)"/>
+        </svg>
+      </div>
+      <div class="wwd-content">
+        <span class="wwd-num-badge">02</span>
+        <h3>Health Camps & Awareness</h3>
+        <p>Conducting free multi-specialty health check-up camps, blood donation drives, and medical awareness conclaves.</p>
+      </div>
     </div>
-    <div>
-      <span>05</span>
-      <h3>Women Empowerment Activities</h3>
-      <p>Supporting self-help groups, skill training, safety awareness, and financial independence for women.</p>
+
+    <!-- Card 03 -->
+    <div class="what-we-do-card">
+      <div class="wwd-icon-badge">
+        <svg viewBox="0 0 48 48" class="wwd-svg" fill="none">
+          <circle cx="24" cy="11" r="3.2" fill="url(#wwdGold)"/>
+          <path d="M24 6l1.5 2.5h-3z" fill="url(#wwdGold)"/>
+          <path d="M17 16c2-2 4.5-1 7-1s5-1 7 1l2.5-2.5c-3-2-6-1.5-9.5-1.5s-6.5-.5-9.5 1.5zm7 2c-1.5 2-3 4-2 7 2 .5 5 0 7-1.5 1-2.5.5-4-1-5.5z" fill="url(#wwdGold)"/>
+          <path d="M15 26c3 2 6 3 9 3s6-1 9-3l3 7c-4 3-8 4.5-12 4.5s-8-1.5-12-4.5z" fill="url(#wwdGold)"/>
+          <path d="M22 36h4v4h-4zm-4 4h12v2H18z" fill="url(#wwdGold)"/>
+        </svg>
+      </div>
+      <div class="wwd-content">
+        <span class="wwd-num-badge">03</span>
+        <h3>Cultural Programs</h3>
+        <p>Preserving Odissi classical dance, folk art, and Indian cultural heritage through performances and festivals.</p>
+      </div>
     </div>
-    <div>
-      <span>06</span>
-      <h3>Social Service</h3>
-      <p>Providing emergency disaster relief, community kitchens, elderly care, and humanitarian assistance.</p>
+
+    <!-- Card 04 -->
+    <div class="what-we-do-card">
+      <div class="wwd-icon-badge">
+        <svg viewBox="0 0 48 48" class="wwd-svg" fill="none">
+          <circle cx="17" cy="17" r="3" fill="url(#wwdGold)"/>
+          <path d="M13 26c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5v1h-9v-1z" fill="url(#wwdGold)"/>
+          <circle cx="24" cy="14" r="3.5" fill="url(#wwdGold)"/>
+          <path d="M19 26c0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5v1h-11v-1z" fill="url(#wwdGold)"/>
+          <rect x="29" y="24" width="3.5" height="11" rx="1" fill="url(#wwdGold)"/>
+          <rect x="34" y="19" width="3.5" height="16" rx="1" fill="url(#wwdGold)"/>
+          <path d="M27 20l6-6 4 3 5-5" stroke="url(#wwdGold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M38 12h4v4" fill="none" stroke="url(#wwdGold)" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="wwd-content">
+        <span class="wwd-num-badge">04</span>
+        <h3>Youth Motivation Programs</h3>
+        <p>Empowering young changemakers with leadership seminars, disaster preparedness training, and mentorship.</p>
+      </div>
+    </div>
+
+    <!-- Card 05 -->
+    <div class="what-we-do-card">
+      <div class="wwd-icon-badge">
+        <svg viewBox="0 0 48 48" class="wwd-svg" fill="none">
+          <path d="M23 12c-4 0-7 3-7 7 0 2 .8 4 2 5.3-.2 1.5-.7 3.2-1.8 4.7 2.5.5 5-.3 6.8-1.8 1.5.5 3 .8 4.5.8 4 0 7-3 7-7s-3-9-11.5-9zm3 13.5c-1.5 0-3-.5-4.2-1.3l-.8-.5-.8.5c-.8.5-1.8.8-2.7.8 0-3 1.5-5.5 3.5-7 1.5 1 3 2 5 2.5v5z" fill="url(#wwdGold)"/>
+          <path d="M16 34c0-4 4-6.5 8-6.5s8 2.5 8 6.5v2H16v-2z" fill="url(#wwdGold)"/>
+        </svg>
+      </div>
+      <div class="wwd-content">
+        <span class="wwd-num-badge">05</span>
+        <h3>Women Empowerment Activities</h3>
+        <p>Supporting self-help groups, skill training, safety awareness, and financial independence for women.</p>
+      </div>
+    </div>
+
+    <!-- Card 06 -->
+    <div class="what-we-do-card">
+      <div class="wwd-icon-badge">
+        <svg viewBox="0 0 48 48" class="wwd-svg" fill="none">
+          <circle cx="24" cy="15" r="3" fill="url(#wwdGold)"/>
+          <path d="M20 22c0-2.5 2-4 4-4s4 1.5 4 4v1h-8v-1z" fill="url(#wwdGold)"/>
+          <circle cx="17" cy="18" r="2.5" fill="url(#wwdGold)"/>
+          <path d="M13.5 24c0-2 1.5-3 3.5-3s3.5 1 3.5 3v1h-7v-1z" fill="url(#wwdGold)"/>
+          <circle cx="31" cy="18" r="2.5" fill="url(#wwdGold)"/>
+          <path d="M27.5 24c0-2 1.5-3 3.5-3s3.5 1 3.5 3v1h-7v-1z" fill="url(#wwdGold)"/>
+          <path d="M12 28c3 4 7 6 12 6s9-2 12-6l1.5 2c-4 4.5-8.5 7-13.5 7s-9.5-2.5-13.5-7z" fill="url(#wwdGold)"/>
+        </svg>
+      </div>
+      <div class="wwd-content">
+        <span class="wwd-num-badge">06</span>
+        <h3>Social Service</h3>
+        <p>Providing emergency disaster relief, community kitchens, elderly care, and humanitarian assistance.</p>
+      </div>
     </div>
   </div>
 </section>

@@ -2802,3 +2802,193 @@ main[data-page="privacy"] .page-heading {
     position: absolute !important;
     pointer-events: none !important;
 }
+
+/* ==========================================================================
+   WHAT WE DO SECTION (Reference Design)
+   ========================================================================== */
+
+.what-we-do-section {
+    padding-block: 70px 80px;
+    position: relative;
+}
+
+.what-we-do-header {
+    text-align: center;
+    margin-bottom: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.what-we-do-header .hero-laurel-eyebrow {
+    margin-bottom: 8px;
+    color: #b58933;
+}
+
+.what-we-do-header .laurel-branch {
+    color: #c99f48;
+    font-size: 18px;
+}
+
+.what-we-do-header .eyebrow-text {
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    font-weight: 700;
+    color: #0d3627;
+}
+
+.what-we-do-header h2 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(32px, 3.8vw, 46px);
+    font-weight: 700;
+    color: #0b3424;
+    margin: 0 0 12px 0;
+    line-height: 1.2;
+}
+
+/* Golden Star with Wings Divider */
+.heading-star-divider {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.star-wing {
+    display: inline-block;
+    width: 50px;
+    height: 1.5px;
+    background: linear-gradient(to right, transparent, #c5a059);
+}
+
+.star-wing.right {
+    background: linear-gradient(to left, transparent, #c5a059);
+}
+
+.star-symbol {
+    color: #c99f48;
+    font-size: 15px;
+    line-height: 1;
+}
+
+/* 6-Card Grid */
+.what-we-do-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.what-we-do-card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #ebd9b5;
+    border-radius: 14px;
+    padding: 24px 22px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    overflow: hidden;
+}
+
+.what-we-do-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(15, 61, 46, 0.1);
+    border-color: #c4a962;
+}
+
+/* Shiny folded gold ribbon corner on bottom-right of each card */
+.what-we-do-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, transparent 48%, #c59f48 49%, #fae8a7 70%, #ad8236 100%);
+    border-bottom-right-radius: 14px;
+    box-shadow: -1px -1px 3px rgba(0, 0, 0, 0.08);
+    pointer-events: none;
+}
+
+/* Left: Emerald Rounded Square Badge */
+.wwd-icon-badge {
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #05261b 0%, #0c4431 100%);
+    box-shadow: 0 4px 14px rgba(5, 38, 27, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.wwd-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* Right: Content */
+.wwd-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.wwd-num-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 6px;
+    background: #faeed2;
+    color: #b88628;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.what-we-do-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #0b3424;
+    margin: 0 0 7px 0;
+}
+
+.what-we-do-card p {
+    font-size: 13px;
+    line-height: 1.55;
+    color: #525a4d;
+    margin: 0;
+}
+
+/* Responsive Grid */
+@media (max-width: 992px) {
+    .what-we-do-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 640px) {
+    .what-we-do-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .what-we-do-card {
+        padding: 20px 18px;
+        gap: 14px;
+    }
+    .wwd-icon-badge {
+        width: 56px;
+        height: 56px;
+        min-width: 56px;
+        border-radius: 12px;
+    }
+}
