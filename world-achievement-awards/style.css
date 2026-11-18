@@ -676,18 +676,110 @@ nav .active {
     color: #545d47
 }
 
-.award-carousel {
+.carousel-nav-wrap {
     display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 20px;
-    scrollbar-color: #a08b53 #e8e8dd
+    align-items: center;
+    gap: 18px;
+}
+
+.carousel-arrows {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.carousel-arrow-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #c9ccbd;
+    background: #fdfdfa;
+    color: var(--ink, #242921);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 0;
+    user-select: none;
+}
+
+.carousel-arrow-btn:hover {
+    background: #0f3d2e;
+    color: #e5c378;
+    border-color: #0f3d2e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(15, 61, 46, 0.18);
+}
+
+.award-carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.award-carousel-container::before,
+.award-carousel-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 36px;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.award-carousel-container::before {
+    left: 0;
+    background: linear-gradient(to right, var(--paper, #f7f6f0) 20%, transparent);
+}
+
+.award-carousel-container::after {
+    right: 0;
+    background: linear-gradient(to left, var(--paper, #f7f6f0) 20%, transparent);
+}
+
+.award-carousel {
+    display: flex !important;
+    overflow-x: scroll !important;
+    overflow-y: hidden !important;
+    scroll-behavior: auto !important;
+    scroll-snap-type: none !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    gap: 20px;
+    padding-block: 8px 16px;
+    cursor: grab;
+    user-select: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.award-carousel:active {
+    cursor: grabbing;
+}
+
+.award-carousel::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
 }
 
 .award-carousel .award-card {
-    min-width: calc((100% - 36px)/3);
-    max-width: calc((100% - 36px)/3);
-    scroll-snap-align: start
+    flex: 0 0 calc((100% - 40px) / 3);
+    min-width: calc((100% - 40px) / 3);
+    max-width: calc((100% - 40px) / 3);
+    box-sizing: border-box;
+    scroll-snap-align: none !important;
+    transition: background .25s ease, transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.award-carousel .award-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(15, 61, 46, 0.12);
+    border-color: #c4a962;
+    background: #ffffff;
 }
 
 .process-home {
@@ -1716,12 +1808,18 @@ textarea {
     }
 
     .award-carousel .award-card {
-        min-width: 70%;
-        max-width: 70%
+        flex: 0 0 calc((100% - 20px) / 2);
+        min-width: calc((100% - 20px) / 2);
+        max-width: calc((100% - 20px) / 2);
     }
 }
 
 @media(max-width:600px) {
+    .award-carousel .award-card {
+        flex: 0 0 85%;
+        min-width: 85%;
+        max-width: 85%;
+    }
     .hero {
         grid-template-columns: 1fr;
         padding-top: 25px;

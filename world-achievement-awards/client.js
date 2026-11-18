@@ -495,7 +495,7 @@ if (inbox) {
 
 // Automatic Smooth Moving Carousel for Popular Awards
 (function initAwardCarousel() {
-  const carousel = document.querySelector('#award-carousel');
+  const carousel = document.querySelector('#award-carousel') || document.querySelector('.award-carousel');
   const container = document.querySelector('#carousel-container') || carousel?.parentElement;
   const prevBtn = document.querySelector('#carousel-prev-btn');
   const nextBtn = document.querySelector('#carousel-next-btn');
@@ -514,7 +514,7 @@ if (inbox) {
     if (first && second) {
       return second.offsetLeft - first.offsetLeft;
     }
-    return (first?.offsetWidth || 360) + 20;
+    return (first?.offsetWidth || 360) + 18;
   }
 
   function getSingleSetWidth() {
@@ -531,13 +531,15 @@ if (inbox) {
   let startScrollLeft = 0;
   let draggedDistance = 0;
   let lastTimestamp = null;
-  const pixelsPerSecond = 36; // smooth, comfortable gliding pace
+  let currentScroll = carousel.scrollLeft || 0;
+  const pixelsPerSecond = 42; // smooth, comfortable gliding pace
 
   function pauseAuto(ms = 3500) {
     isPaused = true;
     if (pauseTimer) clearTimeout(pauseTimer);
     pauseTimer = setTimeout(() => {
       pauseTimer = null;
+      currentScroll = carousel.scrollLeft;
       isPaused = false;
     }, ms);
   }
@@ -552,11 +554,13 @@ if (inbox) {
     if (!isPaused && !isDragging && !prefersReduced) {
       const singleSetWidth = getSingleSetWidth();
       if (singleSetWidth > 0) {
-        let newScroll = carousel.scrollLeft + pixelsPerSecond * delta;
-        if (newScroll >= singleSetWidth) {
-          newScroll -= singleSetWidth;
+        currentScroll += pixelsPerSecond * delta;
+        if (currentScroll >= singleSetWidth) {
+          currentScroll -= singleSetWidth;
+          carousel.scrollLeft = currentScroll;
+        } else {
+          carousel.scrollLeft = currentScroll;
         }
-        carousel.scrollLeft = newScroll;
       }
     }
 
@@ -570,7 +574,10 @@ if (inbox) {
     isPaused = true;
   });
   container?.addEventListener('mouseleave', () => {
-    if (!pauseTimer) isPaused = false;
+    if (!pauseTimer) {
+      currentScroll = carousel.scrollLeft;
+      isPaused = false;
+    }
   });
 
   // Pause on keyboard focus
@@ -578,7 +585,10 @@ if (inbox) {
     isPaused = true;
   });
   container?.addEventListener('focusout', () => {
-    if (!pauseTimer) isPaused = false;
+    if (!pauseTimer) {
+      currentScroll = carousel.scrollLeft;
+      isPaused = false;
+    }
   });
 
   // Manual Previous & Next buttons
@@ -590,6 +600,7 @@ if (inbox) {
       carousel.scrollLeft -= singleSetWidth;
     }
     carousel.scrollBy({ left: stepWidth, behavior: 'smooth' });
+    setTimeout(() => { currentScroll = carousel.scrollLeft; }, 400);
   });
 
   prevBtn?.addEventListener('click', () => {
@@ -600,6 +611,7 @@ if (inbox) {
       carousel.scrollLeft += singleSetWidth;
     }
     carousel.scrollBy({ left: -stepWidth, behavior: 'smooth' });
+    setTimeout(() => { currentScroll = carousel.scrollLeft; }, 400);
   });
 
   // Pointer drag & touch swipe
@@ -624,12 +636,14 @@ if (inbox) {
       while (target >= singleSetWidth * 2) target -= singleSetWidth;
     }
     carousel.scrollLeft = target;
+    currentScroll = target;
   });
 
   const stopDrag = () => {
     if (!isDragging) return;
     isDragging = false;
     carousel.style.cursor = 'grab';
+    currentScroll = carousel.scrollLeft;
     pauseAuto(3000);
   };
 

@@ -240,10 +240,18 @@ pages['/'] = {
       <h2>Popular Awards Categories</h2>
       <p class="muted">Kalinga Yuva Gaurav Samman | Seva Ratan Award | Education Icon | Women Empowerment | Health Warrior | Youth Icon</p>
     </div>
-    <a class="text-link" href="/awards">View All 12 Awards ${arrow}</a>
+    <div class="carousel-nav-wrap">
+      <div class="carousel-arrows">
+        <button type="button" class="carousel-arrow-btn" id="carousel-prev-btn" aria-label="Previous award category">‹</button>
+        <button type="button" class="carousel-arrow-btn" id="carousel-next-btn" aria-label="Next award category">›</button>
+      </div>
+      <a class="text-link" href="/awards">View All 12 Awards ${arrow}</a>
+    </div>
   </div>
-  <div class="card-grid award-carousel" tabindex="0" role="region" aria-label="Popular awards carousel">
-    ${cards()}
+  <div class="award-carousel-container" id="carousel-container">
+    <div class="card-grid award-carousel" id="award-carousel" tabindex="0" role="region" aria-label="Popular awards carousel">
+      ${cards()}${cards()}
+    </div>
   </div>
 </section>
 
