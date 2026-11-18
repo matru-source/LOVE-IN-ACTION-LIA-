@@ -1,15 +1,37 @@
-// Mobile navigation toggle
+// Mobile navigation toggle with outside-click and escape handling
 const toggle = document.querySelector('.menu-toggle');
-toggle?.addEventListener('click', () => {
-  const open = toggle.getAttribute('aria-expanded') !== 'true';
+const mainNav = document.querySelector('nav');
+
+function setMobileNav(open) {
+  if (!toggle || !mainNav) return;
   toggle.setAttribute('aria-expanded', String(open));
-  document.querySelector('nav').classList.toggle('open', open);
+  toggle.textContent = open ? '✕' : '☰';
+  mainNav.classList.toggle('open', open);
+  document.body.classList.toggle('menu-open', open);
+}
+
+toggle?.addEventListener('click', e => {
+  e.stopPropagation();
+  const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+  setMobileNav(!isOpen);
 });
+
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    toggle?.setAttribute('aria-expanded', 'false');
-    document.querySelector('nav')?.classList.remove('open');
+  if (e.key === 'Escape') setMobileNav(false);
+});
+
+document.addEventListener('click', e => {
+  if (toggle?.getAttribute('aria-expanded') === 'true' && !mainNav?.contains(e.target) && !toggle.contains(e.target)) {
+    setMobileNav(false);
   }
+});
+
+mainNav?.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    if (window.innerWidth <= 1040) {
+      setMobileNav(false);
+    }
+  });
 });
 
 // Category URL query pre-selection on registration form
