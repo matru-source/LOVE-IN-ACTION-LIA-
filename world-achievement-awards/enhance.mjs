@@ -42,10 +42,10 @@ export function enhance(pages, awards) {
 
   // Admin Portal Page
   pages['/admin'] = {
-    title: 'Organiser Workspace | Love In Action Admin',
+    title: 'Organiser Workspace | World Achievement Awards Admin',
     body: `
 <section class="wrap page-heading">
-  <p class="eyebrow">LOVE IN ACTION (LIA) · SECURE WORKSPACE</p>
+  <p class="eyebrow">WORLD ACHIEVEMENT AWARDS · SECURE WORKSPACE</p>
   <h1>Organiser Admin Portal</h1>
   <p class="lead">Review nominations, download confidential applicant documents, verify jury selections, and publish verified stories.</p>
 </section>

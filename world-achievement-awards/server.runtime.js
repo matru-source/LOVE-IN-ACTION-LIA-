@@ -1,4 +1,5 @@
 const getDemoContent = e => (e && e.demoContent) || (typeof demoContent !== 'undefined' ? demoContent : (typeof globalThis !== 'undefined' && globalThis.demoContent ? globalThis.demoContent : []));
+const getLogoImage = e => (e && e.logoImage) || (typeof logoImage !== 'undefined' ? logoImage : (typeof globalThis !== 'undefined' && globalThis.logoImage ? globalThis.logoImage : ''));
 const getSocialImage = e => (e && e.socialImage) || (typeof socialImage !== 'undefined' ? socialImage : (typeof globalThis !== 'undefined' && globalThis.socialImage ? globalThis.socialImage : ''));
 const getAssets = e => (e && e.assets) || (typeof assets !== 'undefined' ? assets : (typeof globalThis !== 'undefined' && globalThis.assets ? globalThis.assets : {}));
 const getPages = e => (e && e.pages) || (typeof pages !== 'undefined' ? pages : (typeof globalThis !== 'undefined' && globalThis.pages ? globalThis.pages : {}));
@@ -505,7 +506,7 @@ export default {
             '<main id="main">',
             `<main id="main">
 <section class="wrap page-heading text-center" style="padding-top: 60px;">
-  <p class="eyebrow">LOVE IN ACTION (LIA) · RESTRICTED AREA</p>
+  <p class="eyebrow">WORLD ACHIEVEMENT AWARDS · RESTRICTED AREA</p>
   <h1>Organiser Workspace</h1>
   <p class="lead">Please enter your organiser passcode to access nomination inquiries, private documents, and directory publishing.</p>
 </section>
@@ -545,8 +546,16 @@ export default {
       const lookupPath = p === '/registration' ? '/nominate' : (p === '/rules' ? '/terms' : p);
 
       if (p === '/social.png') {
-        return new Response(r.method === 'HEAD' ? null : Uint8Array.from(atob(getSocialImage()), c => c.charCodeAt(0)), {
+        return new Response(r.method === 'HEAD' ? null : Uint8Array.from(atob(getSocialImage(e)), c => c.charCodeAt(0)), {
           headers: { ...secure, 'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=3600' }
+        });
+      }
+
+      if (p === '/assets/LOGO.jpeg' || p === '/logo.jpeg' || p === '/logo.png') {
+        const logoData = getLogoImage(e);
+        if (!logoData) return json({ error: 'Logo not found' }, 404);
+        return new Response(r.method === 'HEAD' ? null : Uint8Array.from(atob(logoData), c => c.charCodeAt(0)), {
+          headers: { ...secure, 'Content-Type': 'image/jpeg', 'Cache-Control': 'public, max-age=86400' }
         });
       }
 
@@ -570,7 +579,7 @@ export default {
         body = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#26352a"/><text x="32" y="48" text-anchor="middle" font-size="48" fill="#d8b76b">✳</text></svg>';
         type = 'image/svg+xml';
       } else {
-        body = currentPages[lookupPath] || currentPages['/404'] || '<!doctype html><html><head><title>Love In Action</title></head><body><h1>Love In Action</h1><p>World Achievement Awards 2026</p></body></html>';
+        body = currentPages[lookupPath] || currentPages['/404'] || '<!doctype html><html><head><title>World Achievement Awards 2026</title></head><body><h1>World Achievement Awards 2026</h1></body></html>';
         status = currentPages[lookupPath] && p !== '/404' ? 200 : 404;
 
         if (body && typeof body === 'string' && body.includes('data-content=')) {

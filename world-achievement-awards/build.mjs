@@ -70,7 +70,7 @@ const heading = (eyebrow, title, desc) => `
 
 const cta = `
 <section class="cta wrap">
-  <span class="eyebrow">LOVE IN ACTION (LIA) · WORLD ACHIEVEMENT AWARDS 2026</span>
+  <span class="eyebrow">WORLD ACHIEVEMENT AWARDS 2026</span>
   <h2>Your Good Work Deserves A National Stage.<br>Apply Today.</h2>
   <div class="actions">
     <a class="button gold" href="/nominate">Apply Today ${arrow}</a>
@@ -101,12 +101,12 @@ const pages = {};
 
 // PAGE 1: HOME
 pages['/'] = {
-  title: 'World Achievement Awards 2026 | Love In Action (LIA)',
-  description: 'Love In Action (LIA) World Achievement Awards 2026. Together For A Healthier And Kinder World. Nominate achievers across 12 categories.',
+  title: 'World Achievement Awards 2026 | Together For A Healthier & Kinder World',
+  description: 'Official World Achievement Awards 2026. Together For A Healthier And Kinder World. Nominate achievers across 12 categories.',
   body: `
 <section class="hero wrap">
   <div class="hero-copy">
-    <p class="eyebrow"><span class="live-dot"></span> LOVE IN ACTION (LIA) · BHUBANESWAR</p>
+    <p class="eyebrow"><span class="live-dot"></span> WORLD ACHIEVEMENT AWARDS 2026 · BHUBANESWAR</p>
     <h1>WORLD ACHIEVEMENT<br>AWARDS 2026</h1>
     <p class="hero-subtitle">Together For A Healthier And Kinder World</p>
     <p class="lead">Celebrating real talent, inspiring youth, and serving humanity through health, education, culture and social service. Good work should never go unnoticed.</p>
@@ -125,10 +125,12 @@ pages['/'] = {
     <div class="orbit orbit-one"></div>
     <div class="orbit orbit-two"></div>
     <div class="trophy">
-      <div class="trophy-star">✧</div>
+      <div class="hero-emblem-badge">
+        <img src="/assets/LOGO.jpeg" alt="World Achievement Awards 2026 Official Insignia" class="hero-badge-img">
+      </div>
       <div class="trophy-stem"></div>
       <div class="trophy-base">
-        <span>LOVE IN ACTION<br>WORLD ACHIEVEMENT<br><b>AWARDS 2026</b></span>
+        <span>WORLD ACHIEVEMENT<br><b>AWARDS 2026</b></span>
       </div>
     </div>
     <span class="art-year">20<span>26</span></span>
@@ -164,7 +166,7 @@ pages['/'] = {
 </section>
 
 <section class="intro wrap">
-  <p class="eyebrow">ABOUT LOVE IN ACTION (LIA)</p>
+  <p class="eyebrow">ABOUT THE ORGANISER · LOVE IN ACTION (LIA)</p>
   <div>
     <h2>Love In Action is a social organisation working to recognise real talent, inspire youth and serve humanity through health, education, culture and social service.</h2>
     <p>We identify talented individuals from villages to cities, and give them a national platform. When we honour one achiever, we inspire a thousand more.</p>
@@ -252,10 +254,10 @@ ${cta}`
 
 // PAGE 2: ABOUT US
 pages['/about'] = {
-  title: 'About Us | Love In Action (LIA)',
-  description: 'About Love In Action (LIA). Who We Are, Our Mission, Our Vision, What We Do, and Message from Founder & President.',
+  title: 'About Us | World Achievement Awards 2026',
+  description: 'About the Organiser, Love In Action (LIA). Who We Are, Our Mission, Our Vision, What We Do, and Message from Founder & President.',
   body: `
-${heading('ABOUT LOVE IN ACTION (LIA)', 'Good work should<br><em>never go unnoticed.</em>', 'Love In Action is a social organisation working to recognise real talent, inspire youth and serve humanity through health, education, culture and social service.')}
+${heading('ABOUT THE ORGANISER', 'Love In Action (LIA)<br><em>Good work should never go unnoticed.</em>', 'Love In Action is a social organisation working to recognise real talent, inspire youth and serve humanity through health, education, culture and social service.')}
 <section class="wrap split">
   <div>
     <h2>Who We Are</h2>
@@ -329,7 +331,7 @@ ${cta}`
 // PAGE 3: AWARDS
 pages['/awards'] = {
   title: 'Award Categories | World Achievement Awards 2026',
-  description: 'Explore all 12 Award Categories of World Achievement Awards 2026 by Love In Action (LIA). Criteria, benefits, and how to apply.',
+  description: 'Explore all 12 Award Categories of World Achievement Awards 2026. Criteria, benefits, and how to apply.',
   body: `
 ${heading('12 AWARD CATEGORIES', 'Recognising Real Talent.<br><em>Honouring Humanity.</em>', 'Explore all 12 award categories across social service, healthcare, education, art, sports and entrepreneurship. Each category features its own dedicated criteria, benefits, and past awardees.')}
 <section class="wrap">
@@ -343,7 +345,7 @@ awards.forEach((a, i) => {
   const isYouth = i === 0 || i === 6;
   pages['/awards/' + slug(a)] = {
     title: `${a} | World Achievement Awards 2026`,
-    description: `Details, eligibility, benefits, and nomination process for ${a} by Love In Action (LIA).`,
+    description: `Details, eligibility, benefits, and nomination process for ${a} at World Achievement Awards 2026.`,
     body: `
 ${heading('WORLD ACHIEVEMENT AWARDS 2026 · CATEGORY ' + String(i + 1).padStart(2, '0'), a, descriptions[i])}
 <section class="wrap split">
@@ -361,7 +363,7 @@ ${heading('WORLD ACHIEVEMENT AWARDS 2026 · CATEGORY ' + String(i + 1).padStart(
       <li><strong>Gold Medal of Honour</strong></li>
       <li><strong>Official Magazine Feature</strong> & Editorial Profile</li>
       <li><strong>Print & Electronic Media Coverage</strong></li>
-      <li><strong>Social Media Promotion</strong> across all official LIA channels</li>
+      <li><strong>Social Media Promotion</strong> across all official channels and press</li>
     </ul>
 
     <h3>Past Awardees of this Category</h3>
@@ -384,7 +386,7 @@ ${cta}`
 
 // PAGE 4: AWARD PROCESS / HOW TO APPLY
 pages['/process'] = {
-  title: 'Award Process / How To Apply | Love In Action (LIA)',
+  title: 'Award Process / How To Apply | World Achievement Awards 2026',
   description: 'Six-step award process: Registration Form, Profile & Documents Submission, Jury Evaluation, Registration Confirmation, Award Preparation, and Stage Ceremony.',
   body: `
 ${heading('AWARD PROCESS / HOW TO APPLY', 'A Transparent 6-Step Journey<br><em>To The National Stage</em>', 'From initial nomination to felicitation in the presence of distinguished Chief Guests. Processing Time: 10 to 30 Working Days.')}
@@ -427,7 +429,7 @@ ${heading('AWARD PROCESS / HOW TO APPLY', 'A Transparent 6-Step Journey<br><em>T
     <span>05</span>
     <div>
       <h2>Step 5: Certification / Award Processing</h2>
-      <p>After approval, your Trophy, Certificate, Medal and Award Kit will be custom prepared by Love In Action.</p>
+      <p>After approval, your Trophy, Certificate, Medal and Award Kit will be custom prepared for conferment.</p>
     </div>
   </article>
   <article>
@@ -555,7 +557,7 @@ ${heading('NOMINATE AN ACHIEVER', 'Registration Form -<br>World Achievement Awar
 
 pages['/nominate'] = {
   title: 'Registration Form - World Achievement Awards 2026',
-  description: 'Fill online Registration Form for World Achievement Awards 2026 by Love In Action (LIA). Nominate achievers in Bhubaneswar, Odisha.',
+  description: 'Fill online Registration Form for World Achievement Awards 2026. Nominate achievers in Bhubaneswar, Odisha.',
   body: registrationFormBody
 };
 
@@ -570,7 +572,7 @@ pages['/awardees'] = {
   title: 'Awardees List | World Achievement Awards',
   description: 'Directory of honoured awardees: Photo, Name, District, Award Name, and Field. Filter by Year, Category, and State.',
   body: `
-${heading('HONOURING REAL TALENT', 'Distinguished Awardees Directory', 'Discover extraordinary changemakers, doctors, teachers, youth icons and cultural maestros felicitated by Love In Action.')}
+${heading('HONOURING REAL TALENT', 'Distinguished Awardees Directory', 'Discover extraordinary changemakers, doctors, teachers, youth icons and cultural maestros felicitated with World Achievement Awards.')}
 <section class="wrap archive">
   <div class="filters-container"></div>
   <div data-content="awardees" aria-live="polite"></div>
@@ -622,8 +624,8 @@ ${cta}`
 
 // PAGE 9: BLOG / NEWS
 pages['/news'] = {
-  title: 'Blog / News | Love In Action (LIA)',
-  description: 'Latest news, upcoming health camps, awardee success stories, and press coverage from Love In Action (LIA).',
+  title: 'Blog / News | World Achievement Awards 2026',
+  description: 'Latest news, upcoming health camps, awardee success stories, and press coverage from World Achievement Awards 2026.',
   body: `
 ${heading('BLOG & NEWS', 'Latest Updates & Stories', 'Stay informed about nomination deadlines, upcoming health camps, inspiring awardee journeys, and national press coverage.')}
 <section class="wrap archive">
@@ -648,7 +650,7 @@ ${cta}`
 };
 
 pages['/news/nomination-guide'] = {
-  title: 'How to Prepare Your Nomination | Love In Action Guide',
+  title: 'How to Prepare Your Nomination | World Achievement Awards Guide',
   description: 'A practical guide on how to prepare a winning nomination with verified evidence for World Achievement Awards 2026.',
   body: `
 ${heading('NOMINATION GUIDE', 'Let the impact<br><em>tell the story.</em>', 'A strong nomination is specific, honest and supported by evidence.')}
@@ -668,7 +670,7 @@ ${heading('NOMINATION GUIDE', 'Let the impact<br><em>tell the story.</em>', 'A s
 // PAGE 10: RULES, TERMS & PRIVACY
 pages['/terms'] = {
   title: 'Rules & Terms | World Achievement Awards',
-  description: 'Official Rules, Terms & Conditions for Love In Action (LIA) World Achievement Awards 2026.',
+  description: 'Official Rules, Terms & Conditions for World Achievement Awards 2026.',
   body: `
 ${heading('OFFICIAL RULES & TERMS', 'Rules & Terms of Nomination', 'Please read carefully before submitting your nomination for World Achievement Awards 2026.')}
 <article class="wrap prose">
@@ -692,8 +694,8 @@ ${heading('OFFICIAL RULES & TERMS', 'Rules & Terms of Nomination', 'Please read 
 pages['/rules']=pages['/terms'];
 
 pages['/privacy'] = {
-  title: 'Privacy Policy | Love In Action (LIA)',
-  description: 'Privacy notice on how Love In Action (LIA) protects applicant personal data and documents.',
+  title: 'Privacy Policy | World Achievement Awards 2026',
+  description: 'Privacy notice on how World Achievement Awards protects applicant personal data and documents.',
   body: `
 ${heading('PRIVACY POLICY', 'Data Protection & Confidentiality', 'How information submitted through this website is handled responsibly.')}
 <article class="wrap prose">
@@ -710,14 +712,15 @@ ${heading('PRIVACY POLICY', 'Data Protection & Confidentiality', 'How informatio
 
 // PAGE 11: CONTACT US
 pages['/contact'] = {
-  title: 'Contact Us | Love In Action (LIA)',
-  description: 'Contact Love In Action (LIA) in Jaydev Vihar, Bhubaneswar, Odisha. Phone/WhatsApp: +91 63728 81379, Email: Infoworldachivementaward@gmail.com.',
+  title: 'Contact Us | World Achievement Awards 2026',
+  description: 'Contact World Achievement Awards in Jaydev Vihar, Bhubaneswar, Odisha. Phone/WhatsApp: +91 63728 81379, Email: Infoworldachivementaward@gmail.com.',
   body: `
 ${heading('GET IN TOUCH', 'Contact Us', 'Have questions regarding the nomination process, award categories, or partnership? Reach out to our organizing team.')}
 <section class="wrap split">
   <div>
     <p class="eyebrow">HEADQUARTERS · BHUBANESWAR</p>
-    <h2>Love In Action (LIA)</h2>
+    <h2>World Achievement Awards</h2>
+        <p class="muted" style="margin-top:-10px; margin-bottom:15px; font-size:13px;">Organised by Love In Action (LIA) · Reg. Under Indian Govt. Act 1892</p>
     <p><strong>Address:</strong><br>Guru Kelucharan Mohapatra Odissi Research Centre,<br>Plot No-1/A, Jaydev Vihar,<br>Bhubaneswar, Odisha – 751013</p>
     <p><strong>Phone / WhatsApp:</strong><br><a href="tel:+916372881379">+91 63728 81379</a></p>
     <p><strong>Email:</strong><br><a href="mailto:Infoworldachivementaward@gmail.com">Infoworldachivementaward@gmail.com</a></p>
@@ -758,8 +761,8 @@ const css = await readFile('style.css', 'utf8');
 const js = await readFile('client.js', 'utf8');
 
 function render(path, p) {
-  const title = p.title.includes('Love In Action') ? p.title : p.title + ' | Love In Action (LIA)';
-  const desc = p.description || 'World Achievement Awards 2026 by Love In Action (LIA), Bhubaneswar, Odisha.';
+  const title = p.title.includes('World Achievement Awards') ? p.title : p.title + ' | World Achievement Awards 2026';
+  const desc = p.description || 'World Achievement Awards 2026, Bhubaneswar, Odisha.';
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -803,9 +806,9 @@ function render(path, p) {
   <a class="skip" href="#main">Skip to content</a>
   <header>
     <div class="nav wrap">
-      <a href="/" class="brand" aria-label="Love In Action Home">
-        <span class="brand-mark">✳</span>
-        <span>LOVE IN ACTION<small>WORLD ACHIEVEMENT <b>AWARDS 2026</b></small></span>
+      <a href="/" class="brand" aria-label="World Achievement Awards Home">
+        <img src="/assets/LOGO.jpeg" alt="World Achievement Awards Emblem" class="brand-logo" width="46" height="46">
+        <span>WORLD ACHIEVEMENT<small>AWARDS <b>2026</b></small></span>
       </a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="navigation" aria-label="Toggle menu">☰</button>
       <nav id="navigation" aria-label="Main navigation">
@@ -839,11 +842,11 @@ function render(path, p) {
   <footer>
     <div class="wrap footer-grid">
       <div>
-        <a href="/" class="brand">
-          <span class="brand-mark">✳</span>
-          <span>LOVE IN ACTION<small>WORLD ACHIEVEMENT AWARDS 2026</small></span>
+        <a href="/" class="brand footer-brand" aria-label="World Achievement Awards Home">
+          <img src="/assets/LOGO.jpeg" alt="World Achievement Awards Emblem" class="brand-logo footer-logo" width="54" height="54">
+          <span>WORLD ACHIEVEMENT<small>AWARDS 2026</small></span>
         </a>
-        <p>Together For A Healthier And Kinder World.<br>Reg. Under Indian Govt. Act 1892 · Reg. No. 105300064</p>
+        <p>Together For A Healthier And Kinder World.<br>Organised by Love In Action (LIA)<br>Reg. Under Indian Govt. Act 1892 · Reg. No. 105300064</p>
         <span class="eyebrow">HEADQUARTERED IN BHUBANESWAR, ODISHA</span>
       </div>
       <div>
@@ -863,7 +866,7 @@ function render(path, p) {
       </div>
     </div>
     <div class="wrap footer-bottom">
-      <span>© 2026 Love In Action (LIA) · World Achievement Awards. All Rights Reserved.</span>
+      <span>© 2026 World Achievement Awards · Organised by Love In Action (LIA). All Rights Reserved.</span>
       <div>
         ${link('/privacy', 'Privacy Policy')}
         ${link('/terms', 'Rules & Terms')}
@@ -890,13 +893,15 @@ await mkdir('dist/server', { recursive: true });
 await mkdir('dist/.openai', { recursive: true });
 
 const runtime = await readFile('server.runtime.js', 'utf8');
-await writeFile('dist/server/index.js', `export const demoContent=${JSON.stringify(demoContent)};
+await writeFile('dist/server/index.js', `export const logoImage=${JSON.stringify((await readFile("assets/LOGO.jpeg")).toString("base64"))};
+export const demoContent=${JSON.stringify(demoContent)};
 export const socialImage=${JSON.stringify((await readFile("social.png")).toString("base64"))};
 export const assets=${JSON.stringify({ "/assets/style.css": css, "/assets/client.js": js })};
 export const pages=${JSON.stringify(output)};
 export const categories=${JSON.stringify(awards)};
 export const siteBase=${JSON.stringify(base)};
 if (typeof globalThis !== 'undefined') {
+  globalThis.logoImage = logoImage;
   globalThis.demoContent = demoContent;
   globalThis.socialImage = socialImage;
   globalThis.assets = assets;
