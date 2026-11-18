@@ -493,7 +493,7 @@ if (inbox) {
   });
 }
 
-// Automatic Smooth Moving Carousel for Popular Awards
+// Hardware-Accelerated Smooth Moving Carousel for Popular Awards
 (function initAwardCarousel() {
   const carousel = document.querySelector('#award-carousel') || document.querySelector('.award-carousel');
   const container = document.querySelector('#carousel-container') || carousel?.parentElement;
@@ -505,7 +505,6 @@ if (inbox) {
   const cards = carousel.querySelectorAll('.award-card');
   if (cards.length === 0) return;
 
-  // Single set count is 6 (half of duplicated 12 cards)
   const singleSetCount = cards.length > 6 ? Math.floor(cards.length / 2) : cards.length;
 
   function getStepWidth() {
@@ -514,7 +513,7 @@ if (inbox) {
     if (first && second) {
       return second.offsetLeft - first.offsetLeft;
     }
-    return (first?.offsetWidth || 360) + 18;
+    return (first?.offsetWidth || 380) + 24;
   }
 
   function getSingleSetWidth() {
@@ -524,138 +523,85 @@ if (inbox) {
     return getStepWidth() * singleSetCount;
   }
 
-  let isPaused = false;
-  let pauseTimer = null;
+  let resumeTimer = null;
   let isDragging = false;
   let startX = 0;
-  let startScrollLeft = 0;
+  let dragOffset = 0;
   let draggedDistance = 0;
-  let lastTimestamp = null;
-  let currentScroll = carousel.scrollLeft || 0;
-  const pixelsPerSecond = 42; // smooth, comfortable gliding pace
 
-  function pauseAuto(ms = 3500) {
-    isPaused = true;
-    if (pauseTimer) clearTimeout(pauseTimer);
-    pauseTimer = setTimeout(() => {
-      pauseTimer = null;
-      currentScroll = carousel.scrollLeft;
-      isPaused = false;
-    }, ms);
+  function getCurrentTranslateX() {
+    try {
+      const style = window.getComputedStyle(carousel);
+      const matrix = new WebKitCSSMatrix(style.transform);
+      return matrix.m41;
+    } catch {
+      return 0;
+    }
   }
 
-  function step(timestamp) {
-    if (!lastTimestamp) lastTimestamp = timestamp;
-    const delta = Math.min((timestamp - lastTimestamp) / 1000, 0.1);
-    lastTimestamp = timestamp;
-
-    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if (!isPaused && !isDragging && !prefersReduced) {
-      const singleSetWidth = getSingleSetWidth();
-      if (singleSetWidth > 0) {
-        currentScroll += pixelsPerSecond * delta;
-        if (currentScroll >= singleSetWidth) {
-          currentScroll -= singleSetWidth;
-          carousel.scrollLeft = currentScroll;
-        } else {
-          carousel.scrollLeft = currentScroll;
-        }
-      }
-    }
-
-    requestAnimationFrame(step);
-  }
-
-  requestAnimationFrame(step);
-
-  // Pause on mouse hover
-  container?.addEventListener('mouseenter', () => {
-    isPaused = true;
-  });
-  container?.addEventListener('mouseleave', () => {
-    if (!pauseTimer) {
-      currentScroll = carousel.scrollLeft;
-      isPaused = false;
-    }
-  });
-
-  // Pause on keyboard focus
-  container?.addEventListener('focusin', () => {
-    isPaused = true;
-  });
-  container?.addEventListener('focusout', () => {
-    if (!pauseTimer) {
-      currentScroll = carousel.scrollLeft;
-      isPaused = false;
-    }
-  });
-
-  // Manual Previous & Next buttons
-  nextBtn?.addEventListener('click', () => {
-    pauseAuto(4000);
-    const stepWidth = getStepWidth();
+  function shiftCarousel(delta) {
+    if (resumeTimer) clearTimeout(resumeTimer);
     const singleSetWidth = getSingleSetWidth();
-    if (singleSetWidth > 0 && carousel.scrollLeft + stepWidth >= singleSetWidth * 2 - carousel.clientWidth) {
-      carousel.scrollLeft -= singleSetWidth;
-    }
-    carousel.scrollBy({ left: stepWidth, behavior: 'smooth' });
-    setTimeout(() => { currentScroll = carousel.scrollLeft; }, 400);
+    if (singleSetWidth <= 0) return;
+
+    let currentX = getCurrentTranslateX();
+    carousel.style.animationPlayState = 'paused';
+    carousel.style.transition = 'transform 0.45s cubic-bezier(0.16, 1, 0.3, 1)';
+    let targetX = currentX + delta;
+    if (targetX > 0) targetX -= singleSetWidth;
+    if (targetX < -singleSetWidth) targetX += singleSetWidth;
+    carousel.style.transform = `translate3d(${targetX}px, 0, 0)`;
+
+    resumeTimer = setTimeout(() => {
+      carousel.style.transition = '';
+      carousel.style.animationPlayState = 'running';
+    }, 3500);
+  }
+
+  nextBtn?.addEventListener('click', () => {
+    shiftCarousel(-getStepWidth());
   });
 
   prevBtn?.addEventListener('click', () => {
-    pauseAuto(4000);
-    const stepWidth = getStepWidth();
-    const singleSetWidth = getSingleSetWidth();
-    if (singleSetWidth > 0 && carousel.scrollLeft - stepWidth < 0) {
-      carousel.scrollLeft += singleSetWidth;
-    }
-    carousel.scrollBy({ left: -stepWidth, behavior: 'smooth' });
-    setTimeout(() => { currentScroll = carousel.scrollLeft; }, 400);
+    shiftCarousel(getStepWidth());
   });
 
-  // Pointer drag & touch swipe
+  // Pointer drag support
   carousel.addEventListener('pointerdown', e => {
     if (e.button !== 0 && e.pointerType === 'mouse') return;
     isDragging = true;
-    isPaused = true;
-    startX = e.pageX;
-    startScrollLeft = carousel.scrollLeft;
     draggedDistance = 0;
+    startX = e.pageX;
+    dragOffset = getCurrentTranslateX();
+    carousel.style.animationPlayState = 'paused';
+    carousel.style.transition = 'none';
     carousel.style.cursor = 'grabbing';
   });
 
   window.addEventListener('pointermove', e => {
     if (!isDragging) return;
-    const deltaX = e.pageX - startX;
-    draggedDistance = Math.abs(deltaX);
-    const singleSetWidth = getSingleSetWidth();
-    let target = startScrollLeft - deltaX;
-    if (singleSetWidth > 0) {
-      while (target < 0) target += singleSetWidth;
-      while (target >= singleSetWidth * 2) target -= singleSetWidth;
-    }
-    carousel.scrollLeft = target;
-    currentScroll = target;
+    const diff = e.pageX - startX;
+    draggedDistance = Math.abs(diff);
+    carousel.style.transform = `translate3d(${dragOffset + diff}px, 0, 0)`;
   });
 
   const stopDrag = () => {
     if (!isDragging) return;
     isDragging = false;
     carousel.style.cursor = 'grab';
-    currentScroll = carousel.scrollLeft;
-    pauseAuto(3000);
+    if (resumeTimer) clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(() => {
+      carousel.style.transition = '';
+      carousel.style.animationPlayState = 'running';
+    }, 2500);
   };
 
   window.addEventListener('pointerup', stopDrag);
   window.addEventListener('pointercancel', stopDrag);
 
-  // Suppress link click when user dragged
   carousel.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', e => {
-      if (draggedDistance > 8) {
-        e.preventDefault();
-      }
+      if (draggedDistance > 8) e.preventDefault();
     });
   });
 })();

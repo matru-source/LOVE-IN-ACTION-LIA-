@@ -848,66 +848,56 @@ nav .active {
     position: relative;
     width: 100%;
     overflow: hidden;
-}
-
-.award-carousel-container::before,
-.award-carousel-container::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 36px;
-    pointer-events: none;
-    z-index: 3;
-}
-
-.award-carousel-container::before {
-    left: 0;
-    background: linear-gradient(to right, var(--paper, #f7f6f0) 20%, transparent);
-}
-
-.award-carousel-container::after {
-    right: 0;
-    background: linear-gradient(to left, var(--paper, #f7f6f0) 20%, transparent);
+    padding-block: 16px 28px;
+    mask-image: linear-gradient(to right, transparent 0%, black 2.5%, black 97.5%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 2.5%, black 97.5%, transparent 100%);
 }
 
 .award-carousel {
     display: flex !important;
-    overflow-x: scroll !important;
-    overflow-y: hidden !important;
-    scroll-behavior: auto !important;
-    scroll-snap-type: none !important;
-    scrollbar-width: none !important;
-    -ms-overflow-style: none !important;
-    gap: 20px;
-    padding-block: 8px 16px;
+    flex-wrap: nowrap !important;
+    width: max-content !important;
+    overflow: visible !important;
+    gap: 24px !important;
+    padding: 10px 4px 18px 4px !important;
     cursor: grab;
     user-select: none;
-    -webkit-overflow-scrolling: touch;
+    will-change: transform;
+    animation: award-marquee-glide 36s linear infinite;
 }
 
 .award-carousel:active {
     cursor: grabbing;
 }
 
-.award-carousel::-webkit-scrollbar {
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
+.award-carousel-container:hover .award-carousel,
+.award-carousel:hover,
+.award-carousel:focus-within {
+    animation-play-state: paused !important;
+}
+
+@keyframes award-marquee-glide {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-50%, 0, 0);
+    }
 }
 
 .award-carousel .award-card {
-    flex: 0 0 calc((100% - 40px) / 3);
-    min-width: calc((100% - 40px) / 3);
-    max-width: calc((100% - 40px) / 3);
+    flex: 0 0 380px !important;
+    width: 380px !important;
+    min-width: 380px !important;
+    max-width: 380px !important;
     box-sizing: border-box;
     scroll-snap-align: none !important;
-    transition: background .25s ease, transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .award-carousel .award-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 28px rgba(15, 61, 46, 0.12);
+    transform: translateY(-5px);
+    box-shadow: 0 14px 32px rgba(15, 61, 46, 0.12);
     border-color: #c4a962;
     background: #ffffff;
 }
@@ -2205,17 +2195,19 @@ textarea {
     }
 
     .award-carousel .award-card {
-        flex: 0 0 calc((100% - 20px) / 2);
-        min-width: calc((100% - 20px) / 2);
-        max-width: calc((100% - 20px) / 2);
+        flex: 0 0 330px !important;
+        width: 330px !important;
+        min-width: 330px !important;
+        max-width: 330px !important;
     }
 }
 
 @media(max-width:600px) {
     .award-carousel .award-card {
-        flex: 0 0 85%;
-        min-width: 85%;
-        max-width: 85%;
+        flex: 0 0 290px !important;
+        width: 290px !important;
+        min-width: 290px !important;
+        max-width: 290px !important;
     }
     .hero {
         grid-template-columns: 1fr;
