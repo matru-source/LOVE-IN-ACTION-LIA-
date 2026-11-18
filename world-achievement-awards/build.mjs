@@ -1,10 +1,10 @@
-import {demoContent} from './demo.mjs';
-import {enhance} from './enhance.mjs';
-import {mkdir,writeFile,readFile} from 'node:fs/promises';
+import { demoContent } from './demo.mjs';
+import { enhance } from './enhance.mjs';
+import { mkdir, writeFile, readFile } from 'node:fs/promises';
 
-const base='https://world-achievement-awards.zex4uofficial.chatgpt.site';
+const base = 'https://world-achievement-awards.zex4uofficial.chatgpt.site';
 
-export const awards=[
+export const awards = [
   'Kalinga Yuva Gaurav Samman 2026',
   'World Achievement Award',
   'Seva Ratan Award',
@@ -19,9 +19,9 @@ export const awards=[
   'Lifetime Achievement Award'
 ];
 
-export const slug=s=>s.toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/-$/,'');
+export const slug = s => s.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/-$/, '');
 
-export const descriptions=[
+export const descriptions = [
   'For youth below 35 who have shown remarkable talent, leadership and contribution to society in any field.',
   'Recognising extraordinary individual and institutional contributions creating lasting global and national impact.',
   'Honouring selfless service, humanitarian dedication and individuals who consistently put humanity first.',
@@ -36,39 +36,39 @@ export const descriptions=[
   'The highest recognition honouring a sustained lifetime of extraordinary dedication, service and national impact.'
 ];
 
-export const nav=[
-  ['Home','/'],
-  ['About Us','/about'],
-  ['Awards','/awards'],
-  ['Award Process','/process'],
-  ['Registration Form','/nominate'],
-  ['Awardees','/awardees'],
-  ['Photo Gallery','/gallery'],
-  ['Video Gallery','/videos'],
-  ['Blog / News','/news'],
-  ['Contact Us','/contact']
+export const nav = [
+  ['Home', '/'],
+  ['About Us', '/about'],
+  ['Awards', '/awards'],
+  ['Award Process', '/process'],
+  ['Registration Form', '/nominate'],
+  ['Awardees', '/awardees'],
+  ['Photo Gallery', '/gallery'],
+  ['Video Gallery', '/videos'],
+  ['Blog / News', '/news'],
+  ['Contact Us', '/contact']
 ];
 
-const link=(url,text,cls='')=>`<a class="${cls}" href="${url}">${text}</a>`;
-const arrow='<span aria-hidden="true">↗</span>';
+const link = (url, text, cls = '') => `<a class="${cls}" href="${url}">${text}</a>`;
+const arrow = '<span aria-hidden="true">↗</span>';
 
-const cards=(all=false)=>awards.slice(0,all?12:6).map((a,i)=>`
+const cards = (all = false) => awards.slice(0, all ? 12 : 6).map((a, i) => `
 <a class="award-card" href="/awards/${slug(a)}">
-  <span class="card-num">${String(i+1).padStart(2,'0')} / RECOGNITION</span>
-  <span class="award-icon">${['✧','◎','♡','⌘','✳','☀','⚖','☘','⚡','✪','✎','✦'][i%12]}</span>
+  <span class="card-num">${String(i + 1).padStart(2, '0')} / RECOGNITION</span>
+  <span class="award-icon">${['✧', '◎', '♡', '⌘', '✳', '☀', '⚖', '☘', '⚡', '✪', '✎', '✦'][i % 12]}</span>
   <h3>${a}</h3>
   <p>${descriptions[i]}</p>
   <span class="card-link">Explore award ${arrow}</span>
 </a>`).join('');
 
-const heading=(eyebrow,title,desc)=>`
+const heading = (eyebrow, title, desc) => `
 <section class="page-heading wrap">
   <p class="eyebrow">${eyebrow}</p>
   <h1>${title}</h1>
   <p class="lead">${desc}</p>
 </section>`;
 
-const cta=`
+const cta = `
 <section class="cta wrap">
   <span class="eyebrow">LOVE IN ACTION (LIA) · WORLD ACHIEVEMENT AWARDS 2026</span>
   <h2>Your Good Work Deserves A National Stage.<br>Apply Today.</h2>
@@ -79,7 +79,7 @@ const cta=`
   <span class="cta-star" aria-hidden="true">✳</span>
 </section>`;
 
-export const steps=[
+export const steps = [
   'Registration Form',
   'Submit Profile & Documents',
   'Evaluation & Selection',
@@ -88,7 +88,7 @@ export const steps=[
   'Award Ceremony'
 ];
 
-export const stepText=[
+export const stepText = [
   'Fill online Registration Form on this website. Follow all Rules & Terms.',
   'Submit 1 Valid ID Proof (Aadhaar / Voter / PAN), 1 Passport Photo (soft copy), Bio-Data / CV / Achievements Report, and Proof of Achievements / Photos / Paper Cutting.',
   'Our expert Jury Panel will verify your profile for authenticity and impact. If selected, you will get confirmation on WhatsApp / Email.',
@@ -97,13 +97,13 @@ export const stepText=[
   'Award will be presented on stage in presence of Chief Guests. Venue & Date will be informed in advance. Processing Time: 10 to 30 Working Days.'
 ];
 
-const pages={};
+const pages = {};
 
 // PAGE 1: HOME
-pages['/']={
-  title:'World Achievement Awards 2026 | Love In Action (LIA)',
-  description:'Love In Action (LIA) World Achievement Awards 2026. Together For A Healthier And Kinder World. Nominate achievers across 12 categories.',
-  body:`
+pages['/'] = {
+  title: 'World Achievement Awards 2026 | Love In Action (LIA)',
+  description: 'Love In Action (LIA) World Achievement Awards 2026. Together For A Healthier And Kinder World. Nominate achievers across 12 categories.',
+  body: `
 <section class="hero wrap">
   <div class="hero-copy">
     <p class="eyebrow"><span class="live-dot"></span> LOVE IN ACTION (LIA) · BHUBANESWAR</p>
@@ -179,22 +179,10 @@ pages['/']={
       <h2>Popular Awards Categories</h2>
       <p class="muted">Kalinga Yuva Gaurav Samman | Seva Ratan Award | Education Icon | Women Empowerment | Health Warrior | Youth Icon</p>
     </div>
-    <div class="carousel-nav-group">
-      <a class="text-link" href="/awards">View All 12 Awards ${arrow}</a>
-      <div class="carousel-controls" aria-label="Popular awards carousel controls">
-        <button type="button" class="carousel-nav-btn prev" id="carousel-prev-btn" aria-label="Previous awards" title="Previous award">
-          <span aria-hidden="true">←</span>
-        </button>
-        <button type="button" class="carousel-nav-btn next" id="carousel-next-btn" aria-label="Next awards" title="Next award">
-          <span aria-hidden="true">→</span>
-        </button>
-      </div>
-    </div>
+    <a class="text-link" href="/awards">View All 12 Awards ${arrow}</a>
   </div>
-  <div class="award-carousel-container" id="carousel-container">
-    <div class="card-grid award-carousel" id="award-carousel" tabindex="0" role="region" aria-label="Popular awards carousel">
-      ${cards()}${cards()}
-    </div>
+  <div class="card-grid award-carousel" tabindex="0" role="region" aria-label="Popular awards carousel">
+    ${cards()}
   </div>
 </section>
 
@@ -263,11 +251,11 @@ ${cta}`
 };
 
 // PAGE 2: ABOUT US
-pages['/about']={
-  title:'About Us | Love In Action (LIA)',
-  description:'About Love In Action (LIA). Who We Are, Our Mission, Our Vision, What We Do, and Message from Founder & President.',
-  body:`
-${heading('ABOUT LOVE IN ACTION (LIA)','Good work should<br><em>never go unnoticed.</em>','Love In Action is a social organisation working to recognise real talent, inspire youth and serve humanity through health, education, culture and social service.')}
+pages['/about'] = {
+  title: 'About Us | Love In Action (LIA)',
+  description: 'About Love In Action (LIA). Who We Are, Our Mission, Our Vision, What We Do, and Message from Founder & President.',
+  body: `
+${heading('ABOUT LOVE IN ACTION (LIA)', 'Good work should<br><em>never go unnoticed.</em>', 'Love In Action is a social organisation working to recognise real talent, inspire youth and serve humanity through health, education, culture and social service.')}
 <section class="wrap split">
   <div>
     <h2>Who We Are</h2>
@@ -339,11 +327,11 @@ ${cta}`
 };
 
 // PAGE 3: AWARDS
-pages['/awards']={
-  title:'Award Categories | World Achievement Awards 2026',
-  description:'Explore all 12 Award Categories of World Achievement Awards 2026 by Love In Action (LIA). Criteria, benefits, and how to apply.',
-  body:`
-${heading('12 AWARD CATEGORIES','Recognising Real Talent.<br><em>Honouring Humanity.</em>','Explore all 12 award categories across social service, healthcare, education, art, sports and entrepreneurship. Each category features its own dedicated criteria, benefits, and past awardees.')}
+pages['/awards'] = {
+  title: 'Award Categories | World Achievement Awards 2026',
+  description: 'Explore all 12 Award Categories of World Achievement Awards 2026 by Love In Action (LIA). Criteria, benefits, and how to apply.',
+  body: `
+${heading('12 AWARD CATEGORIES', 'Recognising Real Talent.<br><em>Honouring Humanity.</em>', 'Explore all 12 award categories across social service, healthcare, education, art, sports and entrepreneurship. Each category features its own dedicated criteria, benefits, and past awardees.')}
 <section class="wrap">
   <div class="card-grid">${cards(true)}</div>
 </section>
@@ -351,20 +339,20 @@ ${cta}`
 };
 
 // INDIVIDUAL AWARDS PAGES
-awards.forEach((a,i)=>{
-  const isYouth=i===0||i===6;
-  pages['/awards/'+slug(a)]={
-    title:`${a} | World Achievement Awards 2026`,
-    description:`Details, eligibility, benefits, and nomination process for ${a} by Love In Action (LIA).`,
-    body:`
-${heading('WORLD ACHIEVEMENT AWARDS 2026 · CATEGORY '+String(i+1).padStart(2,'0'),a,descriptions[i])}
+awards.forEach((a, i) => {
+  const isYouth = i === 0 || i === 6;
+  pages['/awards/' + slug(a)] = {
+    title: `${a} | World Achievement Awards 2026`,
+    description: `Details, eligibility, benefits, and nomination process for ${a} by Love In Action (LIA).`,
+    body: `
+${heading('WORLD ACHIEVEMENT AWARDS 2026 · CATEGORY ' + String(i + 1).padStart(2, '0'), a, descriptions[i])}
 <section class="wrap split">
   <div>
     <h2>About the Award</h2>
     <p>${descriptions[i]} This award provides national recognition, celebrating grassroots impact and dedicated dedication to a healthier, kinder society.</p>
     
     <h3>Eligibility Criteria</h3>
-    <p>${isYouth?'Nominees must be youth below 35 years of age who have shown remarkable talent, leadership, and contribution to society in their chosen field.':'Open to individuals, social changemakers, educators, professionals, and organizations with authentic, documented achievements and exemplary contribution to society.'} Supporting proof such as news articles, certificates, photographs, or bio-data should accompany the nomination.</p>
+    <p>${isYouth ? 'Nominees must be youth below 35 years of age who have shown remarkable talent, leadership, and contribution to society in their chosen field.' : 'Open to individuals, social changemakers, educators, professionals, and organizations with authentic, documented achievements and exemplary contribution to society.'} Supporting proof such as news articles, certificates, photographs, or bio-data should accompany the nomination.</p>
     
     <h3>Award Benefits</h3>
     <ul class="benefits-list">
@@ -395,11 +383,11 @@ ${cta}`
 });
 
 // PAGE 4: AWARD PROCESS / HOW TO APPLY
-pages['/process']={
-  title:'Award Process / How To Apply | Love In Action (LIA)',
-  description:'Six-step award process: Registration Form, Profile & Documents Submission, Jury Evaluation, Registration Confirmation, Award Preparation, and Stage Ceremony.',
-  body:`
-${heading('AWARD PROCESS / HOW TO APPLY','A Transparent 6-Step Journey<br><em>To The National Stage</em>','From initial nomination to felicitation in the presence of distinguished Chief Guests. Processing Time: 10 to 30 Working Days.')}
+pages['/process'] = {
+  title: 'Award Process / How To Apply | Love In Action (LIA)',
+  description: 'Six-step award process: Registration Form, Profile & Documents Submission, Jury Evaluation, Registration Confirmation, Award Preparation, and Stage Ceremony.',
+  body: `
+${heading('AWARD PROCESS / HOW TO APPLY', 'A Transparent 6-Step Journey<br><em>To The National Stage</em>', 'From initial nomination to felicitation in the presence of distinguished Chief Guests. Processing Time: 10 to 30 Working Days.')}
 <section class="wrap timeline">
   <article>
     <span>01</span>
@@ -456,14 +444,14 @@ ${heading('AWARD PROCESS / HOW TO APPLY','A Transparent 6-Step Journey<br><em>To
 ${cta}`
 };
 
-const field=(name,label,type='text',required=true,placeholder='')=>`
-<label>${label}${required?' *':''}
-  <input name="${name}" type="${type}" ${required?'required':''} maxlength="200" ${placeholder?`placeholder="${placeholder}"`:''} ${type==='email'?'autocomplete="email"':''}>
+const field = (name, label, type = 'text', required = true, placeholder = '') => `
+<label>${label}${required ? ' *' : ''}
+  <input name="${name}" type="${type}" ${required ? 'required' : ''} maxlength="200" ${placeholder ? `placeholder="${placeholder}"` : ''} ${type === 'email' ? 'autocomplete="email"' : ''}>
 </label>`;
 
 // PAGE 5: REGISTRATION FORM (/nominate & /registration)
-const registrationFormBody=`
-${heading('NOMINATE AN ACHIEVER','Registration Form -<br>World Achievement Awards 2026','Together For A Healthier And Kinder World · Regd. Under Indian Govt. Act 1892 · Bhubaneswar, Odisha')}
+const registrationFormBody = `
+${heading('NOMINATE AN ACHIEVER', 'Registration Form -<br>World Achievement Awards 2026', 'Together For A Healthier And Kinder World · Regd. Under Indian Govt. Act 1892 · Bhubaneswar, Odisha')}
 <section class="wrap form-layout">
   <form method="post" action="/api/nominations" enctype="multipart/form-data" id="nomination-form" data-endpoint="/api/nominations">
     
@@ -472,9 +460,9 @@ ${heading('NOMINATE AN ACHIEVER','Registration Form -<br>World Achievement Award
       <h2>Personal Details</h2>
     </div>
     <div class="form-grid">
-      ${field('name','Full Name','text',true,'Enter nominee full name')}
-      ${field('guardian','Father / Husband Name','text',false,'Father or husband name')}
-      ${field('dob','Date of Birth','date',true)}
+      ${field('name', 'Full Name', 'text', true, 'Enter nominee full name')}
+      ${field('guardian', 'Father / Husband Name', 'text', false, 'Father or husband name')}
+      ${field('dob', 'Date of Birth', 'date', true)}
       <label>Gender *
         <select name="gender" required>
           <option value="">Select Gender</option>
@@ -484,12 +472,12 @@ ${heading('NOMINATE AN ACHIEVER','Registration Form -<br>World Achievement Award
           <option>Prefer not to say</option>
         </select>
       </label>
-      ${field('phone','Mobile / WhatsApp Number','tel',true,'e.g. 9876543210 or +91 9876543210')}
-      ${field('email','Email ID','email',true,'name@example.com')}
-      ${field('address','Full Address','text',true,'House/Street/Village/Post')}
-      ${field('district','District','text',true,'e.g. Khordha, Cuttack, Kendrapara')}
-      ${field('state','State','text',true,'e.g. Odisha')}
-      ${field('pin','PIN Code','text',true,'6-digit PIN code')}
+      ${field('phone', 'Mobile / WhatsApp Number', 'tel', true, 'e.g. 9876543210 or +91 9876543210')}
+      ${field('email', 'Email ID', 'email', true, 'name@example.com')}
+      ${field('address', 'Full Address', 'text', true, 'House/Street/Village/Post')}
+      ${field('district', 'District', 'text', true, 'e.g. Khordha, Cuttack, Kendrapara')}
+      ${field('state', 'State', 'text', true, 'e.g. Odisha')}
+      ${field('pin', 'PIN Code', 'text', true, '6-digit PIN code')}
     </div>
 
     <div class="form-step">
@@ -500,16 +488,16 @@ ${heading('NOMINATE AN ACHIEVER','Registration Form -<br>World Achievement Award
       <label>Select Award Category *
         <select name="category" required>
           <option value="">Choose an Award Category</option>
-          ${awards.map(a=>`<option>${a}</option>`).join('')}
+          ${awards.map(a => `<option>${a}</option>`).join('')}
         </select>
       </label>
       <label>Select Field *
         <select name="field" required>
           <option value="">Select Field</option>
-          ${['Education','Health','Social Service','Art','Sports','Business','Others'].map(a=>`<option>${a}</option>`).join('')}
+          ${['Education', 'Health', 'Social Service', 'Art', 'Sports', 'Business', 'Others'].map(a => `<option>${a}</option>`).join('')}
         </select>
       </label>
-      ${field('experience','Years of Experience','number',false,'Total years in this field')}
+      ${field('experience', 'Years of Experience', 'number', false, 'Total years in this field')}
     </div>
 
     <div class="form-field-group">
@@ -565,24 +553,24 @@ ${heading('NOMINATE AN ACHIEVER','Registration Form -<br>World Achievement Award
   </aside>
 </section>`;
 
-pages['/nominate']={
-  title:'Registration Form - World Achievement Awards 2026',
-  description:'Fill online Registration Form for World Achievement Awards 2026 by Love In Action (LIA). Nominate achievers in Bhubaneswar, Odisha.',
-  body:registrationFormBody
+pages['/nominate'] = {
+  title: 'Registration Form - World Achievement Awards 2026',
+  description: 'Fill online Registration Form for World Achievement Awards 2026 by Love In Action (LIA). Nominate achievers in Bhubaneswar, Odisha.',
+  body: registrationFormBody
 };
 
-pages['/registration']={
-  title:'Registration Form - World Achievement Awards 2026',
-  description:'Fill online Registration Form for World Achievement Awards 2026 by Love In Action (LIA). Nominate achievers in Bhubaneswar, Odisha.',
-  body:registrationFormBody
+pages['/registration'] = {
+  title: 'Registration Form - World Achievement Awards 2026',
+  description: 'Fill online Registration Form for World Achievement Awards 2026 by Love In Action (LIA). Nominate achievers in Bhubaneswar, Odisha.',
+  body: registrationFormBody
 };
 
 // PAGE 6: AWARDEES LIST
-pages['/awardees']={
-  title:'Awardees List | World Achievement Awards',
-  description:'Directory of honoured awardees: Photo, Name, District, Award Name, and Field. Filter by Year, Category, and State.',
-  body:`
-${heading('HONOURING REAL TALENT','Distinguished Awardees Directory','Discover extraordinary changemakers, doctors, teachers, youth icons and cultural maestros felicitated by Love In Action.')}
+pages['/awardees'] = {
+  title: 'Awardees List | World Achievement Awards',
+  description: 'Directory of honoured awardees: Photo, Name, District, Award Name, and Field. Filter by Year, Category, and State.',
+  body: `
+${heading('HONOURING REAL TALENT', 'Distinguished Awardees Directory', 'Discover extraordinary changemakers, doctors, teachers, youth icons and cultural maestros felicitated by Love In Action.')}
 <section class="wrap archive">
   <div class="filters-container"></div>
   <div data-content="awardees" aria-live="polite"></div>
@@ -591,11 +579,11 @@ ${cta}`
 };
 
 // PAGE 7: PHOTO GALLERY
-pages['/gallery']={
-  title:'Photo Gallery | World Achievement Awards',
-  description:'Photo gallery of Award Ceremony 2025, Award Ceremony 2026, Health Camps, Cultural Events, and Awardees.',
-  body:`
-${heading('PHOTO GALLERY','Moments That Matter','Explore high-resolution moments from our award ceremonies, free medical camps, and cultural recitals. Click any image to view in full resolution.')}
+pages['/gallery'] = {
+  title: 'Photo Gallery | World Achievement Awards',
+  description: 'Photo gallery of Award Ceremony 2025, Award Ceremony 2026, Health Camps, Cultural Events, and Awardees.',
+  body: `
+${heading('PHOTO GALLERY', 'Moments That Matter', 'Explore high-resolution moments from our award ceremonies, free medical camps, and cultural recitals. Click any image to view in full resolution.')}
 <section class="wrap archive">
   <div class="gallery-category-tabs" role="tablist">
     <button class="tab-btn active" data-gallery-tab="all">All Photos</button>
@@ -614,11 +602,11 @@ ${cta}`
 };
 
 // PAGE 8: VIDEO GALLERY
-pages['/videos']={
-  title:'Video Gallery | World Achievement Awards',
-  description:'Watch Award Ceremony Full Video, Awardee Interviews, Stage Moments & Reels, and Founder Messages.',
-  body:`
-${heading('VIDEO GALLERY','Stories In Motion','Watch telecasts of award presentations, emotional stage moments, in-depth awardee interviews, and leadership messages.')}
+pages['/videos'] = {
+  title: 'Video Gallery | World Achievement Awards',
+  description: 'Watch Award Ceremony Full Video, Awardee Interviews, Stage Moments & Reels, and Founder Messages.',
+  body: `
+${heading('VIDEO GALLERY', 'Stories In Motion', 'Watch telecasts of award presentations, emotional stage moments, in-depth awardee interviews, and leadership messages.')}
 <section class="wrap archive">
   <div class="video-subscribe-strip">
     <div>
@@ -633,11 +621,11 @@ ${cta}`
 };
 
 // PAGE 9: BLOG / NEWS
-pages['/news']={
-  title:'Blog / News | Love In Action (LIA)',
-  description:'Latest news, upcoming health camps, awardee success stories, and press coverage from Love In Action (LIA).',
-  body:`
-${heading('BLOG & NEWS','Latest Updates & Stories','Stay informed about nomination deadlines, upcoming health camps, inspiring awardee journeys, and national press coverage.')}
+pages['/news'] = {
+  title: 'Blog / News | Love In Action (LIA)',
+  description: 'Latest news, upcoming health camps, awardee success stories, and press coverage from Love In Action (LIA).',
+  body: `
+${heading('BLOG & NEWS', 'Latest Updates & Stories', 'Stay informed about nomination deadlines, upcoming health camps, inspiring awardee journeys, and national press coverage.')}
 <section class="wrap archive">
   <div style="margin-bottom: 35px;">
     <a class="news-card" href="/news/nomination-guide" style="display: block;">
@@ -659,11 +647,11 @@ ${heading('BLOG & NEWS','Latest Updates & Stories','Stay informed about nominati
 ${cta}`
 };
 
-pages['/news/nomination-guide']={
-  title:'How to Prepare Your Nomination | Love In Action Guide',
-  description:'A practical guide on how to prepare a winning nomination with verified evidence for World Achievement Awards 2026.',
-  body:`
-${heading('NOMINATION GUIDE','Let the impact<br><em>tell the story.</em>','A strong nomination is specific, honest and supported by evidence.')}
+pages['/news/nomination-guide'] = {
+  title: 'How to Prepare Your Nomination | Love In Action Guide',
+  description: 'A practical guide on how to prepare a winning nomination with verified evidence for World Achievement Awards 2026.',
+  body: `
+${heading('NOMINATION GUIDE', 'Let the impact<br><em>tell the story.</em>', 'A strong nomination is specific, honest and supported by evidence.')}
 <article class="wrap prose">
   <h2>Start with the change</h2>
   <p>Explain the problem you saw and the action you took. Describe who benefited and how their situation changed.</p>
@@ -678,11 +666,11 @@ ${heading('NOMINATION GUIDE','Let the impact<br><em>tell the story.</em>','A str
 };
 
 // PAGE 10: RULES, TERMS & PRIVACY
-pages['/terms']={
-  title:'Rules & Terms | World Achievement Awards',
-  description:'Official Rules, Terms & Conditions for Love In Action (LIA) World Achievement Awards 2026.',
-  body:`
-${heading('OFFICIAL RULES & TERMS','Rules & Terms of Nomination','Please read carefully before submitting your nomination for World Achievement Awards 2026.')}
+pages['/terms'] = {
+  title: 'Rules & Terms | World Achievement Awards',
+  description: 'Official Rules, Terms & Conditions for Love In Action (LIA) World Achievement Awards 2026.',
+  body: `
+${heading('OFFICIAL RULES & TERMS', 'Rules & Terms of Nomination', 'Please read carefully before submitting your nomination for World Achievement Awards 2026.')}
 <article class="wrap prose">
   <h2>1. Genuine & Authentic Nominations</h2>
   <p>All nominations and uploaded documents must be genuine, truthful, and verifiable. Any submission containing falsified claims, altered certificates, or misleading information will be disqualified immediately.</p>
@@ -703,11 +691,11 @@ ${heading('OFFICIAL RULES & TERMS','Rules & Terms of Nomination','Please read ca
 
 pages['/rules']=pages['/terms'];
 
-pages['/privacy']={
-  title:'Privacy Policy | Love In Action (LIA)',
-  description:'Privacy notice on how Love In Action (LIA) protects applicant personal data and documents.',
-  body:`
-${heading('PRIVACY POLICY','Data Protection & Confidentiality','How information submitted through this website is handled responsibly.')}
+pages['/privacy'] = {
+  title: 'Privacy Policy | Love In Action (LIA)',
+  description: 'Privacy notice on how Love In Action (LIA) protects applicant personal data and documents.',
+  body: `
+${heading('PRIVACY POLICY', 'Data Protection & Confidentiality', 'How information submitted through this website is handled responsibly.')}
 <article class="wrap prose">
   <h2>Information Collected</h2>
   <p>We collect personal information including full name, contact numbers, email address, address, and uploaded proof documents (Aadhaar, Voter ID, PAN, CV, photographs) solely for verification, jury review, and ceremony administration.</p>
@@ -721,11 +709,11 @@ ${heading('PRIVACY POLICY','Data Protection & Confidentiality','How information 
 };
 
 // PAGE 11: CONTACT US
-pages['/contact']={
-  title:'Contact Us | Love In Action (LIA)',
-  description:'Contact Love In Action (LIA) in Jaydev Vihar, Bhubaneswar, Odisha. Phone/WhatsApp: +91 63728 81379, Email: Infoworldachivementaward@gmail.com.',
-  body:`
-${heading('GET IN TOUCH','Contact Us','Have questions regarding the nomination process, award categories, or partnership? Reach out to our organizing team.')}
+pages['/contact'] = {
+  title: 'Contact Us | Love In Action (LIA)',
+  description: 'Contact Love In Action (LIA) in Jaydev Vihar, Bhubaneswar, Odisha. Phone/WhatsApp: +91 63728 81379, Email: Infoworldachivementaward@gmail.com.',
+  body: `
+${heading('GET IN TOUCH', 'Contact Us', 'Have questions regarding the nomination process, award categories, or partnership? Reach out to our organizing team.')}
 <section class="wrap split">
   <div>
     <p class="eyebrow">HEADQUARTERS · BHUBANESWAR</p>
@@ -741,9 +729,9 @@ ${heading('GET IN TOUCH','Contact Us','Have questions regarding the nomination p
 
   <form method="post" action="/api/contact" enctype="multipart/form-data" data-endpoint="/api/contact" class="panel">
     <h3>Send An Enquiry</h3>
-    ${field('name','Your Name','text',true,'Enter your name')}
-    ${field('phone','Mobile / WhatsApp Number','tel',true,'Enter 10-digit mobile number')}
-    ${field('email','Email ID','email',false,'name@example.com (optional)')}
+    ${field('name', 'Your Name', 'text', true, 'Enter your name')}
+    ${field('phone', 'Mobile / WhatsApp Number', 'tel', true, 'Enter 10-digit mobile number')}
+    ${field('email', 'Email ID', 'email', false, 'name@example.com (optional)')}
     <label>Message *
       <textarea name="message" rows="4" required maxlength="2400" placeholder="Write your query or message here..."></textarea>
     </label>
@@ -764,14 +752,14 @@ ${heading('GET IN TOUCH','Contact Us','Have questions regarding the nomination p
 </section>`
 };
 
-enhance(pages,awards);
+enhance(pages, awards);
 
-const css=await readFile('style.css','utf8');
-const js=await readFile('client.js','utf8');
+const css = await readFile('style.css', 'utf8');
+const js = await readFile('client.js', 'utf8');
 
-function render(path,p){
-  const title=p.title.includes('Love In Action')?p.title:p.title+' | Love In Action (LIA)';
-  const desc=p.description||'World Achievement Awards 2026 by Love In Action (LIA), Bhubaneswar, Odisha.';
+function render(path, p) {
+  const title = p.title.includes('Love In Action') ? p.title : p.title + ' | Love In Action (LIA)';
+  const desc = p.description || 'World Achievement Awards 2026 by Love In Action (LIA), Bhubaneswar, Odisha.';
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -780,7 +768,7 @@ function render(path,p){
   <title>${title}</title>
   <meta name="description" content="${desc}">
   <meta name="theme-color" content="#f6f5ef">
-  <link rel="canonical" href="${base}${path==='/'?'':path}">
+  <link rel="canonical" href="${base}${path === '/' ? '' : path}">
   <meta property="og:title" content="${title}">
   <meta property="og:description" content="${desc}">
   <meta property="og:type" content="website">
@@ -793,20 +781,20 @@ function render(path,p){
   <link rel="stylesheet" href="/assets/style.css">
   <script type="application/ld+json">
   ${JSON.stringify({
-    '@context':'https://schema.org',
-    '@type':'NGO',
-    name:'Love In Action (LIA)',
-    alternateName:'World Achievement Awards 2026',
-    url:base,
-    telephone:'+916372881379',
-    email:'Infoworldachivementaward@gmail.com',
-    address:{
-      '@type':'PostalAddress',
-      streetAddress:'Guru Kelucharan Mohapatra Odissi Research Centre, Plot No-1/A, Jaydev Vihar',
-      addressLocality:'Bhubaneswar',
-      addressRegion:'Odisha',
-      postalCode:'751013',
-      addressCountry:'IN'
+    '@context': 'https://schema.org',
+    '@type': 'NGO',
+    name: 'Love In Action (LIA)',
+    alternateName: 'World Achievement Awards 2026',
+    url: base,
+    telephone: '+916372881379',
+    email: 'Infoworldachivementaward@gmail.com',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Guru Kelucharan Mohapatra Odissi Research Centre, Plot No-1/A, Jaydev Vihar',
+      addressLocality: 'Bhubaneswar',
+      addressRegion: 'Odisha',
+      postalCode: '751013',
+      addressCountry: 'IN'
     }
   })}
   </script>
@@ -821,7 +809,7 @@ function render(path,p){
       </a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="navigation" aria-label="Toggle menu">☰</button>
       <nav id="navigation" aria-label="Main navigation">
-        ${nav.map(([t,u])=>link(u,t,(path===u||(u!=='/'&&path.startsWith(u)))?'active':'')).join('')}
+        ${nav.map(([t, u]) => link(u, t, (path === u || (u !== '/' && path.startsWith(u))) ? 'active' : '')).join('')}
         <a class="button gold nav-apply" href="/nominate">APPLY NOW ↗</a>
       </nav>
     </div>
@@ -841,25 +829,25 @@ function render(path,p){
       </div>
       <div>
         <h4>Menu</h4>
-        ${nav.slice(0,5).map(([t,u])=>link(u,t)).join('')}
+        ${nav.slice(0, 5).map(([t, u]) => link(u, t)).join('')}
       </div>
       <div>
         <h4>Explore</h4>
-        ${nav.slice(5).map(([t,u])=>link(u,t)).join('')}
+        ${nav.slice(5).map(([t, u]) => link(u, t)).join('')}
       </div>
       <div>
         <h4>Contact Us</h4>
         <p>Guru Kelucharan Mohapatra Odissi Research Centre, Jaydev Vihar, Bhubaneswar – 751013</p>
-        ${link('tel:+916372881379','+91 63728 81379')}
-        ${link('https://wa.me/916372881379','WhatsApp Support ↗')}
-        ${link('mailto:Infoworldachivementaward@gmail.com','Infoworldachivementaward@gmail.com')}
+        ${link('tel:+916372881379', '+91 63728 81379')}
+        ${link('https://wa.me/916372881379', 'WhatsApp Support ↗')}
+        ${link('mailto:Infoworldachivementaward@gmail.com', 'Infoworldachivementaward@gmail.com')}
       </div>
     </div>
     <div class="wrap footer-bottom">
       <span>© 2026 Love In Action (LIA) · World Achievement Awards. All Rights Reserved.</span>
       <div>
-        ${link('/privacy','Privacy Policy')}
-        ${link('/terms','Rules & Terms')}
+        ${link('/privacy', 'Privacy Policy')}
+        ${link('/terms', 'Rules & Terms')}
       </div>
       <a href="#main">Back to top ↑</a>
     </div>
@@ -869,23 +857,23 @@ function render(path,p){
 </html>`;
 }
 
-const output=Object.fromEntries(Object.entries(pages).map(([path,p])=>[path,render(path,p)]));
+const output = Object.fromEntries(Object.entries(pages).map(([path, p]) => [path, render(path, p)]));
 
-output['/404']=render('/404',{
-  title:'Page Not Found | 404',
-  body:heading('404 · PAGE NOT FOUND','Page Not Found','The page you requested could not be located.')+`
+output['/404'] = render('/404', {
+  title: 'Page Not Found | 404',
+  body: heading('404 · PAGE NOT FOUND', 'Page Not Found', 'The page you requested could not be located.') + `
 <div class="wrap" style="padding-bottom: 80px;">
   <a class="button gold" href="/">Return to Home ↗</a>
 </div>`
 });
 
-await mkdir('dist/server',{recursive:true});
-await mkdir('dist/.openai',{recursive:true});
+await mkdir('dist/server', { recursive: true });
+await mkdir('dist/.openai', { recursive: true });
 
-const runtime=await readFile('server.runtime.js','utf8');
-await writeFile('dist/server/index.js',`export const demoContent=${JSON.stringify(demoContent)};
+const runtime = await readFile('server.runtime.js', 'utf8');
+await writeFile('dist/server/index.js', `export const demoContent=${JSON.stringify(demoContent)};
 export const socialImage=${JSON.stringify((await readFile("social.png")).toString("base64"))};
-export const assets=${JSON.stringify({"/assets/style.css":css,"/assets/client.js":js})};
+export const assets=${JSON.stringify({ "/assets/style.css": css, "/assets/client.js": js })};
 export const pages=${JSON.stringify(output)};
 export const categories=${JSON.stringify(awards)};
 export const siteBase=${JSON.stringify(base)};
@@ -899,5 +887,5 @@ if (typeof globalThis !== 'undefined') {
 }
 ${runtime}`);
 
-await writeFile('dist/.openai/hosting.json',await readFile('.openai/hosting.json'));
+await writeFile('dist/.openai/hosting.json', await readFile('.openai/hosting.json'));
 console.log(`Built ${Object.keys(pages).length} server-rendered pages and two submission endpoints.`);
