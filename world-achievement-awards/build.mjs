@@ -911,39 +911,107 @@ function render(path, p) {
   <main id="main" data-page="${path === '/' ? 'home' : path.slice(1).replace(/\//g, '-')}">
     ${p.body}
   </main>
-  <footer>
-    <div class="wrap footer-grid">
-      <div>
-        <a href="/" class="brand footer-brand" aria-label="World Achievement Awards Home">
-          <img src="/assets/LOGO.jpeg" alt="World Achievement Awards Emblem" class="brand-logo footer-logo" width="54" height="54">
-          <span>WORLD ACHIEVEMENT<small>AWARDS 2026</small></span>
-        </a>
-        <p>Together For A Healthier And Kinder World.<br>Organised by Love In Action (LIA)<br>Reg. Under Indian Govt. Act 1892 · Reg. No. 105300064</p>
-        <span class="eyebrow">HEADQUARTERED IN BHUBANESWAR, ODISHA</span>
-      </div>
-      <div>
-        <h4>Menu</h4>
-        ${nav.slice(0, 5).map(([t, u]) => link(u, t)).join('')}
-      </div>
-      <div>
-        <h4>Explore</h4>
-        ${nav.slice(5).map(([t, u]) => link(u, t)).join('')}
-      </div>
-      <div>
-        <h4>Contact Us</h4>
-        <p>Guru Kelucharan Mohapatra Odissi Research Centre, Jaydev Vihar, Bhubaneswar – 751013</p>
-        ${link('tel:+916372881379', '+91 63728 81379')}
-        ${link('https://wa.me/916372881379', 'WhatsApp Support ↗')}
-        ${link('mailto:Infoworldachivementaward@gmail.com', 'Infoworldachivementaward@gmail.com')}
+  <footer class="site-footer">
+    <div class="footer-main-section">
+      <div class="wrap footer-grid">
+        <!-- Col 1: Brand & LIA Info -->
+        <div class="footer-col footer-col-brand">
+          <a href="/" class="brand footer-brand" aria-label="World Achievement Awards Home">
+            <img src="/assets/LOGO.jpeg" alt="World Achievement Awards Emblem" class="brand-logo footer-logo" width="60" height="60">
+            <span class="footer-brand-divider" aria-hidden="true"></span>
+            <span class="footer-brand-text">WORLD ACHIEVEMENT<small>AWARDS 2026</small></span>
+          </a>
+          <p class="footer-brand-desc">Together For A Healthier And Kinder World.<br>Organised by Love In Action (LIA).<br>Reg. Under Indian Govt. Act 1892 &bull; Reg. No. 105300064</p>
+          <div class="footer-hq-badge">
+            <span class="footer-hq-icon" aria-hidden="true">📍</span>
+            <span class="footer-hq-text">HEADQUARTERED IN BHUBANESWAR, ODISHA</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Menu -->
+        <div class="footer-col footer-col-menu">
+          <h4 class="footer-heading">Menu<span class="heading-gold-bar" aria-hidden="true"></span></h4>
+          <ul class="footer-nav-list">
+            ${nav.slice(0, 5).map(([t, u]) => `<li><a href="${u}"><span class="footer-chevron" aria-hidden="true">›</span>${t}</a></li>`).join('')}
+          </ul>
+        </div>
+
+        <!-- Col 3: Explore -->
+        <div class="footer-col footer-col-explore">
+          <h4 class="footer-heading">Explore<span class="heading-gold-bar" aria-hidden="true"></span></h4>
+          <ul class="footer-nav-list">
+            ${nav.slice(5).map(([t, u]) => `<li><a href="${u}"><span class="footer-chevron" aria-hidden="true">›</span>${t}</a></li>`).join('')}
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact Us -->
+        <div class="footer-col footer-col-contact">
+          <h4 class="footer-heading">Contact Us<span class="heading-gold-bar" aria-hidden="true"></span></h4>
+          <div class="footer-contact-items">
+            <div class="footer-contact-row">
+              <span class="footer-icon-box" aria-hidden="true">📍</span>
+              <span class="footer-contact-text">Guru Kelucharan Mohapatra Odissi Research Centre, Jaydev Vihar, Bhubaneswar – 751013</span>
+            </div>
+            <div class="footer-contact-row">
+              <span class="footer-icon-box" aria-hidden="true">📞</span>
+              <a class="footer-contact-text" href="tel:+916372881379">+91 63728 81379</a>
+            </div>
+            <div class="footer-contact-row">
+              <span class="footer-icon-box" aria-hidden="true">💬</span>
+              <a class="footer-contact-text" href="https://wa.me/916372881379" target="_blank" rel="noopener noreferrer">WhatsApp Support ↗</a>
+            </div>
+            <div class="footer-contact-row">
+              <span class="footer-icon-box" aria-hidden="true">✉</span>
+              <a class="footer-contact-text" href="mailto:Infoworldachivementaward@gmail.com">Infoworldachivementaward@gmail.com</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="wrap footer-bottom">
-      <span>© 2026 World Achievement Awards · Organised by Love In Action (LIA). All Rights Reserved.</span>
-      <div>
-        ${link('/privacy', 'Privacy Policy')}
-        ${link('/terms', 'Rules & Terms')}
+
+    <!-- Decorative Wave Ribbon -->
+    <div class="footer-wave-divider" aria-hidden="true">
+      <svg viewBox="0 0 1440 96" preserveAspectRatio="none" class="footer-wave-svg">
+        <defs>
+          <linearGradient id="ftrEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#05281c"/>
+            <stop offset="45%" stop-color="#0a3c2b"/>
+            <stop offset="75%" stop-color="#073022"/>
+            <stop offset="100%" stop-color="#041f16"/>
+          </linearGradient>
+          <linearGradient id="ftrGoldRibbon" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#ecc97e"/>
+            <stop offset="25%" stop-color="#c99f48"/>
+            <stop offset="60%" stop-color="#fdf0b8"/>
+            <stop offset="85%" stop-color="#d4aa54"/>
+            <stop offset="100%" stop-color="#ad8236"/>
+          </linearGradient>
+          <linearGradient id="ftrGoldSubtle" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#fce7a2" stop-opacity="0.3"/>
+            <stop offset="50%" stop-color="#c69f4c" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#e9c878" stop-opacity="0.35"/>
+          </linearGradient>
+        </defs>
+        <path d="M0,50 C260,15 480,80 760,50 C1040,20 1240,65 1440,25 L1440,96 L0,96 Z" fill="url(#ftrGoldSubtle)"/>
+        <path d="M0,60 C220,28 460,86 750,56 C1040,26 1240,70 1440,32 L1440,96 L0,96 Z" fill="url(#ftrEmerald)"/>
+        <path d="M0,60 C220,28 460,86 750,56 C1040,26 1240,70 1440,32" fill="none" stroke="url(#ftrGoldRibbon)" stroke-width="4" stroke-linecap="round"/>
+        <path d="M0,65 C220,33 460,91 750,61 C1040,31 1240,75 1440,37" fill="none" stroke="#fce7a2" stroke-width="1.2" opacity="0.8"/>
+      </svg>
+    </div>
+
+    <!-- Deep Emerald Bottom Bar -->
+    <div class="footer-bottom-bar">
+      <div class="wrap footer-bottom">
+        <span class="footer-copy-text">&copy; 2026 World Achievement Awards &bull; Organised by Love In Action (LIA). All Rights Reserved.</span>
+        <div class="footer-bottom-links">
+          <span class="footer-bottom-pipe" aria-hidden="true">|</span>
+          <a href="/privacy">Privacy Policy</a>
+          <span class="footer-bottom-pipe" aria-hidden="true">|</span>
+          <a href="/terms">Rules & Terms</a>
+          <span class="footer-bottom-pipe" aria-hidden="true">|</span>
+        </div>
+        <a class="footer-back-to-top" href="#main">Back to Top ↑</a>
       </div>
-      <a href="#main">Back to top ↑</a>
     </div>
   </footer>
   <script src="/assets/client.js" defer></script>
