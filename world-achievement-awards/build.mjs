@@ -168,8 +168,8 @@ const cta = `
   <span class="eyebrow">WORLD ACHIEVEMENT AWARDS 2026</span>
   <h2>Your Good Work Deserves A National Stage.<br>Apply Today.</h2>
   <div class="actions">
-    <a class="button gold" href="/nominate">Apply Today ${arrow}</a>
-    <a class="button outline" href="https://wa.me/916372881379" target="_blank" rel="noopener noreferrer">Chat on WhatsApp ↗</a>
+    <a class="button gold cta-btn-apply" href="/nominate">Apply Today ${arrow}</a>
+    <a class="button outline cta-btn-whatsapp" href="https://wa.me/916372881379" target="_blank" rel="noopener noreferrer">Chat on WhatsApp ↗</a>
   </div>
   <span class="cta-star" aria-hidden="true">✳</span>
 </section>`;
