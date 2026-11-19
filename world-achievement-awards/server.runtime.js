@@ -605,7 +605,7 @@ export default {
         });
       }
 
-      if (p === '/assets/BG/Hme1a.png' || p === '/assets/hme1a.png') {
+      if (p === '/assets/BG/Hme1a.png' || p === '/assets/hme1a.png' || p === '/assets/BG/Hme1b.png' || p === '/assets/hme1b.png') {
         const trophyData = getTrophyBgImage(e);
         if (!trophyData) return json({ error: 'Trophy image not found' }, 404);
         return new Response(r.method === 'HEAD' ? null : Uint8Array.from(atob(trophyData), c => c.charCodeAt(0)), {

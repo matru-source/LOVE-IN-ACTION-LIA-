@@ -251,7 +251,7 @@ pages['/'] = {
       
       <div class="hero-premium-right">
         <div class="hero-award-trophy-wrap">
-          <img src="/assets/BG/Hme1a.png" alt="World Achievement Awards Official Golden Trophy" class="hero-award-trophy-img" width="580" height="auto">
+          <img src="/assets/BG/Hme1b.png" alt="World Achievement Awards Official Golden Trophy" class="hero-award-trophy-img" width="580" height="auto">
         </div>
       </div>
     </div>
@@ -1444,7 +1444,7 @@ await mkdir('dist/.openai', { recursive: true });
 const runtime = await readFile('server.runtime.js', 'utf8');
 await writeFile('dist/server/index.js', `export const logoImage=${JSON.stringify((await readFile("assets/LOGO.jpeg")).toString("base64"))};
 export const homeBgImage=${JSON.stringify((await readFile("assets/BG/Home1.png")).toString("base64"))};
-export const trophyBgImage=${JSON.stringify((await readFile("assets/BG/Hme1a.png")).toString("base64"))};
+export const trophyBgImage=${JSON.stringify((await readFile("assets/BG/Hme1b.png")).toString("base64"))};
 export const ivoryBgImage=${JSON.stringify((await readFile("assets/BG/ivory-gold-ribbon.jpg")).toString("base64"))};
 export const demoContent=${JSON.stringify(demoContent)};
 export const socialImage=${JSON.stringify((await readFile("social.png")).toString("base64"))};
