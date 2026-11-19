@@ -729,3 +729,52 @@ if (inbox) {
   }
   window.addEventListener('content-updated', cleanup);
 })();
+
+// Smooth counting animation for metrics (500+, 20+)
+function initMetricCounters() {
+  const metricElements = document.querySelectorAll('.counter-val');
+  if (!metricElements.length) return;
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        obs.unobserve(entry.target);
+        animateCounter(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  metricElements.forEach(el => observer.observe(el));
+}
+
+function animateCounter(el) {
+  const target = parseInt(el.getAttribute('data-target') || el.textContent, 10);
+  const suffix = el.getAttribute('data-suffix') || '+';
+  if (isNaN(target)) return;
+
+  el.textContent = '0' + suffix;
+  const duration = 1800;
+  const startTime = performance.now();
+
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const current = Math.floor(ease * target);
+    el.textContent = current + suffix;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      el.textContent = target + suffix;
+    }
+  }
+
+  requestAnimationFrame(update);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMetricCounters);
+} else {
+  initMetricCounters();
+}

@@ -3759,3 +3759,688 @@ main[data-page="privacy"] .page-heading {
         border-radius: 12px;
     }
 }
+
+/* ==========================================================================
+   METRICS STRIP & ABOUT ORGANISER REDESIGN (Matching Reference 7d53570f)
+   ========================================================================== */
+
+.metrics-about-wrapper {
+    position: relative;
+    width: 100%;
+    margin-top: 0;
+    overflow: hidden;
+}
+
+.metrics-bar-section {
+    background: linear-gradient(135deg, #031c13 0%, #073827 50%, #042419 100%);
+    padding: 44px 0 28px;
+    position: relative;
+}
+
+.metrics-grid {
+    display: flex !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+    gap: 20px !important;
+}
+
+.metric-card {
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.metric-laurel-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 175px;
+    height: 100px;
+    margin-bottom: 6px;
+}
+
+.metric-laurel-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    filter: drop-shadow(0 3px 8px rgba(212, 170, 84, 0.4));
+}
+
+.metric-card strong {
+    font-family: Georgia, 'Times New Roman', serif !important;
+    font-size: clamp(34px, 4vw, 46px) !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    letter-spacing: 0.02em !important;
+    z-index: 2;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.metric-card strong.metric-number-text {
+    font-size: clamp(26px, 3.2vw, 34px) !important;
+    white-space: nowrap;
+}
+
+.metric-card span {
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+    color: #fae19c !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    margin-top: 4px;
+}
+
+.metric-divider {
+    width: 1px;
+    height: 64px;
+    background: linear-gradient(to bottom, transparent, rgba(216, 183, 107, 0.45), transparent);
+}
+
+.metrics-wave-divider {
+    width: 100%;
+    line-height: 0;
+    background: #fcf9f2;
+    margin-top: -1px;
+}
+
+.metrics-wave-svg {
+    width: 100%;
+    height: 48px;
+    display: block;
+}
+
+.about-organiser-layout {
+    display: grid !important;
+    grid-template-columns: 1.15fr 0.85fr !important;
+    gap: 52px !important;
+    align-items: center !important;
+    padding: 54px 0 60px !important;
+}
+
+.about-organiser-text-col .eyebrow {
+    color: #072a1b !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.12em !important;
+    margin-bottom: 12px !important;
+}
+
+.about-organiser-title {
+    font-family: Georgia, 'Times New Roman', serif !important;
+    font-size: clamp(24px, 2.9vw, 34px) !important;
+    line-height: 1.35 !important;
+    color: #072a1b !important;
+    font-weight: 700 !important;
+    margin: 0 0 18px !important;
+}
+
+.highlight-gold-italic {
+    color: #c49129 !important;
+    font-style: italic !important;
+    font-family: Georgia, 'Times New Roman', serif !important;
+}
+
+.about-organiser-desc {
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+    color: #4b5563 !important;
+    margin: 0 0 24px !important;
+}
+
+.about-meet-btn {
+    background: linear-gradient(135deg, #0d4734 0%, #06281c 100%) !important;
+    color: #fae19c !important;
+    border: 1.5px solid rgba(216, 183, 107, 0.6) !important;
+    border-radius: 9999px !important;
+    padding: 13px 30px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.04em !important;
+    box-shadow: 0 6px 18px rgba(6, 40, 28, 0.18) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+.about-meet-btn:hover {
+    background: #06281c !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 24px rgba(6, 40, 28, 0.28) !important;
+}
+
+.sprout-showcase-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.sprout-arch-frame {
+    width: 360px;
+    height: 310px;
+    border-radius: 36px 140px 36px 36px;
+    overflow: hidden;
+    border: 3.5px solid #dfb755;
+    box-shadow: 0 18px 45px rgba(6, 40, 28, 0.16);
+    background: #083827;
+}
+
+.sprout-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.sprout-pills-stack {
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 3;
+}
+
+.sprout-pill-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #ffffff;
+    padding: 8px 22px 8px 10px;
+    border-radius: 9999px;
+    box-shadow: 0 8px 24px rgba(6, 40, 28, 0.12);
+    border: 1.5px solid rgba(216, 183, 107, 0.5);
+    min-width: 155px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sprout-pill-item:hover {
+    transform: translateX(-4px);
+    box-shadow: 0 10px 28px rgba(6, 40, 28, 0.18);
+}
+
+.sprout-pill-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #083827;
+    color: #fae19c;
+    font-size: 15px;
+}
+
+.sprout-pill-text {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #072a1b;
+    letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   LATEST AWARDEES REDESIGN (Matching Reference 10b72522)
+   ========================================================================== */
+
+.latest-awardees-section {
+    padding-top: 36px;
+    padding-bottom: 48px;
+}
+
+.awardees-section-top {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-end !important;
+    margin-bottom: 34px !important;
+}
+
+.awardees-eyebrow-laurel {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+}
+
+.laurel-mini {
+    font-size: 18px;
+    filter: drop-shadow(0 1px 4px rgba(216, 183, 107, 0.5));
+}
+
+.awardees-main-heading {
+    font-family: Georgia, 'Times New Roman', serif !important;
+    font-size: clamp(28px, 3.4vw, 38px) !important;
+    font-weight: 700 !important;
+    color: #072a1b !important;
+    line-height: 1.25 !important;
+    margin: 4px 0 6px !important;
+}
+
+.awardees-sub-desc {
+    font-size: 15px !important;
+    color: #556257 !important;
+    margin: 0 !important;
+}
+
+.awardees-view-btn {
+    background: #083827 !important;
+    color: #fae19c !important;
+    border: 1.5px solid rgba(216, 183, 107, 0.6) !important;
+    border-radius: 9999px !important;
+    padding: 12px 26px !important;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    white-space: nowrap !important;
+}
+
+.awardees-view-btn:hover {
+    background: #06281c !important;
+    color: #ffffff !important;
+}
+
+.awardee-card-luxury {
+    background: #ffffff !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    box-shadow: 0 14px 38px rgba(6, 40, 28, 0.08) !important;
+    border: 1.5px solid rgba(216, 183, 107, 0.35) !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+
+.awardee-card-luxury:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(6, 40, 28, 0.16) !important;
+    border-color: #dfb755 !important;
+}
+
+.awardee-photo-wrap {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background: #083827;
+}
+
+.awardee-photo-wrap img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+    display: block !important;
+}
+
+.awardee-wave-trim {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    line-height: 0;
+    z-index: 2;
+}
+
+.awardee-wave-svg {
+    width: 100%;
+    height: 26px;
+    display: block;
+}
+
+.awardee-category-wave-badge {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    background: linear-gradient(135deg, #fae8a7 0%, #dfb755 100%);
+    color: #072a1b;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    z-index: 3;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
+}
+
+.awardee-gold-seal-badge {
+    position: absolute;
+    bottom: 10px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+    z-index: 3;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.28));
+}
+
+.seal-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.awardee-card-body {
+    padding: 20px 22px 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 !important;
+}
+
+.awardee-name {
+    font-family: Georgia, 'Times New Roman', serif !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: #072a1b !important;
+    margin: 0 0 12px !important;
+}
+
+.awardee-meta-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+    font-size: 13.5px;
+}
+
+.meta-icon-gold {
+    margin-right: 6px;
+    font-size: 14px;
+}
+
+.awardee-desc {
+    font-size: 13.5px !important;
+    line-height: 1.65 !important;
+    color: #4b5563 !important;
+    margin: 0 !important;
+}
+
+.awardees-nav-pills-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 34px;
+}
+
+.awardee-circle-arrow {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(216, 183, 107, 0.6);
+    background: #ffffff;
+    color: #072a1b;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.awardee-circle-arrow:hover {
+    background: #083827;
+    color: #fae19c;
+    border-color: #083827;
+}
+
+.awardee-dots-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.awardee-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #d1d5db;
+    transition: all 0.2s ease;
+}
+
+.awardee-dot.active {
+    width: 24px;
+    border-radius: 9999px;
+    background: #083827;
+}
+
+/* ==========================================================================
+   TESTIMONIALS REDESIGN (Matching Reference ad9c6238)
+   ========================================================================== */
+
+.testimonials-luxury-section {
+    padding-top: 24px;
+    padding-bottom: 50px;
+}
+
+.testimonials-center-head {
+    text-align: center;
+    margin-bottom: 38px;
+}
+
+.testimonials-laurel-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.laurel-large {
+    font-size: 36px;
+    filter: drop-shadow(0 2px 6px rgba(216, 183, 107, 0.45));
+}
+
+.testimonials-titles-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.testimonials-eyebrow-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 6px;
+}
+
+.gold-line {
+    width: 45px;
+    height: 1.5px;
+    background: linear-gradient(to right, transparent, #c49129, transparent);
+}
+
+.testimonials-main-title {
+    font-family: Georgia, 'Times New Roman', serif !important;
+    font-size: clamp(28px, 3.4vw, 38px) !important;
+    font-weight: 700 !important;
+    color: #072a1b !important;
+    line-height: 1.25 !important;
+    margin: 4px 0 6px !important;
+}
+
+.testimonials-sub-desc {
+    font-size: 15px !important;
+    color: #556257 !important;
+    margin: 0 !important;
+}
+
+.testimonial-luxury-card {
+    background: #ffffff !important;
+    border-radius: 20px !important;
+    padding: 28px 24px 24px !important;
+    box-shadow: 0 14px 38px rgba(6, 40, 28, 0.08) !important;
+    border: 1.5px solid rgba(216, 183, 107, 0.35) !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    overflow: hidden !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+
+.testimonial-luxury-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(6, 40, 28, 0.16) !important;
+    border-color: #dfb755 !important;
+}
+
+.quote-badge-emerald {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #083827;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 10px rgba(8, 56, 39, 0.25);
+}
+
+.quote-glyph {
+    color: #fae19c;
+    font-size: 20px;
+    font-family: Georgia, serif;
+    line-height: 1;
+}
+
+.testimonial-card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.testimonial-card-content .quote-text {
+    font-size: 14.5px !important;
+    font-style: italic !important;
+    line-height: 1.7 !important;
+    color: #2e3831 !important;
+    margin-bottom: 22px !important;
+    flex: 1;
+}
+
+.quote-author-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(216, 183, 107, 0.25);
+}
+
+.quote-avatar-img {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2.5px solid #dfb755;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+    flex-shrink: 0;
+}
+
+.quote-avatar-fallback {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: #083827;
+    color: #fae19c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    border: 2.5px solid #dfb755;
+    flex-shrink: 0;
+}
+
+.quote-author-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.quote-author {
+    font-family: Georgia, 'Times New Roman', serif !important;
+    font-size: 16.5px !important;
+    font-weight: 700 !important;
+    color: #072a1b !important;
+    margin: 0 !important;
+}
+
+.quote-role-badge {
+    font-size: 12px;
+    font-weight: 600;
+    color: #083827;
+    background: #fdf6e6;
+    border: 1px solid rgba(216, 183, 107, 0.4);
+    border-radius: 9999px;
+    padding: 2px 10px;
+    width: fit-content;
+}
+
+.card-gold-ribbon-corner {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, transparent 50%, #ecc97e 50%);
+    pointer-events: none;
+}
+
+/* Responsive adjustments for newly added sections */
+@media (max-width: 1040px) {
+    .about-organiser-layout {
+        grid-template-columns: 1fr !important;
+        gap: 36px !important;
+        text-align: center;
+    }
+    .about-organiser-actions {
+        justify-content: center;
+        display: flex;
+    }
+    .sprout-showcase-box {
+        justify-content: center;
+    }
+    .sprout-pills-stack {
+        right: 10px;
+    }
+}
+
+@media (max-width: 640px) {
+    .metrics-grid {
+        flex-direction: column !important;
+        gap: 24px !important;
+    }
+    .metric-divider {
+        display: none !important;
+    }
+    .sprout-arch-frame {
+        width: 100% !important;
+        height: 250px !important;
+        border-radius: 24px 80px 24px 24px !important;
+    }
+    .sprout-pills-stack {
+        position: static !important;
+        margin-top: 16px !important;
+        width: 100% !important;
+        align-items: center !important;
+    }
+    .sprout-pill-item {
+        width: 90% !important;
+        justify-content: flex-start !important;
+    }
+    .awardees-section-top {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 16px !important;
+    }
+    .testimonials-laurel-wrap {
+        gap: 8px !important;
+    }
+    .laurel-large {
+        font-size: 24px !important;
+    }
+}

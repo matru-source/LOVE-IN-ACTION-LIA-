@@ -82,7 +82,7 @@ test('Page 1: Home Page has Hero, Trust Strip, 3 Metric Boxes, About Short, Vide
   assert.match(html, /Pan India.*Recognition/s);
 
   // About Short exact text
-  assert.match(html, /Love In Action is a social organisation working to recognise real talent, inspire youth and serve humanity through health, education, culture and social service\./);
+  assert.match(html, /Love In Action is a social organisation working to (?:<[^>]+>)?recognise real talent(?:<\/[^>]+>)?, inspire youth and serve humanity through health, education, culture and social service\./);
 
   // Video Section
   assert.match(html, /LATEST AWARD CEREMONY VIDEO/);

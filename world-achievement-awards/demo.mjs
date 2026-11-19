@@ -261,6 +261,7 @@ export const demoContent = [
     kind: 'testimonials',
     title: 'Dr. Debabrata Tripathy',
     category: 'Health Warrior / Awardee',
+    image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=200&q=80',
     description: '“Love In Action gave our rural healthcare mission a national platform. The honour strengthened community trust and multiplied our reach across tribal areas.”',
     demo: true
   },
@@ -269,6 +270,7 @@ export const demoContent = [
     kind: 'testimonials',
     title: 'Smrutishree Mohanty',
     category: 'Kalinga Yuva Gaurav Samman Recipient',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80',
     description: '“Receiving the Kalinga Yuva Gaurav Samman validated years of grassroots volunteering in Kendrapara. It inspires more young women to step up and lead.”',
     demo: true
   },
@@ -277,6 +279,7 @@ export const demoContent = [
     kind: 'testimonials',
     title: 'Prof. Manoj Kumar Das',
     category: 'Education Icon Recipient',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
     description: '“The transparent jury process and dignity with which Love In Action felicitates achievers makes this one of India’s most respected humanitarian platforms.”',
     demo: true
   },

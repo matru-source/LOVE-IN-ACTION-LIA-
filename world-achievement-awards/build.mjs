@@ -298,28 +298,125 @@ pages['/'] = {
   </div>
 </div>
 
-<section class="wrap impact-strip">
-  <div>
-    <strong>500+</strong>
-    <span>Awardees Honoured</span>
+<section class="metrics-about-wrapper">
+  <div class="metrics-bar-section">
+    <div class="wrap impact-strip metrics-grid">
+      <div class="metric-card">
+        <div class="metric-laurel-wrap">
+          <svg viewBox="0 0 160 110" class="metric-laurel-svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="metricGold1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fae8a7"/>
+                <stop offset="50%" stop-color="#d4aa54"/>
+                <stop offset="100%" stop-color="#ecc97e"/>
+              </linearGradient>
+            </defs>
+            <path d="M42 90 C30 75 25 55 28 35 C32 18 42 8 46 5" fill="none" stroke="url(#metricGold1)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M30 78 C24 72 20 62 25 56 C28 52 34 54 36 60 C38 66 35 74 30 78 Z" fill="url(#metricGold1)"/>
+            <path d="M26 60 C20 54 18 44 24 38 C28 34 33 37 34 43 C35 49 31 56 26 60 Z" fill="url(#metricGold1)"/>
+            <path d="M27 42 C23 35 22 26 29 21 C33 18 38 21 38 27 C38 33 33 39 27 42 Z" fill="url(#metricGold1)"/>
+            <path d="M36 24 C33 18 34 10 40 7 C44 5 48 9 47 15 C46 20 41 24 36 24 Z" fill="url(#metricGold1)"/>
+            <path d="M118 90 C130 75 135 55 132 35 C128 18 118 8 114 5" fill="none" stroke="url(#metricGold1)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M130 78 C136 72 140 62 135 56 C132 52 126 54 124 60 C122 66 125 74 130 78 Z" fill="url(#metricGold1)"/>
+            <path d="M134 60 C140 54 142 44 136 38 C132 34 127 37 126 43 C125 49 129 56 134 60 Z" fill="url(#metricGold1)"/>
+            <path d="M133 42 C137 35 138 26 131 21 C127 18 122 21 122 27 C122 33 127 39 133 42 Z" fill="url(#metricGold1)"/>
+            <path d="M124 24 C127 18 126 10 120 7 C116 5 112 9 113 15 C114 20 119 24 124 24 Z" fill="url(#metricGold1)"/>
+          </svg>
+          <strong class="counter-val" data-target="500" data-suffix="+">500+</strong>
+        </div>
+        <span>Awardees Honoured</span>
+      </div>
+      <div class="metric-divider" aria-hidden="true"></div>
+      <div class="metric-card">
+        <div class="metric-laurel-wrap">
+          <svg viewBox="0 0 160 110" class="metric-laurel-svg" aria-hidden="true">
+            <path d="M42 90 C30 75 25 55 28 35 C32 18 42 8 46 5" fill="none" stroke="url(#metricGold1)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M30 78 C24 72 20 62 25 56 C28 52 34 54 36 60 C38 66 35 74 30 78 Z" fill="url(#metricGold1)"/>
+            <path d="M26 60 C20 54 18 44 24 38 C28 34 33 37 34 43 C35 49 31 56 26 60 Z" fill="url(#metricGold1)"/>
+            <path d="M27 42 C23 35 22 26 29 21 C33 18 38 21 38 27 C38 33 33 39 27 42 Z" fill="url(#metricGold1)"/>
+            <path d="M36 24 C33 18 34 10 40 7 C44 5 48 9 47 15 C46 20 41 24 36 24 Z" fill="url(#metricGold1)"/>
+            <path d="M118 90 C130 75 135 55 132 35 C128 18 118 8 114 5" fill="none" stroke="url(#metricGold1)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M130 78 C136 72 140 62 135 56 C132 52 126 54 124 60 C122 66 125 74 130 78 Z" fill="url(#metricGold1)"/>
+            <path d="M134 60 C140 54 142 44 136 38 C132 34 127 37 126 43 C125 49 129 56 134 60 Z" fill="url(#metricGold1)"/>
+            <path d="M133 42 C137 35 138 26 131 21 C127 18 122 21 122 27 C122 33 127 39 133 42 Z" fill="url(#metricGold1)"/>
+            <path d="M124 24 C127 18 126 10 120 7 C116 5 112 9 113 15 C114 20 119 24 124 24 Z" fill="url(#metricGold1)"/>
+          </svg>
+          <strong class="counter-val" data-target="20" data-suffix="+">20+</strong>
+        </div>
+        <span>Award Categories</span>
+      </div>
+      <div class="metric-divider" aria-hidden="true"></div>
+      <div class="metric-card">
+        <div class="metric-laurel-wrap">
+          <svg viewBox="0 0 160 110" class="metric-laurel-svg" aria-hidden="true">
+            <path d="M42 90 C30 75 25 55 28 35 C32 18 42 8 46 5" fill="none" stroke="url(#metricGold1)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M30 78 C24 72 20 62 25 56 C28 52 34 54 36 60 C38 66 35 74 30 78 Z" fill="url(#metricGold1)"/>
+            <path d="M26 60 C20 54 18 44 24 38 C28 34 33 37 34 43 C35 49 31 56 26 60 Z" fill="url(#metricGold1)"/>
+            <path d="M27 42 C23 35 22 26 29 21 C33 18 38 21 38 27 C38 33 33 39 27 42 Z" fill="url(#metricGold1)"/>
+            <path d="M36 24 C33 18 34 10 40 7 C44 5 48 9 47 15 C46 20 41 24 36 24 Z" fill="url(#metricGold1)"/>
+            <path d="M118 90 C130 75 135 55 132 35 C128 18 118 8 114 5" fill="none" stroke="url(#metricGold1)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M130 78 C136 72 140 62 135 56 C132 52 126 54 124 60 C122 66 125 74 130 78 Z" fill="url(#metricGold1)"/>
+            <path d="M134 60 C140 54 142 44 136 38 C132 34 127 37 126 43 C125 49 129 56 134 60 Z" fill="url(#metricGold1)"/>
+            <path d="M133 42 C137 35 138 26 131 21 C127 18 122 21 122 27 C122 33 127 39 133 42 Z" fill="url(#metricGold1)"/>
+            <path d="M124 24 C127 18 126 10 120 7 C116 5 112 9 113 15 C114 20 119 24 124 24 Z" fill="url(#metricGold1)"/>
+          </svg>
+          <strong class="metric-number-text">Pan India</strong>
+        </div>
+        <span>Recognition</span>
+      </div>
+    </div>
   </div>
-  <div>
-    <strong>20+</strong>
-    <span>Award Categories</span>
-  </div>
-  <div>
-    <strong>Pan India</strong>
-    <span>Recognition</span>
-  </div>
-</section>
 
-<section class="intro wrap">
-  <p class="eyebrow">ABOUT THE ORGANISER · LOVE IN ACTION (LIA)</p>
-  <div>
-    <h2>Love In Action is a social organisation working to recognise real talent, inspire youth and serve humanity through health, education, culture and social service.</h2>
-    <p>We identify talented individuals from villages to cities, and give them a national platform. When we honour one achiever, we inspire a thousand more.</p>
-    <a class="button outline" href="/about">Meet Love In Action ${arrow}</a>
+  <div class="metrics-wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1440 55" preserveAspectRatio="none" class="metrics-wave-svg">
+      <defs>
+        <linearGradient id="waveGoldM" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#ecc97e"/>
+          <stop offset="50%" stop-color="#fdf0b8"/>
+          <stop offset="100%" stop-color="#d4aa54"/>
+        </linearGradient>
+      </defs>
+      <path d="M0,0 L1440,0 L1440,20 C1080,48 720,10 360,40 L0,18 Z" fill="#06281c"/>
+      <path d="M0,18 C360,40 720,10 1080,48 L1440,20" fill="none" stroke="url(#waveGoldM)" stroke-width="3"/>
+    </svg>
   </div>
+
+  <section class="intro wrap about-organiser-layout">
+    <div class="about-organiser-text-col">
+      <p class="eyebrow">ABOUT THE ORGANISER · LOVE IN ACTION (LIA)</p>
+      <h2 class="about-organiser-title">Love In Action is a social organisation working to <span class="highlight-gold-italic">recognise real talent</span>, inspire youth and serve humanity through health, education, culture and social service.</h2>
+      <p class="about-organiser-desc">We identify talented individuals from villages to cities, and give them a national platform. When we honour one achiever, we inspire a thousand more.</p>
+      <div class="about-organiser-actions">
+        <a class="button gold about-meet-btn" href="/about">Meet Love In Action ${arrow}</a>
+      </div>
+    </div>
+
+    <div class="about-organiser-media-col">
+      <div class="sprout-showcase-box">
+        <div class="sprout-arch-frame">
+          <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80" alt="Hands nurturing green seedling in soil" class="sprout-img" width="460" height="340" loading="lazy">
+        </div>
+        <div class="sprout-pills-stack">
+          <div class="sprout-pill-item">
+            <span class="sprout-pill-icon">💚</span>
+            <span class="sprout-pill-text">Health</span>
+          </div>
+          <div class="sprout-pill-item">
+            <span class="sprout-pill-icon">🎓</span>
+            <span class="sprout-pill-text">Education</span>
+          </div>
+          <div class="sprout-pill-item">
+            <span class="sprout-pill-icon">🎭</span>
+            <span class="sprout-pill-text">Culture</span>
+          </div>
+          <div class="sprout-pill-item">
+            <span class="sprout-pill-icon">👥</span>
+            <span class="sprout-pill-text">Social Service</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </section>
 
 <section class="categories wrap">
@@ -384,22 +481,44 @@ pages['/'] = {
   </div>
 </section>
 
-<section class="wrap archive">
-  <div class="section-top">
-    <div>
-      <p class="eyebrow">LATEST AWARDEES</p>
-      <h2>Honouring Extraordinary Talent</h2>
+<section class="wrap archive latest-awardees-section">
+  <div class="section-top awardees-section-top">
+    <div class="awardees-heading-block">
+      <div class="awardees-eyebrow-laurel">
+        <span class="laurel-mini">🌿</span>
+        <p class="eyebrow">LATEST AWARDEES</p>
+      </div>
+      <h2 class="awardees-main-heading">Honouring Extraordinary <span class="highlight-gold-italic">Talent</span></h2>
+      <p class="awardees-sub-desc">Celebrating individuals whose work creates real change in society.</p>
     </div>
-    <a class="button outline" href="/awardees">View All Awardees ${arrow}</a>
+    <a class="button gold awardees-view-btn" href="/awardees">View All Awardees ${arrow}</a>
   </div>
   <div data-content="awardees" aria-live="polite"></div>
+  <div class="awardees-nav-pills-bar" aria-hidden="true">
+    <button type="button" class="awardee-circle-arrow" aria-label="Previous achiever">‹</button>
+    <div class="awardee-dots-group">
+      <span class="awardee-dot active"></span>
+      <span class="awardee-dot"></span>
+      <span class="awardee-dot"></span>
+    </div>
+    <button type="button" class="awardee-circle-arrow" aria-label="Next achiever">›</button>
+  </div>
 </section>
 
-<section class="wrap archive testimonials-home">
-  <div class="section-top">
-    <div>
-      <p class="eyebrow">TESTIMONIALS</p>
-      <h2>Words From Our Achievers</h2>
+<section class="wrap archive testimonials-home testimonials-luxury-section">
+  <div class="testimonials-center-head">
+    <div class="testimonials-laurel-wrap">
+      <span class="laurel-large left">🌿</span>
+      <div class="testimonials-titles-col">
+        <div class="testimonials-eyebrow-divider">
+          <span class="gold-line"></span>
+          <p class="eyebrow">TESTIMONIALS</p>
+          <span class="gold-line"></span>
+        </div>
+        <h2 class="testimonials-main-title">Words From Our <span class="highlight-gold-italic">Achievers</span></h2>
+        <p class="testimonials-sub-desc">Real experiences from the people who have been recognised by Love In Action.</p>
+      </div>
+      <span class="laurel-large right">🌿</span>
     </div>
   </div>
   <div data-content="testimonials" aria-live="polite"></div>

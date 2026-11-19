@@ -153,12 +153,21 @@ function card(item) {
   }
 
   if (item.kind === 'testimonials') {
-    return `<article class="content-card testimonial-card" ${attrs}>${demo}
-      <div class="content-copy">
-        <p class="quote-text">${esc(item.description)}</p>
-        <h3 class="quote-author">${esc(item.title)}</h3>
-        <p class="quote-role">${esc(item.category)}</p>
+    return `<article class="content-card testimonial-luxury-card" ${attrs}>${demo}
+      <div class="quote-badge-emerald" aria-hidden="true">
+        <span class="quote-glyph">❝</span>
       </div>
+      <div class="testimonial-card-content">
+        <p class="quote-text">${esc(item.description)}</p>
+        <div class="quote-author-row">
+          ${item.image ? `<img src="${esc(item.image)}" alt="${esc(item.title)}" class="quote-avatar-img" width="56" height="56" loading="lazy">` : `<div class="quote-avatar-fallback">👤</div>`}
+          <div class="quote-author-meta">
+            <h3 class="quote-author">${esc(item.title)}</h3>
+            <span class="quote-role-badge">${esc(item.category)}</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-gold-ribbon-corner" aria-hidden="true"></div>
     </article>`;
   }
 
@@ -182,14 +191,40 @@ function card(item) {
     </article>`;
   }
 
-  // Awardees Card: Photo + Name + Award + From: District, State + Field: [Field]
-  return `<article class="content-card awardee-card" ${attrs}>${demo}
-    ${img}
-    <div class="content-copy">
-      <span class="category-pill">${esc(item.category)}</span>
-      <h3>${esc(item.title)}</h3>
-      <p class="awardee-from"><strong>From:</strong> ${esc([item.district, item.state].filter(Boolean).join(', '))}</p>
-      ${item.field ? `<p class="awardee-field"><strong>Field:</strong> <span class="field-badge">${esc(item.field)}</span></p>` : ''}
+  // Awardees Luxury Card matching reference design
+  return `<article class="content-card awardee-card-luxury" ${attrs}>${demo}
+    <div class="awardee-photo-wrap">
+      ${img}
+      <div class="awardee-wave-trim" aria-hidden="true">
+        <svg viewBox="0 0 320 28" preserveAspectRatio="none" class="awardee-wave-svg">
+          <path d="M0,0 Q160,26 320,0 L320,28 L0,28 Z" fill="#ffffff"/>
+        </svg>
+      </div>
+      <div class="awardee-category-wave-badge">
+        <span>${esc(item.category)}</span>
+      </div>
+      <div class="awardee-gold-seal-badge" aria-hidden="true">
+        <svg viewBox="0 0 54 54" class="seal-svg">
+          <defs>
+            <linearGradient id="sealGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#fae8a7"/>
+              <stop offset="40%" stop-color="#d4aa54"/>
+              <stop offset="70%" stop-color="#fff1c5"/>
+              <stop offset="100%" stop-color="#b88828"/>
+            </linearGradient>
+          </defs>
+          <circle cx="27" cy="27" r="25" fill="#083827" stroke="url(#sealGoldGrad)" stroke-width="2.5"/>
+          <circle cx="27" cy="27" r="21" fill="none" stroke="url(#sealGoldGrad)" stroke-width="1" stroke-dasharray="2,2"/>
+          <path d="M27 15 L29 21 L35 21 L30.5 24.5 L32 30 L27 26.5 L22 30 L23.5 24.5 L19 21 L25 21 Z" fill="url(#sealGoldGrad)"/>
+        </svg>
+      </div>
+    </div>
+    <div class="content-copy awardee-card-body">
+      <h3 class="awardee-name">${esc(item.title)}</h3>
+      <div class="awardee-meta-rows">
+        <p class="awardee-from"><span class="meta-icon-gold" aria-hidden="true">📍</span><strong>From:</strong> ${esc([item.district, item.state].filter(Boolean).join(', '))}</p>
+        ${item.field ? `<p class="awardee-field"><span class="meta-icon-gold" aria-hidden="true">🏷️</span><strong>Field:</strong> <span class="field-badge">${esc(item.field)}</span></p>` : ''}
+      </div>
       <p class="awardee-desc">${esc(item.description)}</p>
     </div>
   </article>`;
