@@ -505,24 +505,46 @@ pages['/'] = {
   </div>
 </section>
 
-<section class="wrap archive testimonials-home testimonials-luxury-section">
-  <div class="testimonials-center-head">
-    <div class="testimonials-laurel-wrap">
-      <span class="laurel-large left">🌿</span>
-      <div class="testimonials-titles-col">
-        <div class="testimonials-eyebrow-divider">
-          <span class="gold-line"></span>
-          <p class="eyebrow">TESTIMONIALS</p>
-          <span class="gold-line"></span>
-        </div>
-        <h2 class="testimonials-main-title">Words From Our <span class="highlight-gold-italic">Achievers</span></h2>
-        <p class="testimonials-sub-desc">Real experiences from the people who have been recognised by Love In Action.</p>
-      </div>
-      <span class="laurel-large right">🌿</span>
-    </div>
+<div class="testimonials-luxury-outer">
+  <div class="testimonials-top-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" class="testimonials-wave-svg">
+      <defs>
+        <linearGradient id="tWaveGold" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#06281c"/>
+          <stop offset="30%" stop-color="#d4aa54"/>
+          <stop offset="70%" stop-color="#fae8a7"/>
+          <stop offset="100%" stop-color="#d4aa54"/>
+        </linearGradient>
+      </defs>
+      <path d="M0,0 C320,55 640,25 960,0 L0,0 Z" fill="#06281c"/>
+      <path d="M0,0 C320,55 640,25 960,0" fill="none" stroke="url(#tWaveGold)" stroke-width="3"/>
+    </svg>
   </div>
-  <div data-content="testimonials" aria-live="polite"></div>
-</section>
+  <section class="wrap archive testimonials-home testimonials-luxury-section">
+    <div class="testimonials-center-head">
+      <div class="testimonials-laurel-wrap">
+        <span class="laurel-large left">🌿</span>
+        <div class="testimonials-titles-col">
+          <div class="testimonials-eyebrow-divider">
+            <span class="gold-line"></span>
+            <p class="eyebrow">TESTIMONIALS</p>
+            <span class="gold-line"></span>
+          </div>
+          <h2 class="testimonials-main-title">Words From Our <span class="highlight-gold-italic">Achievers</span></h2>
+          <p class="testimonials-sub-desc">Real experiences from the people who have been recognised by Love In Action.</p>
+        </div>
+        <span class="laurel-large right">🌿</span>
+      </div>
+    </div>
+    <div data-content="testimonials" aria-live="polite"></div>
+  </section>
+  <div class="testimonials-bottom-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 65" preserveAspectRatio="none" class="testimonials-wave-svg">
+      <path d="M0,65 L1440,65 L1440,32 C1100,6 740,48 380,18 L0,50 Z" fill="#06281c"/>
+      <path d="M0,50 C380,18 740,48 1100,6 L1440,32" fill="none" stroke="url(#tWaveGold)" stroke-width="3"/>
+    </svg>
+  </div>
+</div>
 
 ${cta}`
 };

@@ -160,13 +160,14 @@ function card(item) {
       <div class="testimonial-card-content">
         <p class="quote-text">${esc(item.description)}</p>
         <div class="quote-author-row">
-          ${item.image ? `<img src="${esc(item.image)}" alt="${esc(item.title)}" class="quote-avatar-img" width="56" height="56" loading="lazy">` : `<div class="quote-avatar-fallback">👤</div>`}
+          ${item.image ? `<img src="${esc(item.image)}" alt="${esc(item.title)}" class="quote-avatar-img" width="60" height="60" loading="lazy">` : `<div class="quote-avatar-fallback">👤</div>`}
           <div class="quote-author-meta">
             <h3 class="quote-author">${esc(item.title)}</h3>
             <span class="quote-role-badge">${esc(item.category)}</span>
           </div>
         </div>
       </div>
+      <span class="card-bg-laurel" aria-hidden="true">🌿</span>
       <div class="card-gold-ribbon-corner" aria-hidden="true"></div>
     </article>`;
   }
