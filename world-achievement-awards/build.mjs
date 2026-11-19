@@ -1424,22 +1424,22 @@ function render(path, p) {
       <svg viewBox="0 0 1440 96" preserveAspectRatio="none" class="footer-wave-svg">
         <defs>
           <linearGradient id="ftrEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#05281c"/>
-            <stop offset="45%" stop-color="#0a3c2b"/>
-            <stop offset="75%" stop-color="#073022"/>
-            <stop offset="100%" stop-color="#041f16"/>
+            <stop offset="0%" stop-color="#042117"/>
+            <stop offset="40%" stop-color="#052b1e"/>
+            <stop offset="75%" stop-color="#031810"/>
+            <stop offset="100%" stop-color="#02120b"/>
           </linearGradient>
           <linearGradient id="ftrGoldRibbon" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stop-color="#ecc97e"/>
             <stop offset="25%" stop-color="#c99f48"/>
-            <stop offset="60%" stop-color="#fdf0b8"/>
-            <stop offset="85%" stop-color="#d4aa54"/>
-            <stop offset="100%" stop-color="#ad8236"/>
+            <stop offset="55%" stop-color="#fff0bd"/>
+            <stop offset="80%" stop-color="#d4aa54"/>
+            <stop offset="100%" stop-color="#b88937"/>
           </linearGradient>
           <linearGradient id="ftrGoldSubtle" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#fce7a2" stop-opacity="0.3"/>
-            <stop offset="50%" stop-color="#c69f4c" stop-opacity="0.5"/>
-            <stop offset="100%" stop-color="#e9c878" stop-opacity="0.35"/>
+            <stop offset="0%" stop-color="#fce7a2" stop-opacity="0.35"/>
+            <stop offset="50%" stop-color="#c69f4c" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="#e9c878" stop-opacity="0.4"/>
           </linearGradient>
         </defs>
         <path d="M0,50 C260,15 480,80 760,50 C1040,20 1240,65 1440,25 L1440,96 L0,96 Z" fill="url(#ftrGoldSubtle)"/>

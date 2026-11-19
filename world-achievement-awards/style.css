@@ -169,9 +169,9 @@ header {
 }
 
 .footer-logo {
-    width: 54px;
-    height: 54px;
-    margin-bottom: 8px;
+    width: 58px;
+    height: 58px;
+    margin-bottom: 0;
 }
 
 .brand small {
@@ -1350,21 +1350,51 @@ nav .active {
 }
 
 /* ==========================================================================
-   PREMIUM LUXURY FOOTER (Reference Style)
+   PREMIUM LUXURY FOOTER (Silk Gold & Major Green Partition)
    ========================================================================== */
 
 .site-footer {
     position: relative;
-    background: #fbf9f4;
-    border-top: 1px solid #e7e2d2;
+    background: radial-gradient(ellipse at 50% 0%, rgba(212, 170, 84, 0.16) 0%, transparent 65%),
+                linear-gradient(180deg, #031c13 0%, #062f20 38%, #042117 76%, #02120b 100%);
+    border-top: none;
     padding-top: 0;
     margin-top: 0;
     overflow: hidden;
+    color: #e2ede6;
+    box-shadow: 0 -15px 36px rgba(0, 0, 0, 0.18);
+}
+
+/* Luminous Silk Gold Top Partition Bar */
+.site-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #6c4e13 0%, #d4aa54 15%, #fae8a7 50%, #d4aa54 85%, #6c4e13 100%);
+    box-shadow: 0 1px 12px rgba(212, 170, 84, 0.55);
+    z-index: 10;
+}
+
+/* Subtle Secondary Silk Golden Shimmer */
+.site-footer::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 5%, rgba(254, 235, 170, 0.45) 25%, rgba(254, 235, 170, 0.6) 50%, rgba(254, 235, 170, 0.45) 75%, transparent 95%);
+    z-index: 9;
 }
 
 .footer-main-section {
-    padding-top: 56px;
+    padding-top: 60px;
     padding-bottom: 24px;
+    position: relative;
+    z-index: 1;
 }
 
 .footer-grid {
@@ -1386,7 +1416,7 @@ nav .active {
     padding-right: 0;
 }
 
-/* Vertical dividers between columns */
+/* Vertical Silk Gold dividers between columns */
 .footer-col:not(:first-child)::before {
     content: '';
     position: absolute;
@@ -1394,7 +1424,7 @@ nav .active {
     top: 6px;
     bottom: 12px;
     width: 1px;
-    background: #e5dfcf;
+    background: linear-gradient(to bottom, transparent, rgba(212, 170, 84, 0.25) 20%, rgba(212, 170, 84, 0.25) 80%, transparent);
 }
 
 /* Column 1: Brand & Organization */
@@ -1410,17 +1440,18 @@ nav .active {
     height: 58px;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
-    border: 2px solid #ecdca8;
-    background: #ffffff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45), 0 0 10px rgba(212, 170, 84, 0.25);
+    border: 2px solid #ecc97e;
+    background: #02120b;
     flex-shrink: 0;
+    margin-bottom: 0 !important;
 }
 
 .footer-brand-divider {
     display: inline-block;
     width: 1px;
-    height: 38px;
-    background: #c6a052;
+    height: 42px;
+    background: linear-gradient(to bottom, transparent, #ecc97e 25%, #fae8a7 50%, #ecc97e 75%, transparent);
     margin: 0 14px;
     flex-shrink: 0;
 }
@@ -1430,10 +1461,11 @@ nav .active {
     font-size: 17px;
     font-weight: 700;
     line-height: 1.25;
-    letter-spacing: 0.04em;
-    color: #0b3424;
+    letter-spacing: 0.05em;
+    color: #ffffff;
     display: flex;
     flex-direction: column;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
 }
 
 .footer-brand-text small {
@@ -1441,15 +1473,16 @@ nav .active {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
     font-weight: 700;
-    letter-spacing: 0.12em;
-    color: #0b3424;
-    margin-top: 2px;
+    letter-spacing: 0.16em;
+    color: #ecc97e;
+    margin-top: 3px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .footer-brand-desc {
     font-size: 13.5px;
-    line-height: 1.65;
-    color: #4b5446;
+    line-height: 1.7;
+    color: #c7ded1;
     margin: 0 0 20px 0;
 }
 
@@ -1460,42 +1493,45 @@ nav .active {
     gap: 8px;
     padding: 8px 16px;
     border-radius: 24px;
-    border: 1px solid #d5c49b;
-    background: rgba(220, 202, 160, 0.22);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(236, 201, 126, 0.45);
+    background: rgba(236, 201, 126, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .footer-hq-icon {
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .footer-hq-text {
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.09em;
-    color: #0f3d2e;
+    letter-spacing: 0.1em;
+    color: #fae19c;
     text-transform: uppercase;
 }
 
 /* Column Headings (Menu, Explore, Contact Us) */
 .footer-heading {
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 700;
-    color: #0a3323;
+    color: #ffffff;
     margin: 0 0 8px 0;
     position: relative;
     display: inline-block;
+    letter-spacing: 0.02em;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 .heading-gold-bar {
     display: block;
-    width: 32px;
+    width: 34px;
     height: 2.5px;
-    background: #c5a059;
+    background: linear-gradient(90deg, #ecc97e 0%, #fae8a7 50%, #c99f48 100%);
     border-radius: 2px;
-    margin-top: 6px;
+    margin-top: 7px;
     margin-bottom: 18px;
+    box-shadow: 0 1px 6px rgba(236, 201, 126, 0.45);
 }
 
 /* Links lists for Menu & Explore */
@@ -1512,30 +1548,31 @@ nav .active {
 .footer-nav-list a {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 9px;
     font-size: 14px;
     font-weight: 500;
-    color: #2b3327;
+    color: #d2e4da;
     text-decoration: none;
-    transition: color 0.2s ease, transform 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease, text-shadow 0.2s ease;
 }
 
 .footer-chevron {
-    color: #bfa15c;
+    color: #ecc97e;
     font-size: 16px;
     font-weight: 700;
     line-height: 1;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .footer-nav-list a:hover {
-    color: #b58832;
+    color: #fae19c;
     transform: translateX(4px);
+    text-shadow: 0 0 10px rgba(250, 225, 156, 0.35);
 }
 
 .footer-nav-list a:hover .footer-chevron {
     transform: translateX(2px);
-    color: #0f3d2e;
+    color: #ffffff;
 }
 
 /* Column 4: Contact Items */
@@ -1555,26 +1592,34 @@ nav .active {
     width: 32px;
     height: 32px;
     flex-shrink: 0;
-    border-radius: 6px;
-    border: 1px solid #d9ccaa;
-    background: #faf7ee;
+    border-radius: 7px;
+    border: 1px solid rgba(236, 201, 126, 0.35);
+    background: rgba(236, 201, 126, 0.12);
+    color: #fae19c;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     font-size: 14px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .footer-contact-text {
     font-size: 13.5px;
-    line-height: 1.5;
-    color: #2b3327;
+    line-height: 1.55;
+    color: #d2e4da;
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
+a.footer-contact-text {
+    color: #fae19c;
+    font-weight: 500;
+}
+
 a.footer-contact-text:hover {
-    color: #b58832;
+    color: #ffffff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }
 
 /* Decorative Wave Divider */
@@ -1594,10 +1639,11 @@ a.footer-contact-text:hover {
 
 /* Deep Emerald Bottom Bar */
 .footer-bottom-bar {
-    background: #07281d;
+    background: #02120b;
     padding-block: 22px 24px;
     position: relative;
     z-index: 2;
+    border-top: 1px solid rgba(212, 170, 84, 0.15);
 }
 
 .footer-bottom {
@@ -1609,12 +1655,12 @@ a.footer-contact-text:hover {
     padding-block: 0;
     border-top: none;
     font-size: 12.5px;
-    color: #c0d1c5;
+    color: #9fb4a7;
 }
 
 .footer-copy-text {
     font-size: 12.5px;
-    color: #c0d1c5;
+    color: #9fb4a7;
 }
 
 .footer-bottom-links {
@@ -1624,24 +1670,24 @@ a.footer-contact-text:hover {
 }
 
 .footer-bottom-pipe {
-    color: #5c7e6e;
+    color: rgba(212, 170, 84, 0.35);
     font-size: 12px;
     user-select: none;
 }
 
 .footer-bottom-links a {
-    color: #d6e4d9;
+    color: #cce0d4;
     text-decoration: none;
     font-size: 12.5px;
     transition: color 0.2s ease;
 }
 
 .footer-bottom-links a:hover {
-    color: #ecc97e;
+    color: #fae19c;
 }
 
 .footer-back-to-top {
-    color: #dec17b;
+    color: #ecc97e;
     text-decoration: none;
     font-weight: 700;
     font-size: 13px;
@@ -1653,7 +1699,8 @@ a.footer-contact-text:hover {
 }
 
 .footer-back-to-top:hover {
-    color: #fff2c6;
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(250, 225, 156, 0.5);
     transform: translateY(-2px);
 }
 
