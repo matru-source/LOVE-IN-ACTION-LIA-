@@ -1,7 +1,7 @@
 {
   "name": "love-in-action-lia",
   "version": "1.0.0",
-  "description": "Love In Action (LIA) - World Achievement Awards 2026",
+  "description": "Love In Action (LIA) - World Achievement Awards",
   "private": true,
   "type": "module",
   "scripts": {
