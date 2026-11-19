@@ -9,7 +9,7 @@ export const demoContent = [
     state: 'Odisha',
     field: 'Youth / Social Service',
     description: 'Spearheaded youth disaster resilience volunteers, rural blood donation camps, and free education drives for underprivileged girls in Kendrapara.',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&crop=faces,top&w=800&h=600&q=85',
     demo: true
   },
   {
@@ -21,7 +21,7 @@ export const demoContent = [
     state: 'Odisha',
     field: 'Health & Community Wellbeing',
     description: 'Recognised for providing free emergency medical camps and preventive health screening across 40+ remote tribal villages in Odisha.',
-    image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&crop=faces,top&w=800&h=600&q=85',
     demo: true
   },
   {
@@ -33,7 +33,7 @@ export const demoContent = [
     state: 'Odisha',
     field: 'Social Service',
     description: 'Devoted 18 years to caring for abandoned senior citizens, operating community kitchens and emergency relief shelters during flood crises.',
-    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&crop=faces,top&w=800&h=600&q=85',
     demo: true
   },
   {

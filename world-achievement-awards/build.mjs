@@ -481,29 +481,45 @@ pages['/'] = {
   </div>
 </section>
 
-<section class="wrap archive latest-awardees-section">
-  <div class="section-top awardees-section-top">
-    <div class="awardees-heading-block">
-      <div class="awardees-eyebrow-laurel">
-        <span class="laurel-mini">🌿</span>
-        <p class="eyebrow">LATEST AWARDEES</p>
+<div class="awardees-luxury-outer">
+  <section class="wrap archive latest-awardees-section">
+    <div class="section-top awardees-section-top">
+      <div class="awardees-heading-block">
+        <div class="awardees-eyebrow-laurel">
+          <span class="laurel-mini">🌿</span>
+          <p class="eyebrow">LATEST AWARDEES</p>
+        </div>
+        <h2 class="awardees-main-heading">Honouring Extraordinary <span class="highlight-gold-italic">Talent</span></h2>
+        <p class="awardees-sub-desc">Celebrating individuals whose work creates real change in society.</p>
       </div>
-      <h2 class="awardees-main-heading">Honouring Extraordinary <span class="highlight-gold-italic">Talent</span></h2>
-      <p class="awardees-sub-desc">Celebrating individuals whose work creates real change in society.</p>
+      <a class="button gold awardees-view-btn" href="/awardees">View All Awardees ${arrow}</a>
     </div>
-    <a class="button gold awardees-view-btn" href="/awardees">View All Awardees ${arrow}</a>
-  </div>
-  <div data-content="awardees" aria-live="polite"></div>
-  <div class="awardees-nav-pills-bar" aria-hidden="true">
-    <button type="button" class="awardee-circle-arrow" aria-label="Previous achiever">‹</button>
-    <div class="awardee-dots-group">
-      <span class="awardee-dot active"></span>
-      <span class="awardee-dot"></span>
-      <span class="awardee-dot"></span>
+    <div data-content="awardees" aria-live="polite"></div>
+    <div class="awardees-nav-pills-bar" aria-hidden="true">
+      <button type="button" class="awardee-circle-arrow" aria-label="Previous achiever">‹</button>
+      <div class="awardee-dots-group">
+        <span class="awardee-dot active"></span>
+        <span class="awardee-dot"></span>
+        <span class="awardee-dot"></span>
+      </div>
+      <button type="button" class="awardee-circle-arrow" aria-label="Next achiever">›</button>
     </div>
-    <button type="button" class="awardee-circle-arrow" aria-label="Next achiever">›</button>
+  </section>
+  <div class="awardees-bottom-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" class="awardees-wave-svg">
+      <defs>
+        <linearGradient id="aWaveGold" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#06281c"/>
+          <stop offset="25%" stop-color="#d4aa54"/>
+          <stop offset="60%" stop-color="#fae8a7"/>
+          <stop offset="100%" stop-color="#d4aa54"/>
+        </linearGradient>
+      </defs>
+      <path d="M0,60 L1440,60 L1440,30 C1080,5 720,45 360,15 L0,45 Z" fill="#06281c"/>
+      <path d="M0,45 C360,15 720,45 1080,5 L1440,30" fill="none" stroke="url(#aWaveGold)" stroke-width="2.5"/>
+    </svg>
   </div>
-</section>
+</div>
 
 <div class="testimonials-luxury-outer">
   <div class="testimonials-top-wave" aria-hidden="true">

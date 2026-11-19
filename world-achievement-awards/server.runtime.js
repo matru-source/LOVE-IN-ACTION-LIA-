@@ -192,39 +192,81 @@ function card(item) {
     </article>`;
   }
 
-  // Awardees Luxury Card matching reference design
+  // Awardees Luxury Card matching reference design (10b72522)
+  let sealIcon = '';
+  if (item.id === 'awardee-1' || item.title?.includes('Smrutishree')) {
+    // 3 stars + people emblem
+    sealIcon = `<g fill="url(#sealGoldGrad)">
+      <polygon points="30,13 31.2,16.5 35,16.5 32,18.8 33.1,22.2 30,20.2 26.9,22.2 28,18.8 25,16.5 28.8,16.5"/>
+      <polygon points="21,16 21.8,18.5 24.5,18.5 22.3,20.2 23.1,22.8 21,21.2 18.9,22.8 19.7,20.2 17.5,18.5 20.2,18.5" transform="scale(0.8) translate(5, 4)"/>
+      <polygon points="39,16 39.8,18.5 42.5,18.5 40.3,20.2 41.1,22.8 39,21.2 36.9,22.8 37.7,20.2 35.5,18.5 38.2,18.5" transform="scale(0.8) translate(8, 4)"/>
+      <circle cx="30" cy="26" r="3.2"/>
+      <path d="M23 37 C23 32.5 26.5 30.5 30 30.5 C33.5 30.5 37 32.5 37 37 Z"/>
+      <circle cx="21" cy="28.5" r="2.5"/>
+      <path d="M16.5 37 C16.5 33.5 19 32 21.5 32 C22.8 32 24 32.6 24.8 33.5 C23.8 34.5 23.2 35.8 23.2 37 Z"/>
+      <circle cx="39" cy="28.5" r="2.5"/>
+      <path d="M43.5 37 C43.5 33.5 41 32 38.5 32 C37.2 32 36 32.6 35.2 33.5 C36.2 34.5 36.8 35.8 36.8 37 Z"/>
+    </g>`;
+  } else if (item.id === 'awardee-2' || item.title?.includes('Tripathy')) {
+    // Golden Trophy Cup emblem
+    sealIcon = `<g fill="url(#sealGoldGrad)">
+      <path d="M23 18 H37 V25 C37 29 34 32 30 32 C26 32 23 29 23 25 Z"/>
+      <path d="M23 20 C19.5 20 18 22 18 24.5 C18 27 20 28.5 23 28.5 V26.5 C21 26.5 20 25.5 20 24.5 C20 23.5 21 22 23 22 Z"/>
+      <path d="M37 20 C40.5 20 42 22 42 24.5 C42 27 40 28.5 37 28.5 V26.5 C39 26.5 40 25.5 40 24.5 C40 23.5 39 22 37 22 Z"/>
+      <rect x="28" y="32" width="4" height="6"/>
+      <path d="M24 38 H36 V40 H24 Z"/>
+      <polygon points="30,21 30.8,23.5 33.5,23.5 31.3,25.2 32.1,27.8 30,26.2 27.9,27.8 28.7,25.2 26.5,23.5 29.2,23.5" fill="#06281c"/>
+    </g>`;
+  } else {
+    // Caring Hands & Heart emblem
+    sealIcon = `<g fill="url(#sealGoldGrad)">
+      <path d="M30 25 C30 25 25.5 20.5 25.5 17.5 C25.5 15.2 27.2 13.5 29.5 13.5 C30.6 13.5 31.7 14.1 32.3 14.9 C32.9 14.1 34 13.5 35.1 13.5 C37.4 13.5 39.1 15.2 39.1 17.5 C39.1 20.5 34.6 25 30 28.5 C27.5 26.5 30 25 30 25 Z" transform="scale(0.85) translate(4, 3)"/>
+      <path d="M20 32 C22.5 30.5 25 31.5 27.5 34 L30 36.5 L32.5 34 C35 31.5 37.5 30.5 40 32 C41.2 32.8 41.8 34 41 35.5 C38.5 39.5 34.5 41 30 41 C25.5 41 21.5 39.5 19 35.5 C18.2 34 18.8 32.8 20 32 Z"/>
+    </g>`;
+  }
+
   return `<article class="content-card awardee-card-luxury" ${attrs}>${demo}
     <div class="awardee-photo-wrap">
       ${img}
       <div class="awardee-wave-trim" aria-hidden="true">
-        <svg viewBox="0 0 320 28" preserveAspectRatio="none" class="awardee-wave-svg">
-          <path d="M0,0 Q160,26 320,0 L320,28 L0,28 Z" fill="#ffffff"/>
+        <svg viewBox="0 0 360 42" preserveAspectRatio="none" class="awardee-wave-svg">
+          <defs>
+            <linearGradient id="waveGoldTrim" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#d4aa54"/>
+              <stop offset="50%" stop-color="#fae8a7"/>
+              <stop offset="100%" stop-color="#d4aa54"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,14 Q180,36 360,14 L360,42 L0,42 Z" fill="#073827"/>
+          <path d="M0,14 Q180,36 360,14" fill="none" stroke="url(#waveGoldTrim)" stroke-width="2.5"/>
+          <path d="M0,24 Q180,44 360,24 L360,42 L0,42 Z" fill="#ffffff"/>
         </svg>
       </div>
       <div class="awardee-category-wave-badge">
         <span>${esc(item.category)}</span>
       </div>
       <div class="awardee-gold-seal-badge" aria-hidden="true">
-        <svg viewBox="0 0 54 54" class="seal-svg">
+        <svg viewBox="0 0 60 60" class="seal-svg">
           <defs>
             <linearGradient id="sealGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stop-color="#fae8a7"/>
-              <stop offset="40%" stop-color="#d4aa54"/>
+              <stop offset="35%" stop-color="#d4aa54"/>
               <stop offset="70%" stop-color="#fff1c5"/>
               <stop offset="100%" stop-color="#b88828"/>
             </linearGradient>
           </defs>
-          <circle cx="27" cy="27" r="25" fill="#083827" stroke="url(#sealGoldGrad)" stroke-width="2.5"/>
-          <circle cx="27" cy="27" r="21" fill="none" stroke="url(#sealGoldGrad)" stroke-width="1" stroke-dasharray="2,2"/>
-          <path d="M27 15 L29 21 L35 21 L30.5 24.5 L32 30 L27 26.5 L22 30 L23.5 24.5 L19 21 L25 21 Z" fill="url(#sealGoldGrad)"/>
+          <circle cx="30" cy="30" r="28" fill="#06281c" stroke="url(#sealGoldGrad)" stroke-width="3"/>
+          <circle cx="30" cy="30" r="23" fill="none" stroke="url(#sealGoldGrad)" stroke-width="1.2" stroke-dasharray="2,2"/>
+          <circle cx="30" cy="30" r="20" fill="#083827" stroke="url(#sealGoldGrad)" stroke-width="1"/>
+          ${sealIcon}
         </svg>
       </div>
     </div>
     <div class="content-copy awardee-card-body">
       <h3 class="awardee-name">${esc(item.title)}</h3>
       <div class="awardee-meta-rows">
-        <p class="awardee-from"><span class="meta-icon-gold" aria-hidden="true">📍</span><strong>From:</strong> ${esc([item.district, item.state].filter(Boolean).join(', '))}</p>
-        ${item.field ? `<p class="awardee-field"><span class="meta-icon-gold" aria-hidden="true">🏷️</span><strong>Field:</strong> <span class="field-badge">${esc(item.field)}</span></p>` : ''}
+        <p class="awardee-meta-item"><span class="meta-icon-gold" aria-hidden="true">📍</span> <strong>From:</strong> ${esc([item.district, item.state].filter(Boolean).join(', '))}</p>
+        ${item.field ? `<p class="awardee-meta-item"><span class="meta-icon-gold" aria-hidden="true">🏷️</span> <strong>Field:</strong> <span class="field-badge">${esc(item.field)}</span></p>` : ''}
       </div>
       <p class="awardee-desc">${esc(item.description)}</p>
     </div>
