@@ -8,9 +8,7 @@ export function enhance(pages, awards) {
   <label>Filter by Year
     <select name="year">
       <option value="">All Years</option>
-      <option value="2026">2026</option>
-      <option value="2025">2025</option>
-      <option value="2024">2024</option>
+      
     </select>
   </label>
   <label>Filter by Category
@@ -104,8 +102,7 @@ export function enhance(pages, awards) {
           <input name="category" maxlength="180" list="award-options" placeholder="Select or type category">
           <datalist id="award-options">
             ${awards.map(a => `<option value="${a}">`).join('')}
-            <option value="Award Ceremony 2025">
-            <option value="Award Ceremony 2026">
+            <option value="Award Ceremony">
             <option value="Health Camps">
             <option value="Cultural Events">
             <option value="Awardees">
@@ -119,10 +116,10 @@ export function enhance(pages, awards) {
           <input name="field" maxlength="100" placeholder="e.g. Youth / Social Service">
         </label>
         <label>Year
-          <input name="year" type="number" min="1900" max="2100" value="2026">
+          <input name="year" type="number" min="1900" max="2100" >
         </label>
-        <label>Date (e.g. 15 Jan 2026)
-          <input name="date" maxlength="50" placeholder="e.g. 15 Jan 2026">
+        <label>Date (e.g. 15 Jan)
+          <input name="date" maxlength="50" placeholder="e.g. 15 Jan">
         </label>
         <label>State
           <input name="state" maxlength="100" value="Odisha">

@@ -5,7 +5,7 @@ import { mkdir, writeFile, readFile } from 'node:fs/promises';
 const base = 'https://world-achievement-awards.zex4uofficial.chatgpt.site';
 
 export const awards = [
-  'Kalinga Yuva Gaurav Samman 2026',
+  'Kalinga Yuva Gaurav Samman',
   'World Achievement Award',
   'Seva Ratan Award',
   'Education Icon Award',
@@ -53,7 +53,7 @@ const link = (url, text, cls = '') => `<a class="${cls}" href="${url}">${text}</
 const arrow = '<span aria-hidden="true">↗</span>';
 
 const emblems = [
-  // 01 Kalinga Yuva Gaurav Samman 2026 (Torch with Flame)
+  // 01 Kalinga Yuva Gaurav Samman (Torch with Flame)
   `<path d="M34 20 C32 23 30 24 30 26 C30 28.2 31.8 30 34 30 C36.2 30 38 28.2 38 26 C38 23 35 22 34 20 Z" fill="url(#awardGoldMedal)"/><path d="M31 29 L37 29 L36 34 L32 34 Z M32.5 34 L35.5 34 L35 39 L33 39 Z" fill="url(#awardGoldMedal)"/>`,
   
   // 02 World Achievement Award (Imperial Crown)
@@ -165,7 +165,7 @@ const heading = (eyebrow, title, desc) => `
 
 const cta = `
 <section class="cta wrap">
-  <span class="eyebrow">WORLD ACHIEVEMENT AWARDS 2026</span>
+  <span class="eyebrow">WORLD ACHIEVEMENT AWARDS</span>
   <h2>Your Good Work Deserves A National Stage.<br>Apply Today.</h2>
   <div class="actions">
     <a class="button gold cta-btn-apply" href="/nominate">Apply Today ${arrow}</a>
@@ -196,8 +196,8 @@ const pages = {};
 
 // PAGE 1: HOME
 pages['/'] = {
-  title: 'World Achievement Awards 2026 | Together For A Healthier & Kinder World',
-  description: 'Official World Achievement Awards 2026. Together For A Healthier And Kinder World. Nominate achievers across 12 categories.',
+  title: 'World Achievement Awards | Together For A Healthier & Kinder World',
+  description: 'Official World Achievement Awards. Together For A Healthier And Kinder World. Nominate achievers across 12 categories.',
   body: `
 <section class="hero-premium-section">
   <div class="wrap hero-premium-container">
@@ -205,11 +205,11 @@ pages['/'] = {
       <div class="hero-premium-left">
         <div class="hero-laurel-eyebrow">
           <span class="laurel-branch left">🌿</span>
-          <span class="eyebrow-text">WORLD ACHIEVEMENT AWARDS 2026 – BHUBANESWAR</span>
+          <span class="eyebrow-text">WORLD ACHIEVEMENT AWARDS – BHUBANESWAR</span>
           <span class="laurel-branch right">🌿</span>
         </div>
         
-        <h1>WORLD ACHIEVEMENT<br>AWARDS 2026</h1>
+        <h1>WORLD ACHIEVEMENT<br>AWARDS</h1>
         
         <h2 class="hero-premium-subtitle">Together For A Healthier And Kinder World</h2>
         
@@ -251,7 +251,7 @@ pages['/'] = {
       
       <div class="hero-premium-right">
         <div class="hero-award-trophy-wrap">
-          <img src="/assets/BG/Hme1a.png" alt="World Achievement Awards 2026 Official Golden Trophy" class="hero-award-trophy-img" width="580" height="auto">
+          <img src="/assets/BG/Hme1a.png" alt="World Achievement Awards Official Golden Trophy" class="hero-award-trophy-img" width="580" height="auto">
         </div>
       </div>
     </div>
@@ -267,7 +267,7 @@ pages['/'] = {
       <div class="glass-item">
         <span class="glass-icon">📅</span>
         <div class="glass-text">
-          <strong>Awards 2026</strong>
+          <strong>Awards</strong>
           <span>Nominations Open</span>
         </div>
       </div>
@@ -410,7 +410,7 @@ ${cta}`
 
 // PAGE 2: ABOUT US
 pages['/about'] = {
-  title: 'About Us | World Achievement Awards 2026',
+  title: 'About Us | World Achievement Awards',
   description: 'About the Organiser, Love In Action (LIA). Who We Are, Our Mission, Our Vision, What We Do, and Message from Founder & President.',
   body: `
 ${heading('ABOUT THE ORGANISER', 'Love In Action (LIA)<br><em>Good work should never go unnoticed.</em>', 'Love In Action is a social organisation working to recognise real talent, inspire youth and serve humanity through health, education, culture and social service.')}
@@ -586,8 +586,8 @@ ${cta}`
 
 // PAGE 3: AWARDS
 pages['/awards'] = {
-  title: 'Award Categories | World Achievement Awards 2026',
-  description: 'Explore all 12 Award Categories of World Achievement Awards 2026. Criteria, benefits, and how to apply.',
+  title: 'Award Categories | World Achievement Awards',
+  description: 'Explore all 12 Award Categories of World Achievement Awards. Criteria, benefits, and how to apply.',
   body: `
 ${heading('12 AWARD CATEGORIES', 'Recognising Real Talent.<br><em>Honouring Humanity.</em>', 'Explore all 12 award categories across social service, healthcare, education, art, sports and entrepreneurship. Each category features its own dedicated criteria, benefits, and past awardees.')}
 <section class="wrap awards-gallery-section">
@@ -612,10 +612,10 @@ ${cta}`
 awards.forEach((a, i) => {
   const isYouth = i === 0 || i === 6;
   pages['/awards/' + slug(a)] = {
-    title: `${a} | World Achievement Awards 2026`,
-    description: `Details, eligibility, benefits, and nomination process for ${a} at World Achievement Awards 2026.`,
+    title: `${a} | World Achievement Awards`,
+    description: `Details, eligibility, benefits, and nomination process for ${a} at World Achievement Awards.`,
     body: `
-${heading('WORLD ACHIEVEMENT AWARDS 2026 · CATEGORY ' + String(i + 1).padStart(2, '0'), a, descriptions[i])}
+${heading('WORLD ACHIEVEMENT AWARDS · CATEGORY ' + String(i + 1).padStart(2, '0'), a, descriptions[i])}
 <section class="wrap split">
   <div>
     <h2>About the Award</h2>
@@ -654,7 +654,7 @@ ${cta}`
 
 // PAGE 4: AWARD PROCESS / HOW TO APPLY
 pages['/process'] = {
-  title: 'Award Process / How To Apply | World Achievement Awards 2026',
+  title: 'Award Process / How To Apply | World Achievement Awards',
   description: 'Six-step award process: Registration Form, Profile & Documents Submission, Jury Evaluation, Registration Confirmation, Award Preparation, and Stage Ceremony.',
   body: `
 ${heading('AWARD PROCESS / HOW TO APPLY', 'A Transparent 6-Step Journey<br><em>To The National Stage</em>', 'From initial nomination to felicitation in the presence of distinguished Chief Guests. Processing Time: 10 to 30 Working Days.')}
@@ -811,7 +811,7 @@ const field = (name, label, type = 'text', required = true, placeholder = '') =>
 
 // PAGE 5: REGISTRATION FORM (/nominate & /registration)
 const registrationFormBody = `
-${heading('NOMINATE AN ACHIEVER', 'Registration Form -<br>World Achievement Awards 2026', 'Together For A Healthier And Kinder World · Regd. Under Indian Govt. Act 1892 · Bhubaneswar, Odisha')}
+${heading('NOMINATE AN ACHIEVER', 'Registration Form -<br>World Achievement Awards', 'Together For A Healthier And Kinder World · Regd. Under Indian Govt. Act 1892 · Bhubaneswar, Odisha')}
 <section class="wrap form-layout">
   <form method="post" action="/api/nominations" enctype="multipart/form-data" id="nomination-form" data-endpoint="/api/nominations">
     
@@ -914,14 +914,14 @@ ${heading('NOMINATE AN ACHIEVER', 'Registration Form -<br>World Achievement Awar
 </section>`;
 
 pages['/nominate'] = {
-  title: 'Registration Form - World Achievement Awards 2026',
-  description: 'Fill online Registration Form for World Achievement Awards 2026. Nominate achievers in Bhubaneswar, Odisha.',
+  title: 'Registration Form - World Achievement Awards',
+  description: 'Fill online Registration Form for World Achievement Awards. Nominate achievers in Bhubaneswar, Odisha.',
   body: registrationFormBody
 };
 
 pages['/registration'] = {
-  title: 'Registration Form - World Achievement Awards 2026',
-  description: 'Fill online Registration Form for World Achievement Awards 2026 by Love In Action (LIA). Nominate achievers in Bhubaneswar, Odisha.',
+  title: 'Registration Form - World Achievement Awards',
+  description: 'Fill online Registration Form for World Achievement Awards by Love In Action (LIA). Nominate achievers in Bhubaneswar, Odisha.',
   body: registrationFormBody
 };
 
@@ -941,14 +941,13 @@ ${cta}`
 // PAGE 7: PHOTO GALLERY
 pages['/gallery'] = {
   title: 'Photo Gallery | World Achievement Awards',
-  description: 'Photo gallery of Award Ceremony 2025, Award Ceremony 2026, Health Camps, Cultural Events, and Awardees.',
+  description: 'Photo gallery of Award Ceremony, Health Camps, Cultural Events, and Awardees.',
   body: `
 ${heading('PHOTO GALLERY', 'Moments That Matter', 'Explore high-resolution moments from our award ceremonies, free medical camps, and cultural recitals. Click any image to view in full resolution.')}
 <section class="wrap archive">
   <div class="gallery-category-tabs" role="tablist">
     <button class="tab-btn active" data-gallery-tab="all">All Photos</button>
-    <button class="tab-btn" data-gallery-tab="Award Ceremony 2025">Award Ceremony 2025</button>
-    <button class="tab-btn" data-gallery-tab="Award Ceremony 2026">Award Ceremony 2026</button>
+    <button class="tab-btn" data-gallery-tab="Award Ceremony">Award Ceremony</button>
     <button class="tab-btn" data-gallery-tab="Health Camps">Health Camps</button>
     <button class="tab-btn" data-gallery-tab="Cultural Events">Cultural Events</button>
     <button class="tab-btn" data-gallery-tab="Awardees">Awardees</button>
@@ -982,15 +981,15 @@ ${cta}`
 
 // PAGE 9: BLOG / NEWS
 pages['/news'] = {
-  title: 'Blog / News | World Achievement Awards 2026',
-  description: 'Latest news, upcoming health camps, awardee success stories, and press coverage from World Achievement Awards 2026.',
+  title: 'Blog / News | World Achievement Awards',
+  description: 'Latest news, upcoming health camps, awardee success stories, and press coverage from World Achievement Awards.',
   body: `
 ${heading('BLOG & NEWS', 'Latest Updates & Stories', 'Stay informed about nomination deadlines, upcoming health camps, inspiring awardee journeys, and national press coverage.')}
 <section class="wrap archive">
   <div style="margin-bottom: 35px;">
     <a class="news-card" href="/news/nomination-guide" style="display: block;">
       <p class="eyebrow">OFFICIAL NOMINATION GUIDE · 3 MIN READ</p>
-      <h2>How to tell the story of your impact for World Achievement Awards 2026</h2>
+      <h2>How to tell the story of your impact for World Achievement Awards</h2>
       <p>A practical, evidence-led guide to preparing your nomination, CV, and proof documents for jury verification.</p>
       <span class="text-link">Read the Official Guide ↗</span>
     </a>
@@ -1009,7 +1008,7 @@ ${cta}`
 
 pages['/news/nomination-guide'] = {
   title: 'How to Prepare Your Nomination | World Achievement Awards Guide',
-  description: 'A practical guide on how to prepare a winning nomination with verified evidence for World Achievement Awards 2026.',
+  description: 'A practical guide on how to prepare a winning nomination with verified evidence for World Achievement Awards.',
   body: `
 ${heading('NOMINATION GUIDE', 'Let the impact<br><em>tell the story.</em>', 'A strong nomination is specific, honest and supported by evidence.')}
 <article class="wrap prose">
@@ -1028,9 +1027,9 @@ ${heading('NOMINATION GUIDE', 'Let the impact<br><em>tell the story.</em>', 'A s
 // PAGE 10: RULES, TERMS & PRIVACY
 pages['/terms'] = {
   title: 'Rules & Terms | World Achievement Awards',
-  description: 'Official Rules, Terms & Conditions for World Achievement Awards 2026.',
+  description: 'Official Rules, Terms & Conditions for World Achievement Awards.',
   body: `
-${heading('OFFICIAL RULES & TERMS', 'Rules & Terms of Nomination', 'Please read carefully before submitting your nomination for World Achievement Awards 2026.')}
+${heading('OFFICIAL RULES & TERMS', 'Rules & Terms of Nomination', 'Please read carefully before submitting your nomination for World Achievement Awards.')}
 <article class="wrap prose">
   <h2>1. Genuine & Authentic Nominations</h2>
   <p>All nominations and uploaded documents must be genuine, truthful, and verifiable. Any submission containing falsified claims, altered certificates, or misleading information will be disqualified immediately.</p>
@@ -1052,7 +1051,7 @@ ${heading('OFFICIAL RULES & TERMS', 'Rules & Terms of Nomination', 'Please read 
 pages['/rules']=pages['/terms'];
 
 pages['/privacy'] = {
-  title: 'Privacy Policy | World Achievement Awards 2026',
+  title: 'Privacy Policy | World Achievement Awards',
   description: 'Privacy notice on how World Achievement Awards protects applicant personal data and documents.',
   body: `
 ${heading('PRIVACY POLICY', 'Data Protection & Confidentiality', 'How information submitted through this website is handled responsibly.')}
@@ -1070,7 +1069,7 @@ ${heading('PRIVACY POLICY', 'Data Protection & Confidentiality', 'How informatio
 
 // PAGE 11: CONTACT US
 pages['/contact'] = {
-  title: 'Contact Us | World Achievement Awards 2026',
+  title: 'Contact Us | World Achievement Awards',
   description: 'Contact World Achievement Awards in Jaydev Vihar, Bhubaneswar, Odisha. Phone/WhatsApp: +91 63728 81379, Email: Infoworldachivementaward@gmail.com.',
   body: `
 ${heading('GET IN TOUCH', 'Contact Us', 'Have questions regarding the nomination process, award categories, or partnership? Reach out to our organizing team.')}
@@ -1119,8 +1118,8 @@ const css = await readFile('style.css', 'utf8');
 const js = await readFile('client.js', 'utf8');
 
 function render(path, p) {
-  const title = p.title.includes('World Achievement Awards') ? p.title : p.title + ' | World Achievement Awards 2026';
-  const desc = p.description || 'World Achievement Awards 2026, Bhubaneswar, Odisha.';
+  const title = p.title.includes('World Achievement Awards') ? p.title : p.title + ' | World Achievement Awards';
+  const desc = p.description || 'World Achievement Awards, Bhubaneswar, Odisha.';
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -1145,7 +1144,7 @@ function render(path, p) {
     '@context': 'https://schema.org',
     '@type': 'NGO',
     name: 'Love In Action (LIA)',
-    alternateName: 'World Achievement Awards 2026',
+    alternateName: 'World Achievement Awards',
     url: base,
     telephone: '+916372881379',
     email: 'Infoworldachivementaward@gmail.com',
@@ -1168,7 +1167,7 @@ function render(path, p) {
         <img src="/assets/LOGO.jpeg" alt="World Achievement Awards Emblem" class="brand-logo" width="46" height="46">
         <div class="brand-text-block">
           <span class="brand-name">WORLD ACHIEVEMENT</span>
-          <span class="brand-sub">AWARDS 2026</span>
+          <span class="brand-sub">AWARDS</span>
         </div>
         <div class="brand-divider" aria-hidden="true"></div>
         <span class="brand-tagline">The Spirit of Excellence</span>
@@ -1210,7 +1209,7 @@ function render(path, p) {
           <a href="/" class="brand footer-brand" aria-label="World Achievement Awards Home">
             <img src="/assets/LOGO.jpeg" alt="World Achievement Awards Emblem" class="brand-logo footer-logo" width="60" height="60">
             <span class="footer-brand-divider" aria-hidden="true"></span>
-            <span class="footer-brand-text">WORLD ACHIEVEMENT<small>AWARDS 2026</small></span>
+            <span class="footer-brand-text">WORLD ACHIEVEMENT<small>AWARDS</small></span>
           </a>
           <p class="footer-brand-desc">Together For A Healthier And Kinder World.<br>Organised by Love In Action (LIA).<br>Reg. Under Indian Govt. Act 1892 &bull; Reg. No. 105300064</p>
           <div class="footer-hq-badge">
@@ -1293,7 +1292,7 @@ function render(path, p) {
     <!-- Deep Emerald Bottom Bar -->
     <div class="footer-bottom-bar">
       <div class="wrap footer-bottom">
-        <span class="footer-copy-text">&copy; 2026 World Achievement Awards &bull; Organised by Love In Action (LIA). All Rights Reserved.</span>
+        <span class="footer-copy-text">&copy; World Achievement Awards &bull; Organised by Love In Action (LIA). All Rights Reserved.</span>
         <div class="footer-bottom-links">
           <span class="footer-bottom-pipe" aria-hidden="true">|</span>
           <a href="/privacy">Privacy Policy</a>

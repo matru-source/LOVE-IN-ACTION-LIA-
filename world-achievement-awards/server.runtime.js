@@ -606,7 +606,7 @@ export default {
         body = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#26352a"/><text x="32" y="48" text-anchor="middle" font-size="48" fill="#d8b76b">✳</text></svg>';
         type = 'image/svg+xml';
       } else {
-        body = currentPages[lookupPath] || currentPages['/404'] || '<!doctype html><html><head><title>World Achievement Awards 2026</title></head><body><h1>World Achievement Awards 2026</h1></body></html>';
+        body = currentPages[lookupPath] || currentPages['/404'] || '<!doctype html><html><head><title>World Achievement Awards</title></head><body><h1>World Achievement Awards</h1></body></html>';
         status = currentPages[lookupPath] && p !== '/404' ? 200 : 404;
 
         if (body && typeof body === 'string' && body.includes('data-content=')) {

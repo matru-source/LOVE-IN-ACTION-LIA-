@@ -66,7 +66,7 @@ test('Page 1: Home Page has Hero, Trust Strip, 3 Metric Boxes, About Short, Vide
 
   // Hero
   assert.match(html, /LOVE IN ACTION \(LIA\)/);
-  assert.match(html, /WORLD ACHIEVEMENT<br>AWARDS 2026/);
+  assert.match(html, /WORLD ACHIEVEMENT<br>AWARDS/);
   assert.match(html, /Together For A Healthier And Kinder World/);
   assert.match(html, /href="\/nominate">Nominate Now/);
   assert.match(html, /href="\/awards">View Awards/);
@@ -124,7 +124,7 @@ test('Page 3: Awards has all 12 categories with benefits and How To Apply button
   const html = await res.text();
 
   const awardList = [
-    'Kalinga Yuva Gaurav Samman 2026',
+    'Kalinga Yuva Gaurav Samman',
     'World Achievement Award',
     'Seva Ratan Award',
     'Education Icon Award',
@@ -143,7 +143,7 @@ test('Page 3: Awards has all 12 categories with benefits and How To Apply button
   }
 
   // Check specific award category page
-  const single = await get('/awards/kalinga-yuva-gaurav-samman-2026');
+  const single = await get('/awards/kalinga-yuva-gaurav-samman');
   assert.equal(single.status, 200);
   const singleHtml = await single.text();
 
@@ -182,7 +182,7 @@ test('Page 5: Registration Form (/nominate and /registration) has all fields, wo
     assert.equal(res.status, 200);
     const html = await res.text();
 
-    assert.match(html, /Registration Form -<br>World Achievement Awards 2026/);
+    assert.match(html, /Registration Form -<br>World Achievement Awards/);
     assert.match(html, /Why Do You Deserve This Award\? \(200 words\) \*/);
     assert.match(html, /id="word-count-badge"/);
     assert.match(html, /Passport Photo \* \[JPG\/PNG\]/);
@@ -200,7 +200,7 @@ test('Page 6: Awardees List has format with Field badge and sample recipient Smr
   const html = await res.text();
 
   assert.match(html, /Smrutishree Mohanty/);
-  assert.match(html, /Kalinga Yuva Gaurav Samman 2026/);
+  assert.match(html, /Kalinga Yuva Gaurav Samman/);
   assert.match(html, /<strong>From:<\/strong> Nial, Kendrapara, Odisha/);
   assert.match(html, /<strong>Field:<\/strong> <span class="field-badge">Youth \/ Social Service<\/span>/);
 });
@@ -210,8 +210,7 @@ test('Page 7: Photo Gallery has 5 category tabs and modal enlarge triggers', asy
   assert.equal(res.status, 200);
   const html = await res.text();
 
-  assert.match(html, /data-gallery-tab="Award Ceremony 2025"/);
-  assert.match(html, /data-gallery-tab="Award Ceremony 2026"/);
+    assert.match(html, /data-gallery-tab="Award Ceremony"/);
   assert.match(html, /data-gallery-tab="Health Camps"/);
   assert.match(html, /data-gallery-tab="Cultural Events"/);
   assert.match(html, /data-gallery-tab="Awardees"/);

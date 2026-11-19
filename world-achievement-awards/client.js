@@ -124,7 +124,7 @@ document.querySelectorAll('form[data-endpoint]').forEach(form => {
         const nomPhone = data.get('phone') || '';
 
         const waText = encodeURIComponent(
-          `Hello Love In Action team, I have submitted a nomination for World Achievement Awards 2026.\n\n` +
+          `Hello Love In Action team, I have submitted a nomination for World Achievement Awards.\n\n` +
           `• Reference: ${result.reference}\n` +
           `• Nominee: ${nomName}\n` +
           `• Category: ${nomCat}\n` +
