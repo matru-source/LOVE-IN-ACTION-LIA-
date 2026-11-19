@@ -3773,15 +3773,28 @@ main[data-page="privacy"] .page-heading {
 
 .metrics-bar-section {
     background: linear-gradient(135deg, #031c13 0%, #073827 50%, #042419 100%);
-    padding: 44px 0 28px;
+    padding: 16px 0 14px;
     position: relative;
+    border-top: 1px solid rgba(216, 183, 107, 0.2);
 }
 
+.metrics-bar-section .impact-strip,
 .metrics-grid {
     display: flex !important;
     justify-content: space-around !important;
     align-items: center !important;
-    gap: 20px !important;
+    gap: 16px !important;
+    padding-block: 0 !important;
+    padding: 0 !important;
+    border-bottom: none !important;
+    border: none !important;
+}
+
+.metrics-bar-section .impact-strip > div,
+.metrics-grid > div {
+    border-right: none !important;
+    border-bottom: none !important;
+    padding: 0 !important;
 }
 
 .metric-card {
@@ -3791,6 +3804,7 @@ main[data-page="privacy"] .page-heading {
     flex-direction: column;
     align-items: center;
     position: relative;
+    padding: 0 !important;
 }
 
 .metric-laurel-wrap {
@@ -3798,9 +3812,9 @@ main[data-page="privacy"] .page-heading {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 175px;
-    height: 100px;
-    margin-bottom: 6px;
+    width: 124px;
+    height: 56px;
+    margin-bottom: 2px;
 }
 
 .metric-laurel-svg {
@@ -3809,37 +3823,41 @@ main[data-page="privacy"] .page-heading {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    filter: drop-shadow(0 3px 8px rgba(212, 170, 84, 0.4));
+    filter: drop-shadow(0 2px 5px rgba(212, 170, 84, 0.35));
 }
 
 .metric-card strong {
     font-family: Georgia, 'Times New Roman', serif !important;
-    font-size: clamp(34px, 4vw, 46px) !important;
+    font-size: clamp(26px, 2.8vw, 32px) !important;
     font-weight: 700 !important;
     color: #ffffff !important;
     letter-spacing: 0.02em !important;
     z-index: 2;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+    line-height: 1 !important;
+    margin: 0 !important;
 }
 
 .metric-card strong.metric-number-text {
-    font-size: clamp(26px, 3.2vw, 34px) !important;
+    font-size: clamp(20px, 2.2vw, 24px) !important;
     white-space: nowrap;
 }
 
 .metric-card span {
-    font-size: 13.5px !important;
+    font-size: 11px !important;
     font-weight: 600 !important;
     color: #fae19c !important;
-    letter-spacing: 0.06em !important;
+    letter-spacing: 0.08em !important;
     text-transform: uppercase !important;
-    margin-top: 4px;
+    margin-top: 3px !important;
+    line-height: 1.2 !important;
 }
 
 .metric-divider {
     width: 1px;
-    height: 64px;
+    height: 38px;
     background: linear-gradient(to bottom, transparent, rgba(216, 183, 107, 0.45), transparent);
+    flex-shrink: 0;
 }
 
 .metrics-wave-divider {
@@ -3851,7 +3869,7 @@ main[data-page="privacy"] .page-heading {
 
 .metrics-wave-svg {
     width: 100%;
-    height: 48px;
+    height: 12px;
     display: block;
 }
 

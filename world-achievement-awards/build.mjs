@@ -368,7 +368,7 @@ pages['/'] = {
   </div>
 
   <div class="metrics-wave-divider" aria-hidden="true">
-    <svg viewBox="0 0 1440 55" preserveAspectRatio="none" class="metrics-wave-svg">
+    <svg viewBox="0 0 1440 20" preserveAspectRatio="none" class="metrics-wave-svg">
       <defs>
         <linearGradient id="waveGoldM" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stop-color="#ecc97e"/>
@@ -376,8 +376,8 @@ pages['/'] = {
           <stop offset="100%" stop-color="#d4aa54"/>
         </linearGradient>
       </defs>
-      <path d="M0,0 L1440,0 L1440,20 C1080,48 720,10 360,40 L0,18 Z" fill="#06281c"/>
-      <path d="M0,18 C360,40 720,10 1080,48 L1440,20" fill="none" stroke="url(#waveGoldM)" stroke-width="3"/>
+      <path d="M0,0 L1440,0 L1440,6 C1080,16 720,4 360,14 L0,6 Z" fill="#06281c"/>
+      <path d="M0,6 C360,14 720,4 1080,16 L1440,6" fill="none" stroke="url(#waveGoldM)" stroke-width="2"/>
     </svg>
   </div>
 
