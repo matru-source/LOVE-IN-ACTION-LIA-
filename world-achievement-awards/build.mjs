@@ -300,67 +300,70 @@ pages['/'] = {
 
 <section class="metrics-about-wrapper">
   <div class="metrics-bar-section">
+    <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" aria-hidden="true">
+      <defs>
+        <linearGradient id="metricGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#fae8a7"/>
+          <stop offset="45%" stop-color="#d4aa54"/>
+          <stop offset="80%" stop-color="#ecc97e"/>
+          <stop offset="100%" stop-color="#b88828"/>
+        </linearGradient>
+      </defs>
+    </svg>
     <div class="wrap impact-strip metrics-grid">
       <div class="metric-card">
-        <div class="metric-laurel-wrap">
-          <svg viewBox="0 0 160 110" class="metric-laurel-svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="metricGold1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#fae8a7"/>
-                <stop offset="50%" stop-color="#d4aa54"/>
-                <stop offset="100%" stop-color="#ecc97e"/>
-              </linearGradient>
-            </defs>
-            <path d="M42 90 C30 75 25 55 28 35 C32 18 42 8 46 5" fill="none" stroke="url(#metricGold1)" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M30 78 C24 72 20 62 25 56 C28 52 34 54 36 60 C38 66 35 74 30 78 Z" fill="url(#metricGold1)"/>
-            <path d="M26 60 C20 54 18 44 24 38 C28 34 33 37 34 43 C35 49 31 56 26 60 Z" fill="url(#metricGold1)"/>
-            <path d="M27 42 C23 35 22 26 29 21 C33 18 38 21 38 27 C38 33 33 39 27 42 Z" fill="url(#metricGold1)"/>
-            <path d="M36 24 C33 18 34 10 40 7 C44 5 48 9 47 15 C46 20 41 24 36 24 Z" fill="url(#metricGold1)"/>
-            <path d="M118 90 C130 75 135 55 132 35 C128 18 118 8 114 5" fill="none" stroke="url(#metricGold1)" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M130 78 C136 72 140 62 135 56 C132 52 126 54 124 60 C122 66 125 74 130 78 Z" fill="url(#metricGold1)"/>
-            <path d="M134 60 C140 54 142 44 136 38 C132 34 127 37 126 43 C125 49 129 56 134 60 Z" fill="url(#metricGold1)"/>
-            <path d="M133 42 C137 35 138 26 131 21 C127 18 122 21 122 27 C122 33 127 39 133 42 Z" fill="url(#metricGold1)"/>
-            <path d="M124 24 C127 18 126 10 120 7 C116 5 112 9 113 15 C114 20 119 24 124 24 Z" fill="url(#metricGold1)"/>
+        <div class="metric-value-row">
+          <svg viewBox="0 0 20 40" class="metric-laurel-side left" aria-hidden="true">
+            <path d="M18 38 C10 30 4 20 6 10 C8 3 14 1 16 0.5" fill="none" stroke="url(#metricGoldGrad)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M12 32 C8 28 6 22 9 18 C11 16 15 17 15 21 C15 25 14 29 12 32 Z" fill="url(#metricGoldGrad)"/>
+            <path d="M8 22 C5 18 4 12 7 9 C9 7 13 8 13 12 C13 16 11 20 8 22 Z" fill="url(#metricGoldGrad)"/>
+            <path d="M9 12 C7 8 7 3 10 1.5 C12 0.5 15 2 15 5 C15 9 12 11 9 12 Z" fill="url(#metricGoldGrad)"/>
           </svg>
           <strong class="counter-val" data-target="500" data-suffix="+">500+</strong>
+          <svg viewBox="0 0 20 40" class="metric-laurel-side right" aria-hidden="true">
+            <path d="M2 38 C10 30 16 20 14 10 C12 3 6 1 4 0.5" fill="none" stroke="url(#metricGoldGrad)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M8 32 C12 28 14 22 11 18 C9 16 5 17 5 21 C5 25 6 29 8 32 Z" fill="url(#metricGoldGrad)"/>
+            <path d="M12 22 C15 18 16 12 13 9 C11 7 7 8 7 12 C7 16 9 20 12 22 Z" fill="url(#metricGoldGrad)"/>
+            <path d="M11 12 C13 8 13 3 10 1.5 C8 0.5 5 2 5 5 C5 9 8 11 11 12 Z" fill="url(#metricGoldGrad)"/>
+          </svg>
         </div>
         <span>Awardees Honoured</span>
       </div>
       <div class="metric-divider" aria-hidden="true"></div>
       <div class="metric-card">
-        <div class="metric-laurel-wrap">
-          <svg viewBox="0 0 160 110" class="metric-laurel-svg" aria-hidden="true">
-            <path d="M42 90 C30 75 25 55 28 35 C32 18 42 8 46 5" fill="none" stroke="url(#metricGold1)" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M30 78 C24 72 20 62 25 56 C28 52 34 54 36 60 C38 66 35 74 30 78 Z" fill="url(#metricGold1)"/>
-            <path d="M26 60 C20 54 18 44 24 38 C28 34 33 37 34 43 C35 49 31 56 26 60 Z" fill="url(#metricGold1)"/>
-            <path d="M27 42 C23 35 22 26 29 21 C33 18 38 21 38 27 C38 33 33 39 27 42 Z" fill="url(#metricGold1)"/>
-            <path d="M36 24 C33 18 34 10 40 7 C44 5 48 9 47 15 C46 20 41 24 36 24 Z" fill="url(#metricGold1)"/>
-            <path d="M118 90 C130 75 135 55 132 35 C128 18 118 8 114 5" fill="none" stroke="url(#metricGold1)" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M130 78 C136 72 140 62 135 56 C132 52 126 54 124 60 C122 66 125 74 130 78 Z" fill="url(#metricGold1)"/>
-            <path d="M134 60 C140 54 142 44 136 38 C132 34 127 37 126 43 C125 49 129 56 134 60 Z" fill="url(#metricGold1)"/>
-            <path d="M133 42 C137 35 138 26 131 21 C127 18 122 21 122 27 C122 33 127 39 133 42 Z" fill="url(#metricGold1)"/>
-            <path d="M124 24 C127 18 126 10 120 7 C116 5 112 9 113 15 C114 20 119 24 124 24 Z" fill="url(#metricGold1)"/>
+        <div class="metric-value-row">
+          <svg viewBox="0 0 20 40" class="metric-laurel-side left" aria-hidden="true">
+            <path d="M18 38 C10 30 4 20 6 10 C8 3 14 1 16 0.5" fill="none" stroke="url(#metricGoldGrad)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M12 32 C8 28 6 22 9 18 C11 16 15 17 15 21 C15 25 14 29 12 32 Z" fill="url(#metricGoldGrad)"/>
+            <path d="M8 22 C5 18 4 12 7 9 C9 7 13 8 13 12 C13 16 11 20 8 22 Z" fill="url(#metricGoldGrad)"/>
+            <path d="M9 12 C7 8 7 3 10 1.5 C12 0.5 15 2 15 5 C15 9 12 11 9 12 Z" fill="url(#metricGoldGrad)"/>
           </svg>
           <strong class="counter-val" data-target="20" data-suffix="+">20+</strong>
+          <svg viewBox="0 0 20 40" class="metric-laurel-side right" aria-hidden="true">
+            <path d="M2 38 C10 30 16 20 14 10 C12 3 6 1 4 0.5" fill="none" stroke="url(#metricGoldGrad)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M8 32 C12 28 14 22 11 18 C9 16 5 17 5 21 C5 25 6 29 8 32 Z" fill="url(#metricGoldGrad)"/>
+            <path d="M12 22 C15 18 16 12 13 9 C11 7 7 8 7 12 C7 16 9 20 12 22 Z" fill="url(#metricGoldGrad)"/>
+            <path d="M11 12 C13 8 13 3 10 1.5 C8 0.5 5 2 5 5 C5 9 8 11 11 12 Z" fill="url(#metricGoldGrad)"/>
+          </svg>
         </div>
         <span>Award Categories</span>
       </div>
       <div class="metric-divider" aria-hidden="true"></div>
       <div class="metric-card">
-        <div class="metric-laurel-wrap">
-          <svg viewBox="0 0 160 110" class="metric-laurel-svg" aria-hidden="true">
-            <path d="M42 90 C30 75 25 55 28 35 C32 18 42 8 46 5" fill="none" stroke="url(#metricGold1)" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M30 78 C24 72 20 62 25 56 C28 52 34 54 36 60 C38 66 35 74 30 78 Z" fill="url(#metricGold1)"/>
-            <path d="M26 60 C20 54 18 44 24 38 C28 34 33 37 34 43 C35 49 31 56 26 60 Z" fill="url(#metricGold1)"/>
-            <path d="M27 42 C23 35 22 26 29 21 C33 18 38 21 38 27 C38 33 33 39 27 42 Z" fill="url(#metricGold1)"/>
-            <path d="M36 24 C33 18 34 10 40 7 C44 5 48 9 47 15 C46 20 41 24 36 24 Z" fill="url(#metricGold1)"/>
-            <path d="M118 90 C130 75 135 55 132 35 C128 18 118 8 114 5" fill="none" stroke="url(#metricGold1)" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M130 78 C136 72 140 62 135 56 C132 52 126 54 124 60 C122 66 125 74 130 78 Z" fill="url(#metricGold1)"/>
-            <path d="M134 60 C140 54 142 44 136 38 C132 34 127 37 126 43 C125 49 129 56 134 60 Z" fill="url(#metricGold1)"/>
-            <path d="M133 42 C137 35 138 26 131 21 C127 18 122 21 122 27 C122 33 127 39 133 42 Z" fill="url(#metricGold1)"/>
-            <path d="M124 24 C127 18 126 10 120 7 C116 5 112 9 113 15 C114 20 119 24 124 24 Z" fill="url(#metricGold1)"/>
+        <div class="metric-value-row">
+          <svg viewBox="0 0 20 40" class="metric-laurel-side left" aria-hidden="true">
+            <path d="M18 38 C10 30 4 20 6 10 C8 3 14 1 16 0.5" fill="none" stroke="url(#metricGoldGrad)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M12 32 C8 28 6 22 9 18 C11 16 15 17 15 21 C15 25 14 29 12 32 Z" fill="url(#metricGoldGrad)"/>
+            <path d="M8 22 C5 18 4 12 7 9 C9 7 13 8 13 12 C13 16 11 20 8 22 Z" fill="url(#metricGoldGrad)"/>
+            <path d="M9 12 C7 8 7 3 10 1.5 C12 0.5 15 2 15 5 C15 9 12 11 9 12 Z" fill="url(#metricGoldGrad)"/>
           </svg>
           <strong class="metric-number-text">Pan India</strong>
+          <svg viewBox="0 0 20 40" class="metric-laurel-side right" aria-hidden="true">
+            <path d="M2 38 C10 30 16 20 14 10 C12 3 6 1 4 0.5" fill="none" stroke="url(#metricGoldGrad)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M8 32 C12 28 14 22 11 18 C9 16 5 17 5 21 C5 25 6 29 8 32 Z" fill="url(#metricGoldGrad)"/>
+            <path d="M12 22 C15 18 16 12 13 9 C11 7 7 8 7 12 C7 16 9 20 12 22 Z" fill="url(#metricGoldGrad)"/>
+            <path d="M11 12 C13 8 13 3 10 1.5 C8 0.5 5 2 5 5 C5 9 8 11 11 12 Z" fill="url(#metricGoldGrad)"/>
+          </svg>
         </div>
         <span>Recognition</span>
       </div>
