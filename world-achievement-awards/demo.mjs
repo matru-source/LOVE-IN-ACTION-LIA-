@@ -145,31 +145,141 @@ export const demoContent = [
     demo: true
   },
 
-  // 2. PHOTOS - Covering the 5 Categories requested by client
+  // 2. PHOTOS - Real Client Photos Covering all Categories
   {
     id: 'photo-1',
     kind: 'photos',
-    title: 'Grand Stage at Jaydev Vihar',
+    title: 'Grand Stage Felicitation at Bhubaneswar',
     category: 'Award Ceremony',
     state: 'Odisha',
     district: 'Bhubaneswar',
-    description: 'World Achievement Awards, Bhubaneswar — Dignitaries presenting honours to grassroots champions.',
-    image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=900&q=80',
+    description: 'World Achievement Awards, Bhubaneswar — Dignitaries, chief guests, and performers on stage under the official banner.',
+    image: '/assets/gallery/1.jpeg',
     demo: true
   },
   {
     id: 'photo-2',
     kind: 'photos',
-    title: 'Annual Felicitation & Chief Guests',
-    category: 'Award Ceremony',
+    title: 'Certificate of Excellence Felicitation',
+    category: 'Awardees',
     state: 'Odisha',
     district: 'Bhubaneswar',
-    description: 'World Achievement Awards Inaugural Ceremony — Celebrating extraordinary Indian achievers.',
-    image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=80',
+    description: 'Distinguished honouree receiving the framed Certificate of Excellence from dignitaries and jury members.',
+    image: '/assets/gallery/2.jpeg',
     demo: true
   },
   {
     id: 'photo-3',
+    kind: 'photos',
+    title: 'Gold Medal & Convocation Honours',
+    category: 'Awardees',
+    state: 'Odisha',
+    district: 'Bhubaneswar',
+    description: 'Awardee in ceremonial convocation gown receiving the official distinction medal, trophy, and distinction certificate.',
+    image: '/assets/gallery/3.jpeg',
+    demo: true
+  },
+  {
+    id: 'photo-4',
+    kind: 'photos',
+    title: 'Official Souvenir & Brochure Release',
+    category: 'Award Ceremony',
+    state: 'Odisha',
+    district: 'Bhubaneswar',
+    description: 'Distinguished guests, spiritual leaders, and organizers officially unveiling the World Achievement Awards commemorative publication.',
+    image: '/assets/gallery/4.jpeg',
+    demo: true
+  },
+  {
+    id: 'photo-5',
+    kind: 'photos',
+    title: 'Annual Felicitation & Commemorative Launch',
+    category: 'Award Ceremony',
+    state: 'Odisha',
+    district: 'Bhubaneswar',
+    description: 'Organisers and chief guests on stage during the ceremonial release of the awards directory and souvenir.',
+    image: '/assets/gallery/5.jpeg',
+    demo: true
+  },
+  {
+    id: 'photo-6',
+    kind: 'photos',
+    title: 'Odissi Classical Dance & Cultural Achievers Felicitation',
+    category: 'Cultural Events',
+    state: 'Odisha',
+    district: 'Bhubaneswar',
+    description: 'Young classical Odissi dancers and cultural performers felicitated on stage with gold trophies and citations.',
+    image: '/assets/gallery/6.jpeg',
+    demo: true
+  },
+  {
+    id: 'photo-7',
+    kind: 'photos',
+    title: 'Golden Plaque & Floral Felicitation',
+    category: 'Awardees',
+    state: 'Odisha',
+    district: 'Bhubaneswar',
+    description: 'Honouring an exceptional woman leader with the official golden trophy plaque and ceremonial floral bouquet.',
+    image: '/assets/gallery/7.jpeg',
+    demo: true
+  },
+  {
+    id: 'photo-8',
+    kind: 'photos',
+    title: 'World Achievement Awards Souvenir Launch',
+    category: 'Award Ceremony',
+    state: 'Odisha',
+    district: 'Bhubaneswar',
+    description: 'Commemorative souvenir launch by chief guests under the auspices of Love In Action.',
+    image: '/assets/gallery/8.jpeg',
+    demo: true
+  },
+  {
+    id: 'photo-9',
+    kind: 'photos',
+    title: 'Excellence Certificate Presentation on Stage',
+    category: 'Awardees',
+    state: 'Odisha',
+    district: 'Bhubaneswar',
+    description: 'Presentation of Certificate of Excellence to distinguished achiever by jury and guest panel.',
+    image: '/assets/gallery/9.jpeg',
+    demo: true
+  },
+  {
+    id: 'photo-10',
+    kind: 'photos',
+    title: 'Convocation Honours & National Stage Presentation',
+    category: 'Awardees',
+    state: 'Odisha',
+    district: 'Bhubaneswar',
+    description: 'Honouree receiving ceremonial academic gown, gold medal, and national recognition trophy on stage.',
+    image: '/assets/gallery/10.jpeg',
+    demo: true
+  },
+  {
+    id: 'photo-11',
+    kind: 'photos',
+    title: 'Grand Assembly of Achievers & Guests',
+    category: 'Award Ceremony',
+    state: 'Odisha',
+    district: 'Bhubaneswar',
+    description: 'Grand stage assembly of all award recipients, dignitaries, and organizers at Bhubaneswar.',
+    image: '/assets/gallery/11.jpeg',
+    demo: true
+  },
+  {
+    id: 'photo-12',
+    kind: 'photos',
+    title: 'Golden Star Trophy Presentation by Executive Jury',
+    category: 'Awardees',
+    state: 'Odisha',
+    district: 'Bhubaneswar',
+    description: 'Executive jury team presenting the golden star trophy and framed citation to an honoured recipient.',
+    image: '/assets/gallery/12.jpeg',
+    demo: true
+  },
+  {
+    id: 'photo-13',
     kind: 'photos',
     title: 'Mega Health & Blood Donation Camp',
     category: 'Health Camps',
@@ -180,36 +290,14 @@ export const demoContent = [
     demo: true
   },
   {
-    id: 'photo-4',
+    id: 'photo-14',
     kind: 'photos',
-    title: 'Odissi Heritage & Cultural Festival',
-    category: 'Cultural Events',
+    title: 'Community Health & Awareness Outreach',
+    category: 'Health Camps',
     state: 'Odisha',
     district: 'Bhubaneswar',
-    description: 'Traditional Odissi recital and folk art performance at Guru Kelucharan Mohapatra Research Centre.',
-    image: 'https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=900&q=80',
-    demo: true
-  },
-  {
-    id: 'photo-5',
-    kind: 'photos',
-    title: 'Honouring Grassroots Achievers',
-    category: 'Awardees',
-    state: 'Odisha',
-    district: 'Bhubaneswar',
-    description: 'Awardees receiving mementos, gold medals, and certificates of national distinction.',
-    image: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=900&q=80',
-    demo: true
-  },
-  {
-    id: 'photo-6',
-    kind: 'photos',
-    title: 'Youth Leadership Convocation',
-    category: 'Awardees',
-    state: 'Odisha',
-    district: 'Bhubaneswar',
-    description: 'Young innovators and social workers sharing their community transformation journeys.',
-    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80',
+    description: 'Volunteer healthcare workers providing preventive health check-ups and medical care to rural communities.',
+    image: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=900&q=80',
     demo: true
   },
 

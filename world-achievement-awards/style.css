@@ -2236,7 +2236,67 @@ textarea {
     width: 100%;
     border: 0;
     background: transparent;
-    cursor: zoom-in
+    cursor: zoom-in;
+    display: block;
+    overflow: hidden;
+}
+
+/* Enhanced Photo Card Styling */
+.photo-card {
+    border: 1px solid rgba(212, 170, 84, 0.35) !important;
+    background: #ffffff !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.photo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+    border-color: #d4aa54 !important;
+}
+
+.photo-card .photo-open img {
+    height: 240px;
+    object-fit: cover;
+    object-position: center 25%;
+    transition: transform 0.3s ease;
+}
+
+.photo-card:hover .photo-open img {
+    transform: scale(1.03);
+}
+
+/* Ceremony Photo Strip on Home Page */
+.ceremony-photo-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 36px;
+}
+
+.ceremony-strip-item {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.ceremony-strip-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(212, 170, 84, 0.3) !important;
+    border-color: #ecc97e !important;
+}
+
+@media (max-width: 900px) {
+    .ceremony-photo-strip {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .ceremony-photo-strip {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
 }
 
 .filters {

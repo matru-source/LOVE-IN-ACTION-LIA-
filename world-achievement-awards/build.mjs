@@ -482,6 +482,20 @@ pages['/'] = {
   <div class="video-player-wrap">
     <iframe title="Latest Award Ceremony Video" src="https://www.youtube-nocookie.com/embed/07d2dXHYb94" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
   </div>
+  <div class="ceremony-photo-strip" style="margin-top: 36px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+    <a href="/gallery" class="ceremony-strip-item" style="border-radius: 6px; overflow: hidden; border: 1px solid #d4aa54; position: relative; aspect-ratio: 16/10; display: block; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" title="View World Achievement Awards Photo Gallery">
+      <img src="/assets/gallery/7.jpeg" alt="World Achievement Awards Golden Plaque Felicitation" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy">
+    </a>
+    <a href="/gallery" class="ceremony-strip-item" style="border-radius: 6px; overflow: hidden; border: 1px solid #d4aa54; position: relative; aspect-ratio: 16/10; display: block; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" title="Certificate of Excellence Presentation on Stage">
+      <img src="/assets/gallery/2.jpeg" alt="Certificate of Excellence Presentation on Stage" style="width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block;" loading="lazy">
+    </a>
+    <a href="/gallery" class="ceremony-strip-item" style="border-radius: 6px; overflow: hidden; border: 1px solid #d4aa54; position: relative; aspect-ratio: 16/10; display: block; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" title="Convocation Gown & Medal Honours">
+      <img src="/assets/gallery/3.jpeg" alt="Convocation Gown & Medal Honours" style="width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block;" loading="lazy">
+    </a>
+    <a href="/gallery" class="ceremony-strip-item" style="border-radius: 6px; overflow: hidden; border: 1px solid #d4aa54; position: relative; aspect-ratio: 16/10; display: block; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" title="Golden Star Trophy Award Ceremony">
+      <img src="/assets/gallery/12.jpeg" alt="Golden Star Trophy Award Ceremony" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy">
+    </a>
+  </div>
 </section>
 
 <div class="awardees-luxury-outer">
@@ -590,6 +604,17 @@ ${heading('ABOUT THE ORGANISER', 'Love In Action (LIA)<br><em>Good work should n
     <hr>
     <h3>Our Vision</h3>
     <p>A healthier, kinder and more inspired India.</p>
+  </div>
+</section>
+
+<section class="wrap about-ceremony-banner" style="margin-bottom: 70px;">
+  <div style="position: relative; border-radius: 8px; overflow: hidden; border: 2px solid #ecdca8; box-shadow: 0 10px 30px rgba(0,0,0,0.12);">
+    <img src="/assets/gallery/1.jpeg" alt="World Achievement Awards Grand Ceremony Stage at Bhubaneswar" style="width: 100%; height: auto; max-height: 520px; object-fit: cover; object-position: center 30%; display: block;" loading="lazy">
+    <div style="background: linear-gradient(180deg, transparent 0%, rgba(4, 31, 22, 0.88) 60%, rgba(2, 18, 12, 0.98) 100%); position: absolute; bottom: 0; left: 0; right: 0; padding: 26px 32px; color: #ffffff;">
+      <span style="display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; color: #fae19c; text-transform: uppercase; margin-bottom: 6px;">Official Stage Felicitation · Bhubaneswar, Odisha</span>
+      <h3 style="font-family: Georgia, serif; font-size: clamp(20px, 2.2vw, 26px); font-weight: 700; margin: 0 0 8px; color: #ffffff;">World Achievement Awards Annual Convocation</h3>
+      <p style="font-size: 14px; line-height: 1.6; color: #d2e4da; margin: 0; max-width: 820px;">Organised by Love In Action (LIA) at Bhubaneswar, Odisha. Bringing together esteemed dignitaries, jury custodians, and celebrated grassroots honourees onto a prestigious national platform.</p>
+    </div>
   </div>
 </section>
 
@@ -1482,11 +1507,18 @@ output['/404'] = render('/404', {
 await mkdir('dist/server', { recursive: true });
 await mkdir('dist/.openai', { recursive: true });
 
+const galleryFiles = ['1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg', '5.jpeg', '6.jpeg', '7.jpeg', '8.jpeg', '9.jpeg', '10.jpeg', '11.jpeg', '12.jpeg'];
+const galleryImages = {};
+for (const file of galleryFiles) {
+  galleryImages[file] = (await readFile(`assets/gallery/${file}`)).toString('base64');
+}
+
 const runtime = await readFile('server.runtime.js', 'utf8');
 await writeFile('dist/server/index.js', `export const logoImage=${JSON.stringify((await readFile("assets/LOGO.jpeg")).toString("base64"))};
 export const homeBgImage=${JSON.stringify((await readFile("assets/BG/Home1.png")).toString("base64"))};
 export const trophyBgImage=${JSON.stringify((await readFile("assets/BG/Hme1b.png")).toString("base64"))};
 export const ivoryBgImage=${JSON.stringify((await readFile("assets/BG/ivory-gold-ribbon.jpg")).toString("base64"))};
+export const galleryImages=${JSON.stringify(galleryImages)};
 export const demoContent=${JSON.stringify(demoContent)};
 export const socialImage=${JSON.stringify((await readFile("social.png")).toString("base64"))};
 export const assets=${JSON.stringify({ "/assets/style.css": css, "/assets/client.js": js })};
@@ -1498,6 +1530,7 @@ if (typeof globalThis !== 'undefined') {
   globalThis.homeBgImage = homeBgImage;
   globalThis.trophyBgImage = trophyBgImage;
   globalThis.ivoryBgImage = ivoryBgImage;
+  globalThis.galleryImages = galleryImages;
   globalThis.demoContent = demoContent;
   globalThis.socialImage = socialImage;
   globalThis.assets = assets;

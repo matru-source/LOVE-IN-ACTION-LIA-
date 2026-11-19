@@ -2,6 +2,7 @@ const getDemoContent = e => (e && e.demoContent) || (typeof demoContent !== 'und
 const getIvoryBgImage = e => (e && e.ivoryBgImage) || (typeof ivoryBgImage !== 'undefined' ? ivoryBgImage : (typeof globalThis !== 'undefined' && globalThis.ivoryBgImage ? globalThis.ivoryBgImage : ''));
 const getHomeBgImage = e => (e && e.homeBgImage) || (typeof homeBgImage !== 'undefined' ? homeBgImage : (typeof globalThis !== 'undefined' && globalThis.homeBgImage ? globalThis.homeBgImage : ''));
 const getTrophyBgImage = e => (e && e.trophyBgImage) || (typeof trophyBgImage !== 'undefined' ? trophyBgImage : (typeof globalThis !== 'undefined' && globalThis.trophyBgImage ? globalThis.trophyBgImage : ''));
+const getGalleryImages = e => (e && e.galleryImages) || (typeof galleryImages !== 'undefined' ? galleryImages : (typeof globalThis !== 'undefined' && globalThis.galleryImages ? globalThis.galleryImages : {}));
 const getLogoImage = e => (e && e.logoImage) || (typeof logoImage !== 'undefined' ? logoImage : (typeof globalThis !== 'undefined' && globalThis.logoImage ? globalThis.logoImage : ''));
 const getSocialImage = e => (e && e.socialImage) || (typeof socialImage !== 'undefined' ? socialImage : (typeof globalThis !== 'undefined' && globalThis.socialImage ? globalThis.socialImage : ''));
 const getAssets = e => (e && e.assets) || (typeof assets !== 'undefined' ? assets : (typeof globalThis !== 'undefined' && globalThis.assets ? globalThis.assets : {}));
@@ -662,6 +663,18 @@ export default {
         return new Response(r.method === 'HEAD' ? null : Uint8Array.from(atob(ivoryData), c => c.charCodeAt(0)), {
           headers: { ...secure, 'Content-Type': 'image/jpeg', 'Cache-Control': 'public, max-age=604800, immutable' }
         });
+      }
+
+      const galleryMatch = p.match(/^\/assets\/(?:gallery\/|GALLERRY%20IMAGES\/|GALLERRY IMAGES\/)?(\d+\.jpeg)$/i);
+      if (galleryMatch) {
+        const imgName = galleryMatch[1];
+        const gImages = getGalleryImages(e);
+        const galleryData = gImages[imgName];
+        if (galleryData) {
+          return new Response(r.method === 'HEAD' ? null : Uint8Array.from(atob(galleryData), c => c.charCodeAt(0)), {
+            headers: { ...secure, 'Content-Type': 'image/jpeg', 'Cache-Control': 'public, max-age=604800, immutable' }
+          });
+        }
       }
 
       const currentAssets = getAssets(e);
