@@ -1,10 +1,11 @@
 import http from 'node:http';
-import worker, { galleryImages } from './dist/server/index.js';
+import worker, { galleryImages, awardeeImages } from './dist/server/index.js';
 
 const storage = new Map();
 let ver = 0;
 const previewEnv = {
   galleryImages,
+  awardeeImages,
   ADMIN_EMAIL: 'zex4uofficial@gmail.com',
   ADMIN_SECRET: 'lia-admin-2026',
   BUCKET: {

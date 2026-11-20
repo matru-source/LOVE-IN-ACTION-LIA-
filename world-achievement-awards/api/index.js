@@ -1,4 +1,4 @@
-import worker, { demoContent, socialImage, logoImage, homeBgImage, trophyBgImage, ivoryBgImage, galleryImages, assets, pages, categories, siteBase } from '../dist/server/index.js';
+import worker, { demoContent, socialImage, logoImage, homeBgImage, trophyBgImage, ivoryBgImage, galleryImages, awardeeImages, assets, pages, categories, siteBase } from '../dist/server/index.js';
 
 if (typeof globalThis !== 'undefined') {
   if (demoContent) globalThis.demoContent = demoContent;
@@ -8,6 +8,7 @@ if (typeof globalThis !== 'undefined') {
   if (trophyBgImage) globalThis.trophyBgImage = trophyBgImage;
   if (ivoryBgImage) globalThis.ivoryBgImage = ivoryBgImage;
   if (galleryImages) globalThis.galleryImages = galleryImages;
+  if (awardeeImages) globalThis.awardeeImages = awardeeImages;
   if (assets) globalThis.assets = assets;
   if (pages) globalThis.pages = pages;
   if (categories) globalThis.categories = categories;
@@ -30,6 +31,7 @@ const env = {
   trophyBgImage,
   ivoryBgImage,
   galleryImages,
+  awardeeImages,
   ADMIN_EMAIL: process.env.ADMIN_EMAIL || 'zex4uofficial@gmail.com',
   ADMIN_SECRET: process.env.ADMIN_SECRET || 'lia-admin-2026',
   RESEND_API_KEY: process.env.RESEND_API_KEY || '',

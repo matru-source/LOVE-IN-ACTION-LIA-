@@ -1,5 +1,89 @@
 export const demoContent = [
-  // 1. AWARDEES - Covering all 12 Categories with full details & client's example Smrutishree Mohanty
+  // 1. AWARDEES - Authentic Honourees & Category Representatives
+  {
+    id: 'awardee-annesa-piplai',
+    kind: 'awardees',
+    title: 'Annesa Piplai',
+    category: 'Youth Icon Award',
+    district: 'Bhubaneswar',
+    state: 'Odisha',
+    field: 'Science Innovation, Literature & Odissi Dance',
+    description: 'Annesa Piplai is a multitalented young innovator with over 400 international, national, and state-level awards across science, innovation, literature, arts, and public speaking. A National Winner in Science Innovation at IIT Delhi, she is also a young author, state-level Odissi dancer, and exceptional orator. Honoured with the Shishu Pratibha Samman, Bharat Gaurav Samman, National Kala Utsav Art Award, and an ever-growing list of prestigious accolades, she continues to inspire through innovation, creativity, and excellence.',
+    image: '/assets/awardees/annesa-piplai.jpeg',
+    demo: false
+  },
+  {
+    id: 'awardee-deepak-ranjan-behera',
+    kind: 'awardees',
+    title: 'Dr. Deepak Ranjan Behera',
+    category: 'Health & Medical Service Award',
+    district: 'Balakati, Khordha',
+    state: 'Odisha',
+    field: 'Yoga & Naturopathy / Healthcare & Social Work',
+    description: 'Charaka Institute of Yoga Director with Social Worker. Dr. Deepak Ranjan Behera serves as Yoga & Naturopathy Therapist at Balakati CHC, Khordha (Join date 19/12/2019 to till now), providing holistic healing, community health camps, and dedicated wellness care.',
+    image: '/assets/awardees/deepak-ranjan-behera.jpeg',
+    demo: false
+  },
+  {
+    id: 'awardee-kalpana-mohanta',
+    kind: 'awardees',
+    title: 'Ms. Kalpana Mohanta',
+    category: 'Seva Ratan Award',
+    district: 'Bhubaneswar',
+    state: 'Odisha',
+    field: 'Social Service & Philanthropy',
+    description: 'Ms. Kalpana Mohanta, Founder and President of UNICON Foundation, a respected spiritual teacher, philanthropist, and dedicated social worker, working tirelessly towards spreading compassion, harmony, and peace in society.',
+    image: '/assets/awardees/kalpana-mohanta.jpeg',
+    demo: false
+  },
+  {
+    id: 'awardee-kamini-nayak',
+    kind: 'awardees',
+    title: 'Dr. Kamini Nayak',
+    category: 'Education Icon Award',
+    district: 'Dhanmandal, Jajpur',
+    state: 'Odisha',
+    field: 'Education & Charitable Leadership',
+    description: 'Dr. Kamini Nayak, Chairperson of B.K. Educational and Charitable Trust, and Secretary-cum-Principal of Holy Jesus School, Dhanmandal, Jajpur, empowering youth through transformative education and community service.',
+    image: '/assets/awardees/kamini-nayak.jpeg',
+    demo: false
+  },
+  {
+    id: 'awardee-meena-kumari-pradhan',
+    kind: 'awardees',
+    title: 'Dr. Meena Kumari Pradhan',
+    category: 'Education Icon Award',
+    district: 'Bhubaneswar',
+    state: 'Odisha',
+    field: 'Education & Teaching',
+    description: 'Dr. Meena Kumari Pradhan, Teacher and educational mentor, committed to nurturing young talent, academic enrichment, and advancing foundational learning across Odisha.',
+    image: '/assets/awardees/meena-kumari-pradhan.jpeg',
+    demo: false
+  },
+  {
+    id: 'awardee-nibedita-priyadarsini-sukla',
+    kind: 'awardees',
+    title: 'Advocate Nibedita Priyadarsini Sukla',
+    category: 'Women Empowerment Award',
+    district: 'Bidanasi, Cuttack',
+    state: 'Odisha',
+    field: 'Law, Women’s Rights, Literature & Social Justice',
+    description: 'Advocate Nibedita Priyadarsini Sukla is a legal professional (B.A., LL.M.), writer, author, and social worker from Odisha, affiliated with the Odisha High Court. Through her literary contributions, she creates awareness about women’s rights, social justice, human values, and women’s empowerment. Her writings reflect the struggles, dignity, and strength of women in society, using law and literature as powerful tools to promote equality and positive social change. Address: Chahata Lane No. 6, Bidanasi, Cuttack, Odisha – 753014.',
+    image: '/assets/awardees/nibedita-priyadarsini-sukla.jpeg',
+    demo: false
+  },
+  {
+    id: 'awardee-ramesh-kumar-ruia',
+    kind: 'awardees',
+    title: 'Ramesh Kumar Ruia',
+    category: 'World Achievement Award',
+    district: 'Kolkata',
+    state: 'West Bengal',
+    field: 'Textile Manufacturing & Medical Astrology',
+    description: 'Ramesh Kumar Ruia, born and raised in Kolkata, West Bengal, comes from a well-known business family working in textile manufacturing. Alongside his profession, astrology has been his passion and hobby. He holds the titles of Jyotish Visharad, Vastu Acharya, and Nadi Jyotish, awarded by the Indian Council of Astrological Science. With over 20 years of experience, he actively contributes to this field and serves as a faculty member at its Kolkata Chapter. His goal is to use Medical Astrology to help prevent future epidemics and improve public health in India.',
+    image: '/assets/awardees/ramesh-kumar-ruia.jpeg',
+    demo: false
+  },
   {
     id: 'awardee-1',
     kind: 'awardees',
@@ -10,79 +94,7 @@ export const demoContent = [
     field: 'Youth / Social Service',
     description: 'Spearheaded youth disaster resilience volunteers, rural blood donation camps, and free education drives for underprivileged girls in Kendrapara.',
     image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&crop=faces,top&w=800&h=600&q=85',
-    demo: true
-  },
-  {
-    id: 'awardee-2',
-    kind: 'awardees',
-    title: 'Dr. Debabrata Tripathy',
-    category: 'World Achievement Award',
-    district: 'Bhubaneswar, Khordha',
-    state: 'Odisha',
-    field: 'Health & Community Wellbeing',
-    description: 'Recognised for providing free emergency medical camps and preventive health screening across 40+ remote tribal villages in Odisha.',
-    image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&crop=faces,top&w=800&h=600&q=85',
-    demo: true
-  },
-  {
-    id: 'awardee-3',
-    kind: 'awardees',
-    title: 'Tapaswini Panda',
-    category: 'Seva Ratan Award',
-    district: 'Cuttack',
-    state: 'Odisha',
-    field: 'Social Service',
-    description: 'Devoted 18 years to caring for abandoned senior citizens, operating community kitchens and emergency relief shelters during flood crises.',
-    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&crop=faces,top&w=800&h=600&q=85',
-    demo: true
-  },
-  {
-    id: 'awardee-4',
-    kind: 'awardees',
-    title: 'Prof. Manoj Kumar Das',
-    category: 'Education Icon Award',
-    district: 'Sambalpur',
-    state: 'Odisha',
-    field: 'Education',
-    description: 'Innovator in community science literacy, training over 10,000 rural teachers and setting up mobile laboratory buses in western Odisha.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
-    demo: true
-  },
-  {
-    id: 'awardee-5',
-    kind: 'awardees',
-    title: 'Dr. Sabita Mohapatra',
-    category: 'Health & Medical Service Award',
-    district: 'Berhampur, Ganjam',
-    state: 'Odisha',
-    field: 'Health',
-    description: 'Pioneered accessible maternal healthcare clinics and sickle cell awareness initiatives across southern Odisha districts.',
-    image: 'https://images.unsplash.com/photo-1594824813689-53e77f0d463b?auto=format&fit=crop&w=800&q=80',
-    demo: true
-  },
-  {
-    id: 'awardee-6',
-    kind: 'awardees',
-    title: 'Rashmita Behera',
-    category: 'Women Empowerment Award',
-    district: 'Puri',
-    state: 'Odisha',
-    field: 'Women Empowerment',
-    description: 'Organised 85 self-help groups (SHGs) empowering 1,200 rural women with handloom weaving, financial literacy, and market cooperatives.',
-    image: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=800&q=80',
-    demo: true
-  },
-  {
-    id: 'awardee-7',
-    kind: 'awardees',
-    title: 'Amitav Jena',
-    category: 'Youth Icon Award',
-    district: 'Balasore',
-    state: 'Odisha',
-    field: 'Youth Leadership',
-    description: 'Founder of coastal mangrove reforestation drives, engaging 3,000+ student volunteers to restore degraded coastal ecosystems.',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80',
-    demo: true
+    demo: false
   },
   {
     id: 'awardee-8',
