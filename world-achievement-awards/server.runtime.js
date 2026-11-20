@@ -587,19 +587,29 @@ export default {
           const loginHtml = getPages()['/admin'].replace(
             /<main id="main"[^>]*>/,
             `<main id="main">
-<section class="wrap page-heading text-center" style="padding-top: 60px;">
-  <p class="eyebrow">WORLD ACHIEVEMENT AWARDS · RESTRICTED AREA</p>
-  <h1>Organiser Workspace</h1>
-  <p class="lead">Please enter your organiser passcode to access nomination inquiries, private documents, and directory publishing.</p>
-</section>
-<section class="wrap" style="max-width: 480px; margin: 0 auto 100px;">
-  <div class="panel" style="padding: 35px 30px; border-radius: 6px; box-shadow: 0 10px 30px rgba(0,0,0,0.06);">
-    <h3 style="margin-bottom: 8px;">Admin Sign In</h3>
-    <p class="muted" style="margin-bottom: 24px; font-size: 13px;">Enter the organiser access passcode to unlock this portal.</p>
-    <form id="admin-login-form">
-      <label style="margin-bottom: 15px; display: block; text-align: left;">Admin Passcode *
-        <div class="password-input-wrapper" style="position: relative; margin-top: 6px;">
-          <input type="password" id="admin-passcode" required placeholder="Enter passcode" value="lia-admin-2026" autofocus style="width: 100%; padding-right: 44px; box-sizing: border-box;">
+<section class="wrap admin-login-wrapper">
+  <div class="admin-login-card panel">
+    <div class="admin-card-badge-row">
+      <div class="admin-emblem-badge">
+        <img src="/assets/LOGO.jpeg" alt="World Achievement Awards Emblem" width="60" height="60" class="admin-emblem-img">
+      </div>
+      <div class="admin-security-tag">
+        <span class="lock-glyph">🔒</span>
+        <span>RESTRICTED ACCESS</span>
+      </div>
+    </div>
+
+    <div class="admin-card-headings">
+      <p class="admin-eyebrow">WORLD ACHIEVEMENT AWARDS · ORGANISER PORTAL</p>
+      <h1 class="admin-login-title">Organiser Workspace</h1>
+      <p class="admin-login-lead">Authorised portal for jury review, confidential verification files, and directory publishing.</p>
+    </div>
+
+    <form id="admin-login-form" class="admin-login-form">
+      <label class="admin-input-label">
+        <span class="label-heading">Admin Passcode *</span>
+        <div class="password-input-wrapper">
+          <input type="password" id="admin-passcode" required placeholder="Enter organiser passcode" value="lia-admin-2026" autofocus class="admin-pass-input">
           <button type="button" id="toggle-admin-passcode" class="toggle-password-btn" aria-label="Show passcode" title="Show/Hide passcode">
             <svg class="eye-open-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
@@ -612,14 +622,22 @@ export default {
           </button>
         </div>
       </label>
-      <button class="button gold" type="submit" style="width: 100%; margin-top: 10px; justify-content: center;">
+      <button class="button gold admin-unlock-btn" type="submit">
         Unlock Workspace ↗
       </button>
-      <p id="admin-login-status" class="form-status" style="margin-top: 15px; font-size: 13px;"></p>
+      <p id="admin-login-status" class="form-status" style="margin-top: 15px; font-size: 13px; text-align: center;"></p>
     </form>
-    <div style="margin-top: 25px; padding-top: 15px; border-top: 1px solid var(--line); font-size: 11px; color: var(--muted); text-align: center; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
-      <span>Default Organiser Key: <code>lia-admin-2026</code></span>
-      <a href="/" style="color: var(--muted); text-decoration: underline;">← Return to Website</a>
+
+    <div class="admin-card-credentials-box">
+      <div class="key-pill">
+        <span class="key-txt">Default Organiser Key:</span>
+        <code class="key-val">lia-admin-2026</code>
+      </div>
+      <a href="/" class="admin-return-link">← Return to Public Website</a>
+    </div>
+
+    <div class="admin-session-security-footer">
+      <span>🛡️ 256-Bit Encrypted Session &bull; Strictly Organiser Access</span>
     </div>
   </div>
 </section>`

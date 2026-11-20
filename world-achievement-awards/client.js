@@ -342,41 +342,148 @@ function node(tag, text, cls) {
   return el;
 }
 
+function updateAdminKPIs() {
+  const totalEl = document.querySelector('#kpi-total-val');
+  const reviewingEl = document.querySelector('#kpi-reviewing-val');
+  const selectedEl = document.querySelector('#kpi-selected-val');
+  const countBadge = document.querySelector('#tab-submissions-count');
+
+  if (totalEl) totalEl.textContent = records.length;
+  if (countBadge) countBadge.textContent = records.length;
+
+  if (reviewingEl) {
+    const revCount = records.filter(r => (r.status || 'new') === 'reviewing').length;
+    reviewingEl.textContent = revCount;
+  }
+  if (selectedEl) {
+    const selCount = records.filter(r => (r.status || 'new') === 'selected').length;
+    selectedEl.textContent = selCount;
+  }
+}
+
 function renderInbox() {
   if (!inbox) return;
   inbox.replaceChildren();
-  for (const r of records) {
-    const card = node('article', '', 'panel submission-inbox-card');
-    card.append(
-      node('h3', r.name || 'Anonymous'),
-      node('p', `${r.reference} · ${r.kind.toUpperCase()} · ${r.submittedAt.slice(0, 10)}`, 'muted'),
-      node('p', `📞 ${r.phone}  |  ✉ ${r.email || 'None'}`),
-      node('p', `🏆 Award: ${r.category || 'General Enquiry'} | Field: ${r.field || 'N/A'}`)
-    );
+  updateAdminKPIs();
 
-    const details = document.createElement('details');
-    details.append(node('summary', 'View Full Submission & Address Details'));
-    for (const [key, value] of Object.entries(r)) {
-      if (typeof value === 'string' && key !== 'fingerprint') {
-        details.append(node('p', `${key}: ${value}`));
-      }
+  const searchInput = document.querySelector('#inbox-search');
+  const statusFilter = document.querySelector('#inbox-status-filter');
+  const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+  const filterStatus = statusFilter ? statusFilter.value.trim().toLowerCase() : '';
+
+  const filtered = records.filter(r => {
+    if (filterStatus && (r.status || 'new').toLowerCase() !== filterStatus) return false;
+    if (query) {
+      const matchString = [r.name, r.reference, r.phone, r.email, r.district, r.state, r.category, r.field, r.message].filter(Boolean).join(' ').toLowerCase();
+      if (!matchString.includes(query)) return false;
     }
-    card.append(details);
+    return true;
+  });
 
+  const countDisplay = document.querySelector('#inbox-filtered-count');
+  if (countDisplay) {
+    countDisplay.textContent = `Showing ${filtered.length} of ${records.length} submissions`;
+  }
+
+  for (const r of filtered) {
+    const card = node('article', '', 'panel submission-inbox-card');
+
+    // Header Row: Name, Ref, Status Badge, Date
+    const headerRow = node('div', '', 'sub-card-header');
+    const titleBlock = node('div', '', 'sub-title-block');
+    titleBlock.append(
+      node('h3', r.name || 'Anonymous', 'sub-applicant-name'),
+      node('div', '', 'sub-badges-row')
+    );
+    const badgeRow = titleBlock.querySelector('.sub-badges-row');
+    badgeRow.append(
+      node('span', r.reference || 'WAA-REF', 'sub-ref-chip'),
+      node('span', (r.status || 'NEW').toUpperCase(), `sub-status-pill status-${(r.status || 'new').toLowerCase()}`),
+      node('span', r.submittedAt ? r.submittedAt.slice(0, 10) : 'Recent', 'sub-date-chip')
+    );
+    headerRow.append(titleBlock);
+    card.append(headerRow);
+
+    // Meta Highlights Grid: Contact, Award Category, Location
+    const metaGrid = node('div', '', 'sub-meta-grid');
+    metaGrid.innerHTML = `
+      <div class="sub-meta-item">
+        <span class="sub-meta-label">🏆 Category</span>
+        <strong class="sub-meta-val">${r.category || 'General Nomination'}</strong>
+      </div>
+      <div class="sub-meta-item">
+        <span class="sub-meta-label">💼 Field & Experience</span>
+        <strong class="sub-meta-val">${r.field || 'General'} (${r.experience || '0'} yrs)</strong>
+      </div>
+      <div class="sub-meta-item">
+        <span class="sub-meta-label">📞 Phone</span>
+        <strong class="sub-meta-val"><a href="tel:${r.phone}">${r.phone}</a></strong>
+      </div>
+      <div class="sub-meta-item">
+        <span class="sub-meta-label">✉ Email</span>
+        <strong class="sub-meta-val">${r.email ? `<a href="mailto:${r.email}">${r.email}</a>` : '<span class="muted">None</span>'}</strong>
+      </div>
+      <div class="sub-meta-item">
+        <span class="sub-meta-label">📍 Location</span>
+        <strong class="sub-meta-val">${[r.district, r.state].filter(Boolean).join(', ') || 'Odisha'} (${r.pin || ''})</strong>
+      </div>
+      <div class="sub-meta-item">
+        <span class="sub-meta-label">👤 Demographics</span>
+        <strong class="sub-meta-val">${r.gender || 'Not specified'} ${r.dob ? `&bull; DOB: ${r.dob}` : ''}</strong>
+      </div>
+    `;
+    card.append(metaGrid);
+
+    // Work / Contribution Summary Box
+    if (r.message) {
+      const summaryBox = node('div', '', 'sub-summary-box');
+      summaryBox.innerHTML = `
+        <span class="summary-label">📝 Applicant Statement / Work Summary:</span>
+        <blockquote class="summary-quote">"${r.message}"</blockquote>
+      `;
+      card.append(summaryBox);
+    }
+
+    // Confidential File Attachments
     if (r.files && r.files.length) {
-      const filesContainer = node('div', '', 'inbox-files');
-      filesContainer.append(node('strong', 'Confidential Attachments: '));
+      const filesContainer = node('div', '', 'sub-files-card');
+      const filesHeader = node('div', '', 'sub-files-header');
+      filesHeader.innerHTML = '<strong>🔒 Confidential Verification Documents:</strong>';
+      filesContainer.append(filesHeader);
+
+      const filesList = node('div', '', 'sub-files-grid');
       for (const f of r.files) {
-        const a = node('a', `⤓ Download ${f.field} (${f.type})`, 'text-link');
+        const a = node('a', '', 'file-download-badge');
         a.href = `/api/admin/submissions/${r.reference}/${f.field}`;
-        a.style.marginRight = '15px';
-        filesContainer.append(a);
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        const fileIcon = f.field === 'photo' ? '📷' : f.field === 'identity' ? '🪪' : f.field === 'cv' ? '📄' : '📑';
+        a.innerHTML = `<span class="badge-icon">${fileIcon}</span> <span>Download ${f.field.toUpperCase()} (${f.type})</span> <span class="badge-arrow">⤓</span>`;
+        filesList.append(a);
       }
+      filesContainer.append(filesList);
       card.append(filesContainer);
     }
 
-    const statusRow = node('div', '', 'inbox-status-row');
+    // Collapsible Full Technical Details
+    const details = document.createElement('details');
+    details.className = 'sub-extra-details';
+    details.append(node('summary', 'View Full Technical Raw Payload & Metadata'));
+    const detailsTable = node('div', '', 'sub-raw-grid');
+    for (const [key, value] of Object.entries(r)) {
+      if (typeof value === 'string' && key !== 'fingerprint') {
+        detailsTable.append(node('div', `${key}: ${value}`, 'sub-raw-row'));
+      }
+    }
+    details.append(detailsTable);
+    card.append(details);
+
+    // Bottom Action Row: Status Selector & Delete
+    const statusRow = node('div', '', 'sub-action-bar');
+    const statusWrap = node('div', '', 'status-selector-wrap');
+    statusWrap.append(node('span', 'Review Stage: ', 'status-selector-label'));
     const select = document.createElement('select');
+    select.className = 'sub-status-dropdown';
     select.setAttribute('aria-label', 'Review status for ' + r.name);
     for (const s of ['new', 'reviewing', 'selected', 'declined']) {
       select.add(new Option(s.toUpperCase(), s));
@@ -389,14 +496,16 @@ function renderInbox() {
           body: JSON.stringify({ status: select.value })
         });
         r.status = select.value;
+        renderInbox();
       } catch (e) {
         alert(e.message);
       }
     });
+    statusWrap.append(select);
 
-    const remove = node('button', 'Delete Submission', 'button outline');
+    const remove = node('button', 'Delete Submission', 'button outline sub-delete-btn');
     remove.addEventListener('click', async () => {
-      if (!confirm(`Permanently delete submission for ${r.name} and all attachments?`)) return;
+      if (!confirm(`Permanently delete nomination submission for ${r.name} and all attachments?`)) return;
       try {
         await api('/api/admin/submissions/' + r.reference, { method: 'DELETE' });
         records = records.filter(x => x.reference !== r.reference);
@@ -406,12 +515,13 @@ function renderInbox() {
       }
     });
 
-    statusRow.append(node('span', 'Status: '), select, remove);
+    statusRow.append(statusWrap, remove);
     card.append(statusRow);
     inbox.append(card);
   }
-  if (!records.length) {
-    inbox.append(node('p', 'No nomination submissions found.', 'muted'));
+
+  if (!filtered.length) {
+    inbox.append(node('div', query || filterStatus ? 'No nomination submissions match your active filter criteria.' : 'No nomination submissions found in the database.', 'sub-empty-state muted'));
   }
 }
 
@@ -434,6 +544,8 @@ async function loadContent() {
   if (!manager) return;
   try {
     const entries = await api('/api/admin/content');
+    const pubKpi = document.querySelector('#kpi-published-val');
+    if (pubKpi) pubKpi.textContent = entries.length;
     manager.replaceChildren();
     for (const item of entries) {
       const row = node('div', '', 'content-manager-row');
@@ -838,4 +950,41 @@ if (togglePassBtn) {
       eyeClosed.style.display = isPass ? 'inline-block' : 'none';
     }
   });
+}
+
+// Admin Tabs Controller (Submissions CRM vs Publisher)
+const adminTabs = document.querySelectorAll('[data-admin-tab]');
+if (adminTabs.length) {
+  adminTabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      adminTabs.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const target = btn.dataset.adminTab;
+      const subPane = document.querySelector('#tab-pane-submissions');
+      const pubPane = document.querySelector('#tab-pane-publish');
+      if (subPane && pubPane) {
+        if (target === 'submissions') {
+          subPane.style.display = 'block';
+          pubPane.style.display = 'none';
+        } else {
+          subPane.style.display = 'none';
+          pubPane.style.display = 'block';
+        }
+      }
+    });
+  });
+
+  const inboxSearch = document.querySelector('#inbox-search');
+  inboxSearch?.addEventListener('input', () => renderInbox());
+  const inboxStatus = document.querySelector('#inbox-status-filter');
+  inboxStatus?.addEventListener('change', () => renderInbox());
+
+  const headerLogout = document.querySelector('#admin-header-logout');
+  if (headerLogout) {
+    headerLogout.style.display = 'inline-flex';
+    headerLogout.addEventListener('click', async () => {
+      await fetch('/api/admin/logout', { method: 'POST' });
+      window.location.href = '/admin';
+    });
+  }
 }

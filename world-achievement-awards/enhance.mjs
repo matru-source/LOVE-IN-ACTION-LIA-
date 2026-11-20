@@ -42,10 +42,54 @@ export function enhance(pages, awards) {
   pages['/admin'] = {
     title: 'Organiser Workspace | World Achievement Awards Admin',
     body: `
-<section class="wrap page-heading">
-  <p class="eyebrow">WORLD ACHIEVEMENT AWARDS · SECURE WORKSPACE</p>
-  <h1>Organiser Admin Portal</h1>
-  <p class="lead">Review nominations, download confidential applicant documents, verify jury selections, and publish verified stories.</p>
+<section class="wrap page-heading admin-page-heading">
+  <div class="admin-page-header-row">
+    <div>
+      <p class="eyebrow">WORLD ACHIEVEMENT AWARDS · SECURE WORKSPACE</p>
+      <h1>Organiser Admin Portal</h1>
+      <p class="lead">Review nominations, download confidential applicant documents, verify jury selections, and publish verified stories.</p>
+    </div>
+    <div class="admin-quick-actions-badge">
+      <span class="live-dot-green"></span>
+      <span>Executive Session Active</span>
+    </div>
+  </div>
+
+  <!-- KPI Strip -->
+  <div class="admin-kpi-grid">
+    <div class="admin-kpi-card">
+      <div class="kpi-icon-box">📥</div>
+      <div class="kpi-meta">
+        <span class="kpi-label">Total Nominations</span>
+        <h3 class="kpi-val" id="kpi-total-val">—</h3>
+        <span class="kpi-sub">Across all categories</span>
+      </div>
+    </div>
+    <div class="admin-kpi-card">
+      <div class="kpi-icon-box" style="background: rgba(230, 162, 60, 0.15); color: #c98e29;">⏳</div>
+      <div class="kpi-meta">
+        <span class="kpi-label">Under Jury Review</span>
+        <h3 class="kpi-val" id="kpi-reviewing-val">—</h3>
+        <span class="kpi-sub">Pending evaluation</span>
+      </div>
+    </div>
+    <div class="admin-kpi-card">
+      <div class="kpi-icon-box" style="background: rgba(46, 107, 39, 0.15); color: #2e6b27;">🏆</div>
+      <div class="kpi-meta">
+        <span class="kpi-label">Selected Honourees</span>
+        <h3 class="kpi-val" id="kpi-selected-val">—</h3>
+        <span class="kpi-sub">Award conferred</span>
+      </div>
+    </div>
+    <div class="admin-kpi-card">
+      <div class="kpi-icon-box" style="background: rgba(4, 33, 23, 0.12); color: #042117;">🌐</div>
+      <div class="kpi-meta">
+        <span class="kpi-label">Published Directory</span>
+        <h3 class="kpi-val" id="kpi-published-val">—</h3>
+        <span class="kpi-sub">Live public entries</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="wrap archive" id="admin-auth-guard">
@@ -74,95 +118,139 @@ export function enhance(pages, awards) {
   </div>
 
   <div id="admin-dashboard">
-    <div class="admin-toolbar" style="display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 25px; align-items: center;">
-      <button class="button outline" id="refresh-inbox">↻ Refresh Inbox</button>
-      <button class="button outline" id="export-inbox">⤓ Export JSON</button>
-      <button class="button outline" id="retry-notifications">✉ Retry Email Notifications</button>
-      <a href="/" class="button outline" style="margin-left: auto;">← Return to Website</a>
-      <button class="button outline" id="admin-logout-btn">Log Out ↪</button>
-      <span id="notification-status" class="muted" style="margin-left: 10px;"></span>
+    <!-- Admin Navigation Tabs -->
+    <div class="admin-tab-nav" role="tablist">
+      <button type="button" class="admin-tab-item active" data-admin-tab="submissions">
+        <span class="tab-icon">📋</span>
+        <span class="tab-text">Nomination Inquiries & Submissions</span>
+        <span class="tab-count-badge" id="tab-submissions-count">0</span>
+      </button>
+      <button type="button" class="admin-tab-item" data-admin-tab="publish">
+        <span class="tab-icon">✍️</span>
+        <span class="tab-text">Publish Verified Directory Content</span>
+      </button>
     </div>
 
-    <h2>Nomination Inquiries & Submissions</h2>
-    <p class="muted">All uploaded identification and biodata files are stored securely and privately. Verify authenticity before jury stage.</p>
-    
-    <div id="inbox" aria-live="polite">
-      <p class="muted">Loading submissions...</p>
-    </div>
-    <button class="button outline" id="more-inbox" hidden style="margin-top: 15px;">Load More Submissions</button>
-
-    <hr style="margin-block: 50px; border: 0; border-top: 1px solid var(--line);">
-
-    <h2>Publish Verified Directory Content</h2>
-    <p class="muted">Add verified awardees, ceremony photos, YouTube video links, testimonials, or news press releases to the public website.</p>
-    
-    <form id="editor" class="panel">
-      <div class="form-grid">
-        <label>Content Type *
-          <select name="kind" required>
-            <option value="awardees">Awardee Profile</option>
-            <option value="photos">Photo Gallery Item</option>
-            <option value="videos">Video Gallery Item</option>
-            <option value="testimonials">Testimonial</option>
-            <option value="news">Blog / News Article</option>
-            <option value="founder">Founder Message</option>
-          </select>
-        </label>
-        <label>Name or Title *
-          <input name="title" required maxlength="180" placeholder="e.g. Recipient Name or Event Title">
-        </label>
-        <label>Award / Event Category
-          <input name="category" maxlength="180" list="award-options" placeholder="Select or type category">
-          <datalist id="award-options">
-            ${awards.map(a => `<option value="${a}">`).join('')}
-            <option value="Award Ceremony">
-            <option value="Health Camps">
-            <option value="Cultural Events">
-            <option value="Awardees">
-            <option value="LIA Latest News">
-            <option value="Upcoming Events">
-            <option value="Awardee Success Stories">
-            <option value="Press Coverage / Media">
-          </datalist>
-        </label>
-        <label>Field (e.g. Social Service, Youth)
-          <input name="field" maxlength="100" placeholder="e.g. Youth / Social Service">
-        </label>
-        <label>Year
-          <input name="year" type="number" min="1900" max="2100" >
-        </label>
-        <label>Date (e.g. 15 Jan)
-          <input name="date" maxlength="50" placeholder="e.g. 15 Jan">
-        </label>
-        <label>State
-          <input name="state" maxlength="100" value="Odisha">
-        </label>
-        <label>District
-          <input name="district" maxlength="100" placeholder="e.g. Bhubaneswar, Cuttack">
-        </label>
-        <label>Photo URL (HTTPS)
-          <input name="image" type="url" placeholder="https://...">
-        </label>
-        <label>YouTube Video / External Link
-          <input name="url" type="url" placeholder="https://www.youtube.com/watch?v=...">
-        </label>
+    <!-- TAB 1: Submissions & CRM -->
+    <div id="tab-pane-submissions" class="admin-tab-pane active">
+      <div class="admin-toolbar-card panel">
+        <div class="admin-search-filter-row">
+          <div class="search-box-wrap">
+            <span class="search-icon">🔍</span>
+            <input type="search" id="inbox-search" placeholder="Search applicant by name, reference, phone, email, district..." aria-label="Search submissions">
+          </div>
+          <div class="status-filter-wrap">
+            <select id="inbox-status-filter" aria-label="Filter by review status">
+              <option value="">All Review Statuses</option>
+              <option value="new">NEW</option>
+              <option value="reviewing">REVIEWING</option>
+              <option value="selected">SELECTED</option>
+              <option value="declined">DECLINED</option>
+            </select>
+          </div>
+        </div>
+        <div class="admin-actions-bar">
+          <button class="button outline small-action" id="refresh-inbox">↻ Refresh Inbox</button>
+          <button class="button outline small-action" id="export-inbox">⤓ Export JSON</button>
+          <button class="button outline small-action" id="retry-notifications">✉ Retry Email Notifications</button>
+          <a href="/" class="button outline small-action" style="margin-left: auto;">← Return to Website</a>
+          <button class="button outline small-action" id="admin-logout-btn">Log Out ↪</button>
+          <span id="notification-status" class="muted" style="margin-left: 10px;"></span>
+        </div>
       </div>
 
-      <label>Description / Story / Citation *
-        <textarea name="description" required maxlength="4000" rows="5" placeholder="Key achievements, summary or quotation..."></textarea>
-      </label>
+      <div class="admin-inbox-header-row">
+        <div>
+          <h2>Nomination Inquiries & Submissions</h2>
+          <p class="muted">All uploaded identification and biodata files are stored securely and privately. Verify authenticity before jury stage.</p>
+        </div>
+        <div class="inbox-summary-stat">
+          <span id="inbox-filtered-count">Loading submissions...</span>
+        </div>
+      </div>
+      
+      <div id="inbox" class="admin-inbox-feed" aria-live="polite">
+        <p class="muted">Loading submissions...</p>
+      </div>
+      <button class="button outline" id="more-inbox" hidden style="margin-top: 20px; width: 100%; justify-content: center;">Load More Submissions</button>
+    </div>
 
-      <label class="checkbox">
-        <input name="approved" type="checkbox" required>
-        <span>I have verified the authenticity of this information and have permission to publish it.</span>
-      </label>
+    <!-- TAB 2: Publish Directory Content -->
+    <div id="tab-pane-publish" class="admin-tab-pane" style="display: none;">
+      <div class="publisher-intro-card panel" style="margin-bottom: 25px;">
+        <h2>Publish Verified Directory Content</h2>
+        <p class="muted">Add verified awardees, ceremony photos, YouTube video links, testimonials, or news press releases directly to the public website.</p>
+      </div>
+      
+      <form id="editor" class="panel admin-publisher-form">
+        <div class="form-grid">
+          <label>Content Type *
+            <select name="kind" required>
+              <option value="awardees">Awardee Profile</option>
+              <option value="photos">Photo Gallery Item</option>
+              <option value="videos">Video Gallery Item</option>
+              <option value="testimonials">Testimonial</option>
+              <option value="news">Blog / News Article</option>
+              <option value="founder">Founder Message</option>
+            </select>
+          </label>
+          <label>Name or Title *
+            <input name="title" required maxlength="180" placeholder="e.g. Recipient Name or Event Title">
+          </label>
+          <label>Award / Event Category
+            <input name="category" maxlength="180" list="award-options" placeholder="Select or type category">
+            <datalist id="award-options">
+              ${awards.map(a => `<option value="${a}">`).join('')}
+              <option value="Award Ceremony">
+              <option value="Awardees">
+              <option value="LIA Latest News">
+              <option value="Upcoming Events">
+              <option value="Awardee Success Stories">
+              <option value="Press Coverage / Media">
+            </datalist>
+          </label>
+          <label>Field (e.g. Social Service, Youth)
+            <input name="field" maxlength="100" placeholder="e.g. Youth / Social Service">
+          </label>
+          <label>Year
+            <input name="year" type="number" min="1900" max="2100">
+          </label>
+          <label>Date (e.g. 15 Jan)
+            <input name="date" maxlength="50" placeholder="e.g. 15 Jan">
+          </label>
+          <label>State
+            <input name="state" maxlength="100" value="Odisha">
+          </label>
+          <label>District
+            <input name="district" maxlength="100" placeholder="e.g. Bhubaneswar, Cuttack">
+          </label>
+          <label>Photo URL (HTTPS)
+            <input name="image" type="url" placeholder="https://...">
+          </label>
+          <label>YouTube Video / External Link
+            <input name="url" type="url" placeholder="https://www.youtube.com/watch?v=...">
+          </label>
+        </div>
 
-      <button class="button gold" type="submit" style="margin-top: 15px;">Publish To Directory ↗</button>
-      <p role="status" id="editor-status" class="form-status"></p>
-    </form>
+        <label style="margin-top: 15px; display: block;">Description / Story / Citation *
+          <textarea name="description" required maxlength="4000" rows="5" placeholder="Key achievements, summary or quotation..."></textarea>
+        </label>
 
-    <h3 style="margin-top: 40px;">Currently Published Directory Items</h3>
-    <div id="content-manager"></div>
+        <label class="checkbox" style="margin-top: 15px;">
+          <input name="approved" type="checkbox" required>
+          <span>I have verified the authenticity of this information and have permission to publish it.</span>
+        </label>
+
+        <button class="button gold" type="submit" style="margin-top: 20px;">Publish To Directory ↗</button>
+        <p role="status" id="editor-status" class="form-status" style="margin-top: 12px;"></p>
+      </form>
+
+      <div class="published-manager-section" style="margin-top: 50px;">
+        <h3>Currently Published Directory Items</h3>
+        <p class="muted">Live entries on the website. Click Remove to permanently unpublish any item.</p>
+        <div id="content-manager" class="content-manager-grid"></div>
+      </div>
+    </div>
   </div>
 </section>`
   };

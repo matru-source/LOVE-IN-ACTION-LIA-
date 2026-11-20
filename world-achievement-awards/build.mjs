@@ -1349,7 +1349,28 @@ function render(path, p) {
 </head>
 <body class="${path === '/admin' ? 'is-admin-page' : ''}">
   <a class="skip" href="#main">Skip to content</a>
-  ${path === '/admin' ? '' : `<header>
+  ${path === '/admin' ? `
+  <header class="admin-console-header">
+    <div class="wrap admin-header-wrap">
+      <div class="admin-brand-cluster">
+        <a href="/" class="admin-brand-link" title="World Achievement Awards Home">
+          <img src="/assets/LOGO.jpeg" alt="World Achievement Awards Emblem" class="admin-header-logo" width="38" height="38">
+          <div class="admin-brand-text">
+            <span class="admin-brand-title">WORLD ACHIEVEMENT AWARDS</span>
+            <span class="admin-brand-badge">EXECUTIVE CONSOLE</span>
+          </div>
+        </a>
+        <div class="admin-session-indicator">
+          <span class="pulse-dot"></span>
+          <span class="session-label">Organiser Workspace</span>
+        </div>
+      </div>
+      <div class="admin-header-actions">
+        <a href="/" class="button outline small-btn" title="View Public Website">Public Website ↗</a>
+        <button type="button" class="button outline small-btn admin-logout-action" id="admin-header-logout" style="display: none;">Log Out ↪</button>
+      </div>
+    </div>
+  </header>` : `<header>
     <div class="nav wrap">
       <a href="/" class="brand" aria-label="World Achievement Awards Home">
         <img src="/assets/LOGO.jpeg" alt="World Achievement Awards Emblem" class="brand-logo" width="46" height="46">
@@ -1389,6 +1410,19 @@ function render(path, p) {
   <main id="main" data-page="${path === '/' ? 'home' : path.slice(1).replace(/\//g, '-')}">
     ${p.body}
   </main>
+  ${path === '/admin' ? `
+  <footer class="admin-footer">
+    <div class="wrap admin-footer-content">
+      <div class="admin-footer-left">
+        <img src="/assets/LOGO.jpeg" alt="World Achievement Awards Emblem" width="28" height="28" class="admin-footer-logo">
+        <span><strong>World Achievement Awards</strong> &bull; Executive Administrative Console &bull; Organised by Love In Action (LIA)</span>
+      </div>
+      <div class="admin-footer-right">
+        <span class="admin-security-pill">🔒 256-Bit Encrypted Session</span>
+        <a href="/" class="admin-footer-link">Public Website ↗</a>
+      </div>
+    </div>
+  </footer>` : `
   <footer class="site-footer">
     <div class="footer-main-section">
       <div class="wrap footer-grid">
@@ -1491,7 +1525,7 @@ function render(path, p) {
         <a class="footer-back-to-top" href="#main">Back to Top ↑</a>
       </div>
     </div>
-  </footer>
+  </footer>`}
   <script src="/assets/client.js" defer></script>
 </body>
 </html>`;
