@@ -125,7 +125,8 @@ async function content(e) {
 
 function card(item) {
   const demo = item.demo ? '<span class="demo-label" style="display:none !important;" hidden aria-hidden="true">DEMO · SAMPLE CONTENT</span>' : '';
-  const img = item.image ? `<img src="${esc(item.image)}" alt="${esc(item.title)}" loading="lazy" width="600" height="400">` : '';
+  const photoPos = item.photoPosition || 'center 20%';
+  const img = item.image ? `<img src="${esc(item.image)}" alt="${esc(item.title)}" loading="lazy" width="600" height="400" style="object-position: ${esc(photoPos)} !important;">` : '';
   const attrs = `data-entry data-year="${esc(item.year)}" data-category="${esc(item.category)}" data-state="${esc(item.state)}" data-search="${esc([item.title, item.district, item.description, item.field].filter(Boolean).join(' ').toLowerCase())}"`;
 
   if (item.kind === 'photos') {
@@ -228,8 +229,9 @@ function card(item) {
   }
 
   return `<article class="content-card awardee-card-luxury" ${attrs}>${demo}
-    <div class="awardee-photo-wrap">
+    <div class="awardee-photo-wrap photo-open" data-photo="${esc(item.image)}" data-caption="${esc(item.title)} — ${esc(item.category)}" role="button" tabindex="0" aria-label="View original full photo of ${esc(item.title)}">
       ${img}
+      <span class="photo-expand-hint" aria-hidden="true">🔍 Full Photo</span>
       <div class="awardee-wave-trim" aria-hidden="true">
         <svg viewBox="0 0 360 42" preserveAspectRatio="none" class="awardee-wave-svg">
           <defs>
@@ -270,7 +272,10 @@ function card(item) {
         <p class="awardee-meta-item"><span class="meta-icon-gold" aria-hidden="true">📍</span> <strong>From:</strong> ${esc([item.district, item.state].filter(Boolean).join(', '))}</p>
         ${item.field ? `<p class="awardee-meta-item"><span class="meta-icon-gold" aria-hidden="true">🏷️</span> <strong>Field:</strong> <span class="field-badge">${esc(item.field)}</span></p>` : ''}
       </div>
-      <p class="awardee-desc">${esc(item.description)}</p>
+      <div class="awardee-desc-wrap">
+        <p class="awardee-desc">${esc(item.description)}</p>
+        ${item.description && item.description.length > 130 ? `<button class="awardee-more-btn" type="button" aria-expanded="false">.....more</button>` : ''}
+      </div>
     </div>
   </article>`;
 }

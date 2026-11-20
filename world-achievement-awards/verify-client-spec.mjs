@@ -194,15 +194,15 @@ test('Page 5: Registration Form (/nominate and /registration) has all fields, wo
   }
 });
 
-test('Page 6: Awardees List has format with Field badge and sample recipient Smrutishree Mohanty', async () => {
+test('Page 6: Awardees List has format with Field badge and authentic honouree Annesa Piplai', async () => {
   const res = await get('/awardees');
   assert.equal(res.status, 200);
   const html = await res.text();
 
-  assert.match(html, /Smrutishree Mohanty/);
-  assert.match(html, /Kalinga Yuva Gaurav Samman/);
-  assert.match(html, /<strong>From:<\/strong> Nial, Kendrapara, Odisha/);
-  assert.match(html, /<strong>Field:<\/strong> <span class="field-badge">Youth \/ Social Service<\/span>/);
+  assert.match(html, /Annesa Piplai/);
+  assert.match(html, /Youth Icon Award/);
+  assert.match(html, /<strong>From:<\/strong> Bhubaneswar, Odisha/);
+  assert.match(html, /<strong>Field:<\/strong> <span class="field-badge">Science Innovation, Literature &amp; Odissi Dance<\/span>/);
 });
 
 test('Page 7: Photo Gallery displays award moments with luxury pagination and modal enlarge triggers', async () => {

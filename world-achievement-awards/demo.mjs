@@ -1,5 +1,5 @@
 export const demoContent = [
-  // 1. AWARDEES - Authentic Honourees & Category Representatives
+  // 1. AWARDEES - 7 Authentic Honourees with High-Res Photos & Bios
   {
     id: 'awardee-annesa-piplai',
     kind: 'awardees',
@@ -10,7 +10,8 @@ export const demoContent = [
     field: 'Science Innovation, Literature & Odissi Dance',
     description: 'Annesa Piplai is a multitalented young innovator with over 400 international, national, and state-level awards across science, innovation, literature, arts, and public speaking. A National Winner in Science Innovation at IIT Delhi, she is also a young author, state-level Odissi dancer, and exceptional orator. Honoured with the Shishu Pratibha Samman, Bharat Gaurav Samman, National Kala Utsav Art Award, and an ever-growing list of prestigious accolades, she continues to inspire through innovation, creativity, and excellence.',
     image: '/assets/awardees/annesa-piplai.jpeg',
-    demo: false
+    photoPosition: 'center 18%',
+    demo: true
   },
   {
     id: 'awardee-deepak-ranjan-behera',
@@ -22,7 +23,8 @@ export const demoContent = [
     field: 'Yoga & Naturopathy / Healthcare & Social Work',
     description: 'Charaka Institute of Yoga Director with Social Worker. Dr. Deepak Ranjan Behera serves as Yoga & Naturopathy Therapist at Balakati CHC, Khordha (Join date 19/12/2019 to till now), providing holistic healing, community health camps, and dedicated wellness care.',
     image: '/assets/awardees/deepak-ranjan-behera.jpeg',
-    demo: false
+    photoPosition: 'center 75%',
+    demo: true
   },
   {
     id: 'awardee-kalpana-mohanta',
@@ -34,7 +36,8 @@ export const demoContent = [
     field: 'Social Service & Philanthropy',
     description: 'Ms. Kalpana Mohanta, Founder and President of UNICON Foundation, a respected spiritual teacher, philanthropist, and dedicated social worker, working tirelessly towards spreading compassion, harmony, and peace in society.',
     image: '/assets/awardees/kalpana-mohanta.jpeg',
-    demo: false
+    photoPosition: 'center 18%',
+    demo: true
   },
   {
     id: 'awardee-kamini-nayak',
@@ -46,7 +49,8 @@ export const demoContent = [
     field: 'Education & Charitable Leadership',
     description: 'Dr. Kamini Nayak, Chairperson of B.K. Educational and Charitable Trust, and Secretary-cum-Principal of Holy Jesus School, Dhanmandal, Jajpur, empowering youth through transformative education and community service.',
     image: '/assets/awardees/kamini-nayak.jpeg',
-    demo: false
+    photoPosition: 'center 18%',
+    demo: true
   },
   {
     id: 'awardee-meena-kumari-pradhan',
@@ -58,7 +62,8 @@ export const demoContent = [
     field: 'Education & Teaching',
     description: 'Dr. Meena Kumari Pradhan, Teacher and educational mentor, committed to nurturing young talent, academic enrichment, and advancing foundational learning across Odisha.',
     image: '/assets/awardees/meena-kumari-pradhan.jpeg',
-    demo: false
+    photoPosition: 'center 25%',
+    demo: true
   },
   {
     id: 'awardee-nibedita-priyadarsini-sukla',
@@ -70,7 +75,8 @@ export const demoContent = [
     field: 'Law, Women’s Rights, Literature & Social Justice',
     description: 'Advocate Nibedita Priyadarsini Sukla is a legal professional (B.A., LL.M.), writer, author, and social worker from Odisha, affiliated with the Odisha High Court. Through her literary contributions, she creates awareness about women’s rights, social justice, human values, and women’s empowerment. Her writings reflect the struggles, dignity, and strength of women in society, using law and literature as powerful tools to promote equality and positive social change. Address: Chahata Lane No. 6, Bidanasi, Cuttack, Odisha – 753014.',
     image: '/assets/awardees/nibedita-priyadarsini-sukla.jpeg',
-    demo: false
+    photoPosition: 'center 25%',
+    demo: true
   },
   {
     id: 'awardee-ramesh-kumar-ruia',
@@ -82,78 +88,7 @@ export const demoContent = [
     field: 'Textile Manufacturing & Medical Astrology',
     description: 'Ramesh Kumar Ruia, born and raised in Kolkata, West Bengal, comes from a well-known business family working in textile manufacturing. Alongside his profession, astrology has been his passion and hobby. He holds the titles of Jyotish Visharad, Vastu Acharya, and Nadi Jyotish, awarded by the Indian Council of Astrological Science. With over 20 years of experience, he actively contributes to this field and serves as a faculty member at its Kolkata Chapter. His goal is to use Medical Astrology to help prevent future epidemics and improve public health in India.',
     image: '/assets/awardees/ramesh-kumar-ruia.jpeg',
-    demo: false
-  },
-  {
-    id: 'awardee-1',
-    kind: 'awardees',
-    title: 'Smrutishree Mohanty',
-    category: 'Kalinga Yuva Gaurav Samman',
-    district: 'Nial, Kendrapara',
-    state: 'Odisha',
-    field: 'Youth / Social Service',
-    description: 'Spearheaded youth disaster resilience volunteers, rural blood donation camps, and free education drives for underprivileged girls in Kendrapara.',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&crop=faces,top&w=800&h=600&q=85',
-    demo: false
-  },
-  {
-    id: 'awardee-8',
-    kind: 'awardees',
-    title: 'Guru Minati Rout',
-    category: 'Art, Culture & Odissi Dance Award',
-    district: 'Bhubaneswar',
-    state: 'Odisha',
-    field: 'Art & Culture',
-    description: 'Renowned Odissi dance maestro performing internationally and providing free classical training to underprivileged children for 25 years.',
-    image: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80',
-    demo: true
-  },
-  {
-    id: 'awardee-9',
-    kind: 'awardees',
-    title: 'Rajesh Kumar Nayak',
-    category: 'Sports Icon Award',
-    district: 'Rourkela, Sundargarh',
-    state: 'Odisha',
-    field: 'Sports',
-    description: 'Grassroots tribal athletics coach whose students have secured 14 national medals in archery and track athletics.',
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
-    demo: true
-  },
-  {
-    id: 'awardee-10',
-    kind: 'awardees',
-    title: 'Soumya Ranjan Parida',
-    category: 'Entrepreneur & Business Excellence Award',
-    district: 'Bhubaneswar',
-    state: 'Odisha',
-    field: 'Business / Agri-tech',
-    description: 'Built a farm-to-door organic farmer collective delivering fair pricing to 500+ smallholder farmers across coastal Odisha.',
-    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80',
-    demo: true
-  },
-  {
-    id: 'awardee-11',
-    kind: 'awardees',
-    title: 'Pradeep Kumar Mohanty',
-    category: 'Media & Journalism Award',
-    district: 'Cuttack',
-    state: 'Odisha',
-    field: 'Media / Investigative Journalism',
-    description: 'Three decades of fearless public-interest journalism highlighting rural governance, healthcare access, and environmental preservation.',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=80',
-    demo: true
-  },
-  {
-    id: 'awardee-12',
-    kind: 'awardees',
-    title: 'Padmashree Dr. B. B. Patnaik',
-    category: 'Lifetime Achievement Award',
-    district: 'Bhubaneswar',
-    state: 'Odisha',
-    field: 'Social Service / Public Life',
-    description: 'Honoured for more than five decades of exemplary dedication to public health, social reform, and humanitarian service across India.',
-    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80',
+    photoPosition: 'center 20%',
     demo: true
   },
 

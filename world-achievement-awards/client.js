@@ -319,6 +319,25 @@ document.querySelectorAll('.photo-open').forEach(button => {
     media.append(img, caption);
     dialog.showModal();
   });
+  if (button.tagName !== 'BUTTON') {
+    button.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        button.click();
+      }
+    });
+  }
+});
+
+// Interactive Expand/Collapse for Awardee Biographies (3 lines -> .....more)
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.awardee-more-btn');
+  if (!btn) return;
+  const cardBody = btn.closest('.awardee-card-body');
+  if (!cardBody) return;
+  const isExpanded = cardBody.classList.toggle('is-expanded');
+  btn.textContent = isExpanded ? 'Show less ▴' : '.....more';
+  btn.setAttribute('aria-expanded', String(isExpanded));
 });
 
 // Organiser Admin Workspace Functionality
