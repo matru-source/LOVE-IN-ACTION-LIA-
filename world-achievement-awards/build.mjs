@@ -200,6 +200,18 @@ pages['/'] = {
   description: 'Official World Achievement Awards. Together For A Healthier And Kinder World. Nominate achievers across 12 categories.',
   body: `
 <section class="hero-premium-section">
+  <div class="hero-starlight-particles" aria-hidden="true">
+    <span class="star-particle p1"></span>
+    <span class="star-particle p2"></span>
+    <span class="star-particle p3"></span>
+    <span class="star-particle p4"></span>
+    <span class="star-particle p5"></span>
+    <span class="star-particle p6"></span>
+    <span class="star-particle p7"></span>
+    <span class="star-particle p8"></span>
+    <span class="star-particle p9"></span>
+    <span class="star-particle p10"></span>
+  </div>
   <div class="wrap hero-premium-container">
     <div class="hero-premium-grid">
       <div class="hero-premium-left">

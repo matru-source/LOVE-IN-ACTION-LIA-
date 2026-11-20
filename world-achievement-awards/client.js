@@ -1257,4 +1257,31 @@ contentKindFilter?.addEventListener('change', () => {
     setupCardTilt();
     setupButtonTactile();
   });
+
+  // 7. Framer Motion Magnetic Button Physics on Primary CTAs
+  function initMagneticButtons() {
+    const magneticTargets = document.querySelectorAll('.hero-btn-nominate, .nav-apply, .hero-btn-view');
+    magneticTargets.forEach(btn => {
+      if (btn.dataset.magneticInit) return;
+      btn.dataset.magneticInit = 'true';
+
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const deltaX = (e.clientX - centerX) * 0.24;
+        const deltaY = (e.clientY - centerY) * 0.24;
+
+        btn.style.transform = `translate(${deltaX.toFixed(2)}px, ${deltaY.toFixed(2)}px) scale(1.03)`;
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+      });
+    });
+  }
+
+  initMagneticButtons();
+  window.addEventListener('content-updated', initMagneticButtons);
+
 })();
