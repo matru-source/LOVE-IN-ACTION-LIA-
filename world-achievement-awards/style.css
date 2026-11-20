@@ -5717,3 +5717,116 @@ main[data-page="admin"] ~ header {
 .admin-footer-link:hover {
   text-decoration: underline;
 }
+
+/* Published Directory Items Manager & Pagination */
+.published-manager-section {
+  background: #ffffff;
+  border: 1.5px solid rgba(216, 183, 107, 0.35);
+  box-shadow: 0 4px 16px rgba(4, 33, 23, 0.04);
+}
+
+.content-manager-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.content-manager-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  background: #ffffff;
+  border: 1px solid rgba(4, 33, 23, 0.1);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  gap: 15px;
+}
+
+.content-manager-row:hover {
+  background: rgba(251, 249, 244, 0.8);
+  border-color: rgba(216, 183, 107, 0.45);
+  box-shadow: 0 2px 8px rgba(4, 33, 23, 0.04);
+}
+
+.content-row-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.content-kind-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.content-kind-badge.kind-awardees {
+  background: #e6f4ea;
+  color: #137333;
+  border: 1px solid #34a853;
+}
+
+.content-kind-badge.kind-photos {
+  background: #fef7e0;
+  color: #b06000;
+  border: 1px solid #f9ab00;
+}
+
+.content-kind-badge.kind-videos {
+  background: #fce8e6;
+  color: #c5221f;
+  border: 1px solid #ea4335;
+}
+
+.content-kind-badge.kind-news {
+  background: #e8f0fe;
+  color: #1a73e8;
+  border: 1px solid #1a73e8;
+}
+
+.content-kind-badge.kind-testimonials {
+  background: #f3e8fd;
+  color: #7b1fa2;
+  border: 1px solid #ab47bc;
+}
+
+.content-kind-badge.kind-founder {
+  background: #e0f2f1;
+  color: #00796b;
+  border: 1px solid #26a69a;
+}
+
+.content-item-title {
+  font-size: 13.5px;
+  color: #042117;
+}
+
+.content-item-cat {
+  font-size: 12px;
+}
+
+.content-remove-btn {
+  padding: 6px 14px !important;
+  font-size: 12px !important;
+  border-radius: 6px !important;
+  color: #b3261e !important;
+  border-color: rgba(179, 38, 30, 0.3) !important;
+  flex-shrink: 0;
+  transition: all 0.2s ease !important;
+}
+
+.content-remove-btn:hover {
+  background: #b3261e !important;
+  color: #ffffff !important;
+  border-color: #b3261e !important;
+}
+
+.admin-content-pagination {
+  margin-top: 20px !important;
+  border: 1px solid rgba(216, 183, 107, 0.3) !important;
+}

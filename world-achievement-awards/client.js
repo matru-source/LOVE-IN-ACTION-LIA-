@@ -539,26 +539,113 @@ async function loadInbox(more = false) {
   }
 }
 
+let publishedEntries = [];
+let contentCurrentPage = 1;
+const contentPageSize = 6;
+
+function renderPublishedContent() {
+  const manager = document.querySelector('#content-manager');
+  const paginationWrapper = document.querySelector('#content-pagination');
+  if (!manager) return;
+
+  const kindFilter = document.querySelector('#content-kind-filter');
+  const selectedKind = kindFilter ? kindFilter.value.trim().toLowerCase() : '';
+
+  const filtered = publishedEntries.filter(item => {
+    if (selectedKind && (item.kind || '').toLowerCase() !== selectedKind) return false;
+    return true;
+  });
+
+  const totalItems = filtered.length;
+  const totalPages = Math.max(1, Math.ceil(totalItems / contentPageSize));
+  if (contentCurrentPage > totalPages) contentCurrentPage = totalPages;
+  if (contentCurrentPage < 1) contentCurrentPage = 1;
+
+  const startIdx = (contentCurrentPage - 1) * contentPageSize;
+  const endIdx = Math.min(startIdx + contentPageSize, totalItems);
+  const pageItems = filtered.slice(startIdx, endIdx);
+
+  manager.replaceChildren();
+
+  for (const item of pageItems) {
+    const row = node('div', '', 'content-manager-row');
+
+    const infoCol = node('div', '', 'content-row-info');
+    const badge = node('span', item.kind.toUpperCase(), `content-kind-badge kind-${item.kind.toLowerCase()}`);
+    const titleWrap = node('div', '', 'content-title-wrap');
+    const titleStrong = node('strong', item.title, 'content-item-title');
+    const catSpan = node('span', ` · ${item.category || 'General'}`, 'content-item-cat muted');
+    titleWrap.append(titleStrong, catSpan);
+    infoCol.append(badge, titleWrap);
+
+    const removeBtn = node('button', 'Remove', 'button outline content-remove-btn');
+    removeBtn.setAttribute('aria-label', `Remove ${item.title}`);
+    removeBtn.addEventListener('click', async () => {
+      if (!confirm(`Permanently remove "${item.title}" from directory?`)) return;
+      try {
+        await api('/api/admin/content?id=' + encodeURIComponent(item.id), { method: 'DELETE' });
+        await loadContent();
+      } catch (err) {
+        alert(err.message);
+      }
+    });
+
+    row.append(infoCol, removeBtn);
+    manager.append(row);
+  }
+
+  if (!pageItems.length) {
+    const emptyMsg = node('div', selectedKind ? 'No published items found matching this filter.' : 'No directory items published yet.', 'muted text-center');
+    emptyMsg.style.padding = '30px 10px';
+    manager.append(emptyMsg);
+  }
+
+  // Update Pagination Controls
+  if (paginationWrapper) {
+    paginationWrapper.style.display = totalItems === 0 ? 'none' : 'flex';
+
+    const statusEl = document.querySelector('#content-pagination-status');
+    if (statusEl) {
+      statusEl.textContent = `Showing ${totalItems === 0 ? 0 : startIdx + 1}–${endIdx} of ${totalItems} Published Items`;
+    }
+
+    const prevBtn = document.querySelector('#content-prev-btn');
+    const nextBtn = document.querySelector('#content-next-btn');
+    if (prevBtn) prevBtn.disabled = contentCurrentPage <= 1;
+    if (nextBtn) nextBtn.disabled = contentCurrentPage >= totalPages;
+
+    const pageNumbersGroup = document.querySelector('#content-page-numbers');
+    if (pageNumbersGroup) {
+      pageNumbersGroup.innerHTML = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `page-num-btn${i === contentCurrentPage ? ' active' : ''}`;
+        btn.dataset.page = String(i);
+        btn.textContent = String(i);
+        if (i === contentCurrentPage) {
+          btn.setAttribute('aria-current', 'page');
+        }
+        btn.addEventListener('click', () => {
+          contentCurrentPage = i;
+          renderPublishedContent();
+          manager.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+        pageNumbersGroup.appendChild(btn);
+      }
+    }
+  }
+}
+
 async function loadContent() {
   const manager = document.querySelector('#content-manager');
   if (!manager) return;
   try {
     const entries = await api('/api/admin/content');
+    publishedEntries = entries;
     const pubKpi = document.querySelector('#kpi-published-val');
     if (pubKpi) pubKpi.textContent = entries.length;
-    manager.replaceChildren();
-    for (const item of entries) {
-      const row = node('div', '', 'content-manager-row');
-      row.append(node('span', `[${item.kind.toUpperCase()}] ${item.title} (${item.category || 'General'})`));
-      const b = node('button', 'Remove', 'button outline');
-      b.addEventListener('click', async () => {
-        if (!confirm(`Remove "${item.title}" from directory?`)) return;
-        await api('/api/admin/content?id=' + encodeURIComponent(item.id), { method: 'DELETE' });
-        loadContent();
-      });
-      row.append(b);
-      manager.append(row);
-    }
+    renderPublishedContent();
   } catch (e) {
     manager.textContent = e.message;
   }
@@ -988,3 +1075,24 @@ if (adminTabs.length) {
     });
   }
 }
+
+// Published Directory Pagination Listeners
+const contentPrev = document.querySelector('#content-prev-btn');
+contentPrev?.addEventListener('click', () => {
+  if (contentCurrentPage > 1) {
+    contentCurrentPage--;
+    renderPublishedContent();
+  }
+});
+
+const contentNext = document.querySelector('#content-next-btn');
+contentNext?.addEventListener('click', () => {
+  contentCurrentPage++;
+  renderPublishedContent();
+});
+
+const contentKindFilter = document.querySelector('#content-kind-filter');
+contentKindFilter?.addEventListener('change', () => {
+  contentCurrentPage = 1;
+  renderPublishedContent();
+});

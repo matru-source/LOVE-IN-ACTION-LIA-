@@ -332,6 +332,9 @@ test('Admin UI is protected by passcode and accessible via login form or key', a
   assert.match(authHtml, /Organiser Admin Portal/);
   assert.match(authHtml, /Nomination Inquiries & Submissions/);
   assert.match(authHtml, /Publish Verified Directory Content/);
+  assert.match(authHtml, /id="content-pagination"/);
+  assert.match(authHtml, /id="content-prev-btn"/);
+  assert.match(authHtml, /id="content-next-btn"/);
 
   // 4. Direct access via ?admin_key=lia-admin-2026 returns 200
   const directKeyRes = await worker.fetch(new Request(origin + '/admin?admin_key=lia-admin-2026'), env);

@@ -245,10 +245,39 @@ export function enhance(pages, awards) {
         <p role="status" id="editor-status" class="form-status" style="margin-top: 12px;"></p>
       </form>
 
-      <div class="published-manager-section" style="margin-top: 50px;">
-        <h3>Currently Published Directory Items</h3>
-        <p class="muted">Live entries on the website. Click Remove to permanently unpublish any item.</p>
+      <div class="published-manager-section panel" style="margin-top: 50px; padding: 28px 30px; border-radius: 14px;">
+        <div class="published-header-bar" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 22px;">
+          <div>
+            <h3 style="margin: 0 0 6px 0;">Currently Published Directory Items</h3>
+            <p class="muted" style="margin: 0; font-size: 13px;">Live entries on the website. Click Remove to permanently unpublish any item.</p>
+          </div>
+          <div class="published-filter-row" style="display: flex; align-items: center; gap: 10px;">
+            <label for="content-kind-filter" style="font-size: 12.5px; font-weight: 700; color: #042117; margin: 0;">Filter:</label>
+            <select id="content-kind-filter" aria-label="Filter published items by category" style="padding: 7px 12px; font-size: 12.5px; border-radius: 6px; border: 1.5px solid rgba(4, 33, 23, 0.2); font-weight: 600; background: #ffffff;">
+              <option value="">All Item Types</option>
+              <option value="awardees">Awardee Profiles</option>
+              <option value="photos">Photo Gallery</option>
+              <option value="videos">Video Gallery</option>
+              <option value="news">Blog / News</option>
+              <option value="testimonials">Testimonials</option>
+              <option value="founder">Founder Message</option>
+            </select>
+          </div>
+        </div>
+
         <div id="content-manager" class="content-manager-grid"></div>
+
+        <!-- Pagination Controls for Published Directory Items -->
+        <div class="gallery-pagination-wrapper admin-content-pagination" id="content-pagination" style="margin-top: 25px; padding: 14px 20px;">
+          <div class="gallery-pagination-info">
+            <span id="content-pagination-status">Showing 1–6 of 0 Published Items</span>
+          </div>
+          <div class="gallery-pagination-controls">
+            <button type="button" class="page-nav-btn" id="content-prev-btn" aria-label="Previous Page" disabled>‹ Prev</button>
+            <div class="page-numbers-group" id="content-page-numbers"></div>
+            <button type="button" class="page-nav-btn" id="content-next-btn" aria-label="Next Page">Next ›</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
