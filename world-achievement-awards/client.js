@@ -243,75 +243,110 @@ if (awardeesSection && awardeesGrid) {
   renderAwardeesPage(1, false);
 }
 
-// Home Page Awardees Carousel (3 cards per slide, arrow navigation & dots)
+// Home Page Awardees Carousel (Single Row Carousel with Smooth Horizontal Sliding)
 const homeAwardeesSection = document.querySelector('.latest-awardees-section');
 const homeGrid = homeAwardeesSection?.querySelector('.content-grid-awardees');
 if (homeAwardeesSection && homeGrid) {
   const cards = Array.from(homeGrid.querySelectorAll('.awardee-card-luxury'));
-  const pageSize = 3;
-  const totalSlides = Math.max(1, Math.ceil(cards.length / pageSize));
-  let currentSlide = 0;
-
   const prevBtn = document.getElementById('home-awardee-prev');
   const nextBtn = document.getElementById('home-awardee-next');
   const dotsContainer = document.getElementById('home-awardee-dots');
 
-  function updateDots(activeIdx) {
+  // Ensure all cards are visible in the continuous single horizontal row
+  cards.forEach(card => {
+    card.hidden = false;
+    card.style.display = 'flex';
+  });
+
+  function getStep() {
+    const card = cards[0];
+    if (!card) return homeGrid.clientWidth;
+    const gap = parseFloat(window.getComputedStyle(homeGrid).gap) || 24;
+    return card.offsetWidth + gap;
+  }
+
+  function getCardsPerView() {
+    if (window.innerWidth <= 640) return 1;
+    if (window.innerWidth <= 992) return 2;
+    return 3;
+  }
+
+  function getTotalSlides() {
+    const perView = getCardsPerView();
+    return Math.max(1, Math.ceil(cards.length / perView));
+  }
+
+  function updateDots() {
     if (!dotsContainer) return;
+    const step = getStep();
+    const perView = getCardsPerView();
+    const scrollLeft = homeGrid.scrollLeft;
+    const currentSlide = Math.min(Math.round(scrollLeft / (step * perView)), getTotalSlides() - 1);
+
     const dots = dotsContainer.querySelectorAll('.awardee-dot');
     dots.forEach((dot, idx) => {
-      const isActive = idx === activeIdx;
+      const isActive = idx === currentSlide;
       dot.classList.toggle('active', isActive);
-      if (isActive) {
-        dot.setAttribute('aria-current', 'true');
-      } else {
-        dot.removeAttribute('aria-current');
-      }
+      if (isActive) dot.setAttribute('aria-current', 'true');
+      else dot.removeAttribute('aria-current');
     });
   }
 
-  function goToSlide(slideIndex) {
-    if (slideIndex < 0) slideIndex = totalSlides - 1;
-    if (slideIndex >= totalSlides) slideIndex = 0;
-    currentSlide = slideIndex;
-
-    const startIdx = currentSlide * pageSize;
-    const endIdx = startIdx + pageSize;
-
-    cards.forEach((card, idx) => {
-      if (idx >= startIdx && idx < endIdx) {
-        card.hidden = false;
-        card.style.display = 'flex';
-        card.classList.add('is-revealed');
-      } else {
-        card.hidden = true;
-        card.style.display = 'none';
-      }
-    });
-
-    updateDots(currentSlide);
-  }
-
-  // Setup click listeners on dots
-  if (dotsContainer) {
+  function buildDots() {
+    if (!dotsContainer) return;
+    const totalSlides = getTotalSlides();
     dotsContainer.innerHTML = '';
     for (let i = 0; i < totalSlides; i++) {
       const dot = document.createElement('button');
       dot.type = 'button';
       dot.className = `awardee-dot${i === 0 ? ' active' : ''}`;
       dot.dataset.slide = String(i);
-      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      dot.setAttribute('aria-label', `Slide ${i + 1}`);
       if (i === 0) dot.setAttribute('aria-current', 'true');
-      dot.addEventListener('click', () => goToSlide(i));
+      dot.addEventListener('click', () => {
+        const step = getStep();
+        const perView = getCardsPerView();
+        homeGrid.scrollTo({ left: i * step * perView, behavior: 'smooth' });
+      });
       dotsContainer.appendChild(dot);
     }
   }
 
-  prevBtn?.addEventListener('click', () => goToSlide(currentSlide - 1));
-  nextBtn?.addEventListener('click', () => goToSlide(currentSlide + 1));
+  prevBtn?.addEventListener('click', () => {
+    const step = getStep();
+    const perView = getCardsPerView();
+    const scrollAmount = step * perView;
+    if (homeGrid.scrollLeft <= 15) {
+      homeGrid.scrollTo({ left: homeGrid.scrollWidth - homeGrid.clientWidth, behavior: 'smooth' });
+    } else {
+      homeGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    }
+  });
 
-  // Initialize first slide (show cards 0, 1, 2; hide remaining)
-  goToSlide(0);
+  nextBtn?.addEventListener('click', () => {
+    const step = getStep();
+    const perView = getCardsPerView();
+    const scrollAmount = step * perView;
+    if (homeGrid.scrollLeft + homeGrid.clientWidth >= homeGrid.scrollWidth - 25) {
+      homeGrid.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      homeGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  });
+
+  let scrollDebounce;
+  homeGrid.addEventListener('scroll', () => {
+    clearTimeout(scrollDebounce);
+    scrollDebounce = setTimeout(updateDots, 60);
+  }, { passive: true });
+
+  window.addEventListener('resize', () => {
+    buildDots();
+    updateDots();
+  }, { passive: true });
+
+  buildDots();
+  updateDots();
 }
 
 // Award Gallery Pagination Controller
