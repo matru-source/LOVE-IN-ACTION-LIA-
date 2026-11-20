@@ -1125,21 +1125,24 @@ ${cta}`
 
 // PAGE 7: PHOTO GALLERY
 pages['/gallery'] = {
-  title: 'Photo Gallery | World Achievement Awards',
-  description: 'Photo gallery of Award Ceremony, Health Camps, Cultural Events, and Awardees.',
+  title: 'Award Gallery | World Achievement Awards',
+  description: 'Moments of honour, convocation, and stage felicitations from the World Achievement Awards ceremonies.',
   body: `
-${heading('PHOTO GALLERY', 'Moments That Matter', 'Explore high-resolution moments from our award ceremonies, free medical camps, and cultural recitals. Click any image to view in full resolution.')}
-<section class="wrap archive">
-  <div class="gallery-category-tabs" role="tablist">
-    <button class="tab-btn active" data-gallery-tab="all">All Photos</button>
-    <button class="tab-btn" data-gallery-tab="Award Ceremony">Award Ceremony</button>
-    <button class="tab-btn" data-gallery-tab="Health Camps">Health Camps</button>
-    <button class="tab-btn" data-gallery-tab="Cultural Events">Cultural Events</button>
-    <button class="tab-btn" data-gallery-tab="Awardees">Awardees</button>
-  </div>
+${heading('AWARD GALLERY', 'Moments of Honour & Excellence', 'Explore high-resolution moments from the World Achievement Awards ceremonies, convocations, and stage felicitations. Click any image to view in full resolution.')}
+<section class="wrap archive gallery-archive-section">
   <div data-content="photos" aria-live="polite"></div>
-  <div class="text-center" style="margin-top: 35px;">
-    <button id="view-all-photos-btn" class="button outline">View All Photos</button>
+  <div class="gallery-pagination-wrapper" id="gallery-pagination">
+    <div class="gallery-pagination-info">
+      <span id="gallery-pagination-status">Showing 1–6 of 12 Award Moments</span>
+    </div>
+    <div class="gallery-pagination-controls">
+      <button type="button" class="page-nav-btn" id="gallery-prev-btn" aria-label="Previous Page" disabled>‹ Prev</button>
+      <div class="page-numbers-group" id="gallery-page-numbers">
+        <button type="button" class="page-num-btn active" data-page="1" aria-current="page">1</button>
+        <button type="button" class="page-num-btn" data-page="2">2</button>
+      </div>
+      <button type="button" class="page-nav-btn" id="gallery-next-btn" aria-label="Next Page">Next ›</button>
+    </div>
   </div>
 </section>
 ${cta}`

@@ -205,7 +205,7 @@ export const demoContent = [
     id: 'photo-6',
     kind: 'photos',
     title: 'Odissi Classical Dance & Cultural Achievers Felicitation',
-    category: 'Cultural Events',
+    category: 'Award Ceremony',
     state: 'Odisha',
     district: 'Bhubaneswar',
     description: 'Young classical Odissi dancers and cultural performers felicitated on stage with gold trophies and citations.',
@@ -276,28 +276,6 @@ export const demoContent = [
     district: 'Bhubaneswar',
     description: 'Executive jury team presenting the golden star trophy and framed citation to an honoured recipient.',
     image: '/assets/gallery/12.jpeg',
-    demo: true
-  },
-  {
-    id: 'photo-13',
-    kind: 'photos',
-    title: 'Mega Health & Blood Donation Camp',
-    category: 'Health Camps',
-    state: 'Odisha',
-    district: 'Cuttack',
-    description: 'Free multi-specialty healthcare screening and medicine distribution camp organized by Love In Action.',
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80',
-    demo: true
-  },
-  {
-    id: 'photo-14',
-    kind: 'photos',
-    title: 'Community Health & Awareness Outreach',
-    category: 'Health Camps',
-    state: 'Odisha',
-    district: 'Bhubaneswar',
-    description: 'Volunteer healthcare workers providing preventive health check-ups and medical care to rural communities.',
-    image: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=900&q=80',
     demo: true
   },
 

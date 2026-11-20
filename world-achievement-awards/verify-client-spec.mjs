@@ -205,17 +205,17 @@ test('Page 6: Awardees List has format with Field badge and sample recipient Smr
   assert.match(html, /<strong>Field:<\/strong> <span class="field-badge">Youth \/ Social Service<\/span>/);
 });
 
-test('Page 7: Photo Gallery has 5 category tabs and modal enlarge triggers', async () => {
+test('Page 7: Photo Gallery displays award moments with luxury pagination and modal enlarge triggers', async () => {
   const res = await get('/gallery');
   assert.equal(res.status, 200);
   const html = await res.text();
 
-    assert.match(html, /data-gallery-tab="Award Ceremony"/);
-  assert.match(html, /data-gallery-tab="Health Camps"/);
-  assert.match(html, /data-gallery-tab="Cultural Events"/);
-  assert.match(html, /data-gallery-tab="Awardees"/);
-  assert.match(html, /id="view-all-photos-btn"/);
+  assert.match(html, /id="gallery-pagination"/);
+  assert.match(html, /id="gallery-prev-btn"/);
+  assert.match(html, /id="gallery-next-btn"/);
+  assert.match(html, /id="gallery-pagination-status"/);
   assert.match(html, /class="photo-open"/);
+  assert.doesNotMatch(html, /Health Camps/);
 });
 
 test('Page 8: Video Gallery has Subscribe button and responsive embedded YouTube players', async () => {

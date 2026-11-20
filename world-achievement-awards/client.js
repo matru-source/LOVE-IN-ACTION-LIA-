@@ -203,32 +203,74 @@ document.querySelectorAll('.filters').forEach(form => {
   filter();
 });
 
-// Interactive Tabs for Photo Gallery
-const galleryTabs = document.querySelectorAll('[data-gallery-tab]');
-if (galleryTabs.length) {
-  galleryTabs.forEach(btn => {
-    btn.addEventListener('click', () => {
-      galleryTabs.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const target = btn.dataset.galleryTab;
-      const cards = document.querySelectorAll('.content-grid-photos [data-entry]');
-      cards.forEach(c => {
-        if (target === 'all' || c.dataset.category === target) {
-          c.hidden = false;
-          c.classList.add('is-revealed');
-        } else {
-          c.hidden = true;
-        }
-      });
-    });
-  });
+// Award Gallery Pagination Controller
+const gallerySection = document.querySelector('.gallery-archive-section');
+const photoGrid = document.querySelector('.content-grid-photos');
+if (gallerySection && photoGrid) {
+  const cards = Array.from(photoGrid.querySelectorAll('[data-entry]'));
+  const pageSize = 6;
+  const totalItems = cards.length;
+  const totalPages = Math.max(1, Math.ceil(totalItems / pageSize));
+  let currentPage = 1;
 
-  const viewAllBtn = document.querySelector('#view-all-photos-btn');
-  viewAllBtn?.addEventListener('click', () => {
-    const allTab = document.querySelector('[data-gallery-tab="all"]');
-    allTab?.click();
-    document.querySelector('.content-grid-photos')?.scrollIntoView({ behavior: 'smooth' });
-  });
+  const prevBtn = document.getElementById('gallery-prev-btn');
+  const nextBtn = document.getElementById('gallery-next-btn');
+  const statusEl = document.getElementById('gallery-pagination-status');
+  const pageNumbersGroup = document.getElementById('gallery-page-numbers');
+
+  function renderPage(page, scrollToTop = false) {
+    if (page < 1) page = 1;
+    if (page > totalPages) page = totalPages;
+    currentPage = page;
+
+    const startIdx = (currentPage - 1) * pageSize;
+    const endIdx = Math.min(startIdx + pageSize, totalItems);
+
+    cards.forEach((card, idx) => {
+      if (idx >= startIdx && idx < endIdx) {
+        card.hidden = false;
+        card.classList.add('is-revealed');
+      } else {
+        card.hidden = true;
+      }
+    });
+
+    if (statusEl) {
+      statusEl.textContent = `Showing ${totalItems === 0 ? 0 : startIdx + 1}–${endIdx} of ${totalItems} Award Moments`;
+    }
+
+    if (prevBtn) {
+      prevBtn.disabled = currentPage <= 1;
+    }
+    if (nextBtn) {
+      nextBtn.disabled = currentPage >= totalPages;
+    }
+
+    if (pageNumbersGroup) {
+      pageNumbersGroup.innerHTML = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `page-num-btn${i === currentPage ? ' active' : ''}`;
+        btn.dataset.page = String(i);
+        btn.textContent = String(i);
+        if (i === currentPage) {
+          btn.setAttribute('aria-current', 'page');
+        }
+        btn.addEventListener('click', () => renderPage(i, true));
+        pageNumbersGroup.appendChild(btn);
+      }
+    }
+
+    if (scrollToTop) {
+      gallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  prevBtn?.addEventListener('click', () => renderPage(currentPage - 1, true));
+  nextBtn?.addEventListener('click', () => renderPage(currentPage + 1, true));
+
+  renderPage(1, false);
 }
 
 // Interactive Tabs for News / Blog

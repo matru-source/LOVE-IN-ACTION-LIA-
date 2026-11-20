@@ -4718,3 +4718,120 @@ main[data-page="privacy"] .page-heading {
         font-size: 24px !important;
     }
 }
+
+/* Award Photo Gallery & Luxury Pagination */
+.gallery-archive-section {
+  padding-bottom: 70px;
+}
+
+.gallery-pagination-wrapper {
+  margin-top: 48px;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(249, 246, 238, 0.92));
+  border: 1px solid rgba(216, 183, 107, 0.35);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(4, 33, 23, 0.05);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.gallery-pagination-info {
+  font-family: var(--font-sans, system-ui, -apple-system, sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: #042117;
+  letter-spacing: 0.02em;
+}
+
+#gallery-pagination-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#gallery-pagination-status::before {
+  content: '✦';
+  color: var(--gold, #d8b76b);
+  font-size: 13px;
+}
+
+.gallery-pagination-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-numbers-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.page-nav-btn,
+.page-num-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-family: var(--font-sans, system-ui, -apple-system, sans-serif);
+  font-weight: 600;
+  transition: all 0.22s ease-in-out;
+  cursor: pointer;
+}
+
+.page-nav-btn {
+  padding: 8px 16px;
+  font-size: 13px;
+  color: #042117;
+  background: #ffffff;
+  border: 1.5px solid rgba(4, 33, 23, 0.15);
+}
+
+.page-nav-btn:hover:not(:disabled) {
+  background: #042117;
+  color: #fce7a2;
+  border-color: #042117;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(4, 33, 23, 0.15);
+}
+
+.page-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  border-color: rgba(4, 33, 23, 0.1);
+}
+
+.page-num-btn {
+  width: 38px;
+  height: 38px;
+  font-size: 14px;
+  color: #042117;
+  background: #ffffff;
+  border: 1.5px solid rgba(216, 183, 107, 0.35);
+}
+
+.page-num-btn:hover:not(.active) {
+  border-color: #042117;
+  background: rgba(4, 33, 23, 0.05);
+  transform: translateY(-1px);
+}
+
+.page-num-btn.active {
+  background: linear-gradient(135deg, #052b1e 0%, #031810 100%);
+  color: #fce7a2;
+  border-color: #d8b76b;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(4, 33, 23, 0.25);
+  cursor: default;
+}
+
+@media (max-width: 640px) {
+  .gallery-pagination-wrapper {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+}
