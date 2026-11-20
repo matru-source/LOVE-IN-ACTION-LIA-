@@ -757,7 +757,7 @@ export default {
               const category = currentCategories.find(c => c.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/-$/, '') === p.slice(8));
               chosen = chosen.filter(x => x.category === category);
             }
-            if (p === '/') {
+            if (p === '/' && kind !== 'awardees') {
               chosen = chosen.slice(0, 3);
             }
             return `<div class="content-grid content-grid-${kind}" data-content="${kind}" aria-live="polite">${chosen.length ? chosen.map(card).join('') : '<p class="empty-note">No verified entries in this section yet.</p>'}</div>`;

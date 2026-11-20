@@ -243,6 +243,77 @@ if (awardeesSection && awardeesGrid) {
   renderAwardeesPage(1, false);
 }
 
+// Home Page Awardees Carousel (3 cards per slide, arrow navigation & dots)
+const homeAwardeesSection = document.querySelector('.latest-awardees-section');
+const homeGrid = homeAwardeesSection?.querySelector('.content-grid-awardees');
+if (homeAwardeesSection && homeGrid) {
+  const cards = Array.from(homeGrid.querySelectorAll('.awardee-card-luxury'));
+  const pageSize = 3;
+  const totalSlides = Math.max(1, Math.ceil(cards.length / pageSize));
+  let currentSlide = 0;
+
+  const prevBtn = document.getElementById('home-awardee-prev');
+  const nextBtn = document.getElementById('home-awardee-next');
+  const dotsContainer = document.getElementById('home-awardee-dots');
+
+  function updateDots(activeIdx) {
+    if (!dotsContainer) return;
+    const dots = dotsContainer.querySelectorAll('.awardee-dot');
+    dots.forEach((dot, idx) => {
+      const isActive = idx === activeIdx;
+      dot.classList.toggle('active', isActive);
+      if (isActive) {
+        dot.setAttribute('aria-current', 'true');
+      } else {
+        dot.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  function goToSlide(slideIndex) {
+    if (slideIndex < 0) slideIndex = totalSlides - 1;
+    if (slideIndex >= totalSlides) slideIndex = 0;
+    currentSlide = slideIndex;
+
+    const startIdx = currentSlide * pageSize;
+    const endIdx = startIdx + pageSize;
+
+    cards.forEach((card, idx) => {
+      if (idx >= startIdx && idx < endIdx) {
+        card.hidden = false;
+        card.style.display = 'flex';
+        card.classList.add('is-revealed');
+      } else {
+        card.hidden = true;
+        card.style.display = 'none';
+      }
+    });
+
+    updateDots(currentSlide);
+  }
+
+  // Setup click listeners on dots
+  if (dotsContainer) {
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < totalSlides; i++) {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = `awardee-dot${i === 0 ? ' active' : ''}`;
+      dot.dataset.slide = String(i);
+      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      if (i === 0) dot.setAttribute('aria-current', 'true');
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  prevBtn?.addEventListener('click', () => goToSlide(currentSlide - 1));
+  nextBtn?.addEventListener('click', () => goToSlide(currentSlide + 1));
+
+  // Initialize first slide (show cards 0, 1, 2; hide remaining)
+  goToSlide(0);
+}
+
 // Award Gallery Pagination Controller
 const gallerySection = document.querySelector('.gallery-archive-section');
 const photoGrid = document.querySelector('.content-grid-photos');

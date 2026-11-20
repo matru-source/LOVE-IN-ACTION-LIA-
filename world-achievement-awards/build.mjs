@@ -525,14 +525,14 @@ pages['/'] = {
       <a class="button gold awardees-view-btn" href="/awardees">View All Awardees ${arrow}</a>
     </div>
     <div data-content="awardees" aria-live="polite"></div>
-    <div class="awardees-nav-pills-bar" aria-hidden="true">
-      <button type="button" class="awardee-circle-arrow" aria-label="Previous achiever">‹</button>
-      <div class="awardee-dots-group">
-        <span class="awardee-dot active"></span>
-        <span class="awardee-dot"></span>
-        <span class="awardee-dot"></span>
+    <div class="awardees-nav-pills-bar" aria-label="Awardees Carousel">
+      <button type="button" class="awardee-circle-arrow" id="home-awardee-prev" aria-label="Previous achievers">‹</button>
+      <div class="awardee-dots-group" id="home-awardee-dots">
+        <button type="button" class="awardee-dot active" data-slide="0" aria-label="Slide 1" aria-current="true"></button>
+        <button type="button" class="awardee-dot" data-slide="1" aria-label="Slide 2"></button>
+        <button type="button" class="awardee-dot" data-slide="2" aria-label="Slide 3"></button>
       </div>
-      <button type="button" class="awardee-circle-arrow" aria-label="Next achiever">›</button>
+      <button type="button" class="awardee-circle-arrow" id="home-awardee-next" aria-label="Next achievers">›</button>
     </div>
   </section>
   <div class="awardees-bottom-wave" aria-hidden="true">
