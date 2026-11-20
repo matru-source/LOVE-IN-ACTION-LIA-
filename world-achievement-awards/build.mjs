@@ -605,7 +605,7 @@ ${heading('ABOUT THE ORGANISER', 'Love In Action (LIA)<br><em>Good work should n
   <div>
     <h2>Who We Are</h2>
     <p>Love In Action (LIA) was started with one simple thought — <strong>good work should never go unnoticed.</strong></p>
-    <p>We identify talented individuals from villages to cities, and give them a national platform. Registered under Indian Govt. Act 1892 (Reg. No. 105300064) and headquartered at Guru Kelucharan Mohapatra Odissi Research Centre in Jaydev Vihar, Bhubaneswar, we bridge grassroots effort with nationwide dignity.</p>
+    <p>We identify talented individuals from villages to cities, and give them a national platform. Registered under Indian Govt. Act 1892 (Reg. No. 105300064) and headquartered at N1 282 IRC Village, Nayapalli, Bhubaneswar, Odisha - 751012, we bridge grassroots effort with nationwide dignity.</p>
     <div class="actions">
       <a class="button gold" href="/nominate">Nominate An Achiever ${arrow}</a>
       <a class="button outline" href="/awards">Explore Awards ↗</a>
@@ -1106,7 +1106,7 @@ ${heading('NOMINATE AN ACHIEVER', 'Registration Form -<br>World Achievement Awar
     <p>Our team is available to assist you with registration and document uploads.</p>
     <p><strong>Phone / WhatsApp:</strong><br><a href="tel:+916372881379">+91 63728 81379</a></p>
     <p><strong>Email:</strong><br><a href="mailto:Infoworldachivementaward@gmail.com">Infoworldachivementaward@gmail.com</a></p>
-    <p><strong>Office:</strong><br>Guru Kelucharan Mohapatra Odissi Research Centre, Jaydev Vihar, Bhubaneswar</p>
+    <p><strong>Office:</strong><br>N1 282 IRC Village, Nayapalli, Bhubaneswar, Odisha – 751012</p>
     <a class="button outline" href="https://wa.me/916372881379?text=Hello%20Love%20In%20Action%20team,%20I%20need%20help%20with%20World%20Achievement%20Awards%20registration" target="_blank" rel="noopener noreferrer">WhatsApp Help ↗</a>
   </aside>
 </section>`;
@@ -1271,7 +1271,7 @@ ${heading('PRIVACY POLICY', 'Data Protection & Confidentiality', 'How informatio
 // PAGE 11: CONTACT US
 pages['/contact'] = {
   title: 'Contact Us | World Achievement Awards',
-  description: 'Contact World Achievement Awards in Jaydev Vihar, Bhubaneswar, Odisha. Phone/WhatsApp: +91 63728 81379, Email: Infoworldachivementaward@gmail.com.',
+  description: 'Contact World Achievement Awards at N1 282 IRC Village, Nayapalli, Bhubaneswar, Odisha - 751012. Phone/WhatsApp: +91 63728 81379, Email: Infoworldachivementaward@gmail.com.',
   body: `
 ${heading('GET IN TOUCH', 'Contact Us', 'Have questions regarding the nomination process, award categories, or partnership? Reach out to our organizing team.')}
 <section class="wrap split">
@@ -1279,12 +1279,12 @@ ${heading('GET IN TOUCH', 'Contact Us', 'Have questions regarding the nomination
     <p class="eyebrow">HEADQUARTERS · BHUBANESWAR</p>
     <h2>World Achievement Awards</h2>
         <p class="muted" style="margin-top:-10px; margin-bottom:15px; font-size:13px;">Organised by Love In Action (LIA) · Reg. Under Indian Govt. Act 1892</p>
-    <p><strong>Address:</strong><br>Guru Kelucharan Mohapatra Odissi Research Centre,<br>Plot No-1/A, Jaydev Vihar,<br>Bhubaneswar, Odisha – 751013</p>
+    <p><strong>Address:</strong><br>N1 282 IRC Village, Nayapalli,<br>Bhubaneswar, Odisha – 751012</p>
     <p><strong>Phone / WhatsApp:</strong><br><a href="tel:+916372881379">+91 63728 81379</a></p>
     <p><strong>Email:</strong><br><a href="mailto:Infoworldachivementaward@gmail.com">Infoworldachivementaward@gmail.com</a></p>
     <div class="actions">
       <a class="button gold" href="https://wa.me/916372881379" target="_blank" rel="noopener noreferrer">Chat on WhatsApp ↗</a>
-      <a class="text-link" href="https://www.google.com/maps/search/?api=1&query=Guru+Kelucharan+Mohapatra+Odissi+Research+Centre+Bhubaneswar" target="_blank" rel="noopener noreferrer">Get Directions ↗</a>
+      <a class="text-link" href="https://www.google.com/maps/search/?api=1&query=N1+282+IRC+Village+Nayapalli+Bhubaneswar+Odisha+751012" target="_blank" rel="noopener noreferrer">Get Directions ↗</a>
     </div>
   </div>
 
@@ -1309,7 +1309,7 @@ ${heading('GET IN TOUCH', 'Contact Us', 'Have questions regarding the nomination
 <section class="wrap map-section">
   <p class="eyebrow">FIND US ON MAP</p>
   <h2>Bhubaneswar Office Location</h2>
-  <iframe title="Guru Kelucharan Mohapatra Odissi Research Centre, Jaydev Vihar, Bhubaneswar" class="map" loading="lazy" referrerpolicy="no-referrer" src="https://maps.google.com/maps?q=Guru%20Kelucharan%20Mohapatra%20Odissi%20Research%20Centre%20Bhubaneswar&output=embed"></iframe>
+  <iframe title="N1 282 IRC Village, Nayapalli, Bhubaneswar, Odisha - 751012" class="map" loading="lazy" referrerpolicy="no-referrer" src="https://maps.google.com/maps?q=N1%20282%20IRC%20Village,%20Nayapalli,%20Bhubaneswar,%20Odisha%20751012&output=embed"></iframe>
 </section>`
 };
 
@@ -1351,10 +1351,10 @@ function render(path, p) {
     email: 'Infoworldachivementaward@gmail.com',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Guru Kelucharan Mohapatra Odissi Research Centre, Plot No-1/A, Jaydev Vihar',
+      streetAddress: 'N1 282 IRC Village, Nayapalli',
       addressLocality: 'Bhubaneswar',
       addressRegion: 'Odisha',
-      postalCode: '751013',
+      postalCode: '751012',
       addressCountry: 'IN'
     }
   })}
@@ -1476,7 +1476,7 @@ function render(path, p) {
           <div class="footer-contact-items">
             <div class="footer-contact-row">
               <span class="footer-icon-box" aria-hidden="true">📍</span>
-              <span class="footer-contact-text">Guru Kelucharan Mohapatra Odissi Research Centre, Jaydev Vihar, Bhubaneswar – 751013</span>
+              <span class="footer-contact-text">N1 282 IRC Village, Nayapalli, Bhubaneswar, Odisha – 751012</span>
             </div>
             <div class="footer-contact-row">
               <span class="footer-icon-box" aria-hidden="true">📞</span>

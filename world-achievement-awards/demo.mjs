@@ -372,10 +372,10 @@ export const demoContent = [
   {
     id: 'news-2',
     kind: 'news',
-    title: 'Annual Health Camp & Awareness Conclave Announced at Jaydev Vihar',
+    title: 'Annual Health Camp & Awareness Conclave Announced at Nayapalli',
     category: 'Upcoming Events',
     date: '28 Feb',
-    description: 'Comprehensive free health check-up camp, vision testing, and youth motivation workshops scheduled to be held at Guru Kelucharan Mohapatra Odissi Research Centre.',
+    description: 'Comprehensive free health check-up camp, vision testing, and youth motivation workshops scheduled to be held at N1 282 IRC Village, Nayapalli, Bhubaneswar.',
     demo: true
   },
   {

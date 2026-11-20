@@ -256,12 +256,11 @@ test('Page 11: Contact Us has office address, phone, WhatsApp and Google Maps', 
   assert.equal(res.status, 200);
   const html = await res.text();
 
-  assert.match(html, /Guru Kelucharan Mohapatra Odissi Research Centre/);
-  assert.match(html, /Plot No-1\/A, Jaydev Vihar/);
-  assert.match(html, /Bhubaneswar, Odisha – 751013/);
+  assert.match(html, /N1 282 IRC Village, Nayapalli/);
+  assert.match(html, /Bhubaneswar, Odisha – 751012/);
   assert.match(html, /\+91 63728 81379/);
   assert.match(html, /Infoworldachivementaward@gmail.com/);
-  assert.match(html, /https:\/\/maps\.google\.com\/maps\?q=Guru%20Kelucharan/);
+  assert.match(html, /https:\/\/maps\.google\.com\/maps\?q=N1%20282%20IRC%20Village/);
 });
 
 test('Public form submission accepts DOCX file for CV', async () => {
