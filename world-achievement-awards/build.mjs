@@ -251,6 +251,7 @@ pages['/'] = {
       
       <div class="hero-premium-right">
         <div class="hero-award-trophy-wrap">
+          <div class="trophy-ambient-aura" aria-hidden="true"></div>
           <img src="/assets/BG/Hme1b.png" alt="World Achievement Awards Official Golden Trophy" class="hero-award-trophy-img" width="580" height="auto">
         </div>
       </div>
@@ -1348,6 +1349,7 @@ function render(path, p) {
   </script>
 </head>
 <body class="${path === '/admin' ? 'is-admin-page' : ''}">
+  <div id="motion-scroll-progress" class="motion-scroll-progress-bar" aria-hidden="true"></div>
   <a class="skip" href="#main">Skip to content</a>
   ${path === '/admin' ? `
   <header class="admin-console-header">

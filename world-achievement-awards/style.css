@@ -5830,3 +5830,278 @@ main[data-page="admin"] ~ header {
   margin-top: 20px !important;
   border: 1px solid rgba(216, 183, 107, 0.3) !important;
 }
+
+/* ==========================================================================
+   FRAMER MOTION CINEMATIC ANIMATIONS & SPRING PHYSICS
+   ========================================================================== */
+
+/* 1. Global Framer Motion Spring Curves */
+:root {
+  --motion-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --motion-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 2. Top Scroll Progress Ribbon (useScroll) */
+.motion-scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3.5px;
+  width: 100%;
+  background: linear-gradient(90deg, #ecc97e 0%, #c99f48 25%, #fff0bd 50%, #d8b76b 75%, #b88937 100%);
+  transform-origin: 0% 50%;
+  transform: scaleX(0);
+  z-index: 999999;
+  box-shadow: 0 0 12px rgba(236, 201, 126, 0.8), 0 0 4px rgba(255, 240, 189, 0.9);
+  pointer-events: none;
+  transition: transform 0.08s linear;
+}
+
+/* 3. Sticky Header Elevation on Scroll */
+header {
+  transition: background-color 0.35s var(--motion-spring), backdrop-filter 0.35s var(--motion-spring), box-shadow 0.35s var(--motion-spring), padding 0.35s var(--motion-spring) !important;
+}
+
+header.header-scrolled {
+  background: rgba(4, 33, 23, 0.94) !important;
+  backdrop-filter: blur(16px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(216, 183, 107, 0.25) !important;
+  padding-block: 8px !important;
+}
+
+/* 4. Hero Section Spring Entrances */
+.motion-spring-item {
+  opacity: 0;
+  animation: heroSpringFadeUp 0.85s var(--motion-spring) forwards;
+}
+
+@keyframes heroSpringFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(28px) scale(0.97);
+  }
+  60% {
+    opacity: 0.95;
+    transform: translateY(-2px) scale(1.008);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 5. Golden Trophy Organic Floating & Aura Breathing */
+.hero-award-trophy-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  transition: transform 0.25s var(--motion-smooth);
+}
+
+.trophy-ambient-aura {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 78%;
+  height: 78%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(236, 201, 126, 0.38) 0%, rgba(201, 159, 72, 0.2) 45%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(35px);
+  pointer-events: none;
+  z-index: 0;
+  animation: auraPulseBreathe 4.5s ease-in-out infinite;
+}
+
+@keyframes auraPulseBreathe {
+  0% {
+    transform: translate(-50%, -50%) scale(0.92);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.08);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.92);
+    opacity: 0.45;
+  }
+}
+
+.hero-award-trophy-img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 580px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 20px rgba(216, 183, 107, 0.25));
+  animation: trophyOrganicFloat 5s ease-in-out infinite !important;
+  transform-origin: center bottom;
+}
+
+@keyframes trophyOrganicFloat {
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.012);
+  }
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+}
+
+/* 6. Framer Motion whileHover & whileTap Button Physics */
+.button,
+.hero-btn-nominate,
+.hero-btn-view,
+.nav-apply {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.26s var(--motion-spring), box-shadow 0.26s var(--motion-spring), background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease !important;
+  cursor: pointer;
+}
+
+.button:hover,
+.hero-btn-nominate:hover {
+  transform: translateY(-2.5px) scale(1.028) !important;
+  box-shadow: 0 10px 24px rgba(216, 183, 107, 0.45) !important;
+}
+
+.button:active,
+.hero-btn-nominate:active,
+.nav-apply:active {
+  transform: translateY(0px) scale(0.96) !important;
+  transition-duration: 0.08s !important;
+}
+
+.button.outline:hover,
+.hero-btn-view:hover {
+  transform: translateY(-2.5px) scale(1.028) !important;
+  box-shadow: 0 8px 22px rgba(4, 33, 23, 0.3) !important;
+}
+
+.button.outline:active,
+.hero-btn-view:active {
+  transform: translateY(0px) scale(0.96) !important;
+}
+
+/* Shimmer Specular Light Sweep on Gold Buttons */
+.button.gold::after,
+.hero-btn-nominate::after,
+.nav-apply::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -80%;
+  width: 50%;
+  height: 220%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: rotate(25deg);
+  pointer-events: none;
+  transition: none;
+}
+
+.button.gold:hover::after,
+.hero-btn-nominate:hover::after,
+.nav-apply:hover::after {
+  left: 130%;
+  transition: left 0.75s ease-in-out;
+}
+
+/* 7. Interactive 3D Card Hover Tilt with Radial Spotlight */
+.award-card,
+.metric-box-luxury,
+.content-card,
+.photo-card,
+.video-card,
+.testimonial-luxury-card {
+  transform-style: preserve-3d;
+  transition: transform 0.28s var(--motion-smooth), box-shadow 0.28s var(--motion-smooth), border-color 0.25s ease !important;
+  position: relative;
+}
+
+.award-card:hover,
+.metric-box-luxury:hover,
+.content-card:hover {
+  box-shadow: 0 16px 36px rgba(4, 33, 23, 0.12), 0 0 20px rgba(216, 183, 107, 0.15) !important;
+  border-color: rgba(216, 183, 107, 0.65) !important;
+}
+
+/* Dynamic Radial Mouse Glare on Cards */
+.award-card::before,
+.metric-box-luxury::before,
+.testimonial-luxury-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at var(--card-mouse-x, 50%) var(--card-mouse-y, 50%), rgba(216, 183, 107, 0.12) 0%, transparent 65%);
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.award-card:hover::before,
+.metric-box-luxury:hover::before,
+.testimonial-luxury-card:hover::before {
+  opacity: 1;
+}
+
+/* 8. Micro Stats & Glass Strip Interactive Micro-Feedback */
+.micro-stat-item,
+.glass-item {
+  transition: transform 0.25s var(--motion-spring), background-color 0.2s ease, border-color 0.2s ease !important;
+  cursor: default;
+}
+
+.micro-stat-item:hover,
+.glass-item:hover {
+  transform: translateY(-3px) scale(1.025) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* 9. Universal Staggered Viewport Reveal (Spring Easing) */
+.reveal-enabled .reveal {
+  opacity: 0;
+  transform: translateY(32px) scale(0.975);
+  transition: opacity 0.8s var(--motion-spring), transform 0.8s var(--motion-spring) !important;
+  will-change: opacity, transform;
+}
+
+.reveal-enabled .reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.reveal-delay-1 { transition-delay: 0.06s !important; }
+.reveal-delay-2 { transition-delay: 0.12s !important; }
+.reveal-delay-3 { transition-delay: 0.18s !important; }
+.reveal-delay-4 { transition-delay: 0.24s !important; }
+.reveal-delay-5 { transition-delay: 0.30s !important; }
+.reveal-delay-6 { transition-delay: 0.36s !important; }
+
+/* 10. Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .motion-scroll-progress-bar,
+  .hero-award-trophy-img,
+  .trophy-ambient-aura {
+    animation: none !important;
+    transform: none !important;
+  }
+  .reveal-enabled .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

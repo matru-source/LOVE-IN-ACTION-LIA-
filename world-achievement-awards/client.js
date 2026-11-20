@@ -1096,3 +1096,165 @@ contentKindFilter?.addEventListener('change', () => {
   contentCurrentPage = 1;
   renderPublishedContent();
 });
+
+// ==========================================================================
+// FRAMER MOTION INTERACTIVE PHYSICS & ANIMATION ENGINE
+// ==========================================================================
+(function initFramerMotionEngine() {
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // 1. Framer Motion Scroll Progress Bar (useScroll)
+  const progressBar = document.getElementById('motion-scroll-progress');
+  if (progressBar) {
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const progress = docHeight > 0 ? Math.min(1, Math.max(0, window.scrollY / docHeight)) : 0;
+          progressBar.style.transform = `scaleX(${progress})`;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  // 2. Sticky Header Elevation with Blur on Scroll
+  const header = document.querySelector('header');
+  if (header && !header.classList.contains('admin-console-header')) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 25) {
+        header.classList.add('header-scrolled');
+      } else {
+        header.classList.remove('header-scrolled');
+      }
+    }, { passive: true });
+  }
+
+  if (prefersReduced) return;
+
+  // 3. Interactive 3D Cursor Tilt & Spring Parallax on Hero Trophy
+  const heroSection = document.querySelector('.hero-premium-section');
+  const trophyWrap = document.querySelector('.hero-award-trophy-wrap');
+  if (heroSection && trophyWrap) {
+    let targetX = 0, targetY = 0;
+    let currentX = 0, currentY = 0;
+    let isHovering = false;
+
+    heroSection.addEventListener('mousemove', (e) => {
+      const rect = heroSection.getBoundingClientRect();
+      const normX = (e.clientX - rect.left) / rect.width - 0.5;
+      const normY = (e.clientY - rect.top) / rect.height - 0.5;
+      // High-precision subtle 3D tilt angles
+      targetX = normX * 14; // max 14deg Y rotation
+      targetY = -normY * 12; // max 12deg X rotation
+      isHovering = true;
+    });
+
+    heroSection.addEventListener('mouseleave', () => {
+      targetX = 0;
+      targetY = 0;
+      isHovering = false;
+    });
+
+    function renderTrophyPhysics() {
+      // Damped spring interpolation (stiffness: 0.08, damping: 0.85)
+      currentX += (targetX - currentX) * 0.075;
+      currentY += (targetY - currentY) * 0.075;
+
+      if (isHovering || Math.abs(currentX) > 0.01 || Math.abs(currentY) > 0.01) {
+        trophyWrap.style.transform = `perspective(1100px) rotateX(${currentY.toFixed(2)}deg) rotateY(${currentX.toFixed(2)}deg) scale3d(1.025, 1.025, 1.025)`;
+      } else {
+        trophyWrap.style.transform = '';
+      }
+      requestAnimationFrame(renderTrophyPhysics);
+    }
+    requestAnimationFrame(renderTrophyPhysics);
+  }
+
+  // 4. Interactive 3D Card Hover Tilt with Radial Mouse Spotlight
+  function setupCardTilt() {
+    const cards = document.querySelectorAll('.award-card, .metric-box-luxury, .content-card, .photo-card, .video-card, .testimonial-luxury-card, .sub-card');
+    cards.forEach(card => {
+      if (card.dataset.tiltInitialized) return;
+      card.dataset.tiltInitialized = 'true';
+
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const tiltX = (x / rect.width - 0.5) * 8;  // max 4 deg
+        const tiltY = -(y / rect.height - 0.5) * 8;
+
+        card.style.setProperty('--card-mouse-x', `${x}px`);
+        card.style.setProperty('--card-mouse-y', `${y}px`);
+        card.style.transform = `perspective(900px) rotateX(${tiltY.toFixed(2)}deg) rotateY(${tiltX.toFixed(2)}deg) translateY(-4px)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  }
+
+  // 5. Tactile Spring Feedback on Interactive Buttons (whileHover, whileTap)
+  function setupButtonTactile() {
+    const buttons = document.querySelectorAll('.button, .tab-btn, .page-nav-btn, .page-num-btn, .glass-item, .micro-stat-item');
+    buttons.forEach(btn => {
+      if (btn.dataset.tactileInitialized) return;
+      btn.dataset.tactileInitialized = 'true';
+
+      btn.addEventListener('mousedown', () => {
+        btn.style.transform = 'scale(0.96)';
+      });
+
+      btn.addEventListener('mouseup', () => {
+        btn.style.transform = '';
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+      });
+    });
+  }
+
+  // 6. Staggered Hero Elements Entrance Animation on Initial Load
+  function triggerHeroStagger() {
+    const heroElements = [
+      '.hero-laurel-eyebrow',
+      '.hero-premium-left h1',
+      '.hero-premium-subtitle',
+      '.hero-premium-desc',
+      '.hero-premium-actions',
+      '.hero-micro-stats',
+      '.hero-award-trophy-wrap',
+      '.hero-premium-glass-strip'
+    ];
+
+    heroElements.forEach((sel, i) => {
+      const el = document.querySelector(sel);
+      if (el) {
+        el.classList.add('motion-spring-item');
+        el.style.animationDelay = `${0.08 + i * 0.1}s`;
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      setupCardTilt();
+      setupButtonTactile();
+      triggerHeroStagger();
+    });
+  } else {
+    setupCardTilt();
+    setupButtonTactile();
+    triggerHeroStagger();
+  }
+
+  window.addEventListener('content-updated', () => {
+    setupCardTilt();
+    setupButtonTactile();
+  });
+})();
