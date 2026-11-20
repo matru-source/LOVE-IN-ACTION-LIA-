@@ -1347,9 +1347,9 @@ function render(path, p) {
   })}
   </script>
 </head>
-<body>
+<body class="${path === '/admin' ? 'is-admin-page' : ''}">
   <a class="skip" href="#main">Skip to content</a>
-  <header>
+  ${path === '/admin' ? '' : `<header>
     <div class="nav wrap">
       <a href="/" class="brand" aria-label="World Achievement Awards Home">
         <img src="/assets/LOGO.jpeg" alt="World Achievement Awards Emblem" class="brand-logo" width="46" height="46">
@@ -1385,7 +1385,7 @@ function render(path, p) {
         <a class="button gold nav-apply" href="/nominate">APPLY NOW ↗</a>
       </nav>
     </div>
-  </header>
+  </header>`}
   <main id="main" data-page="${path === '/' ? 'home' : path.slice(1).replace(/\//g, '-')}">
     ${p.body}
   </main>

@@ -4835,3 +4835,52 @@ main[data-page="privacy"] .page-heading {
     justify-content: center;
   }
 }
+
+/* Admin Passcode Eye Toggle & Navbar Removal */
+body.is-admin-page header,
+body:has(main[data-page="admin"]) header,
+main[data-page="admin"] ~ header {
+  display: none !important;
+}
+
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.password-input-wrapper input {
+  width: 100%;
+  padding-right: 46px !important;
+  box-sizing: border-box;
+}
+
+.toggle-password-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  color: #6c757d;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: color 0.18s, background-color 0.18s;
+  line-height: 1;
+  z-index: 2;
+}
+
+.toggle-password-btn:hover {
+  color: #042117;
+  background: rgba(4, 33, 23, 0.08);
+}
+
+.toggle-password-btn:focus-visible {
+  outline: 2px solid var(--gold, #d8b76b);
+  outline-offset: 1px;
+}

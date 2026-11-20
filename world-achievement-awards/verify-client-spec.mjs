@@ -310,7 +310,9 @@ test('Admin UI is protected by passcode and accessible via login form or key', a
   const unauthHtml = await unauthRes.text();
   assert.match(unauthHtml, /Organiser Workspace/);
   assert.match(unauthHtml, /id="admin-passcode"/);
+  assert.match(unauthHtml, /id="toggle-admin-passcode"/);
   assert.match(unauthHtml, /Unlock Workspace ↗/);
+  assert.doesNotMatch(unauthHtml, /<nav id="navigation"/);
 
   // 2. POST /api/admin/login with correct passcode returns 200 and Set-Cookie
   const loginRes = await worker.fetch(new Request(origin + '/api/admin/login', {

@@ -820,3 +820,22 @@ if (document.readyState === 'loading') {
 } else {
   initMetricCounters();
 }
+
+// Toggle Passcode Visibility (Eye Button)
+const togglePassBtn = document.querySelector('#toggle-admin-passcode');
+if (togglePassBtn) {
+  togglePassBtn.addEventListener('click', () => {
+    const passInput = document.querySelector('#admin-passcode');
+    if (!passInput) return;
+    const isPass = passInput.type === 'password';
+    passInput.type = isPass ? 'text' : 'password';
+    togglePassBtn.setAttribute('aria-label', isPass ? 'Hide passcode' : 'Show passcode');
+    togglePassBtn.setAttribute('title', isPass ? 'Hide passcode' : 'Show passcode');
+    const eyeOpen = togglePassBtn.querySelector('.eye-open-icon');
+    const eyeClosed = togglePassBtn.querySelector('.eye-closed-icon');
+    if (eyeOpen && eyeClosed) {
+      eyeOpen.style.display = isPass ? 'none' : 'inline-block';
+      eyeClosed.style.display = isPass ? 'inline-block' : 'none';
+    }
+  });
+}
