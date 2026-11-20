@@ -173,35 +173,75 @@ document.querySelectorAll('form[data-endpoint]').forEach(form => {
   });
 });
 
-// Interactive Filtering for Awardees Directory
-document.querySelectorAll('.filters').forEach(form => {
-  const section = form.closest('section');
-  const entries = [...section.querySelectorAll('[data-entry]')];
+// Awardees Directory Pagination Controller (9 honourees per page)
+const awardeesSection = document.querySelector('.awardees-archive-section');
+const awardeesGrid = document.querySelector('.content-grid-awardees');
+if (awardeesSection && awardeesGrid) {
+  const cards = Array.from(awardeesGrid.querySelectorAll('[data-entry]'));
+  const pageSize = 9;
+  const totalItems = cards.length;
+  const totalPages = Math.max(1, Math.ceil(totalItems / pageSize));
+  let currentPage = 1;
 
-  function filter() {
-    let count = 0;
-    const d = Object.fromEntries(new FormData(form));
-    for (const el of entries) {
-      const show =
-        (!d.search || el.dataset.search.includes(d.search.toLowerCase())) &&
-        (!d.year || el.dataset.year === d.year) &&
-        (!d.filterCategory || el.dataset.category === d.filterCategory) &&
-        (!d.filterState || el.dataset.state.toLowerCase().includes(d.filterState.toLowerCase()));
-      el.hidden = !show;
-      if (show) {
-        count++;
-        el.classList.add('is-revealed');
+  const prevBtn = document.getElementById('awardees-prev-btn');
+  const nextBtn = document.getElementById('awardees-next-btn');
+  const statusEl = document.getElementById('awardees-pagination-status');
+  const pageNumbersGroup = document.getElementById('awardees-page-numbers');
+
+  function renderAwardeesPage(page, scrollToTop = false) {
+    if (page < 1) page = 1;
+    if (page > totalPages) page = totalPages;
+    currentPage = page;
+
+    const startIdx = (currentPage - 1) * pageSize;
+    const endIdx = Math.min(startIdx + pageSize, totalItems);
+
+    cards.forEach((card, idx) => {
+      if (idx >= startIdx && idx < endIdx) {
+        card.hidden = false;
+        card.classList.add('is-revealed');
+      } else {
+        card.hidden = true;
+      }
+    });
+
+    if (statusEl) {
+      statusEl.textContent = `Showing ${totalItems === 0 ? 0 : startIdx + 1}–${endIdx} of ${totalItems} Honourees`;
+    }
+
+    if (prevBtn) {
+      prevBtn.disabled = currentPage <= 1;
+    }
+    if (nextBtn) {
+      nextBtn.disabled = currentPage >= totalPages;
+    }
+
+    if (pageNumbersGroup) {
+      pageNumbersGroup.innerHTML = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `page-num-btn${i === currentPage ? ' active' : ''}`;
+        btn.dataset.page = String(i);
+        btn.textContent = String(i);
+        if (i === currentPage) {
+          btn.setAttribute('aria-current', 'page');
+        }
+        btn.addEventListener('click', () => renderAwardeesPage(i, true));
+        pageNumbersGroup.appendChild(btn);
       }
     }
-    const countEl = section.querySelector('.filter-count');
-    if (countEl) countEl.textContent = `${count} matching ${count === 1 ? 'awardee' : 'awardees'}`;
+
+    if (scrollToTop) {
+      awardeesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
-  form.addEventListener('input', filter);
-  form.addEventListener('submit', e => e.preventDefault());
-  form.addEventListener('reset', () => setTimeout(filter, 0));
-  filter();
-});
+  prevBtn?.addEventListener('click', () => renderAwardeesPage(currentPage - 1, true));
+  nextBtn?.addEventListener('click', () => renderAwardeesPage(currentPage + 1, true));
+
+  renderAwardeesPage(1, false);
+}
 
 // Award Gallery Pagination Controller
 const gallerySection = document.querySelector('.gallery-archive-section');

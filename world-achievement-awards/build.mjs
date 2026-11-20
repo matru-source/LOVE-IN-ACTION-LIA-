@@ -1126,12 +1126,23 @@ pages['/registration'] = {
 // PAGE 6: AWARDEES LIST
 pages['/awardees'] = {
   title: 'Awardees List | World Achievement Awards',
-  description: 'Directory of honoured awardees: Photo, Name, District, Award Name, and Field. Filter by Year, Category, and State.',
+  description: 'Directory of honoured awardees: Photo, Name, District, Award Name, and Field.',
   body: `
 ${heading('HONOURING REAL TALENT', 'Distinguished Awardees Directory', 'Discover extraordinary changemakers, doctors, teachers, youth icons and cultural maestros felicitated with World Achievement Awards.')}
-<section class="wrap archive">
-  <div class="filters-container"></div>
+<section class="wrap archive awardees-archive-section">
   <div data-content="awardees" aria-live="polite"></div>
+  <div class="awardees-pagination-wrapper" id="awardees-pagination">
+    <div class="awardees-pagination-info">
+      <span id="awardees-pagination-status">Showing 1–7 of 7 Honourees</span>
+    </div>
+    <div class="awardees-pagination-controls">
+      <button type="button" class="page-nav-btn" id="awardees-prev-btn" aria-label="Previous Page" disabled>‹ Prev</button>
+      <div class="page-numbers-group" id="awardees-page-numbers">
+        <button type="button" class="page-num-btn active" data-page="1" aria-current="page">1</button>
+      </div>
+      <button type="button" class="page-nav-btn" id="awardees-next-btn" aria-label="Next Page" disabled>Next ›</button>
+    </div>
+  </div>
 </section>
 ${cta}`
 };

@@ -4794,7 +4794,8 @@ main[data-page="privacy"] .page-heading {
   padding-bottom: 70px;
 }
 
-.gallery-pagination-wrapper {
+.gallery-pagination-wrapper,
+.awardees-pagination-wrapper {
   margin-top: 48px;
   padding: 20px 24px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(249, 246, 238, 0.92));
@@ -4808,7 +4809,8 @@ main[data-page="privacy"] .page-heading {
   gap: 20px;
 }
 
-.gallery-pagination-info {
+.gallery-pagination-info,
+.awardees-pagination-info {
   font-family: var(--font-sans, system-ui, -apple-system, sans-serif);
   font-size: 14px;
   font-weight: 600;
@@ -4816,19 +4818,22 @@ main[data-page="privacy"] .page-heading {
   letter-spacing: 0.02em;
 }
 
-#gallery-pagination-status {
+#gallery-pagination-status,
+#awardees-pagination-status {
   display: inline-flex;
   align-items: center;
   gap: 8px;
 }
 
-#gallery-pagination-status::before {
+#gallery-pagination-status::before,
+#awardees-pagination-status::before {
   content: '✦';
   color: var(--gold, #d8b76b);
   font-size: 13px;
 }
 
-.gallery-pagination-controls {
+.gallery-pagination-controls,
+.awardees-pagination-controls {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -4899,7 +4904,8 @@ main[data-page="privacy"] .page-heading {
 }
 
 @media (max-width: 640px) {
-  .gallery-pagination-wrapper {
+  .gallery-pagination-wrapper,
+  .awardees-pagination-wrapper {
     flex-direction: column;
     text-align: center;
     justify-content: center;

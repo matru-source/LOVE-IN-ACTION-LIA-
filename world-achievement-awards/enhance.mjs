@@ -1,43 +1,4 @@
 export function enhance(pages, awards) {
-  // Filters markup for Awardees page
-  const awardeeFilters = `
-<form class="filters" role="search" aria-label="Filter Awardees">
-  <label>Search by Name / District
-    <input name="search" type="search" placeholder="e.g. Smrutishree, Kendrapara, Cuttack...">
-  </label>
-  <label>Filter by Year
-    <select name="year">
-      <option value="">All Years</option>
-      
-    </select>
-  </label>
-  <label>Filter by Category
-    <select name="filterCategory">
-      <option value="">All Award Categories</option>
-      ${awards.map(a => `<option value="${a}">${a}</option>`).join('')}
-    </select>
-  </label>
-  <label>Filter by State
-    <select name="filterState">
-      <option value="">All States</option>
-      <option value="Odisha">Odisha</option>
-      <option value="West Bengal">West Bengal</option>
-      <option value="Maharashtra">Maharashtra</option>
-      <option value="Delhi">Delhi</option>
-      <option value="Karnataka">Karnataka</option>
-    </select>
-  </label>
-  <button class="button outline" type="reset">Clear Filters</button>
-</form>
-<p class="filter-count" role="status" aria-live="polite"></p>`;
-
-  if (pages['/awardees']) {
-    pages['/awardees'].body = pages['/awardees'].body.replace(
-      '<div class="filters-container"></div>',
-      awardeeFilters
-    );
-  }
-
   // Admin Portal Page
   pages['/admin'] = {
     title: 'Organiser Workspace | World Achievement Awards Admin',
